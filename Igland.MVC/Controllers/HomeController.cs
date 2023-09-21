@@ -24,8 +24,8 @@ namespace Igland.MVC.Controllers
 
             var model = new RazorViewModel
             {
-                Content = "En time til ørsta rådhus",
-                AdditionalData = "blablabla"
+                Content = "Hva vil du gjøre idag?",
+                AdditionalData = "Kanskje lage link til andre sider som serviceordre? Eller lage en liten meny"
             };
             return View("Index", model);
         }
