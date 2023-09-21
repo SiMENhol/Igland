@@ -1,3 +1,3 @@
-# IS200-1-2 prosjekt for NÃ¸sted &
+# IS200-1-2 prosjekt for Nøsted &
 
-Husk Ã¥ navngi branches til det du jobber med.
+Husk å navngi branches til det du jobber med.

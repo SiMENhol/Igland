@@ -7,95 +7,95 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
-build_property.RootNamespace = Igland.MVC
-build_property.RootNamespace = Igland.MVC
-build_property.ProjectDir = C:\Users\simen\source\repos\Igland\Igland.MVC\
+build_property.RootNamespace = bacit_dotnet.MVC
+build_property.RootNamespace = bacit_dotnet.MVC
+build_property.ProjectDir = C:\Users\simen\source\repos\Igland\bacit-dotnet.MVC\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\simen\source\repos\Igland\Igland.MVC
+build_property.MSBuildProjectDirectory = C:\Users\simen\source\repos\Igland\bacit-dotnet.MVC
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/ConfirmEmail.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/ExternalLoginConfirmation.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/ExternalLoginConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFeHRlcm5hbExvZ2luQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/ExternalLoginFailure.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/ExternalLoginFailure.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFeHRlcm5hbExvZ2luRmFpbHVyZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/ForgotPassword.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/ForgotPasswordConfirmation.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/Lockout.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/Lockout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/Login.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/Register.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/ResetPassword.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/ResetPasswordConfirmation.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/SendCode.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/SendCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTZW5kQ29kZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/UseRecoveryCode.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/UseRecoveryCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVc2VSZWNvdmVyeUNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/VerifyAuthenticatorCode.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/VerifyAuthenticatorCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxWZXJpZnlBdXRoZW50aWNhdG9yQ29kZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Account/VerifyCode.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Account/VerifyCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxWZXJpZnlDb2RlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Home/Index.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/ServiceOrder/Index.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/ServiceOrder/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZU9yZGVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Users/Index.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/_ViewImports.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/_ViewStart.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/simen/source/repos/Igland/Igland.MVC/Views/Shared/_Layout.cshtml]
+[C:/Users/simen/source/repos/Igland/bacit-dotnet.MVC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ygm9nol9mb
