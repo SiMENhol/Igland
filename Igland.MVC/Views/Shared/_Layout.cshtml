@@ -28,9 +28,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Kalender</a>
                     </ul>
-                    <ul class="navbar-nav flex-grow-1 align-right">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOff">PROFILBILDE Sign out</a>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        PROFILBILDE
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" asp-area="" asp-controller="Users" asp-action="Index">Min konto</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="LogOff">Administrator</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="LogOff">Sign out</a>
                         </li>
                 </div>
             </div>
