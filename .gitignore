@@ -11,3 +11,7 @@ bld/
 [Oo]bj/
 *.csproj.user
 /database
+/.vs/Igland/v17/.wsuo
+/.vs/slnx.sqlite
+/Igland.MVC/obj/Debug/net7.0/Igland.MVC.GeneratedMSBuildEditorConfig.editorconfig
+/Igland.MVC/obj/Release/net7.0/Igland.MVC.GeneratedMSBuildEditorConfig.editorconfig
