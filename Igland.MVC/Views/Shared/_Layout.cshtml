@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/Igland.MVC.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    <header> 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Igland.MVC</a>
@@ -27,17 +27,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Service og sjekkliste</a>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Kalender</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Suggestions" asp-action="Index">Suggestions (?Administrator required?)</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOff">Kanskje legge til profilebilde før? Sign out</a>
-                        </li>
                     </ul>
+                    <ul class="navbar-nav flex-grow-1 align-right">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LogOff">PROFILBILDE Sign out</a>
+                        </li>
                 </div>
             </div>
         </nav>

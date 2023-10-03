@@ -46,3 +46,12 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+
+.align-right {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .align-right .nav-item:last-child {
+        margin-left: auto;
+    }
