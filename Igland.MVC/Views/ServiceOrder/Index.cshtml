@@ -1,5 +1,7 @@
 ﻿@model Igland.MVC.Models.ServiceOrdre.ServiceOrderViewModel
-
+@{
+    ViewData["Title"] = "Service og sjekkliste";
+}
 <h1>Saksnummer @Model.ServiceOrderId</h1>
 
 @foreach(var jobGroup in Model.JobGroups)
