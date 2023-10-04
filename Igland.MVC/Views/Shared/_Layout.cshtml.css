@@ -55,3 +55,8 @@ button.accept-policy {
     .align-right .nav-item:last-child {
         margin-left: auto;
     }
+
+.profile-picture {
+width: 40px;
+}
+
