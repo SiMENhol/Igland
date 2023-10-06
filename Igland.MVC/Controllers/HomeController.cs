@@ -29,5 +29,12 @@ namespace Igland.MVC.Controllers
             };
             return View("Index", model);
         }
+
+        [HttpGet]
+        public IActionResult Privacy()
+        {
+            _logger.LogInformation("Privacy method called");
+            return View("Privacy");
+        }
     }
 }
