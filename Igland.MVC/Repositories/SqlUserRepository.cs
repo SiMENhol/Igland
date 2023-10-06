@@ -1,6 +1,7 @@
 ﻿using Igland.MVC.DataAccess;
 using Igland.MVC.Entities;
 using Microsoft.AspNetCore.Identity;
+using MySql.Data.MySqlClient;
 using System.Data;
 
 namespace Igland.MVC.Repositories
@@ -52,6 +53,10 @@ namespace Igland.MVC.Repositories
             {
                 throw new Exception("User does not exist");
             }
+
+            var command = new MySqlCommand();
+            command.CommandType = CommandType.Text;
+
             var sql = $@"update users 
                                 set 
                                    Name = '{user.Name}', 
