@@ -16,12 +16,13 @@
     <p><b>Fødselsdato:</b> 11.05.99</p>
 </div>
 
+
 <br>
-<button>Rediger bruker</button>
-<br>
-<button>Tilbakestill passord</button>
-<br>
-<button>Logg ut</button> 
+@using (Html.BeginForm("Index", "LogIn", FormMethod.Get))
+{
+    <button type="submit">Logg ut</button> 
+}
+
 
 <br>
 <br>
