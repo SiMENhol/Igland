@@ -3,14 +3,14 @@
     ViewData["Title"] = "Hjem";
 }
 
-<h4>Velkommen HER MÅ DE LINKES TIL KONTO NAVN aka den som er logget inn eksempel Velkommen Ola Nordmann </h4>
+<h4>Velkommen @Model.UserName </h4>
 <div>
     
     <h2>Hva vil du gjøre idag?</h2>
-    <p><b>Ordrenummer </b>123456789</p>
-    <p><b>Kunde </b>Gard</p>
+    <p><b>Ordrenummer: </b>@Model.OrdreNummer</p>
+    <p><b>Kunde: </b>@Model.Kunde</p>
 
-    <h2>Ordrenummer elns</h2>
+    <h2>Vinsjtype: @Model.VinsjType</h2>
 
     <div class="w3-light-grey w3-round-xlarge">
         <div class="w3-container w3-blue w3-round-xlarge" style="width:25%">25%</div>

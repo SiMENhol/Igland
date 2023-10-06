@@ -15,3 +15,8 @@ bld/
 /.vs/slnx.sqlite
 /Igland.MVC/obj/Debug/net7.0/Igland.MVC.GeneratedMSBuildEditorConfig.editorconfig
 /Igland.MVC/obj/Release/net7.0/Igland.MVC.GeneratedMSBuildEditorConfig.editorconfig
+/Igland.MVC.Tests/obj/Debug/net7.0/Igland.MVC.Tests.GeneratedMSBuildEditorConfig.editorconfig
+/Igland.MVC.Tests/obj/Release/net7.0/Igland.MVC.Tests.GeneratedMSBuildEditorConfig.editorconfig
+/Igland.MVC.Tests/obj/Debug/net7.0/Igland.MVC.Tests.GeneratedMSBuildEditorConfig.editorconfig
+/Igland.MVC.Tests.GeneratedMSBuildEditorConfig.editorconfig
+
