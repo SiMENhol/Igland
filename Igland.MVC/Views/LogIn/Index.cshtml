@@ -1,0 +1,29 @@
+﻿@using Igland.MVC.Models.LogIn
+
+@{
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        //@Html.AntiForgeryToken()
+        <div>
+            <p>
+                Din brukerID
+            </p>
+            <input type="text">
+            @* @Html.LabelFor(m => m.Username) *@
+            @* @Html.TextBoxFor(m => m.Username) *@
+        </div>
+        <div>
+            <p>
+                Ditt passord
+            </p>
+            <input type="text">
+            @* @Html.LabelFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password) *@
+            <br>
+            <br>
+        </div>
+        <button type="submit">Logg inn</button>
+    }
+
+}
