@@ -2,7 +2,7 @@
 using Igland.MVC.Models.ServiceOrdre;
 using Microsoft.AspNetCore.Mvc;
 
-namespace bacit_dotnet.MVC.Controllers
+namespace Igland.MVC.Controllers
 {
     public class ServiceOrderController : Controller
     {
