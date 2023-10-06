@@ -2,10 +2,52 @@
 @{
     ViewData["Title"] = "Service og sjekkliste";
 }
-<h1>Saksnummer @Model.ServiceOrderId</h1>
+<h3>Meny for skjemaer</h3>
+<h4>Her er 6 knapper til de ulike skjemaene, de må knyttes til nye sider</h4>
 
-@foreach(var jobGroup in Model.JobGroups)
+<span style="float: right; display: inline-block; width: auto; margin: 0;">
+    <button type="submit" asp-controller="Product" asp-action="Create">Nytt Service-dokument</button>
+</span>
+
+<span style="float: right; display: inline-block; width: auto; margin: 0;">
+    <button type="submit" asp-controller="Product" asp-action="Create">Service-dokumenter</button>
+</span>
+
+<span style="float: left; display: inline-block; width: auto; margin: 0;">
+    <button type="submit" asp-controller="Product" asp-action="Create">Arbeidsdokumenter</button>
+</span>
+
+<span style="float: left; display: inline-block; width: auto; margin: 0;">
+    <button type="submit" asp-controller="Product" asp-action="Create">Nytt Arbeidsdokument</button>
+</span>
+
+<span style="display: inline-block; width: auto; margin: 0 auto 400px;">
+    <button type="submit" asp-controller="Product" asp-action="Create">Sjekklister</button>
+</span>
+
+<span style="display: inline-block; width: auto; margin: 0 auto 300px; margin-right: 10px;">
+    <button type="submit" asp-controller="Product" asp-action="Create">Ny Sjekkliste</button>
+</span>
+
+
+
+
+@*
+@foreach (var jobGroup in Model.JobGroups)
 {
+        <h3>@jobGroup.Name</h3>
+        <ul>
+        @foreach (var group in jobGroup.Jobs)
+        {
+                <li>
+                @group <input type="checkbox">
+                </li>
+
+        }
+        </ul>
+}
+
+<!--
     <h3>@jobGroup.Name</h3>
     <ul>
     @foreach (var group in jobGroup.Jobs)
@@ -47,3 +89,5 @@ foreach(var jobGroup in Model.JobGroups)
     <input type="submit" />
 
 </form>
+-->
+*@
