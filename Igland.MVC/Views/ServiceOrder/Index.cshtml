@@ -1,31 +1,8 @@
 ﻿@model Igland.MVC.Models.ServiceOrdre.ServiceOrderViewModel
 @{
-    ViewData["Title"] = "Service og sjekkliste";
+    ViewData["Title"] = "ServiceOrdre";
 }
-<h3>Meny for skjemaer</h3>
-<h4>Nå er koden satt opp slik at man kan knytte knappene til nye sider(controller) når de lages, bare endre på "asp-controller"
-    og "asp-action" i koden til denne siden. Linket Servicedokumenter til "LogIn" controlleren som en test</h4>
 
-<style>
-    .buttons {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        grid-gap: 10px;
-    }
-</style>
-
-<div class="buttons">
-    <a asp-controller="LogIn" asp-action="Index">Servicedokumenter</a>
-    <a asp-controller="placeholder" asp-action="Index">Arbeidsdokumenter</a>
-    <a asp-controller="placeholder" asp-action="Index">Sjekklister</a>
-    <a asp-controller="Placeholder" asp-action="Index">Ny servicedokument</a>
-    <a asp-controller="Placeholder" asp-action="Index">Ny arbeidsdokument</a>
-    <a asp-controller="Placeholder" asp-action="Index">Ny sjekkliste</a>
-</div>
-
-
-@*
 @foreach (var jobGroup in Model.JobGroups)
 {
         <h3>@jobGroup.Name</h3>
@@ -40,8 +17,8 @@
         </ul>
 }
 
-<!--
-    <h3>@jobGroup.Name</h3>
+
+  @*  <h3>@jobGroup.Name</h3>
     <ul>
     @foreach (var group in jobGroup.Jobs)
     {
@@ -51,7 +28,7 @@
     
     }
     </ul>
-}
+}*@
 
 <h1>Saksnummer @Model.ServiceOrderId</h1>
 @if( Model.JobGroups!= null){
@@ -82,5 +59,3 @@ foreach(var jobGroup in Model.JobGroups)
     <input type="submit" />
 
 </form>
--->
-*@
