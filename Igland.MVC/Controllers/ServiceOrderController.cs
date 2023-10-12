@@ -25,10 +25,11 @@ namespace Igland.MVC.Controllers
                 ImageUrl = "",
                 IsAdministrator = false,
                 JobGroups = new List<ServiceOrderJobGroupModel> {
-                    new ServiceOrderJobGroupModel {Name ="Mekanisk", Jobs=new List<string>{"Skru på ting", "Bytte slureflapp"} },
-                    new ServiceOrderJobGroupModel{ Name="Elektrisk", Jobs=new List<string>{"Sikringer","Greier" } },
-
-
+                    new ServiceOrderJobGroupModel {Name ="Mekanisk", Jobs=new List<string>{"Sjekk clutch lameller for slitasje", "Sjekk bremser. Bånd/Pal", "Sjekk lager for trommel", "Sjekk PTO og opplagring", "Sjekk kjedestrammer", "Sjekk wire", "Sjekk wire", "Sjekk pinion lager", "Sjekk kile på kjedehjul"} },
+                    new ServiceOrderJobGroupModel{ Name="Hydraulisk", Jobs=new List<string>{"Sjekk hydraulisk sylinder for lekkasje","Sjekk slanger for skader og lekkasje", "Test hydraulikkblokk i testbenk", "Skift olje i tank", "Skift olje på gir boks", "Sjekk Ringsylinder åpne og skift tetninger" } },
+                    new ServiceOrderJobGroupModel{ Name="Elektro", Jobs=new List<string>{"Sjekk ledningsnett på vinsj","Sjekk og test radio","Sjekk og test knappekasse" } },
+                    new ServiceOrderJobGroupModel{ Name="Trykk settinger", Jobs=new List<string>{"xx- bar" } },
+                    new ServiceOrderJobGroupModel{ Name="Funksjons test", Jobs=new List<string>{"Test vinsj og kjør alle funksjoner", "Trekkraft KN", "Bremse kraft KN" } },
                 },
                 Mechanic = "Espen",
                 MechanicComment = "ingen kommentar",
