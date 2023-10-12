@@ -1,5 +1,4 @@
 ﻿using Igland.MVC.Models.ServiceOrdre;
-using Igland.MVC.Models.ServiceOrdre;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Igland.MVC.Controllers
