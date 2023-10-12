@@ -1,0 +1,170 @@
+﻿
+@{}
+
+<head>
+
+    <style>
+
+       .overskrift, tabell {
+            text-align: center;
+
+        }
+
+        th, tr, td {
+            border: 1px solid black;
+            padding: 20px;
+        }
+
+    </style>
+
+</head>
+
+
+<div class="overskrift">
+
+    <h1>Arbeidsdokumenter </h1>
+    <br />
+    <div class="søkebar">
+        <input type="text" placeholder="Søk etter navn, nummer..">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </div>
+</div>
+
+
+
+<table id="tabell", align="center">
+
+    @* <thred> spare </thred> *@
+    <tr>
+        <th>
+            OrdreNummer
+        </th>
+
+        <th>
+            Kunde
+        </th>
+
+        <th>
+            Produkt
+        </th>
+
+        <th>
+            Status
+        </th>
+
+        <th>
+            Service Ferdig
+        </th>
+
+        
+
+
+        @* undergreier i tabellen *@
+
+    </tr>
+    <tr>
+
+        <td> 270920232234-00001 </td>
+        <td> Jeppe Blomkvist ENK </td>
+        <td> Vinsj M1 #44106008 </td>
+        <td> Henvendelse motatt </td>
+        <td> 30.09.2023 (avtalt) </td>
+       
+        
+        
+    </tr>
+    <br />
+    <br />
+    <tr>
+        
+        <td> 270920231956-00001 </td>
+        <td> Thomasen Skogbruk AS </td>
+        <td> Vinsj M2 #82504523 </td>
+        <td> Sjekk utført </td>
+        <td> 29.09.2023 (avtalt) </td>
+
+        
+
+    </tr>
+
+    <tr>
+
+        <td> 270923456987-00001 </td>
+        <td> Viken Skogbruk AS </td>
+        <td> Vinsj M1 #82593584 </td>
+        <td> Sjekk utført </td>
+        <td> 09.10.2023 (avtalt) </td>
+
+
+
+    </tr>
+
+    <tr>
+
+        <td> 270028476308-00001 </td>
+        <td> Bob Birkelund AS </td>
+        <td> Vinsj M2 #02004523 </td>
+        <td> Sjekk utført </td>
+        <td> 19.10.2023 (avtalt) </td>
+
+
+
+    </tr>
+
+    <tr>
+
+        <td> 0000023405000-00001 </td>
+        <td> Job Birkelund AS </td>
+        <td> Vinsj M2 #02004523 </td>
+        <td> Sjekk utført </td>
+        <td> 19.10.2023 (avtalt) </td>
+
+
+
+    </tr>
+    <tr>
+
+        <td> 0345676666666-00001 </td>
+        <td> Birke Birkelund AS </td>
+        <td> Vinsj M2 #02004523 </td>
+        <td> Sjekk utført </td>
+        <td> 19.10.2023 (avtalt) </td>
+
+
+
+    </tr>
+    <tr>
+
+        <td> 270028476308-00001 </td>
+        <td> Bob Birkelund AS </td>
+        <td> Vinsj M2 #02004523 </td>
+        <td> Sjekk utført </td>
+        <td> 19.10.2023 (avtalt) </td>
+
+
+
+    </tr>
+    <tr>
+
+        <td> 270028476308-00001 </td>
+        <td> Bob Birkelund AS </td>
+        <td> Vinsj M2 #02004523 </td>
+        <td> Sjekk utført </td>
+        <td> 19.10.2023 (avtalt) </td>
+
+
+
+    </tr>
+
+    @*<tbody>
+    @foreach (var person in Model.Persons)
+    {
+    <tr>
+    <td>@person.ID</td>
+    <td>@person.Name</td>
+    <td>@person.Age</td>
+    </tr>
+    }
+    </tbody> *@
+
+</table>
