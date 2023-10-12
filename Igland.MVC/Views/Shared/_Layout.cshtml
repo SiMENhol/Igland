@@ -10,8 +10,14 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <style>
+        footer {
+            position: fixed;
+            text-align:center;
+        }
+
         .container {
-            margin-bottom: 100px;
+            margin-bottom:100px;
+
         }
     </style>
 
@@ -59,13 +65,15 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="footerContent">
             &copy; 2023 - Igland - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>
