@@ -1,5 +1,6 @@
 ﻿using Igland.MVC.Controllers;
 using Igland.MVC.Models;
+using Igland.MVC.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -9,6 +10,7 @@ namespace Igland.MVC.Tests.Controllers
 
     public class MVCControllerUnitTests
     {
+        private static IUserRepository userRepository;
 
         [Fact]
         public void IndexReturnsCorrectContent() 
@@ -35,15 +37,15 @@ namespace Igland.MVC.Tests.Controllers
             Assert.Same("Hva vil du gjøre idag?", model.Content);
         }
 
-        /*
+        
         private static HomeController SetupUnitUnderTest()
         {
             var fakeLogger = new FakeLogger<HomeController>(); //Set up a fake for dependency (this works with all interfaces)
-            var unitUnderTest = new HomeController(fakeLogger); //Create the class we want to test
+            var unitUnderTest = new HomeController(fakeLogger, userRepository); //Create the class we want to test
             return unitUnderTest;
         }
     }
-        */
+        
     public class FakeLogger<T> : ILogger<T>
     {
         
