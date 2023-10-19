@@ -40,11 +40,12 @@ button.accept-policy {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
 }
 
 .align-right {
@@ -60,3 +61,6 @@ button.accept-policy {
 width: 40px;
 }
 
+.container {
+    margin-bottom: 100px;
+}

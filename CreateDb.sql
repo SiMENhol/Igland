@@ -1,4 +1,4 @@
---drop database webAppDatabase;
+drop database webAppDatabase;
 create database if not exists webAppDatabase;
 use webAppDatabase;
 create table if not EXISTS users
@@ -9,6 +9,7 @@ create table if not EXISTS users
    
     CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
 );
+INSERT INTO users (Id, Name, Email) VALUES ('1', 'Igland Admin', 'Igland@example.com');
 
 create table if not EXISTS AspNetRoles
 (

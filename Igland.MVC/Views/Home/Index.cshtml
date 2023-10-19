@@ -1,18 +1,55 @@
-﻿@model Igland.MVC.Models.RazorViewModel
+﻿@using Igland.MVC.Models.Home;
+
+@model HomeFullViewModel
 @{
     ViewData["Title"] = "Hjem";
 }
+<ul>
+    @{
+        var userWithId1 = Model.UserList.FirstOrDefault(user => user.Id == 1);
+        if (userWithId1 != null)
+        {
+            <li>
+                <h2>Velkommen @userWithId1.Name</h2>
+                 <p class="larger-text">Hva vil du gjøre idag?</p>
+                <b>(Denne trengs kanskje ikke?) Email:</b> @userWithId1.Email
+                <p class="larger-text">Ikke trykk Send inn uten verdi, du ødelegger databasen og må lage ny table for users</p>
+            </li>
+        }
+    }
+</ul>
 
-<h4>Velkommen @Model.UserName </h4>
-<div>
-    
-    <h2>Hva vil du gjøre idag?</h2>
-    <p><b>Ordrenummer: </b>@Model.OrdreNummer</p>
-    <p><b>Kunde: </b>@Model.Kunde</p>
 
-    <h2>Vinsjtype: @Model.VinsjType</h2>
+<form asp-action="Post" asp-controller="Home" method="post">
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    <label asp-for="UpsertModel.Id"></label>
+    <input asp-for="UpsertModel.Id" type="text" /><br />
 
-    <div class="w3-light-grey w3-round-xlarge">
-        <div class="w3-container w3-blue w3-round-xlarge" style="width:25%">25%</div>
-    </div>
+    <label asp-for="UpsertModel.Name"></label>
+    <input asp-for="UpsertModel.Name" type="text" />
+
+    <label asp-for="UpsertModel.Email"></label>
+    <input asp-for="UpsertModel.Email" type="text" />
+    <input type="submit" />
+</form>
+<ul>
+
+
+@foreach(var users in Model.UserList)
+    {
+        <li>
+        @users.Id
+        @users.Name
+        @users.Email
+
+    </li>
+
+}
+</ul>
+
+<h2>Vinsjtype: </h2>
+
+<div class="w3-light-grey w3-round-xlarge">
+    <div class="w3-container w3-blue w3-round-xlarge" style="width:25%">25%</div>
 </div>
