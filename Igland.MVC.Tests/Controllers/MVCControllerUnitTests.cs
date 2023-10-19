@@ -35,6 +35,7 @@ namespace Igland.MVC.Tests.Controllers
             Assert.Same("Hva vil du gjøre idag?", model.Content);
         }
 
+        /*
         private static HomeController SetupUnitUnderTest()
         {
             var fakeLogger = new FakeLogger<HomeController>(); //Set up a fake for dependency (this works with all interfaces)
@@ -42,6 +43,7 @@ namespace Igland.MVC.Tests.Controllers
             return unitUnderTest;
         }
     }
+        */
     public class FakeLogger<T> : ILogger<T>
     {
         
