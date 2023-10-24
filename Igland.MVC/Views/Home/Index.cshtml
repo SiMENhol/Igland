@@ -13,7 +13,6 @@
                 <h2>Velkommen @userWithId1.Name</h2>
                  <p class="larger-text">Hva vil du gjøre idag?</p>
                 <b>(Denne trengs kanskje ikke?) Email:</b> @userWithId1.Email
-                <p class="larger-text">Ikke trykk Send inn uten verdi, du ødelegger databasen og må lage ny table for users</p>
             </li>
         }
     }
@@ -27,10 +26,10 @@
     <input asp-for="UpsertModel.Id" type="text" /><br />
 
     <label asp-for="UpsertModel.Name"></label>
-    <input asp-for="UpsertModel.Name" type="text" />
+    <input asp-for="UpsertModel.Name" type="text" required />
 
     <label asp-for="UpsertModel.Email"></label>
-    <input asp-for="UpsertModel.Email" type="text" />
+    <input asp-for="UpsertModel.Email" type="email" required />
     <input type="submit" />
 </form>
 <ul>
