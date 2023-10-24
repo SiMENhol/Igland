@@ -1,4 +1,4 @@
-﻿using Igland.MVC.Entities;
+﻿/* using Igland.MVC.Entities;
 
 namespace Igland.MVC.Repositories
 {
@@ -76,3 +76,4 @@ namespace Igland.MVC.Repositories
         }
     }
 }
+*/

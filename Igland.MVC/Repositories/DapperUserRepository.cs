@@ -1,4 +1,4 @@
-﻿using Igland.MVC.DataAccess;
+﻿/* using Igland.MVC.DataAccess;
 using Igland.MVC.Entities;
 using Dapper;
 using Dapper.Contrib.Extensions;
@@ -80,3 +80,4 @@ namespace Igland.MVC.Repositories
         }
     }
 }
+*/

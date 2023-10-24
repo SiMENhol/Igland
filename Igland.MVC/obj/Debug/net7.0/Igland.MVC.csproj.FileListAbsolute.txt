@@ -306,3 +306,5 @@ C:\Users\forna\Source\Repos\Igland\Igland.MVC\obj\Debug\net7.0\refint\Igland.MVC
 C:\Users\forna\Source\Repos\Igland\Igland.MVC\obj\Debug\net7.0\Igland.MVC.pdb
 C:\Users\forna\Source\Repos\Igland\Igland.MVC\obj\Debug\net7.0\Igland.MVC.genruntimeconfig.cache
 C:\Users\forna\Source\Repos\Igland\Igland.MVC\obj\Debug\net7.0\ref\Igland.MVC.dll
+C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Home\Index.cshtml.rz.scp.css
+C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ArbeidsDokument\Index.cshtml.rz.scp.css

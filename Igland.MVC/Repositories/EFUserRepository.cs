@@ -1,5 +1,6 @@
 ﻿using Igland.MVC.DataAccess;
 using Igland.MVC.Entities;
+using Igland.MVC.Repositories;
 using Microsoft.AspNetCore.Identity;
 
 namespace Igland.MVC.Repositories
@@ -12,7 +13,29 @@ namespace Igland.MVC.Repositories
         {
             this.dataContext = dataContext;
         }
+        public UserEntity Get(int id)
+        {
+            return dataContext.Users.FirstOrDefault(x => x.Id == id);
+        }
 
+        public List<UserEntity> GetAll()
+        {
+            return dataContext.Users.ToList();
+        }
+
+        public void Upsert(UserEntity users)
+        {
+            var existing = Get(users.Id);
+            if (existing != null)
+            {
+                existing.Name = users.Name;
+                dataContext.SaveChanges();
+                return;
+            }
+            users.Id = 0;
+            dataContext.Add(users);
+            dataContext.SaveChanges();
+        }
         public void Delete(string email)
         {
             UserEntity? user = GetUserByEmail(email);
@@ -31,6 +54,7 @@ namespace Igland.MVC.Repositories
         {
             return dataContext.Users.ToList();
         }
+
         public List<UserEntity> GetEspens()
         {
             return dataContext.Users
@@ -38,6 +62,7 @@ namespace Igland.MVC.Repositories
                     user.Email.Contains("@"))
                 .ToList();
         }
+
         public void Add(UserEntity user)
         {
             var existingUser = GetUserByEmail(user.Email);

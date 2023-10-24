@@ -19,7 +19,38 @@ namespace Igland.MVC.Repositories
             var sql = $"delete from users where email = '{email}'";
             RunCommand(sql);
         }
+        public void Upsert(UserEntity entity)
+        {
+            UserEntity existingUser = GetUser(entity.Email);
 
+            if (existingUser == null)
+            {
+                // User does not exist, so insert the new user
+                Add(entity);
+            }
+            else
+            {
+                // User exists, so update the existing user
+                Update(entity, roles: null); // You can pass null for roles if roles don't need to be updated
+            }
+        }
+        public UserEntity Get(int id)
+        {
+            using (var connection = sqlConnector.GetDbConnection())
+            {
+                var reader = ReadData($"SELECT Id, Name, Email FROM users WHERE Id = {id};", connection);
+                while (reader.Read())
+                {
+                    return MapUserFromReader(reader);
+                }
+            }
+            return null; // User not found
+        }
+
+        public List<UserEntity> GetAll()
+        {
+            return GetUsers();
+        }
         public List<UserEntity> GetUsers()
         {
             using (var connection = sqlConnector.GetDbConnection())
