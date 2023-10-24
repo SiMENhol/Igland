@@ -34,7 +34,7 @@ INSERT INTO users (Id, Name, Email) VALUES ('1', 'Igland Admin', 'Igland@example
     Aarsmodel int,
     Garanti varchar(255),
     Reperasjonbeskrivelse varchar(255),
-    MedgåtteDeler varchar(255),
+    MedgaatteDeler varchar(255),
     DeleRetur varchar(255),
     ForesendelsesMaate varchar(255),
     foreign key(OrdreNummer) references Ordre(OrdreNummer)

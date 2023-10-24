@@ -1,7 +1,7 @@
 ﻿using Igland.MVC.DataAccess;
 using Igland.MVC.Entities;
 using Igland.MVC.Models;
-using Igland.MVC.Models.Home;
+using Igland.MVC.Models.ServiceDocOversikt;
 using Igland.MVC.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +28,7 @@ namespace Igland.MVC.Controllers
             _logger.LogInformation("Index method called");
 
             var model = new HomeFullViewModel();
-            model.UserList = _userRepository.GetAll().Select(x => new HomeViewModel { Id = x.Id, Name = x.Name, Email = x.Email}).ToList();
+            model.UserList = _userRepository.GetAll().Select(x => new ServiceDocOversikt { Id = x.Id, Name = x.Name, Email = x.Email}).ToList();
 
             return View("Index", model);
         }

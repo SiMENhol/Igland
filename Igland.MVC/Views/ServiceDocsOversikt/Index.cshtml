@@ -1,23 +1,6 @@
-﻿
+﻿@using Igland.MVC.Models.ServiceDocOversikt;
 
-
-
-<head>
-
-    <style>
-
-        .overskrift, tabell {
-            text-align: center;
-        }
-
-        th, tr, td {
-            border: 1px solid black;
-            padding: 20px;
-        }
-
-    </style>
-
-</head>
+@model HomeFullViewModel
 
 
 <div class="overskrift">
@@ -61,68 +44,21 @@
 
         @* undergreier i tabellen *@
 
-    </tr>
-    <tr>
+    
 
-        <td> 270920232234-00001 </td>
-        <td> Jeppe Blomkvist ENK </td>
-        <td> Vinsj M1 #44106008 </td>
-        <td> Henvendelse motatt </td>
-        <td> 30.09.2023 (avtalt) </td>
-
-
-
-    </tr>
-    <br />
-    <br />
-    <tr>
-
-        <td> 270920231956-00001 </td>
-        <td> Thomasen Skogbruk AS </td>
-        <td> Vinsj M2 #82504523 </td>
-        <td> Sjekk utført </td>
-        <td> 29.09.2023 (avtalt) </td>
-
-
-
-    </tr>
-
-    <tr>
-
-        <td> 270923456987-00001 </td>
-        <td> Viken Skogbruk AS </td>
-        <td> Vinsj M1 #82593584 </td>
-        <td> Sjekk utført </td>
-        <td> 09.10.2023 (avtalt) </td>
-
-
-
-    </tr>
-
-    <tr>
-
-        <td> 270028476308-00001 </td>
-        <td> Bob Birkelund AS </td>
-        <td> Vinsj M2 #02004523 </td>
-        <td> Sjekk utført </td>
-        <td> 19.10.2023 (avtalt) </td>
-
-
-
-    </tr>
-
-
-    @*<tbody>
-    @foreach (var person in Model.Persons)
+    <tbody>
+    @foreach (var users in Model.UserList)
     {
     <tr>
-    <td>@person.ID</td>
-    <td>@person.Name</td>
-    <td>@person.Age</td>
+    <td>@users.Id</td>
+    <td>@users.Name</td>
+    <td>@users.Email</td>
     </tr>
     }
-    </tbody> *@
+    </tbody> 
 
 </table>
+
+
 
 

@@ -1,34 +1,39 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Igland.MVC.Models.Home
+namespace Igland.MVC.Models.ServiceDocOversikt
 
 {
-    public class HomeFullViewModel
+    public class ServiceDocOversiktFullViewModel
     {
-        public HomeFullViewModel()
+        public ServiceDocOversiktFullViewModel()
         {
-            UpsertModel = new HomeViewModel();
-            UserList = new List<HomeViewModel>();
+            UpsertModel = new ServiceDocOversiktViewModel();
+            UserList = new List<ServiceDocOversiktViewModel>();
         }
-        public HomeViewModel UpsertModel { get; set; }
-        public List<HomeViewModel> UserList { get; set; }
+        public ServiceDocOversiktViewModel UpsertModel { get; set; }
+        public List<ServiceDocOversiktViewModel> UserList { get; set; }
 
 
     }
 
-    public class HomeViewModel
+    public class ServiceDocOversiktViewModel
     {
+       public int ServiceSkjemaID { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Id must be greater than 0")]
-        public int Id { get; set; }
+        public int OrdreNummer { get; set; }
 
-        [Required(ErrorMessage = "Name is required")]
-        public string Name { get; set; }
+        public int AArsmodel { get; set; }
 
-        [Required(ErrorMessage = "Email is required")]
-        [EmailAddress(ErrorMessage = "Invalid email format")]
-        public string Email { get; set; }
+        public string Garanti { get; set; }
+
+        public string Reperasjonsbeskrivelse { get; set; }
+
+        public string MedgaatteDeler { get; set; }
+
+        public string ForsendelseMaate { get; set; }
+
     }
+
 
 
 }
