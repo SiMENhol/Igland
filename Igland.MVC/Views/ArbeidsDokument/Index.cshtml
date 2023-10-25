@@ -1,46 +1,123 @@
 ﻿
-@{
-
-}
 
 <h1>Arbeidsdokument</h1>
 <br>
 
-<div class="bokser">
-    <div>
-        <h3>Ordrenummer: 11102023202657-00001</h3>
-        <h3>Kunde: Thomasen Skogbruk AS</h3>
-        <h2>Vinsj M2 #82504523</h2>
+<head>
+
+    <style>
+
+        /* begrenser størrelse på valgt bildet*/
+        #image-preview img {
+            max-width: 100%;
+            max-height: 200px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="form-container">
+        <form>
+            <div class="left-side">
+            
+                <label for="input1">Ordrenummer:</label>
+                <input type="text" id="input1" class="input-field" placeholder="">
+
+                <label for="input2">Kunde:</label>
+                <input type="text" id="input2" class="input-field" placeholder="">
+
+                <label for="input3">Vinsj:</label>
+                <input type="text" id="input3" class="input-field" placeholder="">
+
+                <label for="input4">Henvendelse motatt:</label>
+                <input type="text" id="input4" class="input-field" placeholder="">
+
+                <label for="input5">Avtalt levering:</label>
+                <input type="text" id="input5" class="input-field" placeholder="">
+
+                <label for="input6">Produkt motatt:</label>
+                <input type="text" id="input6" class="input-field" placeholder="">
+
+                <label for="input7">Sjekk utført:</label>
+                <input type="text" id="input7" class="input-field" placeholder="">
+
+                <label for="input8">Avtalt ferdigstillelse innen:</label>
+                <input type="text" id="input8" class="input-field" placeholder="">
+
+                <label for="input9">Service ferdig N/A:</label>
+                <input type="text" id="input9" class="input-field" placeholder="">
+
+                <label for="input10">Antall arbeidstimer:</label>
+                <input type="text" id="input10" class="input-field" placeholder="">
+
+                <br />
+                <br />
+
+
+                <button type="button" id="send-in">Send In</button>
+           
+            </div>
+
+            
+
+            <div class="right-side">
+            <div>
+                <label for="comment-field"> Bestilling/feilbeskrivelse fra kunde:</label>
+                <textarea class="comment-field" placeholder="maks grense 500 tegn"></textarea>
+                <div>
+                    <label for="image">sett inn bildet her:</label>
+                    <input type="file" id="image" accept="image/*">
+                    <div id="image-preview"></div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+
+
+                <label for="comment-field"> Notat fra mekaniker:</label>
+                <textarea class="comment-field" placeholder="maks grense 500 tegn"></textarea>
+
+                <label for="input11">Status:</label>
+                <input type="text" id="input11" class="input-field" placeholder="">
+
+            </div>
+            </div>
+
+        </form>
+           
     </div>
-    <br>
-    <div>
-        <p>Henvendelse motatt: 25.09.2023</p>
-        <br>
-        <p>Avtalt levering: 27.09.2023</p>
-        <p>Produkt motatt: 27.09.2023</p>
-        <br>
-        <p>Sjekk utført: 27.09.2023</p>
-        <br>
-        <p>Avtalt ferdigstillelse innen: 29.09.2023</p>
-        <p>Service ferdig: N/A</p>
-        <br>
-        <p>Antall arbeidstimer: 7,5</p>
-    </div>
-    <br>
-</div>
+
+    <script>
+        document.getElementById('image').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                const imgElement = document.createElement('img');
+                imgElement.src = reader.result;
+
+                const previewContainer = document.getElementById('image-preview');
+                previewContainer.innerHTML = '';
+                previewContainer.appendChild(imgElement);
+            }
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+
+</body>
 
 
-<div class="bokser">
-    <h3>Bestilling/feilbeskrivelse fra kunde</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam accumsan nisi in posuere mattis. Vestibulum consequat massa ut risus molestie dignissim. Pellentesque volutpat mauris nec tristique vulputate. Vivamus ornare libero lectus, vulputate dignissim velit feugiat fermentum. Praesent in felis eu nisi bibendum dapibus et sed magna. Ut porttitor iaculis leo vitae faucibus. Donec a leo vestibulum, ornare erat pharetra, ullamcorper enim. Nullam in tempor eros, a facilisis ante. Etiam sit amet sapien hendrerit, vulputate justo sit amet, venenatis turpis. Aliquam ut neque ac nibh dictum gravida.</p>
-    <div id="bilde">placeholder for bilde</div>
-</div>
 
-<div>
-    <h3>Notat fra mekaniker</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam accumsan nisi in posuere mattis. Vestibulum consequat massa ut risus molestie dignissim. Pellentesque volutpat mauris nec tristique vulputate. Vivamus ornare libero lectus, vulputate dignissim velit feugiat fermentum. Praesent in felis eu nisi bibendum dapibus et sed magna. Ut porttitor iaculis leo vitae faucibus. Donec a leo vestibulum, ornare erat pharetra, ullamcorper enim. Nullam in tempor eros, a facilisis ante. Etiam sit amet sapien hendrerit, vulputate justo sit amet, venenatis turpis. Aliquam ut neque ac nibh dictum gravida.</p>
-    <br>
-    <h3>Status: Under arbeid</h3>
-    <h4>Mekanisk</h4>
-</div>
+@*
+//  "Send In" knapp?
+        document.getElementById('send-in').addEventListener('click', function() {
+            // Validate if all necessary fields are filled out before sending
+            // If validation passes, you can proceed with sending the data
+            alert('Sending in the form data...');
+        }); 
 
+*@ 

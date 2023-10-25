@@ -1,67 +1,96 @@
 ﻿
+<h1>Ny Serviceskjema</h1>
+<br>
 
-<head>
+<body>
 
-    <style>
+    <div class="form-container">
+        <form>
+          
+                <label for="input1">Kunde:</label>
+                <input type="text" id="input1" class="input-field" placeholder="">
 
-        .overskrift, tabell {
-            text-align: center;
-        }
+                <label for="input2">Mottatt dato:</label>
+                <input type="text" id="input2" class="input-field" placeholder="">
 
-        th, tr, td {
-            border: 1px solid black;
-            padding: 5px;
-        }
+                <label for="input3">Adresse:</label>
+                <input type="text" id="input3" class="input-field" placeholder="">
 
-    </style>
+                <label for="input4">E-Mail:</label>
+                <input type="text" id="input4" class="input-field" placeholder="">
 
-</head>
+                <label for="input5">Ordrenummer:</label>
+                <input type="text" id="input5" class="input-field" placeholder="">
+
+                <label for="input6">Telefon:</label>
+                <input type="text" id="input6" class="input-field" placeholder="">
+
+                <label for="input7">Produkttype:</label>
+                <input type="text" id="input7" class="input-field" placeholder="">
+
+                <label for="input8">Årsmodell:</label>
+                <input type="text" id="input8" class="input-field" placeholder="">
+
+                <label for="input9">Service / rep:</label>
+                <input type="text" id="input9" class="input-field" placeholder="">
+
+                <label for="input10">Garanti?:</label>
+                <input type="text" id="input10" class="input-field" placeholder="">
+
+                <label for="input11">Serienummer:</label>
+                <input type="text" id="input11" class="input-field" placeholder="">
+
+                <br />
+                <br />
+
+                    <label for="comment-field"> Hva er avtalt med kunden:</label>
+                    <textarea class="comment-field" placeholder="maks grense 500 tegn"></textarea>
+                    
+                    <label for="comment-field"> Reparasjonsbeskrivelse:</label>
+                    <textarea class="comment-field" placeholder="maks grense 500 tegn"></textarea>
+
+                    <label for="comment-field"> Medgåtte deler:</label>
+                    <textarea class="comment-field" placeholder="maks grense 500 tegn"></textarea>
+
+               <br />
+               <br />
 
 
-<div class="overskrift">
+                <label for="input12">Arbeidstimer:</label>
+                <input type="text" id="input12" class="input-field" placeholder="">
 
-    <h1>Ny Service dokument </h1>
-    <br />
-    
-</div>
+                <label for="input13">ferdigstilt dato:</label>
+                <input type="text" id="input13" class="input-field" placeholder="">
 
+                <label for="input14">underskrift deler returnert:</label>
+                <input type="text" id="input14" class="input-field" placeholder="??">
 
+                <label for="input15">forsendelesmåte :</label>
+                <input type="text" id="input15" class="input-field" placeholder="">
 
-<table id="tabell" , align="center">
+                <label for="input16">sign. kunde:</label>
+                <input type="text" id="input16" class="input-field" placeholder="??">
 
-        <thead>
-            <tr>
-                <th class="header-label">Kunde</th>
-                <th class="header-label">Adresse</th>
-                <th class="header-label">E-Mail</th>
-                <th class="header-label">Telefon</th>
-                <th class="header-label">Ordrenummer</th>
-               
-           
-                
-            </tr>
-            <tr>
-                <th><input type="string"></th>
-                <th><input type="string"></th>
-                <th><input type="string"></th>
-                <th><input type="number"></th>
-                <th><input type="number"></th>
-                
-            </tr>
-        </thead>
+                <label for="input17">sign. reparatør:</label>
+                <input type="text" id="input17" class="input-field" placeholder="??">
+
+                    <button type="button" id="send-in">Send In</button>
+        </form>
+    </div>
 
 
-    @*<tbody>
-    @foreach (var person in Model.Persons)
-    {
-    <tr>
-    <td>@person.ID</td>
-    <td>@person.Name</td>
-    <td>@person.Age</td>
-    </tr>
-    }
-    </tbody> *@
+</body>
 
-</table>
+
+
+@*
+// Add event listener for the "Send In" button
+        document.getElementById('send-in').addEventListener('click', function() {
+            // Validate if all necessary fields are filled out before sending
+            // If validation passes, you can proceed with sending the data
+            alert('Sending in the form data...');
+        });
+
+*@
 
 
