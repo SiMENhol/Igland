@@ -3,60 +3,107 @@
     ViewData["Title"] = "ServiceOrdre";
 }
 
-@*
-@foreach (var jobGroup in Model.JobGroups)
-{
-        <h3>@jobGroup.Name</h3>
-        <ul>
-        @foreach (var group in jobGroup.Jobs)
-        {
-                <li>
-                @group <input type="checkbox">
-                </li>
-
-        }
-        </ul>
-}*@
-
-
-  @*  <h3>@jobGroup.Name</h3>
-    <ul>
-    @foreach (var group in jobGroup.Jobs)
-    {
-        <li>
-            @group <input type="checkbox">
-        </li>
-    
-    }
-    </ul>
-}*@
-
 <h1>Saksnummer @Model.ServiceOrderId</h1>
-@if( Model.JobGroups!= null){
-foreach(var jobGroup in Model.JobGroups)
-{
-    <h3>@jobGroup.Name</h3>
-    <ul>
-    @foreach (var group in jobGroup.Jobs)
-    {
-        <li>
-            @group <input type="checkbox">
-        </li>
-    
-    }
-    </ul>
-}
-}
 
 <form asp-action="Save" asp-controller="ServiceOrder" method="post">
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
-    <label asp-for="Mechanic"></label>
-    <input asp-for="Mechanic" type="text" /><br/>
 
+
+<label asp-for="SerialNumber" Text="Serienummer"></label>
+<input asp-for="SerialNumber" type="string name="Serienummer" />
+
+<div class="checklistenavn">
+    <h4>OK</h4>
+    <h4>Skal endres</h4>
+    <h4>Defekt</h4>
+</div>
+
+<style type="text/css">
+.checklist-grid {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.checklist-item {
+    border-bottom: 1px solid gray;
+    padding: 10px;
+      
+}
+
+.checklist-item input[type="radio"] {
+    float: right;
+    margin-right: 90px;
+}
+
+.checklistenavn {
+    float: right;
+    margin: 20px;
+        
+}
+
+.checklistenavn h4 {
+    display: inline-block;
+    padding-right: 50px;
+}
+
+.MechanicName, .Hours, .Date, .SubmitKnapp {
+    float: left;
+    margin: 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+</style>
+
+    <div class="checklist-grid">
+        @if (Model.JobGroups != null)
+        {
+            foreach (var jobGroup in Model.JobGroups)
+            {
+                <h3>@jobGroup.Name</h3>
+                <ul>
+                    @foreach (var group in jobGroup.Jobs)
+                    {
+                        <li>
+                            <div class="checklist-item">
+                                @group
+                                <input type="radio" name="@group" value="OK">
+                                <input type="radio" name="@group" value="Skal endres">
+                                <input type="radio" name="@group" value="Defekt">
+                            </div>
+                        </li>
+
+                    }
+                </ul>
+            }
+        }
+    </div>
+
+    
+    <h3>Kommentarer</h3>
+    <div class="MechanicComment">
+    <textarea asp-for="MechanicComment" class="form-control-md" style="width: 100%; height: 100px;"> </textarea>
+    </div>
+    
+    <div class="MechanicName">
+    <label asp-for="Mechanic"></label>
+    <input asp-for="Mechanic" type="text" /><br />
+    </div>
+
+    <div class="Hours">
     <label asp-for="ConsumedHours"></label>
     <input asp-for="ConsumedHours" type="number" />
     @Html.ValidationMessageFor(x=>x.ConsumedHours)<br/>
-    <input type="submit" />
+    </div>
 
+    <div class="Date">
+    <label asp-for="CreatedDate"></label>
+    <input asp-for="CreatedDate" type="DateOnly" />
+    </div>
+
+    <div class="SubmitKnapp">
+    <input type="submit" />
+    </div>
 </form>
