@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Igland.MVC.Tests
-build_property.ProjectDir = C:\Users\simen\Source\Repos\Igland\Igland.MVC.Tests\
+build_property.ProjectDir = C:\Users\simen\source\repos\Igland\Igland.MVC.Tests\
