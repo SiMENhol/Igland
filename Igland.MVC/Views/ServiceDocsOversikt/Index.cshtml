@@ -1,6 +1,9 @@
 ﻿@using Igland.MVC.Models.ServiceDocOversikt;
 
-@model HomeFullViewModel
+@model ServiceDocOversiktFullViewModel
+@{
+    ViewData["Title"] = "Service Dokumenter";
+}
 
 
 <div class="overskrift">
@@ -9,7 +12,7 @@
     <br />
     <div class="søkebar">
         <input type="text" placeholder="Søk etter navn, nummer..">
-        <button type="submit"><i class="fa fa-search"></i></button>
+        @* <button type="submit"><i class="fa fa-search"></i></button>*@
     </div>
 </div>
 
@@ -20,23 +23,32 @@
     @* <thred> spare </thred> *@
     <tr>
         <th>
+            ServiceSkjemaID
+        </th>
+
+        <th>
             OrdreNummer
         </th>
 
         <th>
-            Kunde
+            Årsmodel
         </th>
 
         <th>
-            Produkt
+            Garanti
         </th>
 
         <th>
-            Status
+            Reparasjonsbeskrivelse
         </th>
-
         <th>
-            Service Ferdig
+            MedgåtteDeler
+        </th>
+        <th>
+            DeleRetur
+        </th>
+         <th>
+            ForesendelsesMåte
         </th>
 
 
@@ -47,18 +59,22 @@
     
 
     <tbody>
-    @foreach (var users in Model.UserList)
+            @foreach (var services in Model.ServiceDocOversikt)
     {
     <tr>
-    <td>@users.Id</td>
-    <td>@users.Name</td>
-    <td>@users.Email</td>
+    <td>@services.ServiceSkjemaID</td>
+    <td>@services.OrdreNummer</td>
+    <td>@services.Aarsmodel</td>
+    <td>@services.Garanti</td>
+    <td>@services.Reparasjonsbeskrivelse</td>
+    <td>@services.MedgaatteDeler</td>
+    <td>@services.DeleRetur</td>
+    <td>@services.ForesendelsesMaate</td>
     </tr>
     }
     </tbody> 
 
 </table>
-
 
 
 

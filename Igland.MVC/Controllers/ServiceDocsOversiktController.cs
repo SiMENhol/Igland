@@ -1,11 +1,6 @@
-﻿using Igland.MVC.DataAccess;
-using Igland.MVC.Entities;
-using Igland.MVC.Models;
-using Igland.MVC.Models.ServiceDocOversikt;
+﻿using Igland.MVC.Models.ServiceDocOversikt;
 using Igland.MVC.Repositories;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 
 namespace Igland.MVC.Controllers
@@ -14,12 +9,12 @@ namespace Igland.MVC.Controllers
     public class ServiceDocsOversiktController : Controller
     {
         private readonly ILogger<ServiceDocsOversiktController> _logger;
-        private readonly IUserRepository _userRepository;
+        private readonly IServiceDocsOversikt _servicedocRepository;
 
-        public ServiceDocsOversiktController(ILogger<ServiceDocsOversiktController> logger, IUserRepository userRepository)
+        public ServiceDocsOversiktController(ILogger<ServiceDocsOversiktController> logger, IServiceDocsOversikt servicedocRepository)
         {
             _logger = logger;
-            _userRepository = userRepository;
+            _servicedocRepository = servicedocRepository;
         }
 
         [HttpGet]
@@ -28,7 +23,7 @@ namespace Igland.MVC.Controllers
             _logger.LogInformation("Index method called");
 
             var model = new ServiceDocOversiktFullViewModel();
-            model.UserList = _userRepository.GetAll().Select(x => new ServiceDocOversikt { Id = x.Id, Name = x.Name, Email = x.Email }).ToList();
+            model.ServiceDocOversikt = _servicedocRepository.GetAll().Select(x => new ServiceDocOversiktViewModel { ServiceSkjemaID = x.ServiceSkjemaID, OrdreNummer = x.OrdreNummer.GetValueOrDefault(), Aarsmodel = x.Aarsmodel, Garanti = x.Garanti, Reparasjonsbeskrivelse = x.Reparasjonsbeskrivelse, MedgaatteDeler = x.MedgaatteDeler, DeleRetur = x.DeleRetur, ForesendelsesMaate = x.ForesendelsesMaate }).ToList();
 
             return View("Index", model);
         }

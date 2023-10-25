@@ -16,6 +16,7 @@ INSERT INTO users (Id, Name, Email) VALUES ('1', 'Igland Admin', 'Igland@example
     KundeId int PRIMARY KEY,
     KundeNavn varchar(100)
 );
+INSERT INTO Kunder (KundeId, KundeNavn) VALUES ('123321', 'Kunde1');
  create table if not EXISTS Ordre
 (
     OrdreNummer int PRIMARY KEY,
@@ -27,18 +28,20 @@ INSERT INTO users (Id, Name, Email) VALUES ('1', 'Igland Admin', 'Igland@example
     FOREIGN KEY (KundeId) 
         REFERENCES Kunder (KundeId)
 ); 
+INSERT INTO Ordre (OrdreNummer, SerieNummer, VareNavn, Status, Arbdokument) VALUES ('321123', '22222', 'SerieNR1', 'Godkjent', 'Arbdokument');
  create table if not EXISTS ServiceSkjema
 (
     ServiceSkjemaID int PRIMARY KEY,
     OrdreNummer int,
     Aarsmodel int,
     Garanti varchar(255),
-    Reperasjonbeskrivelse varchar(255),
+    Reparasjonsbeskrivelse varchar(255),
     MedgaatteDeler varchar(255),
     DeleRetur varchar(255),
     ForesendelsesMaate varchar(255),
     foreign key(OrdreNummer) references Ordre(OrdreNummer)
 );
+INSERT INTO ServiceSkjema (ServiceSkjemaID, Aarsmodel, Garanti, Reparasjonsbeskrivelse, MedgaatteDeler, DeleRetur, ForesendelsesMaate) VALUES ('92321', '2010', 'Ja', 'Vinsj reparasjon', '1 del, 2 deler', 'Returdeler', 'Hentes av kunde' );
  create table if not EXISTS ArbDokument
 (
     ArbDokumentID int PRIMARY KEY,
