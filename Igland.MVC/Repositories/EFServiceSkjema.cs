@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Igland.MVC.Repositories
 {
-    public class EFServiceDocsOversikt : IServiceDocsOversikt
+    public class EFServiceSkjema : IServiceSkjema
     {
         private readonly DataContext dataContext;
 
-        public EFServiceDocsOversikt(DataContext dataContext, UserManager<IdentityUser> userManager)
+        public EFServiceSkjema(DataContext dataContext, UserManager<IdentityUser> userManager)
         {
             this.dataContext = dataContext;
         }
