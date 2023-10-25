@@ -1,8 +1,6 @@
 ﻿
 
-div {
-    display: inline-table;
-}
+
 
 .form-container {
     display: flex;
@@ -21,5 +19,3 @@ div {
 .comment-field {
     height: 150px;
 }
-
-

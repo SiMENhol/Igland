@@ -1,46 +1,20 @@
 ﻿
-@{
 
-}
 <h1>Arbeidsdokument</h1>
 <br>
 
 <head>
-    <title>ArbeidsForm</title>
+
     <style>
 
-        div {
-
-            display:inline-table    ;
-        }
-        .form-container {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .left-side, .right-side {
-            width: 45%;
-           margin-left: 20px;
-          
-        }
-
-        .input-field, .comment-field {
-            width: 100%;
-           
-        }
-
-        .comment-field {
-            height: 150px;
-        }
-
-        /* Add CSS to restrict image size */
+        /* begrenser størrelse på valgt bildet*/
         #image-preview img {
-            max-width: 100%; /* Set a maximum width to ensure it fits within the container */
-            max-height: 200px; /* Set a maximum height (optional) */
+            max-width: 100%;
+            max-height: 200px;
         }
 
-       
     </style>
+
 </head>
 <body>
 
@@ -139,7 +113,7 @@
 
 
 @*
-// Add event listener for the "Send In" button
+//  "Send In" knapp?
         document.getElementById('send-in').addEventListener('click', function() {
             // Validate if all necessary fields are filled out before sending
             // If validation passes, you can proceed with sending the data
