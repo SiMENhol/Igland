@@ -19,35 +19,35 @@
 <body>
 
     <div class="form-container">
-        <form>
+        <form asp-action="Post" asp-controller="ArbeidsDokument" method="post">
             <div class="left-side">
             
                 <label for="input1">Ordrenummer:</label>
-                <input type="text" id="input1" class="input-field" placeholder="">
+                <input required type="text" id="input1" class="input-field" placeholder="">
 
                 <label for="input2">Kunde:</label>
-                <input type="text" id="input2" class="input-field" placeholder="">
+                <input required type="text" id="input2" class="input-field" placeholder="">
 
                 <label for="input3">Vinsj:</label>
-                <input type="text" id="input3" class="input-field" placeholder="">
+                <input required type="text" id="input3" class="input-field" placeholder="">
 
                 <label for="input4">Henvendelse motatt:</label>
-                <input type="text" id="input4" class="input-field" placeholder="">
+                <input type="date" id="input4" class="input-field" placeholder="">
 
                 <label for="input5">Avtalt levering:</label>
-                <input type="text" id="input5" class="input-field" placeholder="">
+                <input type="date" id="input5" class="input-field" placeholder="">
 
                 <label for="input6">Produkt motatt:</label>
-                <input type="text" id="input6" class="input-field" placeholder="">
+                <input type="date" id="input6" class="input-field" placeholder="">
 
                 <label for="input7">Sjekk utført:</label>
-                <input type="text" id="input7" class="input-field" placeholder="">
+                <input type="date" id="input7" class="input-field" placeholder="">
 
                 <label for="input8">Avtalt ferdigstillelse innen:</label>
-                <input type="text" id="input8" class="input-field" placeholder="">
+                <input type="date" id="input8" class="input-field" placeholder="">
 
-                <label for="input9">Service ferdig N/A:</label>
-                <input type="text" id="input9" class="input-field" placeholder="">
+                <label for="input9">Service ferdig:</label>
+                <input type="date" id="input9" class="input-field" placeholder="">
 
                 <label for="input10">Antall arbeidstimer:</label>
                 <input type="text" id="input10" class="input-field" placeholder="">
@@ -56,7 +56,7 @@
                 <br />
 
 
-                <button type="button" id="send-in">Send In</button>
+                <button type="submit" id="send-in">Send In</button>
            
             </div>
 
