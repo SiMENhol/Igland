@@ -9,15 +9,15 @@
         var userWithId1 = Model.UserList.FirstOrDefault(user => user.Id == 1);
         if (userWithId1 != null)
         {
-            <div>
+            
                 <h2>Velkommen @userWithId1.Name</h2>
                 <p class="larger-text">Hva vil du gjøre idag?</p>
-            </div>
+            
         }
     }
 </ul>
 
-
+@*
 <form asp-action="Post" asp-controller="Home" method="post">
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
@@ -31,9 +31,10 @@
     <input asp-for="UpsertModel.Email" type="email" required />
     <input type="submit" />
 </form>
-<ul>
+
 
     
+<ul>
     @foreach (var users in Model.UserList)
     {
         <li>
@@ -45,3 +46,9 @@
 
     }
 </ul>
+    *@
+<h2>Vinsjtype: </h2>
+
+<div class="w3-light-grey w3-round-xlarge">
+    <div class="w3-container w3-blue w3-round-xlarge" style="width:25%">25%</div>
+</div>

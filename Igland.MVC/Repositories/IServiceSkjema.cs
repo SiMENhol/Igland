@@ -2,7 +2,7 @@
 
 namespace Igland.MVC.Repositories
 {
-    public interface IServiceDocsOversikt
+    public interface IServiceSkjema
     {
 
       //  void Upsert(UserEntity user);

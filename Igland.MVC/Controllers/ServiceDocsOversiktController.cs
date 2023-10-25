@@ -9,9 +9,9 @@ namespace Igland.MVC.Controllers
     public class ServiceDocsOversiktController : Controller
     {
         private readonly ILogger<ServiceDocsOversiktController> _logger;
-        private readonly IServiceDocsOversikt _servicedocRepository;
+        private readonly IServiceSkjema _servicedocRepository;
 
-        public ServiceDocsOversiktController(ILogger<ServiceDocsOversiktController> logger, IServiceDocsOversikt servicedocRepository)
+        public ServiceDocsOversiktController(ILogger<ServiceDocsOversiktController> logger, IServiceSkjema servicedocRepository)
         {
             _logger = logger;
             _servicedocRepository = servicedocRepository;
@@ -22,8 +22,8 @@ namespace Igland.MVC.Controllers
         {
             _logger.LogInformation("Index method called");
 
-            var model = new ServiceDocOversiktFullViewModel();
-            model.ServiceDocOversikt = _servicedocRepository.GetAll().Select(x => new ServiceDocOversiktViewModel { ServiceSkjemaID = x.ServiceSkjemaID, OrdreNummer = x.OrdreNummer.GetValueOrDefault(), Aarsmodel = x.Aarsmodel, Garanti = x.Garanti, Reparasjonsbeskrivelse = x.Reparasjonsbeskrivelse, MedgaatteDeler = x.MedgaatteDeler, DeleRetur = x.DeleRetur, ForesendelsesMaate = x.ForesendelsesMaate }).ToList();
+            var model = new ServiceSkjemaFullViewModel();
+            model.ServiceDocOversikt = _servicedocRepository.GetAll().Select(x => new ServiceSkjemaViewModel { ServiceSkjemaID = x.ServiceSkjemaID, OrdreNummer = x.OrdreNummer.GetValueOrDefault(), Aarsmodel = x.Aarsmodel, Garanti = x.Garanti, Reparasjonsbeskrivelse = x.Reparasjonsbeskrivelse, MedgaatteDeler = x.MedgaatteDeler, DeleRetur = x.DeleRetur, ForesendelsesMaate = x.ForesendelsesMaate }).ToList();
 
             return View("Index", model);
         }

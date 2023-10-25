@@ -3,20 +3,20 @@
 namespace Igland.MVC.Models.ServiceDocOversikt
 
 {
-    public class ServiceDocOversiktFullViewModel
+    public class ServiceSkjemaFullViewModel
     {
-        public ServiceDocOversiktFullViewModel()
+        public ServiceSkjemaFullViewModel()
         {
-            UpsertModel = new ServiceDocOversiktViewModel();
-            ServiceDocOversikt = new List<ServiceDocOversiktViewModel>();
+            UpsertModel = new ServiceSkjemaViewModel();
+            ServiceDocOversikt = new List<ServiceSkjemaViewModel>();
         }
-        public ServiceDocOversiktViewModel UpsertModel { get; set; }
-        public List<ServiceDocOversiktViewModel> ServiceDocOversikt { get; set; }
+        public ServiceSkjemaViewModel UpsertModel { get; set; }
+        public List<ServiceSkjemaViewModel> ServiceDocOversikt { get; set; }
 
 
     }
 
-    public class ServiceDocOversiktViewModel
+    public class ServiceSkjemaViewModel
     {
         [Required(ErrorMessage = "Kan ikke være tom.")]
         [Range(1, 100, ErrorMessage = "Verdien må være mellom 1 og 100.")]

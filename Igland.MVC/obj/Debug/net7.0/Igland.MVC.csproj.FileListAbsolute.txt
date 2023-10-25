@@ -309,3 +309,6 @@ C:\Users\forna\Source\Repos\Igland\Igland.MVC\obj\Debug\net7.0\ref\Igland.MVC.dl
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Home\Index.cshtml.rz.scp.css
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ArbeidsDokument\Index.cshtml.rz.scp.css
 C:\Users\simen\Source\Repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ServiceDocsOversikt\Index.cshtml.rz.scp.css
+C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\NyServiceDoc\Index.cshtml.rz.scp.css
+C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ArbDocsOversikt\Index.cshtml.rz.scp.css
+C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\SjekkListeOversikt\Index.cshtml.rz.scp.css
