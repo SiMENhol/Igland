@@ -16,10 +16,12 @@ namespace Igland.MVC.DataAccess
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserEntity>().ToTable("Users").HasKey(x => x.Id); ;
+            modelBuilder.Entity<UserEntity>().ToTable("Users").HasKey(x => x.Id);
+            modelBuilder.Entity<ServiceDocs>().ToTable("ServiceSkjema").HasKey(x => x.ServiceSkjemaID);
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<UserEntity> Users { get; set; }
+        public DbSet<ServiceDocs> Services { get; set; }
     }
 }

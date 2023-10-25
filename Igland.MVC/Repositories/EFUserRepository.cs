@@ -1,6 +1,5 @@
 ﻿using Igland.MVC.DataAccess;
 using Igland.MVC.Entities;
-using Igland.MVC.Repositories;
 using Microsoft.AspNetCore.Identity;
 
 namespace Igland.MVC.Repositories

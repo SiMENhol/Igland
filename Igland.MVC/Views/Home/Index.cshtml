@@ -1,4 +1,4 @@
-﻿@using Igland.MVC.Models.Home;
+﻿﻿@using Igland.MVC.Models.Home;
 
 @model HomeFullViewModel
 @{
@@ -9,11 +9,10 @@
         var userWithId1 = Model.UserList.FirstOrDefault(user => user.Id == 1);
         if (userWithId1 != null)
         {
-            <li>
+            <div>
                 <h2>Velkommen @userWithId1.Name</h2>
-                 <p class="larger-text">Hva vil du gjøre idag?</p>
-                <b>(Denne trengs kanskje ikke?) Email:</b> @userWithId1.Email
-            </li>
+                <p class="larger-text">Hva vil du gjøre idag?</p>
+            </div>
         }
     }
 </ul>
@@ -22,7 +21,7 @@
 <form asp-action="Post" asp-controller="Home" method="post">
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
-    <label asp-for="UpsertModel.Id"></label>
+   <label asp-for="UpsertModel.Id"></label>
     <input asp-for="UpsertModel.Id" type="text" /><br />
 
     <label asp-for="UpsertModel.Name"></label>
@@ -34,21 +33,15 @@
 </form>
 <ul>
 
-
-@foreach(var users in Model.UserList)
+    
+    @foreach (var users in Model.UserList)
     {
         <li>
-        @users.Id
-        @users.Name
-        @users.Email
+            @users.Id
+            @users.Name
+            @users.Email
 
-    </li>
+        </li>
 
-}
+    }
 </ul>
-
-<h2>Vinsjtype: </h2>
-
-<div class="w3-light-grey w3-round-xlarge">
-    <div class="w3-container w3-blue w3-round-xlarge" style="width:25%">25%</div>
-</div>

@@ -1,6 +1,7 @@
 ﻿using Igland.MVC.Controllers;
 using Igland.MVC.Entities;
 using Igland.MVC.Models.Home;
+using Igland.MVC.Models.ServiceDocOversikt;
 using Igland.MVC.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
