@@ -9,6 +9,7 @@ docker run --rm --env "TZ=Europe/Oslo" --name mariadb -p 3308:3306/tcp -v "%cd%\
 
 : : Wait for container to be up
 timeout /t 5
+
 : : Run sql script
 docker exec -i mariadb mysql  -uroot -p12345 < CreateDb.sql
 
