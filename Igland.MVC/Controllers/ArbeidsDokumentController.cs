@@ -2,7 +2,6 @@
 using Igland.MVC.Models.ArbeidsDokument;
 using Igland.MVC.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using static Igland.MVC.Entities.ArbeidsDokument;
 
 namespace Igland.MVC.Controllers
 {

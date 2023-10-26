@@ -1,7 +1,6 @@
 ﻿using Igland.MVC.DataAccess;
 using Igland.MVC.Entities;
 using Microsoft.AspNetCore.Identity;
-using static Igland.MVC.Entities.ArbeidsDokument;
 
 namespace Igland.MVC.Repositories
 {
@@ -14,14 +13,28 @@ namespace Igland.MVC.Repositories
             this.dataContext = dataContext;
         }
 
-        public ArbeidsDokument Get(int ArbeidsDokumentID)
+        public ArbeidsDokumentEntity Get(int ArbeidsDokumentID)
         {
-            return dataContext.arbeidsDokuments.FirstOrDefault(x => x.ArbeidsDokumentID == ArbeidsDokumentID);
+            return dataContext.ArbeidsDokuments.FirstOrDefault(x => x.ArbeidsDokumentID == ArbeidsDokumentID);
         }
 
-        public List<ArbeidsDokument> GetAll()
+        public List<ArbeidsDokumentEntity> GetAll()
         {
-            return dataContext.arbeidsDokuments.ToList();
+            return dataContext.ArbeidsDokuments.ToList();
+        }
+        
+        public void Upsert(ArbeidsDokumentEntity arbDokument)
+        {
+            var existing = Get(arbDokument.ArbeidsDokumentID);
+            if (existing != null)
+            {
+                existing.Ordrenummer = arbDokument.Ordrenummer;
+                dataContext.SaveChanges();
+                return;
+            }
+            arbDokument.ArbeidsDokumentID = 0;
+            dataContext.Add(arbDokument);
+            dataContext.SaveChanges();
         }
     }
 }

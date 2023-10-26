@@ -3,8 +3,6 @@
 namespace Igland.MVC.Entities
 
 {
-    public class ArbeidsDokument
-    {
         [Table("ArbDokument")]
         public class ArbeidsDokumentEntity
         {
@@ -24,4 +22,3 @@ namespace Igland.MVC.Entities
             public string? Status { get; set; }
         }
     }
-}
