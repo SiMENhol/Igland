@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations;
 namespace Igland.MVC.Models.ArbeidsDokument
+
 {
     public class ArbeidsDokumentFullViewModel
     {
@@ -17,7 +17,6 @@ namespace Igland.MVC.Models.ArbeidsDokument
     public class ArbeidsDokumentViewModel
     {
         public int ArbeidsDokumentID { get; set; }
-
         [Required(ErrorMessage = "Kan ikke være tom.")]
         [MinLength(8, ErrorMessage = "Nummeret må være minst 8 siffre langt.")]
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]

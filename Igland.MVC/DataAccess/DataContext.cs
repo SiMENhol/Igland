@@ -18,10 +18,12 @@ namespace Igland.MVC.DataAccess
         {
             modelBuilder.Entity<UserEntity>().ToTable("Users").HasKey(x => x.Id);
             modelBuilder.Entity<ServiceDocs>().ToTable("ServiceSkjema").HasKey(x => x.ServiceSkjemaID);
+            modelBuilder.Entity<ArbeidsDokumentEntity>().ToTable("ArbDokument").HasKey(x => x.ArbeidsDokumentID);
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<ServiceDocs> Services { get; set; }
+        public DbSet<ArbeidsDokumentEntity> ArbeidsDokuments { get; set; }
     }
 }

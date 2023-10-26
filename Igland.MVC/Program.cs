@@ -55,6 +55,7 @@ public class Program
         //builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
         builder.Services.AddScoped<IUserRepository, EFUserRepository>();
         builder.Services.AddScoped<IServiceSkjema, EFServiceSkjema>();
+        builder.Services.AddScoped<IArbeidsDokumentRepository, EFArbeidsDokument>();
         //builder.Services.AddSingleton<IUserRepository, SqlUserRepository>();
         //builder.Services.AddSingleton<IUserRepository, DapperUserRepository>();
     }
