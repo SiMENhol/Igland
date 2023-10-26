@@ -1,3 +1,24 @@
 ﻿.larger-text {
-    font-size: 24px; /* Adjust the size as needed */
+    font-size: 24px;
+    text-align: center;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.box-link {
+    color: none;
+}
+
+.box {
+    opacity: 80%;
+    background-color: royalblue;
+    color: white;
+    padding: 70px 60px;
+    border-radius: 50px;
+    text-align: center;
 }

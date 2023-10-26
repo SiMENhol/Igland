@@ -5,62 +5,62 @@
 <body>
 
     <div class="form-container">
-        <form>
+        <form asp-action="Post" asp-controller="ServiceSkjema" method="post">
           
                 <label for="input1">Kunde:</label>
-                <input type="text" id="input1" class="input-field" placeholder="">
+            <input required type="text" id="input1" class="input-field" placeholder="">
 
                 <label for="input2">Mottatt dato:</label>
-                <input type="text" id="input2" class="input-field" placeholder="">
+                <input type="date" id="input2" class="input-field" placeholder="">
 
                 <label for="input3">Adresse:</label>
-                <input type="text" id="input3" class="input-field" placeholder="">
+            <input required type="text" id="input3" class="input-field" placeholder="">
 
                 <label for="input4">E-Mail:</label>
-                <input type="text" id="input4" class="input-field" placeholder="">
+                <input type="email" id="input4" class="input-field" placeholder="">
 
                 <label for="input5">Ordrenummer:</label>
-                <input type="text" id="input5" class="input-field" placeholder="">
+                <input type="number" id="input5" class="input-field" placeholder="">
 
                 <label for="input6">Telefon:</label>
-                <input type="text" id="input6" class="input-field" placeholder="">
+                <input type="number" id="input6" class="input-field" placeholder="">
 
                 <label for="input7">Produkttype:</label>
-                <input type="text" id="input7" class="input-field" placeholder="">
+            <input required type="text" id="input7" class="input-field" placeholder="">
 
                 <label for="input8">Årsmodell:</label>
-                <input type="text" id="input8" class="input-field" placeholder="">
+                <input type="number" id="input8" class="input-field" placeholder="">
 
                 <label for="input9">Service / rep:</label>
-                <input type="text" id="input9" class="input-field" placeholder="">
+            <input required type="text" id="input9" class="input-field" placeholder="">
 
                 <label for="input10">Garanti?:</label>
-                <input type="text" id="input10" class="input-field" placeholder="">
+            <input required type="text" id="input10" class="input-field" placeholder="">
 
                 <label for="input11">Serienummer:</label>
-                <input type="text" id="input11" class="input-field" placeholder="">
+                <input type="number" id="input11" class="input-field" placeholder="">
 
                 <br />
                 <br />
 
                     <label for="comment-field"> Hva er avtalt med kunden:</label>
-                    <textarea class="comment-field" placeholder="maks grense 500 tegn"></textarea>
+            <textarea required class="comment-field" placeholder="maks grense 500 tegn"></textarea>
                     
                     <label for="comment-field"> Reparasjonsbeskrivelse:</label>
-                    <textarea class="comment-field" placeholder="maks grense 500 tegn"></textarea>
+            <textarea required class="comment-field" placeholder="maks grense 500 tegn"></textarea>
 
                     <label for="comment-field"> Medgåtte deler:</label>
-                    <textarea class="comment-field" placeholder="maks grense 500 tegn"></textarea>
+            <textarea required class="comment-field" placeholder="maks grense 500 tegn"></textarea>
 
                <br />
                <br />
 
 
                 <label for="input12">Arbeidstimer:</label>
-                <input type="text" id="input12" class="input-field" placeholder="">
+                <input type="number" id="input12" class="input-field" placeholder="">
 
                 <label for="input13">ferdigstilt dato:</label>
-                <input type="text" id="input13" class="input-field" placeholder="">
+                <input type="date" id="input13" class="input-field" placeholder="">
 
                 <label for="input14">underskrift deler returnert:</label>
                 <input type="text" id="input14" class="input-field" placeholder="??">
@@ -74,7 +74,7 @@
                 <label for="input17">sign. reparatør:</label>
                 <input type="text" id="input17" class="input-field" placeholder="??">
 
-                    <button type="button" id="send-in">Send In</button>
+                    <button type="submit" id="send-in">Send In</button>
         </form>
     </div>
 

@@ -9,15 +9,48 @@
         var userWithId1 = Model.UserList.FirstOrDefault(user => user.Id == 1);
         if (userWithId1 != null)
         {
-            
-                <h2>Velkommen @userWithId1.Name</h2>
-                <p class="larger-text">Hva vil du gjøre idag?</p>
-            
+
+            <h2>Velkommen @userWithId1.Name</h2>
+            <p class="larger-text">Hva vil du gjøre idag?</p>
+
         }
     }
 </ul>
 
-@*
+<div class="buttons">
+    <a style="text-decoration:none" asp-controller="ArbDocsOversikt" asp-action="Index" class="box-link">
+        <div class="box">Arbeidsdokumenter</div>
+    </a>
+    <a style="text-decoration:none" asp-controller="ServiceDocsOversikt" asp-action="Index" class="box-link">
+        <div class="box">Servicedokumenter</div>
+    </a>
+    <a style="text-decoration:none" asp-controller="SjekkListeOversikt" asp-action="Index">
+        <div class="box">Sjekklister</div>
+    </a>
+    <a style="text-decoration:none" asp-controller="ArbeidsDokument" asp-action="Index">
+        <div class="box">Nytt arbeidsdokument</div>
+    </a>
+    <a style="text-decoration:none" asp-controller="NyServiceDoc" asp-action="Index">
+        <div class="box">Ny servicedokument</div>
+    </a>
+    <a style="text-decoration:none" asp-controller="ServiceOrder" asp-action="Index">
+        <div class="box">Ny sjekkliste</div>
+    </a>
+</div>
+
+@{
+    if (userWithId1 != null)
+    {
+        <h2>Vinsjtype: @userWithId1.Id</h2>
+    }
+    <div class="w3-light-grey w3-round-xlarge">
+        <div class="w3-container w3-blue w3-round-xlarge" style="width:25%">25%</div>
+    </div>
+}
+
+
+
+@* Eksempel på upsert og vise innhold i en database
 <form asp-action="Post" asp-controller="Home" method="post">
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
@@ -31,9 +64,6 @@
     <input asp-for="UpsertModel.Email" type="email" required />
     <input type="submit" />
 </form>
-
-
-    
 <ul>
     @foreach (var users in Model.UserList)
     {
@@ -41,14 +71,7 @@
             @users.Id
             @users.Name
             @users.Email
-
         </li>
-
     }
 </ul>
-    *@
-<h2>Vinsjtype: </h2>
-
-<div class="w3-light-grey w3-round-xlarge">
-    <div class="w3-container w3-blue w3-round-xlarge" style="width:25%">25%</div>
-</div>
+*@
