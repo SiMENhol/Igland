@@ -22,4 +22,7 @@ div {
     height: 150px;
 }
 
-
+#image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+}

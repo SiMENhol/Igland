@@ -28,7 +28,7 @@ INSERT INTO Kunder (KundeId, KundeNavn) VALUES ('123321', 'Kunde1');
     FOREIGN KEY (KundeId) 
         REFERENCES Kunder (KundeId)
 ); 
-INSERT INTO Ordre (OrdreNummer, SerieNummer, VareNavn, Status, Arbdokument) VALUES ('321123', '22222', 'SerieNR1', 'Godkjent', 'Arbdokument');
+INSERT INTO Ordre (OrdreNummer, SerieNummer, VareNavn, Status, Arbdokument) VALUES ('32112312', '22222', 'SerieNR1', 'Godkjent', 'Arbdokument');
  create table if not EXISTS ServiceSkjema
 (
     ServiceSkjemaID int PRIMARY KEY,
@@ -44,12 +44,20 @@ INSERT INTO Ordre (OrdreNummer, SerieNummer, VareNavn, Status, Arbdokument) VALU
 INSERT INTO ServiceSkjema (ServiceSkjemaID, Aarsmodel, Garanti, Reparasjonsbeskrivelse, MedgaatteDeler, DeleRetur, ForesendelsesMaate) VALUES ('92321', '2010', 'Ja', 'Vinsj reparasjon', '1 del, 2 deler', 'Returdeler', 'Hentes av kunde' );
  create table if not EXISTS ArbDokument
 (
-    ArbDokumentID int PRIMARY KEY,
+    ArbeidsDokumentID int PRIMARY KEY auto_increment,
     OrdreNummer int,
-    DatoHenvendelse DATE,
-    AvtaltLevering DATE,
-    ProduktMotttat DATE,
-    AvtaltFerdig DATE,
+    Kunde varchar(255),
+    Vinsj varchar(255),
+    HenvendelseMotatt DATETIME,
+    AvtaltLevering DATETIME,
+    ProduktMotatt DATETIME,
+    SjekkUtfort DATETIME,
+    AvtaltFerdig DATETIME,
+    ServiceFerdig DATETIME,
+    AntallTimer int,
+    BestillingFraKunde varchar(255),
+    NotatFraMekaniker varchar(255),
+    Status varchar(255),
     foreign key(OrdreNummer)
         references Ordre(OrdreNummer)
 );
