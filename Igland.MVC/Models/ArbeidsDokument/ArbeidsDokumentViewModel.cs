@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Igland.MVC.Models.ArbeidsDokument
 
 {
@@ -16,10 +18,12 @@ namespace Igland.MVC.Models.ArbeidsDokument
     }
     public class ArbeidsDokumentViewModel
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ArbeidsDokumentID { get; set; }
-        [Required(ErrorMessage = "Kan ikke være tom.")]
-        [MinLength(8, ErrorMessage = "Nummeret må være minst 8 siffre langt.")]
+
+        //[MinLength(8, ErrorMessage = "Nummeret må være minst 8 siffre langt.")]
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
+        [ForeignKey("Ordrenummer")]
         public int Ordrenummer { get; set; }
 
         [Required(ErrorMessage = "Kan ikke være tom.")]
@@ -39,7 +43,7 @@ namespace Igland.MVC.Models.ArbeidsDokument
 
         public DateTime? ProduktMotatt { get; set; }
 
-        public DateTime? SjekkUtført { get; set; }
+        public DateTime? SjekkUtfort { get; set; }
 
         public DateTime? AvtaltFerdig { get; set; }
 
