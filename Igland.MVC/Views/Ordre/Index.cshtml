@@ -1,0 +1,87 @@
+﻿﻿@using Igland.MVC.Models.Ordre;
+
+@model OrdreFullViewModel
+<h1>Ordre</h1>
+<br>
+<body>
+
+    <form asp-action="Post" asp-controller="Ordre" method="post">
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+
+
+  @*  <label asp-for="UpsertModel.OrdreNummer"></label>
+        <input asp-for="UpsertModel.OrdreNummer" type="number"  /><br /> *@
+
+        <label asp-for="UpsertModel.KundeID"></label>
+        <input asp-for="UpsertModel.KundeID" type="number"  placeholder="100"/><br />
+
+        <label asp-for="UpsertModel.SerieNummer"></label>
+        <input asp-for="UpsertModel.SerieNummer" type="text" /><br />
+
+        <label asp-for="UpsertModel.VareNavn"></label>
+        <input asp-for="UpsertModel.VareNavn" type="text" /><br />
+
+        <label asp-for="UpsertModel.Status"></label>
+        <input asp-for="UpsertModel.Status" type="text" /><br />
+
+        <label asp-for="UpsertModel.ArbDokument"></label>
+        <input asp-for="UpsertModel.ArbDokument" type="text" /><br />
+
+        <input type="submit" />
+    </form>
+    </body>
+
+<div class="overskrift">
+
+    <h1>Ordre </h1>
+    <br />
+    <div class="søkebar">
+        <input type="text" placeholder="Søk etter navn, nummer..">
+        @* <button type="submit"><i class="fa fa-search"></i></button>*@
+    </div>
+</div>
+
+<table id="tabell" , align="center">
+
+    @* <thred> spare </thred> *@
+    <tr>
+        <th>
+            OrdreNummer
+        </th>
+
+        <th>
+            KundeID
+        </th>
+        <th>
+            SerieNummer
+        </th>
+
+        <th>
+            VareNavn
+        </th>
+        <th>
+            Status
+        </th>
+
+        <th>
+            ArbDokument
+        </th>
+
+        @* undergreier i tabellen *@
+
+    <tbody>
+            @foreach (var ordre in Model.OrdreOversikt)
+            {
+            <tr>
+                <td>@ordre.OrdreNummer</td>
+                <td>@ordre.KundeID</td>
+                <td>@ordre.SerieNummer</td>
+                <td>@ordre.VareNavn</td>
+                <td>@ordre.Status</td>
+                <td>@ordre.ArbDokument</td>
+            </tr>
+            }
+    </tbody>
+
+</table>

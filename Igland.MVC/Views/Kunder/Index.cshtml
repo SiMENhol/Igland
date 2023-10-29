@@ -1,0 +1,55 @@
+﻿﻿@using Igland.MVC.Models.Kunder;
+
+@model KunderFullViewModel
+<h1>Kunder</h1>
+<br>
+<body>
+
+    <form asp-action="Post" asp-controller="Kunder" method="post">
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+
+        <label asp-for="UpsertModel.KundeID"></label>
+        <input asp-for="UpsertModel.KundeID" type="number"  /><br />
+        <label asp-for="UpsertModel.KundeNavn"></label>
+        <input asp-for="UpsertModel.KundeNavn" type="text" /><br />
+
+        <input type="submit" />
+    </form>
+    </body>
+
+<div class="overskrift">
+
+    <h1>Kunder </h1>
+    <br />
+    <div class="søkebar">
+        <input type="text" placeholder="Søk etter navn, nummer..">
+        @* <button type="submit"><i class="fa fa-search"></i></button>*@
+    </div>
+</div>
+
+<table id="tabell" , align="center">
+
+    @* <thred> spare </thred> *@
+    <tr>
+        <th>
+            KundeID
+        </th>
+
+        <th>
+            KundeNavn
+        </th>
+
+        @* undergreier i tabellen *@
+
+    <tbody>
+            @foreach (var kunder in Model.KunderOversikt)
+            {
+            <tr>
+                <td>@kunder.KundeID</td>
+                <td>@kunder.KundeNavn</td>
+            </tr>
+            }
+    </tbody>
+
+</table>

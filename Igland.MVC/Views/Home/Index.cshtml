@@ -19,6 +19,7 @@
 </ul>
 
 <div class="buttons">
+
     <a style="text-decoration:none" asp-controller="ArbDocsOversikt" asp-action="Index" class="box-link">
         <div class="box">Arbeidsdokumenter</div>
     </a>
@@ -37,8 +38,18 @@
     <a style="text-decoration:none" asp-controller="ServiceOrder" asp-action="Index">
         <div class="box">Ny sjekkliste</div>
     </a>
+    <br />
 </div>
+<div class="buttons">
 
+    <a style="text-decoration:none" asp-controller="Ordre" asp-action="Index" class="box-link">
+        <div class="box">Legg in ordre</div>
+    </a>
+
+    <a style="text-decoration:none" asp-controller="Kunder" asp-action="Index" class="box-link">
+        <div class="box">Kunder</div>
+    </a>
+</div>
 @{
     if (userWithId1 != null)
     {
