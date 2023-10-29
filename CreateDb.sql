@@ -13,14 +13,14 @@ INSERT INTO users (Id, Name, Email) VALUES ('1', 'Igland Admin', 'Igland@example
 
  create table if not EXISTS Kunder
 (
-    KundeId int PRIMARY KEY,
+    KundeID int PRIMARY KEY auto_increment,
     KundeNavn varchar(100)
 );
-INSERT INTO Kunder (KundeId, KundeNavn) VALUES ('123321', 'Kunde1');
+INSERT INTO Kunder (KundeId, KundeNavn) VALUES ('100', 'Kunde1');
  create table if not EXISTS Ordre
 (
-    OrdreNummer int PRIMARY KEY,
-    KundeId int,
+    OrdreNummer int PRIMARY KEY auto_increment,
+    KundeID int,
     SerieNummer varchar(30),
     VareNavn varchar(30),
     Status varchar(30),
@@ -28,7 +28,7 @@ INSERT INTO Kunder (KundeId, KundeNavn) VALUES ('123321', 'Kunde1');
     FOREIGN KEY (KundeId) 
         REFERENCES Kunder (KundeId)
 ); 
-INSERT INTO Ordre (OrdreNummer, SerieNummer, VareNavn, Status, Arbdokument) VALUES ('32112312', '22222', 'SerieNR1', 'Godkjent', 'Arbdokument');
+INSERT INTO Ordre (OrdreNummer, KundeID, SerieNummer, VareNavn, Status, Arbdokument) VALUES ('10000000', '100', '22222', 'SerieNR1', 'Godkjent', 'Arbdokument');
  create table if not EXISTS ServiceSkjema
 (
     ServiceSkjemaID int PRIMARY KEY,
