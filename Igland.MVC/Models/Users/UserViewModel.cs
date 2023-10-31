@@ -1,5 +1,4 @@
 ﻿using Igland.MVC.Entities;
-using Igland.MVC.Repositories;
 
 namespace Igland.MVC.Models.Users
 {
@@ -8,6 +7,8 @@ namespace Igland.MVC.Models.Users
         public string Name { get; set; }
       
         public string Email { get; set; }
+
+        public string Password { get; set; }
 
         public List<UserEntity> Users { get; set; }
         

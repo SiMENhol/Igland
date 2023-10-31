@@ -1,8 +1,13 @@
-﻿namespace Igland.MVC.Models.LogIn
+﻿using System.Xml.Linq;
+using System.Xml;
+
+namespace Igland.MVC.Models.LogIn
 {
     public class LogInModel
     {
-        public string Username { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
 
     }

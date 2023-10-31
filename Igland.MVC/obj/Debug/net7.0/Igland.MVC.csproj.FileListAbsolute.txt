@@ -315,3 +315,4 @@ C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\S
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Kalender\Index.cshtml.rz.scp.css
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Ordre\Index.cshtml.rz.scp.css
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Kunder\Index.cshtml.rz.scp.css
+C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\LogIn\Index.cshtml.rz.scp.css

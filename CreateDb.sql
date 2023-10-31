@@ -1,15 +1,32 @@
 drop database IglandMVCdb;
 create database if not exists IglandMVCdb;
 use IglandMVCdb;
-create table if not EXISTS users
+create table if not EXISTS aspnetusers
 (
     Id int not null unique auto_increment,
+    PasswordHash varchar(255),
+     UserName varchar(255),
     Name varchar(255),
+    NormalizedUserName varchar(255),
     Email varchar(255) UNIQUE,
+    NormalizedEmail varchar(255),
+    IsAdmin BOOLEAN,
+    ConcurrencyStamp varchar(255),
+    AccessFailedCount int not null,
+    EmailConfirmed bit not null,
+    LockoutEnabled bit not null,
+    LockoutEnd TIMESTAMP,
+    PhoneNumber varchar(50),
+             PhoneNumberConfirmed bit not null,
+         TwoFactorEnabled bit not null,
+         SecurityStamp varchar(255),
    
     CONSTRAINT U_User_ID_PK PRIMARY KEY (Id)
 );
-INSERT INTO users (Id, Name, Email) VALUES ('1', 'Igland Admin', 'Igland@example.com');
+INSERT INTO aspnetusers (Id, Password, Name, Email, IsAdmin, AccessFailedCount, EmailConfirmed) VALUES ('1', 'Igland Admin', '12345', 'Igland@example.com', True, '4', True);
+INSERT INTO aspnetusers (Id, Password, Name, Email, IsAdmin, AccessFailedCount, EmailConfirmed) VALUES ('2', 'Avdeling 1', '12345','Avdeling1@Igland.com', False, '4', True);
+INSERT INTO aspnetusers (Id, Password, Name, Email, IsAdmin, AccessFailedCount, EmailConfirmed) VALUES ('3', 'Avdeling 2', '12345','Avdeling2@Igland.com', False, '4', True);
+INSERT INTO aspnetusers (Id, Password, Name, Email, IsAdmin, AccessFailedCount, EmailConfirmed) VALUES ('4', 'Avdeling 3', '12345','Avdeling3@Igland.com', False, '4', True);
 
  create table if not EXISTS Kunder
 (

@@ -1,29 +1,47 @@
-﻿@using Igland.MVC.Models.LogIn
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Identity
+@using Igland.MVC.Entities
+@using Igland.MVC.Models.Users
+@model UserViewModel
+
+@inject SignInManager<IdentityUser> SignInManager
 
 @{
+    ViewData["Title"] = "Log in";
+}
 
-    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-    {
-        //@Html.AntiForgeryToken()
-        <div>
-            <p>
-                Din brukerID
-            </p>
-            <input type="text">
-            @* @Html.LabelFor(m => m.Username) *@
-            @* @Html.TextBoxFor(m => m.Username) *@
-        </div>
-        <div>
-            <p>
-                Ditt passord
-            </p>
-            <input type="text">
-            @* @Html.LabelFor(m => m.Password)
-    @Html.PasswordFor(m => m.Password) *@
-            <br>
-            <br>
-        </div>
-        <button type="submit">Logg inn</button>
-    }
+<h1>@ViewData["Title"].</h1>
+<div class="row">
+    <div class="col-md-8">
+        <section>
+            <form asp-controller="LogIn" asp-action="Login" method="post" class="form-horizontal" role="form">
+                <h4>Use a local account to log in.</h4>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Password" class="form-control" type="password"/>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Log In" />
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
 
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
