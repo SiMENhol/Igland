@@ -1,18 +1,18 @@
-﻿using Igland.MVC.Models.ServiceDocOversikt;
-using Igland.MVC.Repositories;
+﻿using Igland.MVC.Models.ArbeidsDokument;
+using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Igland.MVC.Controllers
 {
     public class ArbDocsOversiktController : Controller
     {
-        private readonly ILogger<ServiceDocsOversiktController> _logger;
-        private readonly IServiceSkjema _servicedocRepository;
+        private readonly ILogger<ArbDocsOversiktController> _logger;
+        private readonly IArbeidsDokumentRepository _arbeidsdokumentRepository;
 
-        public ArbDocsOversiktController(ILogger<ServiceDocsOversiktController> logger, IServiceSkjema servicedocRepository)
+        public ArbDocsOversiktController(ILogger<ArbDocsOversiktController> logger, IArbeidsDokumentRepository arbeidsdokumentRepository)
         {
             _logger = logger;
-            _servicedocRepository = servicedocRepository;
+            _arbeidsdokumentRepository = arbeidsdokumentRepository;
         }
 
         [HttpGet]
@@ -20,8 +20,8 @@ namespace Igland.MVC.Controllers
         {
             _logger.LogInformation("Index method called");
 
-            var model = new ServiceSkjemaFullViewModel();
-            model.ServiceDocOversikt = _servicedocRepository.GetAll().Select(x => new ServiceSkjemaViewModel { ServiceSkjemaID = x.ServiceSkjemaID, OrdreNummer = x.OrdreNummer.GetValueOrDefault(), Aarsmodel = x.Aarsmodel, Garanti = x.Garanti, Reparasjonsbeskrivelse = x.Reparasjonsbeskrivelse, MedgaatteDeler = x.MedgaatteDeler, DeleRetur = x.DeleRetur, ForesendelsesMaate = x.ForesendelsesMaate }).ToList();
+            var model = new ArbeidsDokumentFullViewModel();
+            model.ArbeidsDokOversikt = _arbeidsdokumentRepository.GetAll().Select(x => new ArbeidsDokumentViewModel { ArbeidsDokumentID = x.ArbeidsDokumentID, Ordrenummer = x.Ordrenummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
 
             return View("Index", model);
         }

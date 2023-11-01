@@ -1,6 +1,7 @@
 ﻿using Igland.MVC.Entities;
-using Igland.MVC.Models.Home;
-using Igland.MVC.Repositories;
+using Igland.MVC.Models.Account;
+using Igland.MVC.Repositories.IRepo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -17,29 +18,14 @@ namespace Igland.MVC.Controllers
             _logger = logger;
             _userRepository = userRepository;
         }
-
         [HttpGet]
         public IActionResult Index()
         {
             _logger.LogInformation("Index method called");
 
-            var model = new HomeFullViewModel();
-            model.UserList = _userRepository.GetAll().Select(x => new HomeViewModel { Id = x.Id, Name = x.Name, Email = x.Email}).ToList();
+            var model = new LoginViewModel();
 
             return View("Index", model);
-        }
-        [HttpPost]
-        public IActionResult Post(HomeFullViewModel user)
-        {
-            var entity = new UserEntity
-            {
-                Id = user.UpsertModel.Id,
-                Name = user.UpsertModel.Name,
-                Email = user.UpsertModel.Email,
-
-            };
-            _userRepository.Upsert(entity);
-            return RedirectToAction("Index");
         }
 
         [HttpGet]

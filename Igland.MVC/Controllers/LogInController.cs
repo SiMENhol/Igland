@@ -1,5 +1,5 @@
 ﻿using Igland.MVC.Models.Users;
-using Igland.MVC.Repositories;
+using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -35,10 +35,9 @@ namespace Igland.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(UserViewModel model)
         {
-            
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Name, model.Password, isPersistent: false, lockoutOnFailure: false);
+                                                          // This doesn't count login failures towards account lockout
+                                                          // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+            var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, isPersistent: false, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");

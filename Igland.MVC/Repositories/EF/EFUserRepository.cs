@@ -1,8 +1,9 @@
 ﻿using Igland.MVC.DataAccess;
 using Igland.MVC.Entities;
+using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Identity;
 
-namespace Igland.MVC.Repositories
+namespace Igland.MVC.Repositories.EF
 {
     public class EFUserRepository : UserRepositoryBase, IUserRepository
     {
@@ -11,31 +12,8 @@ namespace Igland.MVC.Repositories
         public EFUserRepository(DataContext dataContext, UserManager<IdentityUser> userManager) : base(userManager)
         {
             this.dataContext = dataContext;
-        }
-        public UserEntity Get(int id)
-        {
-            return dataContext.Users.FirstOrDefault(x => x.Id == id);
-        }
-
-        public List<UserEntity> GetAll()
-        {
-            return dataContext.Users.ToList();
-        }
-
-        public void Upsert(UserEntity users)
-        {
-            var existing = Get(users.Id);
-            if (existing != null)
-            {
-                existing.Name = users.Name;
-                dataContext.SaveChanges();
-                return;
-            }
-            users.Id = 0;
-            dataContext.Add(users);
-            dataContext.SaveChanges();
-        }
-        public void Delete(string email)
+        }      
+       public void Delete(string email)
         {
             UserEntity? user = GetUserByEmail(email);
             if (user == null)
@@ -57,7 +35,7 @@ namespace Igland.MVC.Repositories
         public List<UserEntity> GetEspens()
         {
             return dataContext.Users
-                .Where(user => user.Name.Contains("Espen") &&
+                .Where(user => user.UserName.Contains("Espen") &&
                     user.Email.Contains("@"))
                 .ToList();
         }
@@ -81,7 +59,7 @@ namespace Igland.MVC.Repositories
             }
 
             existingUser.Email = user.Email;
-            existingUser.Name = user.Name;
+            existingUser.UserName = user.UserName;
             dataContext.SaveChanges();
             SetRoles(user.Email, roles);
         }

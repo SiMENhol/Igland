@@ -1,6 +1,6 @@
 ﻿using Igland.MVC.Entities;
-using Igland.MVC.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Igland.MVC.Repositories.IRepo;
 using Igland.MVC.Models.Ordre;
 
 namespace Igland.MVC.Controllers

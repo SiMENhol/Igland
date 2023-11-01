@@ -1,8 +1,9 @@
 ﻿using Igland.MVC.DataAccess;
 using Igland.MVC.Entities;
+using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Identity;
 
-namespace Igland.MVC.Repositories
+namespace Igland.MVC.Repositories.EF
 {
     public class EFArbeidsDokument : IArbeidsDokumentRepository
     {
@@ -22,7 +23,7 @@ namespace Igland.MVC.Repositories
         {
             return dataContext.ArbeidsDokuments.ToList();
         }
-        
+
         public void Upsert(ArbeidsDokumentEntity arbDokument)
         {
             var existing = Get(arbDokument.ArbeidsDokumentID);

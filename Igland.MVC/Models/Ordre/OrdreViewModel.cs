@@ -18,7 +18,7 @@ namespace Igland.MVC.Models.Ordre
     }
     public class OrdreViewModel
     {
-        [Range(10000000,99999999, ErrorMessage = "Nummeret må være minst 8 siffre langt.")]
+        [Range(10000000, 99999999, ErrorMessage = "Nummeret må være minst 8 siffre langt.")]
         public int OrdreNummer { get; set; }
         public int KundeID { get; set; }
         public string SerieNummer { get; set; }

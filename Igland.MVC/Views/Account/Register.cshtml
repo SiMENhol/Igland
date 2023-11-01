@@ -2,9 +2,14 @@
 @model RegisterViewModel
 @{
     ViewData["Title"] = "Register";
+    Layout = null;
+
 }
 
 <h1>@ViewData["Title"].</h1>
+<a style="text-decoration:none" asp-controller="Account" asp-action="Login" class="box-link">
+    <div class="box">Tilbake til login</div>
+</a>
 
 <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
     <h4>Create a new account.</h4>

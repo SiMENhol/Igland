@@ -1,6 +1,6 @@
 ﻿using Igland.MVC.Entities;
 using Igland.MVC.Models.ArbeidsDokument;
-using Igland.MVC.Repositories;
+using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Igland.MVC.Controllers

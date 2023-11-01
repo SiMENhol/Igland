@@ -2,7 +2,7 @@
 using Igland.MVC.Entities;
 using Igland.MVC.Models.Home;
 using Igland.MVC.Models.ServiceDocOversikt;
-using Igland.MVC.Repositories;
+using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.ComponentModel.DataAnnotations;
@@ -20,7 +20,7 @@ namespace Igland.MVC.Tests.Controllers
             var userRepository = Substitute.For<IUserRepository>();
             var logger = Substitute.For<ILogger<HomeController>>(); // Mock the logger
 
-            userRepository.GetAll().Returns(new List<UserEntity> { new UserEntity { Id = 1, Name = "Igland Admin", Email = "Igland@example.com" } });
+            userRepository.GetAll().Returns(new List<UserEntity> { new UserEntity { Id = 1, UserName = "Igland Admin", Email = "Igland@example.com" } });
 
             var unitUnderTest = new HomeController(logger, userRepository);
 
@@ -58,7 +58,7 @@ namespace Igland.MVC.Tests.Controllers
         {
             var logger = Substitute.For<ILogger<HomeController>>();
             var userRepository = Substitute.For<IUserRepository>();
-            userRepository.GetAll().Returns(new List<UserEntity> { new UserEntity { Id = 1, Name = "Igland Admin", Email = "Igland@example.com" } });
+            userRepository.GetAll().Returns(new List<UserEntity> { new UserEntity { Id = 1, UserName = "Igland Admin", Email = "Igland@example.com" } });
 
             return new HomeController(logger, userRepository);
         }

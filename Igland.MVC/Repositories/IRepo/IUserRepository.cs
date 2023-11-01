@@ -1,13 +1,10 @@
 ﻿using Igland.MVC.Entities;
 
-namespace Igland.MVC.Repositories
+namespace Igland.MVC.Repositories.IRepo
 {
     public interface IUserRepository
     {
 
-        void Upsert(UserEntity user);
-        UserEntity Get(int id);
-        List<UserEntity> GetAll();
         void Update(UserEntity user, List<string> roles);
         void Add(UserEntity user);
         List<UserEntity> GetUsers();

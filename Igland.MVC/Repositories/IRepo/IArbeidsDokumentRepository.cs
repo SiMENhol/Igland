@@ -1,6 +1,6 @@
 ﻿using Igland.MVC.Entities;
 
-namespace Igland.MVC.Repositories
+namespace Igland.MVC.Repositories.IRepo
 {
     public interface IArbeidsDokumentRepository
     {
