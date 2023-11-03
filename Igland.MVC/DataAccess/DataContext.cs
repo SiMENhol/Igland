@@ -16,7 +16,7 @@ namespace Igland.MVC.DataAccess
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserEntity>().ToTable("Users").HasKey(x => x.Id);
+            modelBuilder.Entity<UserEntity>().ToTable("aspnetusers").HasKey(x => x.Id);
             modelBuilder.Entity<ServiceDocs>().ToTable("ServiceSkjema").HasKey(x => x.ServiceSkjemaID);
             modelBuilder.Entity<ArbeidsDokumentEntity>().ToTable("ArbDokument").HasKey(x => x.ArbeidsDokumentID);
             modelBuilder.Entity<OrdreEntity>().ToTable("Ordre").HasKey(x => x.OrdreNummer);

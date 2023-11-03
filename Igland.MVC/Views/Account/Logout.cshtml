@@ -1,0 +1,19 @@
+﻿@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Identity
+@using Igland.MVC.Entities
+@using Igland.MVC.Models.Account
+@model LoginViewModel
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    Layout = null; // Set the layout to null
+    ViewData["Title"] = "Your Page Title";
+}
+
+<a asp-controller="Account" asp-action="Logout">Logout</a>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

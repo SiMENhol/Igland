@@ -1,5 +1,5 @@
-﻿using Igland.MVC.Models.ServiceDocOversikt;
-using Igland.MVC.Repositories;
+﻿using Igland.MVC.Models.ServiceSkjema;
+using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Igland.MVC.Controllers

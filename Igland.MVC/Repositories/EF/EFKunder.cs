@@ -1,8 +1,9 @@
 ﻿using Igland.MVC.DataAccess;
 using Igland.MVC.Entities;
+using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Identity;
 
-namespace Igland.MVC.Repositories
+namespace Igland.MVC.Repositories.EF
 {
     public class EFKunder : IKunderRepository
     {
@@ -22,13 +23,13 @@ namespace Igland.MVC.Repositories
         {
             return dataContext.Kunder.ToList();
         }
-        
+
         public void Upsert(KunderEntity Kunder)
         {
             var existing = Get(Kunder.KundeID);
             if (existing != null)
             {
-                existing.KundeNavn= Kunder.KundeNavn;
+                existing.KundeNavn = Kunder.KundeNavn;
                 dataContext.SaveChanges();
                 return;
             }

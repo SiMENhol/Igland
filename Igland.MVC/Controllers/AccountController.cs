@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
 using Igland.MVC.Models.Account;
 using Igland.MVC.Entities;
-using Igland.MVC.Repositories;
+using Igland.MVC.Repositories.IRepo;
 
 namespace Igland.MVC.Controllers
 {
@@ -129,7 +129,7 @@ namespace Igland.MVC.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation(4, "User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(AccountController.Login));
         }
 
         //

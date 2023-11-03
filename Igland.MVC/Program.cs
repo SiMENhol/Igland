@@ -1,8 +1,10 @@
 using Igland.MVC.DataAccess;
-using Igland.MVC.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Igland.MVC.Repositories.EF;
+using Igland.MVC.Repositories.IRepo;
+using Microsoft.AspNetCore.Authorization;
 
 public class Program
 {
@@ -17,6 +19,14 @@ public class Program
         SetupDataConnections(builder);
 
         SetupAuthentication(builder);
+
+        // Define a global authorization policy that requires authentication
+        builder.Services.AddAuthorization(options =>
+        {
+            options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+        });
 
         var app = builder.Build();
 
@@ -52,14 +62,11 @@ public class Program
         {
             options.UseMySql(builder.Configuration.GetConnectionString("MariaDb"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MariaDb")));
         });
-        //builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
         builder.Services.AddScoped<IUserRepository, EFUserRepository>();
         builder.Services.AddScoped<IServiceSkjema, EFServiceSkjema>();
         builder.Services.AddScoped<IArbeidsDokumentRepository, EFArbeidsDokument>();
         builder.Services.AddScoped<IOrdreRepository, EFOrdre>();
         builder.Services.AddScoped<IKunderRepository, EFKunder>();
-        //builder.Services.AddSingleton<IUserRepository, SqlUserRepository>();
-        //builder.Services.AddSingleton<IUserRepository, DapperUserRepository>();
     }
 
     private static void UseAuthentication(WebApplication app)
@@ -95,7 +102,12 @@ public class Program
             o.DefaultScheme = IdentityConstants.ApplicationScheme;
             o.DefaultSignInScheme = IdentityConstants.ExternalScheme;
 
-        }).AddIdentityCookies(o => { });
+        }).AddIdentityCookies(o => {
+            if (o.ApplicationCookie != null)
+            {
+                o.ApplicationCookie.Configure(o => o.LoginPath = "/Account/Login");
+            }
+        });
 
         builder.Services.AddTransient<IEmailSender, AuthMessageSender>();
     }

@@ -1,6 +1,6 @@
 ﻿using Igland.MVC.Entities;
 using Igland.MVC.Models.Users;
-using Igland.MVC.Repositories;
+using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,7 +27,7 @@ namespace Igland.MVC.Controllers
                 {
 
                     model.Email = currentUser.Email;
-                    model.Name = currentUser.Name;
+                    model.UserName = currentUser.UserName;
                     model.IsAdmin = userRepository.IsAdmin(currentUser.Email);
                 }
             }
@@ -40,7 +40,7 @@ namespace Igland.MVC.Controllers
 
             UserEntity newUser = new UserEntity
             {
-                Name = model.Name,
+                UserName = model.UserName,
                 Email = model.Email,
             };
             var roles = new List<string>();

@@ -1,6 +1,7 @@
-﻿@using Igland.MVC.Models.ServiceDocOversikt;
+﻿@using Igland.MVC.Models.ArbeidsDokument;
 
-@model ServiceSkjemaFullViewModel
+
+@model ArbeidsDokumentFullViewModel
 @{
     ViewData["Title"] = "Arbeidsdokumenter";
 }
@@ -8,7 +9,7 @@
 
 <div class="overskrift">
 
-    <h1>Serviceskjema </h1>
+    <h1>Arbeidsdokument </h1>
     <br />
     <div class="søkebar">
         <input type="text" placeholder="Søk etter navn, nummer..">
@@ -23,32 +24,49 @@
     @* <thred> spare </thred> *@
     <tr>
         <th>
-            ServiceSkjemaID
+            ArbeidsDokumentID
         </th>
 
         <th>
-            OrdreNummer
+            Ordrenummer
         </th>
 
         <th>
-            Årsmodel
+            Kunde
         </th>
 
         <th>
-            Garanti
-        </th>
-
-        <th>
-            Reparasjonsbeskrivelse
+            Vinsj
         </th>
         <th>
-            MedgåtteDeler
+            HenvendelseMotatt
         </th>
         <th>
-            DeleRetur
+            AvtaltLevering
         </th>
         <th>
-            ForesendelsesMåte
+            ProduktMotatt
+        </th>
+        <th>
+            SjekkUtfort
+        </th>
+        <th>
+            AvtaltFerdig
+        </th>
+        <th>
+            ServiceFerdig
+        </th>
+        <th>
+            AntallTimer
+        </th>
+        <th>
+            BestillingFraKunde
+        </th>
+        <th>
+            NotatFraMekaniker
+        </th>
+        <th>
+            Status
         </th>
 
 
@@ -59,17 +77,23 @@
 
 
     <tbody>
-            @foreach (var services in Model.ServiceDocOversikt)
+            @foreach (var ArbeidsDokuments in Model.ArbeidsDokOversikt)
             {
             <tr>
-                <td>@services.ServiceSkjemaID</td>
-                <td>@services.OrdreNummer</td>
-                <td>@services.Aarsmodel</td>
-                <td>@services.Garanti</td>
-                <td>@services.Reparasjonsbeskrivelse</td>
-                <td>@services.MedgaatteDeler</td>
-                <td>@services.DeleRetur</td>
-                <td>@services.ForesendelsesMaate</td>
+                <td>@ArbeidsDokuments.ArbeidsDokumentID</td>
+                <td>@ArbeidsDokuments.Ordrenummer</td>
+                <td>@ArbeidsDokuments.Kunde</td>
+                <td>@ArbeidsDokuments.Vinsj</td>
+                <td>@ArbeidsDokuments.HenvendelseMotatt</td>
+                <td>@ArbeidsDokuments.AvtaltLevering</td>
+                <td>@ArbeidsDokuments.ProduktMotatt</td>
+                <td>@ArbeidsDokuments.SjekkUtfort</td>
+                <td>@ArbeidsDokuments.AvtaltFerdig</td>
+                <td>@ArbeidsDokuments.ServiceFerdig</td>
+                <td>@ArbeidsDokuments.AntallTimer</td>
+                <td>@ArbeidsDokuments.BestillingFraKunde</td>
+                <td>@ArbeidsDokuments.NotatFraMekaniker</td>
+                <td>@ArbeidsDokuments.Status</td>
             </tr>
             }
     </tbody>

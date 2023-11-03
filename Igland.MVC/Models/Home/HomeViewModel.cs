@@ -20,12 +20,12 @@ namespace Igland.MVC.Models.Home
 
         [Range(1, 100, ErrorMessage = "Verdien må være mellom 1 og 100.")]
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [Required(ErrorMessage = "Du må fylle inn navn.")]
         [StringLength(50, ErrorMessage = "Navn kan ikke være lengre enn 50 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
-        public string Name { get; set; }
+        public string UserName { get; set; }
 
         [Required(ErrorMessage = "Du må fylle inn email.")]
         [StringLength(50, ErrorMessage = "Email kan ikke være lengre enn 50 tegn.")]

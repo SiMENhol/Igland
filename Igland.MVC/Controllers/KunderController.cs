@@ -1,7 +1,7 @@
 ﻿using Igland.MVC.Entities;
-using Igland.MVC.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Igland.MVC.Models.Kunder;
+using Igland.MVC.Repositories.IRepo;
 
 namespace Igland.MVC.Controllers
 {

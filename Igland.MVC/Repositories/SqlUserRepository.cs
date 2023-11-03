@@ -1,5 +1,6 @@
 ﻿using Igland.MVC.DataAccess;
 using Igland.MVC.Entities;
+using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Identity;
 using MySql.Data.MySqlClient;
 using System.Data;
@@ -19,38 +20,8 @@ namespace Igland.MVC.Repositories
             var sql = $"delete from users where email = '{email}'";
             RunCommand(sql);
         }
-        public void Upsert(UserEntity entity)
-        {
-            UserEntity existingUser = GetUser(entity.Email);
 
-            if (existingUser == null)
-            {
-                // User does not exist, so insert the new user
-                Add(entity);
-            }
-            else
-            {
-                // User exists, so update the existing user
-                Update(entity, roles: null); // You can pass null for roles if roles don't need to be updated
-            }
-        }
-        public UserEntity Get(int id)
-        {
-            using (var connection = sqlConnector.GetDbConnection())
-            {
-                var reader = ReadData($"SELECT Id, Name, Email FROM users WHERE Id = {id};", connection);
-                while (reader.Read())
-                {
-                    return MapUserFromReader(reader);
-                }
-            }
-            return null; // User not found
-        }
 
-        public List<UserEntity> GetAll()
-        {
-            return GetUsers();
-        }
         public List<UserEntity> GetUsers()
         {
             using (var connection = sqlConnector.GetDbConnection())
@@ -71,8 +42,8 @@ namespace Igland.MVC.Repositories
         private static UserEntity MapUserFromReader(IDataReader reader)
         {
             var user = new UserEntity();
-            user.Id = reader.GetInt32(0);
-            user.Name = reader.GetString(1);
+            user.Id = reader.GetString(0);
+            user.UserName = reader.GetString(1);
             user.Email = reader.GetString(2);
             return user;
         }
@@ -90,7 +61,7 @@ namespace Igland.MVC.Repositories
 
             var sql = $@"update users 
                                 set 
-                                   Name = '{user.Name}', 
+                                   Name = '{user.UserName}', 
                                 where email = '{user.Email}';";
             RunCommand(sql);
             SetRoles(user.Email, roles);
@@ -104,7 +75,7 @@ namespace Igland.MVC.Repositories
                 throw new Exception("User already exists");
             }
 
-            var sql = $"insert into users(Name, Email) values('{user.Name}', '{user.Email}');";
+            var sql = $"insert into users(Name, Email) values('{user.UserName}', '{user.Email}');";
             RunCommand(sql);
         }
 

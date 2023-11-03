@@ -1,21 +1,13 @@
-﻿﻿@using Igland.MVC.Models.Home;
+﻿@using Igland.MVC.Models.Account;
 
-@model HomeFullViewModel
+@model LoginViewModel
 
 @{
     ViewData["Title"] = "Hjem";
 }
 <ul>
-    @{
-        var userWithId1 = Model.UserList.FirstOrDefault(user => user.Id == 1);
-        if (userWithId1 != null)
-        {
-
-            <h2>Velkommen @userWithId1.Name</h2>
-            <p class="larger-text">Hva vil du gjøre idag?</p>
-
-        }
-    }
+    <h2>Velkommen @Model.Email</h2>
+    <p class="larger-text">Hva vil du gjøre idag?</p>
 </ul>
 
 <div class="buttons">
@@ -50,7 +42,7 @@
         <div class="box">Kunder</div>
     </a>
 </div>
-@{
+@*{
     if (userWithId1 != null)
     {
         <h2>Vinsjtype: @userWithId1.Id</h2>
@@ -60,7 +52,7 @@
     </div>
 }
 
-
+*@
 
 @* Eksempel på upsert og vise innhold i en database
 <form asp-action="Post" asp-controller="Home" method="post">

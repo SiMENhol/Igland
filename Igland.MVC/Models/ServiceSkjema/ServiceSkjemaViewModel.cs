@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Igland.MVC.Models.ServiceDocOversikt
+namespace Igland.MVC.Models.ServiceSkjema
 
 {
     public class ServiceSkjemaFullViewModel
@@ -51,7 +51,7 @@ namespace Igland.MVC.Models.ServiceDocOversikt
         [Required(ErrorMessage = "Kan ikke være tom.")]
         [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
-        public string DeleRetur {  get; set; }
+        public string DeleRetur { get; set; }
 
         [Required(ErrorMessage = "Kan ikke være tom.")]
         [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]

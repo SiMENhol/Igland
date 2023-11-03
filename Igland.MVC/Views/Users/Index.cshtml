@@ -33,7 +33,7 @@
         <ul>
             <li>
                 <label for="Name">Navn</label>
-                <input type="text" name="Name" value="@Model.Name" />
+                <input type="text" name="Name" value="@Model.UserName" />
             </li>
          
             <li>
@@ -58,7 +58,7 @@
     @foreach (var user in Model.Users)
     {
         <tr>
-            <td>@user.Name</td>
+                <td>@user.UserName</td>
             <td>@user.Email</td>
             <td>
                 <form asp-action="delete" asp-controller="users" method="post">
