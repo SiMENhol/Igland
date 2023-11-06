@@ -5,14 +5,13 @@
 <h1>Arbeidsdokument</h1>
 <br>
 <body>
-
     <form asp-action="Post" asp-controller="ArbeidsDokument" method="post">
         @Html.ValidationSummary()
         @Html.AntiForgeryToken()
 
 
-   <label asp-for="UpsertModel.Ordrenummer"></label>
-        <input asp-for="UpsertModel.Ordrenummer" type="number" required placeholder="10000000" /><br />
+        <label asp-for="UpsertModel.OrdreNummer"></label>
+        <input asp-for="UpsertModel.OrdreNummer" type="number" required placeholder="10000000" /><br />
 
         <label asp-for="UpsertModel.Kunde"></label>
         <input asp-for="UpsertModel.Kunde" type="text" required placeholder="Kanskje få denne auto" /><br />

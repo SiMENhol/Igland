@@ -40,16 +40,6 @@ namespace Igland.MVC.Repositories.EF
                 .ToList();
         }
 
-        public void Add(UserEntity user)
-        {
-            var existingUser = GetUserByEmail(user.Email);
-            if (existingUser != null)
-            {
-                throw new Exception("User already exists found");
-            }
-            dataContext.Users.Add(user);
-            dataContext.SaveChanges();
-        }
         public void Update(UserEntity user, List<string> roles)
         {
             var existingUser = GetUserByEmail(user.Email);

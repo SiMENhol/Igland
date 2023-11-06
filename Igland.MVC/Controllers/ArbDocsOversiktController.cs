@@ -21,7 +21,7 @@ namespace Igland.MVC.Controllers
             _logger.LogInformation("Index method called");
 
             var model = new ArbeidsDokumentFullViewModel();
-            model.ArbeidsDokOversikt = _arbeidsdokumentRepository.GetAll().Select(x => new ArbeidsDokumentViewModel { ArbeidsDokumentID = x.ArbeidsDokumentID, Ordrenummer = x.Ordrenummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
+            model.ArbeidsDokOversikt = _arbeidsdokumentRepository.GetAll().Select(x => new ArbeidsDokumentViewModel { ArbeidsDokumentID = x.ArbeidsDokumentID, OrdreNummer = x.OrdreNummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
 
             return View("Index", model);
         }

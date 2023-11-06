@@ -7,7 +7,7 @@ namespace Igland.MVC.Entities
         public class ArbeidsDokumentEntity
         {
             public int ArbeidsDokumentID { get; set; }
-            public int Ordrenummer { get; set; }
+            public int OrdreNummer { get; set; }
             public string Kunde { get; set; }
             public string Vinsj { get; set; }
             public DateOnly HenvendelseMotatt { get; set; }

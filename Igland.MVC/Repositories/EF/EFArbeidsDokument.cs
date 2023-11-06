@@ -29,7 +29,7 @@ namespace Igland.MVC.Repositories.EF
             var existing = Get(arbDokument.ArbeidsDokumentID);
             if (existing != null)
             {
-                existing.Ordrenummer = arbDokument.Ordrenummer; //Skal det ikke være ArbeidsDokumentID?
+                existing.OrdreNummer = arbDokument.OrdreNummer; //Skal det ikke være ArbeidsDokumentID?
                 dataContext.SaveChanges();
                 return;
             }

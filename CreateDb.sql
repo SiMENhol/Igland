@@ -20,6 +20,7 @@ create table if not EXISTS AspNetUsers
          AccessFailedCount int not null,
           CONSTRAINT PK_AspNetUsers PRIMARY KEY (Id)
 );
+insert into AspNetUsers(Id,UserName, NormalizedUserName, Email, NormalizedEmail, EmailConfirmed, PasswordHash, SecurityStamp, ConcurrencyStamp, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEnd, LockoutEnabled, AccessFailedCount) values('9670b732-ccb2-4e90-87f5-8b31ce8655fb', 'Igland@mail.com', 'IGLAND@MAIL.COM', 'Igland@mail.com', 'IGLAND@MAIL.COM', True, 'AQAAAAIAAYagAAAAEJ4HQojIkMee85/uU6/LD85or3Sjq4EY/i8WTx1XuKKh9Ar6Ylb3EChdkFArT0A7lQ==', 'PNR4WUNX2ZG3EYFMP4GYZAACIJZ4KDEW', 'a2849db4-acc1-4c85-8333-8b098eec9e02', True, False, '2023-11-06 19:55:08',False, '0');
 create table if not EXISTS AspNetRoles
 (
     Id varchar(255) not null,

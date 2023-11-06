@@ -49,9 +49,6 @@ namespace Igland.MVC.Controllers
 
             if (userRepository.GetUsers().FirstOrDefault(x => x.Email.Equals(newUser.Email, StringComparison.InvariantCultureIgnoreCase)) != null)
                 userRepository.Update(newUser, roles);
-            else
-                userRepository.Add(newUser);
-
             return RedirectToAction("Index");
         }
 

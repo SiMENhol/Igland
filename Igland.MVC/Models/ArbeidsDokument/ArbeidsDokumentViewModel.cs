@@ -24,7 +24,7 @@ namespace Igland.MVC.Models.ArbeidsDokument
         //[MinLength(8, ErrorMessage = "Nummeret må være minst 8 siffre langt.")]
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
         [ForeignKey("Ordrenummer")]
-        public int Ordrenummer { get; set; }
+        public int OrdreNummer { get; set; }
 
         [Required(ErrorMessage = "Kan ikke være tom.")]
         [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]

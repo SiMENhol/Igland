@@ -1,5 +1,6 @@
 ﻿using Igland.MVC.Entities;
 using Igland.MVC.Models.ArbeidsDokument;
+using Igland.MVC.Models.Kunder;
 using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,7 +24,7 @@ namespace Igland.MVC.Controllers
         public IActionResult Test()
         {
             var model = new ArbeidsDokumentFullViewModel();
-            model.ArbeidsDokOversikt = _arbeidsdokumentRepository.GetAll().Select(x => new ArbeidsDokumentViewModel { ArbeidsDokumentID = x.ArbeidsDokumentID, Ordrenummer = x.Ordrenummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
+            model.ArbeidsDokOversikt = _arbeidsdokumentRepository.GetAll().Select(x => new ArbeidsDokumentViewModel { ArbeidsDokumentID = x.ArbeidsDokumentID, OrdreNummer = x.OrdreNummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
             //model.UpsertModel = _arbeidsdokumentRepository.Get(1)
             return View("Test", model);
         }
@@ -31,10 +32,11 @@ namespace Igland.MVC.Controllers
         [HttpPost]
         public IActionResult Post(ArbeidsDokumentFullViewModel arbeidsdokument)
         {
+            _logger.LogInformation("Post method called with data: {@arbeidsdokument}", arbeidsdokument);
             var entity = new ArbeidsDokumentEntity
             {
                 ArbeidsDokumentID = arbeidsdokument.UpsertModel.ArbeidsDokumentID,
-                Ordrenummer = arbeidsdokument.UpsertModel.Ordrenummer,
+                OrdreNummer = arbeidsdokument.UpsertModel.OrdreNummer,
                 Kunde = arbeidsdokument.UpsertModel.Kunde,
                 Vinsj = arbeidsdokument.UpsertModel.Vinsj,
                 HenvendelseMotatt = arbeidsdokument.UpsertModel.HenvendelseMotatt,
@@ -49,7 +51,7 @@ namespace Igland.MVC.Controllers
                 Status = arbeidsdokument.UpsertModel.Status,
             };
             _arbeidsdokumentRepository.Upsert(entity);
-            return Redirect("/ArbDocsOversikt");
+           return Redirect("/ArbDocsOversikt");
         }
     }
 }

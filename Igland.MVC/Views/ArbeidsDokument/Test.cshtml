@@ -45,9 +45,9 @@
         <!-- Ingenting skjer om du bruker samme ID, men skal i utgangspunktet oppdatere samme instans i databasen -->
         <!-- <label asp-for="UpsertModel.ArbeidsDokumentID"></label>
         <input asp-for="UpsertModel.ArbeidsDokumentID" type="number" value="@Model.ArbeidsDokOversikt[id].ArbeidsDokumentID" /><br /> -->
-
-        <label asp-for="UpsertModel.Ordrenummer"></label>
-        <input asp-for="UpsertModel.Ordrenummer" type="number" required placeholder="10000000" value="@Model.ArbeidsDokOversikt[id].Ordrenummer" /><br />
+        <input asp-for="UpsertModel.ArbeidsDokumentID" type="number" value="@Model.ArbeidsDokOversikt[id].ArbeidsDokumentID" />
+        <label asp-for="UpsertModel.OrdreNummer"></label>
+        <input asp-for="UpsertModel.OrdreNummer" type="number" required placeholder="10000000" value="@Model.ArbeidsDokOversikt[id].OrdreNummer" /><br />
 
         <label asp-for="UpsertModel.Kunde"></label>
         <input asp-for="UpsertModel.Kunde" type="text" required placeholder="Kanskje få denne auto" value="@Model.ArbeidsDokOversikt[id].Kunde" /><br />
