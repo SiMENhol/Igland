@@ -37,17 +37,17 @@ namespace Igland.MVC.Models.ArbeidsDokument
         public string Vinsj { get; set; }
 
         [Required(ErrorMessage = "Kan ikke være tom.")]
-        public DateTime HenvendelseMotatt { get; set; }
+        public DateOnly HenvendelseMotatt { get; set; }
 
-        public DateTime? AvtaltLevering { get; set; }
+        public DateOnly? AvtaltLevering { get; set; }
 
-        public DateTime? ProduktMotatt { get; set; }
+        public DateOnly? ProduktMotatt { get; set; }
 
-        public DateTime? SjekkUtfort { get; set; }
+        public DateOnly? SjekkUtfort { get; set; }
 
-        public DateTime? AvtaltFerdig { get; set; }
+        public DateOnly? AvtaltFerdig { get; set; }
 
-        public DateTime? ServiceFerdig { get; set; }
+        public DateOnly? ServiceFerdig { get; set; }
 
         [Range(1, 100, ErrorMessage = "Verdien må være mellom 0 og 100.")]
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]

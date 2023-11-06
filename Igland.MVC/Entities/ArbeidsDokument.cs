@@ -10,12 +10,12 @@ namespace Igland.MVC.Entities
             public int Ordrenummer { get; set; }
             public string Kunde { get; set; }
             public string Vinsj { get; set; }
-            public DateTime HenvendelseMotatt { get; set; }
-            public DateTime? AvtaltLevering { get; set; }
-            public DateTime? ProduktMotatt { get; set; }
-            public DateTime? SjekkUtfort { get; set; }
-            public DateTime? AvtaltFerdig { get; set; }
-            public DateTime? ServiceFerdig { get; set; }
+            public DateOnly HenvendelseMotatt { get; set; }
+            public DateOnly? AvtaltLevering { get; set; }
+            public DateOnly? ProduktMotatt { get; set; }
+            public DateOnly? SjekkUtfort { get; set; }
+            public DateOnly? AvtaltFerdig { get; set; }
+            public DateOnly? ServiceFerdig { get; set; }
             public int? AntallTimer { get; set; }
             public string? BestillingFraKunde { get; set; }
             public string? NotatFraMekaniker { get; set; }

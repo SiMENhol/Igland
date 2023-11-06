@@ -80,7 +80,7 @@
             @foreach (var ArbeidsDokuments in Model.ArbeidsDokOversikt)
             {
             <tr>
-                <td>@ArbeidsDokuments.ArbeidsDokumentID</td>
+                <td><a asp-controller="ArbeidsDokument" asp-action="Test" asp-route-id="@ArbeidsDokuments.ArbeidsDokumentID">@ArbeidsDokuments.ArbeidsDokumentID</a></td>
                 <td>@ArbeidsDokuments.Ordrenummer</td>
                 <td>@ArbeidsDokuments.Kunde</td>
                 <td>@ArbeidsDokuments.Vinsj</td>

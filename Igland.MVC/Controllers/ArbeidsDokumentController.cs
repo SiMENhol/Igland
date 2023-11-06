@@ -20,6 +20,14 @@ namespace Igland.MVC.Controllers
             return View();
         }
 
+        public IActionResult Test()
+        {
+            var model = new ArbeidsDokumentFullViewModel();
+            model.ArbeidsDokOversikt = _arbeidsdokumentRepository.GetAll().Select(x => new ArbeidsDokumentViewModel { ArbeidsDokumentID = x.ArbeidsDokumentID, Ordrenummer = x.Ordrenummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
+            //model.UpsertModel = _arbeidsdokumentRepository.Get(1)
+            return View("Test", model);
+        }
+
         [HttpPost]
         public IActionResult Post(ArbeidsDokumentFullViewModel arbeidsdokument)
         {
@@ -41,7 +49,7 @@ namespace Igland.MVC.Controllers
                 Status = arbeidsdokument.UpsertModel.Status,
             };
             _arbeidsdokumentRepository.Upsert(entity);
-            return RedirectToAction("Index");
+            return Redirect("/ArbDocsOversikt");
         }
     }
 }

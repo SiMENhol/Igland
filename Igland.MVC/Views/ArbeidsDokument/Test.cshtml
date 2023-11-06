@@ -1,0 +1,92 @@
+﻿﻿@using Igland.MVC.Models.ArbeidsDokument;
+
+
+@model ArbeidsDokumentFullViewModel
+<h1>Arbeidsdokument</h1>
+<br>
+<body>
+
+    @{
+        int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]) - 1;
+
+        // Funksjon som bytter ut punktum i Strings med bindestrek
+        // og deretter stokker om på rekkefølgen av år, måned, og dato, for å kunne plassere en value i input type="date"
+        // Inspirert av geekforgeeks:
+        // https://www.geeksforgeeks.org/program-to-replace-every-space-in-a-string-with-hyphen/
+        String formatDate(String str)
+        {
+            String d = "";
+            String m = "";
+            String y = "";
+            int numberOfPeriods = 0;
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i].Equals('.'))
+                    numberOfPeriods++;
+                else
+                {
+                    if (numberOfPeriods == 0)
+                        d += str[i];
+                    else if (numberOfPeriods == 1)
+                        m += str[i];
+                    else
+                        y += str[i];
+                }
+            }
+            return y + "-" + m + "-" + d;
+        }
+    }
+
+    <form asp-action="Post" asp-controller="ArbeidsDokument" method="post">
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+
+        <!-- Ingenting skjer om du bruker samme ID, men skal i utgangspunktet oppdatere samme instans i databasen -->
+        <!-- <label asp-for="UpsertModel.ArbeidsDokumentID"></label>
+        <input asp-for="UpsertModel.ArbeidsDokumentID" type="number" value="@Model.ArbeidsDokOversikt[id].ArbeidsDokumentID" /><br /> -->
+
+        <label asp-for="UpsertModel.Ordrenummer"></label>
+        <input asp-for="UpsertModel.Ordrenummer" type="number" required placeholder="10000000" value="@Model.ArbeidsDokOversikt[id].Ordrenummer" /><br />
+
+        <label asp-for="UpsertModel.Kunde"></label>
+        <input asp-for="UpsertModel.Kunde" type="text" required placeholder="Kanskje få denne auto" value="@Model.ArbeidsDokOversikt[id].Kunde" /><br />
+
+        <label asp-for="UpsertModel.Vinsj"></label>
+        <input asp-for="UpsertModel.Vinsj" type="text" value="@Model.ArbeidsDokOversikt[id].Vinsj" /><br />
+
+        <label asp-for="UpsertModel.HenvendelseMotatt"></label>
+        <input asp-for="UpsertModel.HenvendelseMotatt" type="date" value="@formatDate(Model.ArbeidsDokOversikt[id].HenvendelseMotatt.ToString())" /><br />
+
+        <label asp-for="UpsertModel.AvtaltLevering"></label>
+        <input asp-for="UpsertModel.AvtaltLevering" type="date" value="@formatDate(Model.ArbeidsDokOversikt[id].AvtaltLevering.ToString())" /><br />
+
+        <label asp-for="UpsertModel.ProduktMotatt"></label>
+        <input asp-for="UpsertModel.ProduktMotatt" type="date" value="@formatDate(Model.ArbeidsDokOversikt[id].ProduktMotatt.ToString())" /><br />
+
+        <label asp-for="UpsertModel.SjekkUtfort"></label>
+        <input asp-for="UpsertModel.SjekkUtfort" type="date" value="@formatDate(Model.ArbeidsDokOversikt[id].SjekkUtfort.ToString())" /><br />
+
+        <label asp-for="UpsertModel.AvtaltFerdig"></label>
+        <input asp-for="UpsertModel.AvtaltFerdig" type="date" value="@formatDate(Model.ArbeidsDokOversikt[id].AvtaltFerdig.ToString())" /><br />
+
+        <label asp-for="UpsertModel.ServiceFerdig"></label>
+        <input asp-for="UpsertModel.ServiceFerdig" type="date" value="@formatDate(Model.ArbeidsDokOversikt[id].ServiceFerdig.ToString())" /><br />
+
+        <label asp-for="UpsertModel.AntallTimer"></label>
+        <input asp-for="UpsertModel.AntallTimer" type="number" value="@Model.ArbeidsDokOversikt[id].AntallTimer" /><br />
+
+        <label asp-for="UpsertModel.BestillingFraKunde"></label>
+        <!-- <textarea asp-for="UpsertModel.BestillingFraKunde" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
+        <input asp-for="UpsertModel.BestillingFraKunde" type="text" placeholder="Maks grense 255 tegn" value="@Model.ArbeidsDokOversikt[id].BestillingFraKunde" /><br />
+
+        <label asp-for="UpsertModel.NotatFraMekaniker"></label>
+        <!-- <textarea asp-for="UpsertModel.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
+        <input asp-for="UpsertModel.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn" value="@Model.ArbeidsDokOversikt[id].NotatFraMekaniker" /><br />
+
+        <label asp-for="UpsertModel.Status"></label>
+        <input asp-for="UpsertModel.Status" type="text" value="@Model.ArbeidsDokOversikt[id].Status" /><br />
+
+        <input type="submit" />
+    </form>
+</body>
