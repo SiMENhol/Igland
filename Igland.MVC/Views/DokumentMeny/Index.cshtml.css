@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    grid-gap: 10px;
+    grid-gap: 25px;
 }
 
 .box-link {
@@ -21,11 +21,11 @@
 .box {
     background-color: #101820;
     color: #9CB7C2;
-    padding: 70px 60px;
+    padding: 100px 125px;
     border-radius: 50px;
     text-align: center;
 }
 
     .box:hover {
-        color: #9CB7C2; /* Change it back to the original color on hover if needed */
+        color: #9CB7C2;
     }

@@ -65,6 +65,7 @@ public class Program
         builder.Services.AddScoped<IUserRepository, EFUserRepository>();
         builder.Services.AddScoped<IServiceSkjema, EFServiceSkjema>();
         builder.Services.AddScoped<IArbDokRepository, EFArbDokRepository>();
+        builder.Services.AddScoped<IServiceDokumentRepository, EFServiceDokument>();
         builder.Services.AddScoped<IOrdreRepository, EFOrdre>();
         builder.Services.AddScoped<IKunderRepository, EFKunder>();
     }
