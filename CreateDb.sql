@@ -115,9 +115,9 @@ INSERT INTO Ordre (OrdreNummer, KundeID, SerieNummer, VareNavn, Status, Arbdokum
     foreign key(OrdreNummer) references Ordre(OrdreNummer)
 );
 INSERT INTO ServiceSkjema (ServiceSkjemaID, Aarsmodel, Garanti, Reparasjonsbeskrivelse, MedgaatteDeler, DeleRetur, ForesendelsesMaate) VALUES ('92321', '2010', 'Ja', 'Vinsj reparasjon', '1 del, 2 deler', 'Returdeler', 'Hentes av kunde' );
- create table if not EXISTS ArbDokument
+ create table if not EXISTS ArbDok
 (
-    ArbeidsDokumentID int PRIMARY KEY auto_increment,
+    ArbDokID int PRIMARY KEY auto_increment,
     OrdreNummer int,
     Kunde varchar(255),
     Vinsj varchar(255),

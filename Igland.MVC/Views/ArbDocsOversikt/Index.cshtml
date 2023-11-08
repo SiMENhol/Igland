@@ -1,7 +1,5 @@
-﻿@using Igland.MVC.Models.ArbeidsDokument;
-
-
-@model ArbeidsDokumentFullViewModel
+﻿@using Igland.MVC.Models.ArbDok;
+@model ArbDokFullViewModel
 @{
     ViewData["Title"] = "Arbeidsdokumenter";
 }
@@ -77,10 +75,10 @@
 
 
     <tbody>
-            @foreach (var ArbeidsDokuments in Model.ArbeidsDokOversikt)
+            @foreach (var ArbeidsDokuments in Model.ArbDokList)
             {
             <tr>
-                <td><a asp-controller="ArbeidsDokument" asp-action="Test" asp-route-id="@ArbeidsDokuments.ArbeidsDokumentID">@ArbeidsDokuments.ArbeidsDokumentID</a></td>
+                <td><a asp-controller="ArbDok" asp-action="Rediger" asp-route-id="@ArbeidsDokuments.ArbDokID">@ArbeidsDokuments.ArbDokID</a></td>
                 <td>@ArbeidsDokuments.OrdreNummer</td>
                 <td>@ArbeidsDokuments.Kunde</td>
                 <td>@ArbeidsDokuments.Vinsj</td>
