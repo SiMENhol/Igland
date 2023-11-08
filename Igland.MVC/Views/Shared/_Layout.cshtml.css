@@ -2,18 +2,19 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-    color: #101820;
+    color: #9CB7C2;
     white-space: normal;
     text-align: center;
     word-break: break-all;
 }
 
 a {
-    color: #101820;
+    color: #9CB7C2;
 }
 
 * {
     font-family: ulp-font,-apple-system,BlinkMacSystemFont,Roboto,Helvetica,sans-serif;
+
     
 }
 
@@ -24,6 +25,7 @@ a {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    
     color: #101820;
     background-color: #1b6ec2;
     border-color: #1861ac;
@@ -46,7 +48,8 @@ button.accept-policy {
 }
 
 .footer {
-    position: fixed;
+    background-color: #101820;
+    position: absolute;
     text-align: center;
     bottom: 0;
     width: 100%;
@@ -66,7 +69,9 @@ button.accept-policy {
 .profile-picture {
 width: 40px;
 }
-
+.logo {
+    width: 80px;
+}
 .container {
     margin-bottom: 100px;
 }

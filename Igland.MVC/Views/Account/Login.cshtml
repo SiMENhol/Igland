@@ -194,12 +194,8 @@
     <div class="input-container ic2">
         <input asp-for="Password" type="password" placeholder=" " class="input" required>
             <div class="cut2"></div>
-
         <label asp-for="Password" class="placeholder"><b>Passord</b></label>
         <span asp-validation-for="Password" class="text-danger"></span>
-            <div class="newuser">
-                <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Registrer en ny bruker? Denne vil bli fjernet når admin side er oppe</a>
-            </div>
             <button type="submit" class="submit">Login</button>
 
             </div>

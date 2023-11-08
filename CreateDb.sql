@@ -30,25 +30,6 @@ create table if not EXISTS AspNetRoles
     CONSTRAINT U_ROLE_ID_PK PRIMARY KEY (Id)
 );
 insert into AspNetRoles(id, Name, NormalizedName) values('Administrator', 'Administrator', 'Administrator');
-create table if not EXISTS AspNetUsers
-(
-         Id varchar(255) not null unique,
-         UserName varchar(255),
-         NormalizedUserName varchar(255),
-         Email varchar(255),
-         NormalizedEmail varchar(255),
-         EmailConfirmed bit not null,
-         PasswordHash varchar(255),
-         SecurityStamp varchar(255),
-         ConcurrencyStamp varchar(255),
-         PhoneNumber varchar(50),
-         PhoneNumberConfirmed bit not null,
-         TwoFactorEnabled bit not null,
-         LockoutEnd TIMESTAMP,
-         LockoutEnabled bit not null,
-         AccessFailedCount int not null,
-          CONSTRAINT PK_AspNetUsers PRIMARY KEY (Id)
-);
 create table if not EXISTS AspNetUserTokens
 (
     UserId varchar(255) not null,
