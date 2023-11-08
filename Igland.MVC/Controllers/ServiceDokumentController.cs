@@ -1,5 +1,4 @@
 ﻿using Igland.MVC.Entities;
-using Igland.MVC.Models.ArbeidsDokument;
 using Igland.MVC.Models.ServiceSkjema;
 using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Mvc;
