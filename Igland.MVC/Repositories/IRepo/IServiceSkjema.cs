@@ -4,9 +4,12 @@ namespace Igland.MVC.Repositories.IRepo
 {
     public interface IServiceSkjema
     {
-
-       // void Upsert(ServiceDokumentEntity user);
-        ServiceDokumentEntity Get(int id);
-        List<ServiceDokumentEntity> GetAll();
+        //  void Upsert(UserEntity user);
+        ServiceDocs Get(int id);
+        List<ServiceDocs> GetAll();
+        
+        // void Update(UserEntity user, List<string> roles);
+        // void Add(UserEntity user);
+        // List<UserEntity> GetUsers();
     }
 }
