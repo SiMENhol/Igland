@@ -18,7 +18,7 @@ namespace Igland.MVC.DataAccess
         {
             modelBuilder.Entity<UserEntity>().ToTable("aspnetusers").HasKey(x => x.Id);
             modelBuilder.Entity<ServiceDocs>().ToTable("ServiceSkjema").HasKey(x => x.ServiceSkjemaID);
-            modelBuilder.Entity<ArbeidsDokumentEntity>().ToTable("ArbDokument").HasKey(x => x.ArbeidsDokumentID);
+            modelBuilder.Entity<ArbDok>().ToTable("ArbDok").HasKey(x => x.ArbDokID);
             modelBuilder.Entity<OrdreEntity>().ToTable("Ordre").HasKey(x => x.OrdreNummer);
             modelBuilder.Entity<KunderEntity>().ToTable("Kunder").HasKey(x => x.KundeID);
             base.OnModelCreating(modelBuilder);
@@ -26,7 +26,7 @@ namespace Igland.MVC.DataAccess
 
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<ServiceDocs> Services { get; set; }
-        public DbSet<ArbeidsDokumentEntity> ArbeidsDokuments { get; set; }
+        public DbSet<ArbDok> ArbDok { get; set; }
         public DbSet<OrdreEntity> Ordre { get; set; }
         public DbSet<KunderEntity> Kunder { get; set; }
     }
