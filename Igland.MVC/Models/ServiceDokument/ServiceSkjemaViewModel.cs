@@ -1,26 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Igland.MVC.Models.ServiceSkjema
 
 {
-    public class ServiceSkjemaFullViewModel
+    public class ServiceDokumentFullViewModel
     {
-        public ServiceSkjemaFullViewModel()
+        public ServiceDokumentFullViewModel()
         {
-            UpsertModel = new ServiceSkjemaViewModel();
-            ServiceDocOversikt = new List<ServiceSkjemaViewModel>();
+            UpsertModel = new ServiceDokumentViewModel();
+            ServiceDocOversikt = new List<ServiceDokumentViewModel>();
         }
-        public ServiceSkjemaViewModel UpsertModel { get; set; }
-        public List<ServiceSkjemaViewModel> ServiceDocOversikt { get; set; }
+        public ServiceDokumentViewModel UpsertModel { get; set; }
+        public List<ServiceDokumentViewModel> ServiceDocOversikt { get; set; }
 
 
     }
 
-    public class ServiceSkjemaViewModel
+    public class ServiceDokumentViewModel
     {
-        [Required(ErrorMessage = "Kan ikke være tom.")]
-        [Range(1, 100, ErrorMessage = "Verdien må være mellom 1 og 100.")]
-        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ServiceSkjemaID { get; set; }
 
         [Required(ErrorMessage = "Kan ikke være tom.")]

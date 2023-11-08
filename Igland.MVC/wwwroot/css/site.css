@@ -16,3 +16,6 @@ html {
 body {
   margin-bottom: 60px;
 }
+* {
+    font-family: ulp-font,-apple-system,BlinkMacSystemFont,Roboto,Helvetica,sans-serif;
+}

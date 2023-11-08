@@ -12,89 +12,199 @@
 }
 
 <style>
-    /* Bordered form */
-
-    healer {
-        color: white;
-        font-size: 20px;
+    body {
+        align-items: center;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
     }
 
-    form {
-        border: 4px solid antiquewhite;
-        border-radius: 25px;
-        margin: 700px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        text-align: center;
-        padding: 10px;
-        background-color: whitesmoke;
-        position: center;
+    * {
+        font-family: ulp-font,-apple-system,BlinkMacSystemFont,Roboto,Helvetica,sans-serif;
+        
     }
 
-    /* Full-width inputs */
-    formtext {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
+    .newuser {
+        text-decoration: none;
+        margin-left: 15px;
+        margin-top: 20px;
+        color: #06b;
+    }
+
+    a {
+        text-decoration: none;
+    }
+    .form {
+        background-color: #FFFFFF;
+        border-radius: 5px;
         box-sizing: border-box;
+        height: 500px;
+        padding: 20px;
+        width: 320px;
     }
 
-    /* Add a hover effect for buttons */
-    button:hover {
-        opacity: 0.8;
+    .title {
+        color: #2D333A;
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 30px;
+        font-weight: lighter;
+        margin-left: 70px;
+        margin-right: auto;
     }
+
+    .input-container {
+        height: 50px;
+        position: relative;
+        width: 100%;
+    }
+
+    .ic1 {
+        margin-top: 40px;
+    }
+
+    .ic2 {
+        margin-top: 30px;
+    }
+
+    .input {
+        border: 5px;
+        box-sizing: border-box;
+        color: #6F8CB5;
+        font-size: 18px;
+        height: 100%;
+        outline: 0;
+        padding: 4px 20px 0;
+        width: 100%;
+        border-radius: .5px;
+        font-weight: lighter;
+    }
+
+        .input:focus {
+            border: 2px solid #06b; /* Add a blue border when input is focused */
+        }
+
+    .cut {
+        background-color: white;
+        height: 20px;
+        left: 10px;
+        position: absolute;
+        top: -20px;
+        transform: translateY(0);
+        transition: transform 200ms;
+        width: 40px;
+    }
+
+    .cut2 {
+        background-color: white;
+        height: 20px;
+        left: 10px;
+        position: absolute;
+        top: -20px;
+        transform: translateY(0);
+        transition: transform 200ms;
+        width: 55px;
+    }
+
+    .cut-short {
+        width: 50px;
+    }
+
+    .cut-short2 {
+        width: 50px;
+    }
+    .input:focus ~ .cut,
+    .input:not(:placeholder-shown) ~ .cut {
+        transform: translateY(8px);
+    }
+
+    .input:focus ~ .cut2,
+    .input:not(:placeholder-shown) ~ .cut2 {
+        transform: translateY(8px);
+    }
+
+    .placeholder {
+        color: #65657b;
+        left: 5px;
+        line-height: 14px;
+        pointer-events: none;
+        position: absolute;
+        transform-origin: 0 50%;
+        transition: transform 200ms, color 200ms;
+        top: 20px;
+    }
+
+    .input:focus ~ .placeholder,
+    .input:not(:placeholder-shown) ~ .placeholder {
+        transform: translateY(-30px) translateX(10px) scale(0.75);
+    }
+
+    .input:not(:placeholder-shown) ~ .placeholder {
+        color: #808097;
+    }
+
+    .input:focus ~ .placeholder {
+        color: #06b;
+    }
+
+    .submit {
+        background-color: #E7792C;
+        border-radius: 5px;
+        border: 0;
+        box-sizing: border-box;
+        color: #333C4D;
+        cursor: pointer;
+        font-size: 18px;
+        height: 50px;
+        margin-top: 38px;
+        text-align: center;
+        width: 100%;
+    }
+
+        .submit:active {
+            background-color: #06b;
+        }
+
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 50%;
+        max-height: 50%;
+    }
+
+
 </style>
-<body style="background-color:royalblue; opacity:60%;">
-    <h1 class="healer">Nøsted</h1>
-    <div>
-        <div class="form">
-            <section>
-                <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" role="form">
-                    <h4>Use a local account to log in.</h4>
-                    <hr />
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="formtext">
-                        <label asp-for="Email" class="col-md-2 control-label"></label>
-                        <div class="col-md-10">
-                            <input asp-for="Email" class="form-control" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="formtext">
-                        <label asp-for="Password" class="col-md-2 control-label"></label>
-                        <div class="col-md-10">
-                            <input asp-for="Password" class="form-control" />
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-container">
-                        <div class="col-md-offset-2 col-md-10">
-                            <div class="checkbox">
-                                <label asp-for="RememberMe">
-                                    <input asp-for="RememberMe" />
-                                    @Html.DisplayNameFor(m => m.RememberMe)
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <button type="submit" class="btn btn-default">Log in</button>
-                        </div>
-                    </div>
-                    <p>
-                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
-                    </p>
-                    <p>
-                        <a asp-action="ForgotPassword">Forgot your password?</a>
-                    </p>
-                </form>
-            </section>
-        </div>
+
+    <div class="form">
+    <div class="img">
+        <img src="~/lib/iglandbilde.webp">
     </div>
-</body>
+    <div class="title">Velkommen</div>
+<form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" role="form">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="input-container ic1">
+        <input asp-for="Email" type="text" placeholder=" " class="input" required>
+            <div class="cut"></div>
+        <label asp-for="Email" class="placeholder"><b>Email</b></label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    
+    <div class="input-container ic2">
+        <input asp-for="Password" type="password" placeholder=" " class="input" required>
+            <div class="cut2"></div>
+        <label asp-for="Password" class="placeholder"><b>Passord</b></label>
+        <span asp-validation-for="Password" class="text-danger"></span>
+            <button type="submit" class="submit">Login</button>
+
+            </div>
+
+        
+    </form>
+    
+    </div>
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

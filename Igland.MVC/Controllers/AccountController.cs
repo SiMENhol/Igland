@@ -7,6 +7,7 @@ using System.Security.Claims;
 using Igland.MVC.Models.Account;
 using Igland.MVC.Entities;
 using Igland.MVC.Repositories.IRepo;
+using Igland.MVC.Models.Users;
 
 namespace Igland.MVC.Controllers
 {
@@ -26,7 +27,42 @@ namespace Igland.MVC.Controllers
             this.userRepository = userRepository;
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
+        [HttpGet]
+        public IActionResult Index(string? email)
+        {
+            var model = new UserViewModel();
+            model.Users = userRepository.GetUsers();
+            if (email != null)
+            {
+                var currentUser = model.Users.FirstOrDefault(x => x.Email == email);
+                if (currentUser != null)
+                {
 
+                    model.Email = currentUser.Email;
+                    model.UserName = currentUser.UserName;
+                    model.IsAdmin = userRepository.IsAdmin(currentUser.Email);
+                }
+            }
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult Admin(string? email)
+        {
+            var model = new UserViewModel();
+            model.Users = userRepository.GetUsers();
+            if (email != null)
+            {
+                var currentUser = model.Users.FirstOrDefault(x => x.Email == email);
+                if (currentUser != null)
+                {
+
+                    model.Email = currentUser.Email;
+                    model.UserName = currentUser.UserName;
+                    model.IsAdmin = userRepository.IsAdmin(currentUser.Email);
+                }
+            }
+            return View(model);
+        }
         // GET: /Account/Login
         [HttpGet]
         [AllowAnonymous]
@@ -78,7 +114,6 @@ namespace Igland.MVC.Controllers
         //
         // GET: /Account/Register
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -88,7 +123,6 @@ namespace Igland.MVC.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {

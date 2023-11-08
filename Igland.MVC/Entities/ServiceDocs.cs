@@ -3,7 +3,7 @@
 namespace Igland.MVC.Entities
 {
     [Table("ServiceSkjema")]
-    public class ServiceDocs
+    public class ServiceDokumentEntity
     {
         public int ServiceSkjemaID { get; set; }
         public int? OrdreNummer { get; set; }

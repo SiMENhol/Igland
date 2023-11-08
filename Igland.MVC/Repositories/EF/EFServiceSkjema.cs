@@ -14,14 +14,14 @@ namespace Igland.MVC.Repositories.EF
             this.dataContext = dataContext;
         }
 
-        public ServiceDocs Get(int ServiceSkjemaID)
+        public ServiceDokumentEntity Get(int ServiceSkjemaID)
         {
-            return dataContext.Services.FirstOrDefault(x => x.ServiceSkjemaID == ServiceSkjemaID);
+            return dataContext.ServiceDokuments.FirstOrDefault(x => x.ServiceSkjemaID == ServiceSkjemaID);
         }
 
-        public List<ServiceDocs> GetAll()
+        public List<ServiceDokumentEntity> GetAll()
         {
-            return dataContext.Services.ToList();
+            return dataContext.ServiceDokuments.ToList();
         }
     }
 }

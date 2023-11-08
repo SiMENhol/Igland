@@ -2,26 +2,26 @@
 @{
     ViewData["Title"] = "Service og sjekkliste";
 }
-<h3>Meny for skjemaer</h3>
-<h4>
-    Nå er koden satt opp slik at man kan knytte knappene til nye sider(controller) når de lages, bare endre på "asp-controller"
-    og "asp-action" i koden til denne siden. F.esk Ny sjekkliste fører nå til ServiceOrder.
-</h4>
-
-<style>
-    .buttons {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        grid-gap: 10px;
-    }
-</style>
-
+    <p class="larger-text">Hva vil du gjøre idag?</p>
 <div class="buttons">
-    <a asp-controller="ArbDocsOversikt" asp-action="Index">Arbeidsdokumenter</a>
-    <a asp-controller="ServiceDocsOversikt" asp-action="Index">Servicedokumenter</a>
-    <a asp-controller="SjekkListeOversikt" asp-action="Index">Sjekklister</a>
-    <a asp-controller="ArbeidsDokument" asp-action="Index">Nytt arbeidsdokument</a>
-    <a asp-controller="NyServiceDoc" asp-action="Index">Ny servicedokument</a>
-    <a asp-controller="ServiceOrder" asp-action="Index">Ny sjekkliste</a>
-</div>
+
+    <a style="text-decoration:none" asp-controller="ArbDocsOversikt" asp-action="Index" class="box-link">
+        <div class="box">Arbeidsdokumenter</div>
+    </a>
+    <a style="text-decoration:none" asp-controller="ServiceDokumentOversikt" asp-action="Index" class="box-link">
+        <div class="box">Servicedokumenter</div>
+    </a>
+    <a style="text-decoration:none" asp-controller="SjekkListeOversikt" asp-action="Index" class="box-link">
+        <div class="box">Sjekklister</div>
+    </a>
+    <a style="text-decoration:none" asp-controller="ArbeidsDokument" asp-action="Index" class="box-link">
+        <div class="box">Nytt arbeidsdokument</div>
+    </a>
+    <a style="text-decoration:none" asp-controller="ServiceDokument" asp-action="Index" class="box-link">
+        <div class="box">Ny servicedokument</div>
+    </a>
+    <a style="text-decoration:none" asp-controller="ServiceOrder" asp-action="Index" class="box-link">
+        <div class="box">Ny sjekkliste</div>
+    </a>
+    <br />
+    </div>
