@@ -63,9 +63,9 @@
             @foreach (var services in Model.ServiceDocOversikt)
     {
     <tr>
-    <td>@services.ServiceSkjemaID</td>
-    <td>@services.OrdreNummer</td>
-    <td>@services.Aarsmodel</td>
+<td><a asp-controller="ServiceDokument" asp-action="Rediger" asp-route-id="@services.ServiceSkjemaID">@services.ServiceSkjemaID</a></td>
+<td><a asp-controller="ServiceDokument" asp-action="Rediger" asp-route-id="@services.ServiceSkjemaID">@services.OrdreNummer</a></td>
+<td><a asp-controller="ServiceDokument" asp-action="Rediger" asp-route-id="@services.ServiceSkjemaID">@services.Aarsmodel</a></td>
     <td>@services.Garanti</td>
     <td>@services.Reparasjonsbeskrivelse</td>
     <td>@services.MedgaatteDeler</td>

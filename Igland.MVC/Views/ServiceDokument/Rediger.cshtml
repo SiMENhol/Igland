@@ -1,0 +1,51 @@
+﻿﻿@using Igland.MVC.Models.ServiceSkjema;
+
+
+@model ServiceDokumentFullViewModel
+<h1>Arbeidsdokument</h1>
+<br>
+<body>
+    @{
+        ViewData["Title"] = "Rediger servicedokumenter";
+        int getID()
+        {
+            int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
+            if (id <= 0 || id > Model.ServiceDocOversikt.Count)
+            {
+                return 0;
+            }
+            return id - 1;
+        }
+    }
+
+    <form asp-action="Post" asp-controller="ServiceDokument" method="post">
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+
+        <label asp-for="UpsertModel.ServiceSkjemaID" hidden></label>
+        <input asp-for="UpsertModel.ServiceSkjemaID" type="number" value="@Model.ServiceDocOversikt[getID()].ServiceSkjemaID"  /><br />
+
+        <label asp-for="UpsertModel.OrdreNummer"></label>
+        <input asp-for="UpsertModel.OrdreNummer" type="number" required value="@Model.ServiceDocOversikt[getID()].OrdreNummer" /><br />
+
+        <label asp-for="UpsertModel.Aarsmodel"></label>
+        <input asp-for="UpsertModel.Aarsmodel" type="text" required value="@Model.ServiceDocOversikt[getID()].Aarsmodel" /><br />
+
+        <label asp-for="UpsertModel.Garanti"></label>
+        <input asp-for="UpsertModel.Garanti" type="text" required value="@Model.ServiceDocOversikt[getID()].Garanti" /><br />
+
+        <label asp-for="UpsertModel.Reparasjonsbeskrivelse"></label>
+        <input asp-for="UpsertModel.Reparasjonsbeskrivelse" type="text" value="@Model.ServiceDocOversikt[getID()].Reparasjonsbeskrivelse" /><br />
+
+        <label asp-for="UpsertModel.MedgaatteDeler"></label>
+        <input asp-for="UpsertModel.MedgaatteDeler" type="text" value="@Model.ServiceDocOversikt[getID()].MedgaatteDeler" /><br />
+
+        <label asp-for="UpsertModel.DeleRetur"></label>
+        <input asp-for="UpsertModel.DeleRetur" type="text" value="@Model.ServiceDocOversikt[getID()].DeleRetur" /><br />
+
+        <label asp-for="UpsertModel.ForesendelsesMaate"></label>
+        <input asp-for="UpsertModel.ForesendelsesMaate" type="text" value="@Model.ServiceDocOversikt[getID()].ForesendelsesMaate" /><br />
+
+        <input type="submit" />
+    </form>
+</body>

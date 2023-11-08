@@ -47,7 +47,14 @@ namespace Igland.MVC.Controllers
             _servicedocRepository.Upsert(entity);
             return Redirect("/ServiceDokumentOversikt");
         }
+        public IActionResult Rediger()
+        {
+            _logger.LogInformation("Rediger method called");
 
-
+            var model = new ServiceDokumentFullViewModel();
+            model.ServiceDocOversikt = _servicedocRepository.GetAll().Select(x => new ServiceDokumentViewModel { ServiceSkjemaID = x.ServiceSkjemaID, OrdreNummer = x.OrdreNummer.GetValueOrDefault(), Aarsmodel = x.Aarsmodel, Garanti = x.Garanti, Reparasjonsbeskrivelse = x.Reparasjonsbeskrivelse, MedgaatteDeler = x.MedgaatteDeler, DeleRetur = x.DeleRetur, ForesendelsesMaate = x.ForesendelsesMaate }).ToList();
+            return View("Rediger", model);
+        }
     }
 }
+

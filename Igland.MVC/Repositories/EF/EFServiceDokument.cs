@@ -29,7 +29,13 @@ namespace Igland.MVC.Repositories.EF
             var existing = Get(serviceSkjema.ServiceSkjemaID);
             if (existing != null)
             {
-                existing.OrdreNummer = serviceSkjema.OrdreNummer; //Skal det ikke være ArbeidsDokumentID?
+                existing.OrdreNummer = serviceSkjema.OrdreNummer; 
+                existing.Aarsmodel = serviceSkjema.Aarsmodel; 
+                existing.Garanti = serviceSkjema.Garanti; 
+                existing.Reparasjonsbeskrivelse = serviceSkjema.Reparasjonsbeskrivelse; 
+                existing.MedgaatteDeler = serviceSkjema.MedgaatteDeler; 
+                existing.DeleRetur = serviceSkjema.DeleRetur; 
+                existing.ForesendelsesMaate = serviceSkjema.ForesendelsesMaate ;
                 dataContext.SaveChanges();
                 return;
             }
