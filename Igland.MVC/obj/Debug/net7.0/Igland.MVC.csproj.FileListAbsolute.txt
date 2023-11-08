@@ -308,14 +308,11 @@ C:\Users\forna\Source\Repos\Igland\Igland.MVC\obj\Debug\net7.0\Igland.MVC.genrun
 C:\Users\forna\Source\Repos\Igland\Igland.MVC\obj\Debug\net7.0\ref\Igland.MVC.dll
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Home\Index.cshtml.rz.scp.css
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ArbeidsDokument\Index.cshtml.rz.scp.css
-C:\Users\simen\Source\Repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ServiceDocsOversikt\Index.cshtml.rz.scp.css
-C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\NyServiceDoc\Index.cshtml.rz.scp.css
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ArbDocsOversikt\Index.cshtml.rz.scp.css
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\SjekkListeOversikt\Index.cshtml.rz.scp.css
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Kalender\Index.cshtml.rz.scp.css
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Ordre\Index.cshtml.rz.scp.css
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Kunder\Index.cshtml.rz.scp.css
-C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\LogIn\Index.cshtml.rz.scp.css
 C:\Users\simen\Source\Repos\SiMENhol\Igland\Igland.MVC\bin\Debug\net7.0\nuget.config
 C:\Users\simen\Source\Repos\SiMENhol\Igland\Igland.MVC\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\simen\Source\Repos\SiMENhol\Igland\Igland.MVC\bin\Debug\net7.0\appsettings.json
@@ -403,3 +400,6 @@ C:\Users\simen\Source\Repos\SiMENhol\Igland\Igland.MVC\obj\Debug\net7.0\refint\I
 C:\Users\simen\Source\Repos\SiMENhol\Igland\Igland.MVC\obj\Debug\net7.0\Igland.MVC.pdb
 C:\Users\simen\Source\Repos\SiMENhol\Igland\Igland.MVC\obj\Debug\net7.0\Igland.MVC.genruntimeconfig.cache
 C:\Users\simen\Source\Repos\SiMENhol\Igland\Igland.MVC\obj\Debug\net7.0\ref\Igland.MVC.dll
+C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\DokumentMeny\Index.cshtml.rz.scp.css
+C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ServiceDokumentOversikt\Index.cshtml.rz.scp.css
+C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ServiceDokument\Index.cshtml.rz.scp.css

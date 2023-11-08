@@ -30,6 +30,10 @@ a {
     background-color: #1b6ec2;
     border-color: #1861ac;
 }
+.dropdown:hover .nav-link {
+    color: #E7792C;
+}
+
 
 .border-top {
   border-top: 1px solid #e5e5e5;

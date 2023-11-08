@@ -5,33 +5,10 @@
 @{
     ViewData["Title"] = "Hjem";
 }
-<ul>
-    <h2>Velkommen @Model.Email</h2>
-    <p class="larger-text">Hva vil du gjøre idag?</p>
-</ul>
 
-<div class="buttons">
+<h2>Velkommen @Model.Email</h2>
 
-    <a style="text-decoration:none" asp-controller="ArbDocsOversikt" asp-action="Index" class="box-link">
-        <div class="box">Arbeidsdokumenter</div>
-    </a>
-    <a style="text-decoration:none" asp-controller="ServiceDocsOversikt" asp-action="Index" class="box-link">
-        <div class="box">Servicedokumenter</div>
-    </a>
-    <a style="text-decoration:none" asp-controller="SjekkListeOversikt" asp-action="Index">
-        <div class="box">Sjekklister</div>
-    </a>
-    <a style="text-decoration:none" asp-controller="ArbeidsDokument" asp-action="Index">
-        <div class="box">Nytt arbeidsdokument</div>
-    </a>
-    <a style="text-decoration:none" asp-controller="NyServiceDoc" asp-action="Index">
-        <div class="box">Ny servicedokument</div>
-    </a>
-    <a style="text-decoration:none" asp-controller="ServiceOrder" asp-action="Index">
-        <div class="box">Ny sjekkliste</div>
-    </a>
-    <br />
-</div>
+
 <div class="buttons">
 
     <a style="text-decoration:none" asp-controller="Ordre" asp-action="Index" class="box-link">

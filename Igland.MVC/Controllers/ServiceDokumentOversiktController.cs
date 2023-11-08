@@ -2,18 +2,19 @@
 using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace Igland.MVC.Controllers
 {
-    public class SjekkListeOversiktController : Controller
+
+    public class ServiceDokumentOversiktController : Controller
     {
- 
         private readonly ILogger<ServiceDokumentController> _logger;
         private readonly IServiceSkjema _servicedocRepository;
 
-        public SjekkListeOversiktController(ILogger<ServiceDokumentController> logger, IServiceSkjema servicedocRepository)
+        public ServiceDokumentOversiktController(ILogger<ServiceDokumentController> logger, IServiceSkjema servicedokumentRepository)
         {
             _logger = logger;
-            _servicedocRepository = servicedocRepository;
+            _servicedocRepository = servicedokumentRepository;
         }
 
         [HttpGet]

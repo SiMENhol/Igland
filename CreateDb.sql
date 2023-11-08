@@ -104,7 +104,7 @@ INSERT INTO Kunder (KundeId, KundeNavn) VALUES ('100', 'Kunde1');
 INSERT INTO Ordre (OrdreNummer, KundeID, SerieNummer, VareNavn, Status, Arbdokument) VALUES ('10000000', '100', '22222', 'SerieNR1', 'Godkjent', 'Arbdokument');
  create table if not EXISTS ServiceSkjema
 (
-    ServiceSkjemaID int PRIMARY KEY,
+    ServiceSkjemaID int PRIMARY KEY auto_increment,
     OrdreNummer int,
     Aarsmodel int,
     Garanti varchar(255),

@@ -2,10 +2,9 @@
 
 namespace Igland.MVC.Repositories.IRepo
 {
-    public interface IServiceSkjema
+    public interface IServiceDokumentRepository
     {
-
-       // void Upsert(ServiceDokumentEntity user);
+        void Upsert(ServiceDokumentEntity ServiceSkjemaID);
         ServiceDokumentEntity Get(int id);
         List<ServiceDokumentEntity> GetAll();
     }
