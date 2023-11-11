@@ -1,23 +1,8 @@
-﻿div {
-    display: inline-table;
+﻿.overskrift, tabell {
+    text-align: center;
 }
 
-.form-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.left-side {
-    margin-left: 200px;
-    
-}
-
-.input-field, .comment-field {
-    width: 300px;
-    height: 50px;
-}
-
-.comment-field {
-    height: 150px;
-    width: 300px;
+th, tr, td {
+    border: 1px solid black;
+    padding: 20px;
 }

@@ -26,19 +26,18 @@
                         <li class="nav-item" >
                             <a class="nav-link" style="color: #9CB7C2; font-size:18px;" asp-area="" asp-controller="Home" asp-action="Index">Hjem</a>
                         <li class="nav-item">
-                            <a class="nav-link" style="color: #9CB7C2; font-size:18px;" asp-area="" asp-controller="UtstyrDeler" asp-action="Index">Utstyr og deler</a>
+                            <a class="nav-link" style="color: #9CB7C2; font-size:18px;" asp-area="" asp-controller="Arbdok" asp-action="Index">Arbeidsdokument</a>
                         <li class="nav-item">
-                            <a class="nav-link" style="color: #9CB7C2; font-size:18px;" asp-area="" asp-controller="DokumentMeny" asp-action="Index">Service og sjekkliste</a>
+                            <a class="nav-link" style="color: #9CB7C2; font-size:18px;" asp-area="" asp-controller="ServiceDokument" asp-action="Index">Servicedokument</a>
                         <li class="nav-item" >
-                            <a class="nav-link" style="color: #9CB7C2; font-size:18px;" asp-area="" asp-controller="Kalender" asp-action="Index">Kalender</a>
+                            <a class="nav-link" style="color: #9CB7C2; font-size:18px;" asp-area="" asp-controller="SjekklisteOversikt" asp-action="Index">Sjekkliste</a>
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" style="font-size:18px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="/lib/bildeprofil.webp" alt="Profil" class="profile-picture" > Avdeling 1
-                            </a>
+                                <img src="/lib/bildeprofil.webp" alt="Profil" class="profile-picture"> @User.Identity.Name.Split('@')[0]</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #101820;">
-                                <a class="dropdown-item" style="color: #9CB7C2; font-size:18px;" asp-area="" asp-controller="Account" asp-action="Index">Administrator</a>
+                                <a class="dropdown-item" style="color: #9CB7C2; font-size:18px;" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
                                 <a class="dropdown-item" style="color: #9CB7C2; font-size:18px;" asp-area="" asp-controller="Account" asp-action="Logoff">Logg ut</a>
                             </div>
                         </li>

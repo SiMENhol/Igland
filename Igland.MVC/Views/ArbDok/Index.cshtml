@@ -1,57 +1,104 @@
 ﻿@using Igland.MVC.Models.ArbDok;
 @model ArbDokFullViewModel
+@{
+    ViewData["Title"] = "Arbeidsdokumenter";
+}
 
-<h1>Arbeidsdokument</h1>
-<br>
-<body>
-    <form asp-action="Post" asp-controller="ArbDok" method="post">
-        @Html.ValidationSummary()
-        @Html.AntiForgeryToken()
 
-        <!-- <label asp-for="UpsertModel.ArbDokID"></label>
-        <input asp-for="UpsertModel.ArbDokID" type="number" /><br /> -->
+<div class="overskrift">
 
-        <label asp-for="UpsertModel.OrdreNummer"></label>
-        <input asp-for="UpsertModel.OrdreNummer" type="number" required/><br />
+    <h1>Arbeidsdokument </h1>
+    <br />
+    <div class="søkebar">
+        <input type="text" placeholder="Søk etter navn, nummer..">
+        @* <button type="submit"><i class="fa fa-search"></i></button>*@
+    </div>
+</div>
 
-        <label asp-for="UpsertModel.Kunde"></label>
-        <input asp-for="UpsertModel.Kunde" type="text" required/><br />
+<div>
+    <a asp-controller="Arbdok" asp-action="Ny">Nytt Arbeidsdokument</a>
+</div>
 
-        <label asp-for="UpsertModel.Vinsj"></label>
-        <input asp-for="UpsertModel.Vinsj" type="text" required/><br />
+<table id="tabell" , align="center">
 
-        <label asp-for="UpsertModel.HenvendelseMotatt"></label>
-        <input asp-for="UpsertModel.HenvendelseMotatt" type="date" required/><br />
+    @* <thred> spare </thred> *@
+    <tr>
+        <th>
+            ArbeidsDokumentID
+        </th>
 
-        <label asp-for="UpsertModel.AvtaltLevering"></label>
-        <input asp-for="UpsertModel.AvtaltLevering" type="date" /><br />
+        <th>
+            Ordrenummer
+        </th>
 
-        <label asp-for="UpsertModel.ProduktMotatt"></label>
-        <input asp-for="UpsertModel.ProduktMotatt" type="date" /><br />
+        <th>
+            Kunde
+        </th>
 
-        <label asp-for="UpsertModel.SjekkUtfort"></label>
-        <input asp-for="UpsertModel.SjekkUtfort" type="date" /><br />
+        <th>
+            Vinsj
+        </th>
+        <th>
+            HenvendelseMotatt
+        </th>
+        <th>
+            AvtaltLevering
+        </th>
+        <th>
+            ProduktMotatt
+        </th>
+        <th>
+            SjekkUtfort
+        </th>
+        <th>
+            AvtaltFerdig
+        </th>
+        <th>
+            ServiceFerdig
+        </th>
+        <th>
+            AntallTimer
+        </th>
+        <th>
+            BestillingFraKunde
+        </th>
+        <th>
+            NotatFraMekaniker
+        </th>
+        <th>
+            Status
+        </th>
 
-        <label asp-for="UpsertModel.AvtaltFerdig"></label>
-        <input asp-for="UpsertModel.AvtaltFerdig" type="date" /><br />
 
-        <label asp-for="UpsertModel.ServiceFerdig"></label>
-        <input asp-for="UpsertModel.ServiceFerdig" type="date" /><br />
 
-        <label asp-for="UpsertModel.AntallTimer"></label>
-        <input asp-for="UpsertModel.AntallTimer" type="number" /><br />
 
-        <label asp-for="UpsertModel.BestillingFraKunde"></label>
-        <!-- <textarea asp-for="UpsertModel.BestillingFraKunde" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
-        <input asp-for="UpsertModel.BestillingFraKunde" type="text" placeholder="Maks grense 255 tegn" /><br />
+        @* undergreier i tabellen *@
 
-        <label asp-for="UpsertModel.NotatFraMekaniker"></label>
-        <!-- <textarea asp-for="UpsertModel.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
-        <input asp-for="UpsertModel.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn" /><br />
 
-        <label asp-for="UpsertModel.Status"></label>
-        <input asp-for="UpsertModel.Status" type="text" /><br />
 
-        <input type="submit"/>
-    </form>
-</body>
+    <tbody>
+            @foreach (var ArbeidsDokuments in Model.ArbDokList)
+            {
+            <tr>
+                <td><a asp-controller="ArbDok" asp-action="Rediger" asp-route-id="@ArbeidsDokuments.ArbDokID">@ArbeidsDokuments.ArbDokID</a></td>
+                <td>@ArbeidsDokuments.OrdreNummer</td>
+                <td>@ArbeidsDokuments.Kunde</td>
+                <td>@ArbeidsDokuments.Vinsj</td>
+                <td>@ArbeidsDokuments.HenvendelseMotatt</td>
+                <td>@ArbeidsDokuments.AvtaltLevering</td>
+                <td>@ArbeidsDokuments.ProduktMotatt</td>
+                <td>@ArbeidsDokuments.SjekkUtfort</td>
+                <td>@ArbeidsDokuments.AvtaltFerdig</td>
+                <td>@ArbeidsDokuments.ServiceFerdig</td>
+                <td>@ArbeidsDokuments.AntallTimer</td>
+                <td>@ArbeidsDokuments.BestillingFraKunde</td>
+                <td>@ArbeidsDokuments.NotatFraMekaniker</td>
+                <td>@ArbeidsDokuments.Status</td>
+            </tr>
+            }
+    </tbody>
+
+</table>
+
+
+

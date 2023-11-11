@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Igland.MVC.Models.ServiceSkjema
+namespace Igland.MVC.Models.ServiceDokument
 
 {
     public class ServiceDokumentFullViewModel
@@ -9,10 +9,10 @@ namespace Igland.MVC.Models.ServiceSkjema
         public ServiceDokumentFullViewModel()
         {
             UpsertModel = new ServiceDokumentViewModel();
-            ServiceDocOversikt = new List<ServiceDokumentViewModel>();
+            ServiceDokumentOversikt = new List<ServiceDokumentViewModel>();
         }
         public ServiceDokumentViewModel UpsertModel { get; set; }
-        public List<ServiceDokumentViewModel> ServiceDocOversikt { get; set; }
+        public List<ServiceDokumentViewModel> ServiceDokumentOversikt { get; set; }
 
 
     }
@@ -32,30 +32,29 @@ namespace Igland.MVC.Models.ServiceSkjema
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
         public int Aarsmodel { get; set; }
 
-        [Required(ErrorMessage = "Kan ikke være tom.")]
         [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
-        public string Garanti { get; set; }
+        public string? Garanti { get; set; }
 
-        [Required(ErrorMessage = "Kan ikke være tom.")]
+ 
         [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
-        public string Reparasjonsbeskrivelse { get; set; }
+        public string? Reparasjonsbeskrivelse { get; set; }
 
-        [Required(ErrorMessage = "Kan ikke være tom.")]
-        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
-        [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
-        public string MedgaatteDeler { get; set; }
 
-        [Required(ErrorMessage = "Kan ikke være tom.")]
         [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
-        public string DeleRetur { get; set; }
+        public string? MedgaatteDeler { get; set; }
 
-        [Required(ErrorMessage = "Kan ikke være tom.")]
+   
         [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
-        public string ForesendelsesMaate { get; set; }
+        public string? DeleRetur { get; set; }
+
+
+        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
+        [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
+        public string? ForesendelsesMaate { get; set; }
 
     }
 

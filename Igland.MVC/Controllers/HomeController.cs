@@ -23,7 +23,7 @@ namespace Igland.MVC.Controllers
         {
             _logger.LogInformation("Index method called");
 
-            var model = new LoginViewModel();
+            var model = new LoginFullViewModel();
 
             return View("Index", model);
         }

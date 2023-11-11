@@ -1,0 +1,40 @@
+﻿@using Igland.MVC.Models.Users
+@model UserViewModel
+@{
+    ViewData["Title"] = "Oversikt over brukere";
+}
+<h1>@ViewData["Title"]</h1>
+<a style="text-decoration:none" asp-controller="Admin" asp-action="Index" class="box-link">
+    <div class="box">Tilbake</div>
+</a>
+<hr />
+
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Email</td>
+    </tr>
+    @foreach (var user in Model.Users)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>
+                <form asp-action="Delete" asp-controller="Admin" method="post">
+                    <input type="hidden" name="Email" value="@user.Email" />
+                    <input type="submit" value="Slett" />
+                </form>
+            </td>
+            <td>
+                <form asp-action="index" asp-controller="users" method="get">
+                    <input type="hidden" name="Email" value="@user.Email" />
+                    <input type="submit" value="Endre" />
+                </form>
+            <td>
+                <label for="Role">Sett som administrator</label>
+                <input asp-for="@Model.IsAdmin" />
+            </td>
+        </tr>
+    }
+</table>
+

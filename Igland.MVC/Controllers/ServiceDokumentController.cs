@@ -1,5 +1,6 @@
 ﻿using Igland.MVC.Entities;
-using Igland.MVC.Models.ServiceSkjema;
+using Igland.MVC.Models.ServiceDokument;
+using Igland.MVC.Repositories.EF;
 using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +25,7 @@ namespace Igland.MVC.Controllers
             _logger.LogInformation("Index method called");
 
             var model = new ServiceDokumentFullViewModel();
-            model.ServiceDocOversikt = _servicedocRepository.GetAll().Select(x => new ServiceDokumentViewModel { ServiceSkjemaID = x.ServiceSkjemaID, OrdreNummer = x.OrdreNummer.GetValueOrDefault(), Aarsmodel = x.Aarsmodel, Garanti = x.Garanti, Reparasjonsbeskrivelse = x.Reparasjonsbeskrivelse, MedgaatteDeler = x.MedgaatteDeler, DeleRetur = x.DeleRetur, ForesendelsesMaate = x.ForesendelsesMaate }).ToList();
+            model.ServiceDokumentOversikt = _servicedocRepository.GetAll().Select(x => new ServiceDokumentViewModel { ServiceSkjemaID = x.ServiceSkjemaID, OrdreNummer = x.OrdreNummer.GetValueOrDefault(), Aarsmodel = x.Aarsmodel, Garanti = x.Garanti, Reparasjonsbeskrivelse = x.Reparasjonsbeskrivelse, MedgaatteDeler = x.MedgaatteDeler, DeleRetur = x.DeleRetur, ForesendelsesMaate = x.ForesendelsesMaate }).ToList();
 
             return View("Index", model);
         }
@@ -45,15 +46,33 @@ namespace Igland.MVC.Controllers
                 ForesendelsesMaate = servicedokument.UpsertModel.ForesendelsesMaate,
             };
             _servicedocRepository.Upsert(entity);
-            return Redirect("/ServiceDokumentOversikt");
+            return Redirect("index");
         }
         public IActionResult Rediger()
         {
             _logger.LogInformation("Rediger method called");
 
             var model = new ServiceDokumentFullViewModel();
-            model.ServiceDocOversikt = _servicedocRepository.GetAll().Select(x => new ServiceDokumentViewModel { ServiceSkjemaID = x.ServiceSkjemaID, OrdreNummer = x.OrdreNummer.GetValueOrDefault(), Aarsmodel = x.Aarsmodel, Garanti = x.Garanti, Reparasjonsbeskrivelse = x.Reparasjonsbeskrivelse, MedgaatteDeler = x.MedgaatteDeler, DeleRetur = x.DeleRetur, ForesendelsesMaate = x.ForesendelsesMaate }).ToList();
+            model.ServiceDokumentOversikt = _servicedocRepository.GetAll().Select(x => new ServiceDokumentViewModel { ServiceSkjemaID = x.ServiceSkjemaID, OrdreNummer = x.OrdreNummer.GetValueOrDefault(), Aarsmodel = x.Aarsmodel, Garanti = x.Garanti, Reparasjonsbeskrivelse = x.Reparasjonsbeskrivelse, MedgaatteDeler = x.MedgaatteDeler, DeleRetur = x.DeleRetur, ForesendelsesMaate = x.ForesendelsesMaate }).ToList();
             return View("Rediger", model);
+        }
+
+        [HttpGet]
+        public IActionResult Ny()
+        {
+            _logger.LogInformation("Ny method called");
+
+            var model = new ServiceDokumentFullViewModel();
+            model.ServiceDokumentOversikt = _servicedocRepository.GetAll().Select(x => new ServiceDokumentViewModel { ServiceSkjemaID = x.ServiceSkjemaID, OrdreNummer = x.OrdreNummer.GetValueOrDefault(), Aarsmodel = x.Aarsmodel, Garanti = x.Garanti, Reparasjonsbeskrivelse = x.Reparasjonsbeskrivelse, MedgaatteDeler = x.MedgaatteDeler, DeleRetur = x.DeleRetur, ForesendelsesMaate = x.ForesendelsesMaate }).ToList();
+
+            return View("Ny", model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int ServiceSKjemaID)
+        {
+            _servicedocRepository.Delete(ServiceSKjemaID);
+            return RedirectToAction("Index");
         }
     }
 }

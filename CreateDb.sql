@@ -102,7 +102,7 @@ INSERT INTO Kunder (KundeId, KundeNavn) VALUES ('100', 'Kunde1');
         REFERENCES Kunder (KundeId)
 ); 
 INSERT INTO Ordre (OrdreNummer, KundeID, SerieNummer, VareNavn, Status, Arbdokument) VALUES ('10000000', '100', '22222', 'SerieNR1', 'Godkjent', 'Arbdokument');
- create table if not EXISTS ServiceSkjema
+ create table if not EXISTS ServiceDokument
 (
     ServiceSkjemaID int PRIMARY KEY auto_increment,
     OrdreNummer int,
@@ -114,7 +114,7 @@ INSERT INTO Ordre (OrdreNummer, KundeID, SerieNummer, VareNavn, Status, Arbdokum
     ForesendelsesMaate varchar(255),
     foreign key(OrdreNummer) references Ordre(OrdreNummer)
 );
-INSERT INTO ServiceSkjema (ServiceSkjemaID, Aarsmodel, Garanti, Reparasjonsbeskrivelse, MedgaatteDeler, DeleRetur, ForesendelsesMaate) VALUES ('92321', '2010', 'Ja', 'Vinsj reparasjon', '1 del, 2 deler', 'Returdeler', 'Hentes av kunde' );
+
  create table if not EXISTS ArbDok
 (
     ArbDokID int PRIMARY KEY auto_increment,
