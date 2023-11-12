@@ -28,11 +28,9 @@
             <td>
                 <form asp-action="index" asp-controller="users" method="get">
                     <input type="hidden" name="Email" value="@user.Email" />
-                    <input type="submit" value="Endre" />
+                    <input type="submit" value="Endre Funker ikke" />
                 </form>
             <td>
-                <label for="Role">Sett som administrator</label>
-                <input asp-for="@Model.IsAdmin" />
             </td>
         </tr>
     }

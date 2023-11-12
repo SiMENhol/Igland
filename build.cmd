@@ -13,6 +13,9 @@ timeout /t 5
 : : Run sql script
 docker exec -i mariadb mysql  -uroot -p12345 < CreateDb.sql
 
+: : Run sql script for dummydata
+docker exec -i mariadb mysql  -uroot -p12345 < Dummydata.sql
+
 :: Kill running instance of container
 docker kill webapp
 
