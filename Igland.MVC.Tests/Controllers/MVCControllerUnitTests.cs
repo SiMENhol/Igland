@@ -1,8 +1,7 @@
 ﻿using Igland.MVC.Controllers;
 using Igland.MVC.Entities;
 using Igland.MVC.Models.Account;
-using Igland.MVC.Models.Home;
-using Igland.MVC.Models.ServiceSkjema;
+using Igland.MVC.Models.ServiceDokument;
 using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -43,7 +42,7 @@ namespace Igland.MVC.Tests.Controllers
                 {
                     var unitUnderTest = SetupUnitUnderTest();
                     var result = unitUnderTest.Index() as ViewResult;
-                    Assert.IsType<LoginViewModel>(result.Model);
+                    Assert.IsType<LoginFullViewModel>(result.Model);
                 }
 
                 [Fact]

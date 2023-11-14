@@ -1,0 +1,57 @@
+﻿@using Igland.MVC.Models.ArbDok;
+@model ArbDokFullViewModel
+
+<h1>Arbeidsdokument</h1>
+<br>
+<body>
+    <form asp-action="Post" asp-controller="ArbDok" method="post">
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+
+        <!-- <label asp-for="UpsertModel.ArbDokID"></label>
+        <input asp-for="UpsertModel.ArbDokID" type="number" /><br /> -->
+
+        <label asp-for="UpsertModel.OrdreNummer"></label>
+        <input asp-for="UpsertModel.OrdreNummer" type="number" required/><br />
+
+        <label asp-for="UpsertModel.Kunde"></label>
+        <input asp-for="UpsertModel.Kunde" type="text" required/><br />
+
+        <label asp-for="UpsertModel.Vinsj"></label>
+        <input asp-for="UpsertModel.Vinsj" type="text" required/><br />
+
+        <label asp-for="UpsertModel.HenvendelseMotatt"></label>
+        <input asp-for="UpsertModel.HenvendelseMotatt" type="date" required/><br />
+
+        <label asp-for="UpsertModel.AvtaltLevering"></label>
+        <input asp-for="UpsertModel.AvtaltLevering" type="date" /><br />
+
+        <label asp-for="UpsertModel.ProduktMotatt"></label>
+        <input asp-for="UpsertModel.ProduktMotatt" type="date" /><br />
+
+        <label asp-for="UpsertModel.SjekkUtfort"></label>
+        <input asp-for="UpsertModel.SjekkUtfort" type="date" /><br />
+
+        <label asp-for="UpsertModel.AvtaltFerdig"></label>
+        <input asp-for="UpsertModel.AvtaltFerdig" type="date" /><br />
+
+        <label asp-for="UpsertModel.ServiceFerdig"></label>
+        <input asp-for="UpsertModel.ServiceFerdig" type="date" /><br />
+
+        <label asp-for="UpsertModel.AntallTimer"></label>
+        <input asp-for="UpsertModel.AntallTimer" type="number" /><br />
+
+        <label asp-for="UpsertModel.BestillingFraKunde"></label>
+        <!-- <textarea asp-for="UpsertModel.BestillingFraKunde" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
+        <input asp-for="UpsertModel.BestillingFraKunde" type="text" placeholder="Maks grense 255 tegn" /><br />
+
+        <label asp-for="UpsertModel.NotatFraMekaniker"></label>
+        <!-- <textarea asp-for="UpsertModel.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
+        <input asp-for="UpsertModel.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn" /><br />
+
+        <label asp-for="UpsertModel.Status"></label>
+        <input asp-for="UpsertModel.Status" type="text" /><br />
+
+        <input type="submit"/>
+    </form>
+</body>

@@ -20,7 +20,6 @@ create table if not EXISTS AspNetUsers
          AccessFailedCount int not null,
           CONSTRAINT PK_AspNetUsers PRIMARY KEY (Id)
 );
-insert into AspNetUsers(Id,UserName, NormalizedUserName, Email, NormalizedEmail, EmailConfirmed, PasswordHash, SecurityStamp, ConcurrencyStamp, PhoneNumberConfirmed, TwoFactorEnabled, LockoutEnd, LockoutEnabled, AccessFailedCount) values('9670b732-ccb2-4e90-87f5-8b31ce8655fb', 'Igland@mail.com', 'IGLAND@MAIL.COM', 'Igland@mail.com', 'IGLAND@MAIL.COM', True, 'AQAAAAIAAYagAAAAEJ4HQojIkMee85/uU6/LD85or3Sjq4EY/i8WTx1XuKKh9Ar6Ylb3EChdkFArT0A7lQ==', 'PNR4WUNX2ZG3EYFMP4GYZAACIJZ4KDEW', 'a2849db4-acc1-4c85-8333-8b098eec9e02', True, False, '2023-11-06 19:55:08',False, '0');
 create table if not EXISTS AspNetRoles
 (
     Id varchar(255) not null,
@@ -89,7 +88,7 @@ create table if not EXISTS AspNetRoleClaims
     KundeID int PRIMARY KEY auto_increment,
     KundeNavn varchar(100)
 );
-INSERT INTO Kunder (KundeId, KundeNavn) VALUES ('100', 'Kunde1');
+
  create table if not EXISTS Ordre
 (
     OrdreNummer int PRIMARY KEY auto_increment,
@@ -101,8 +100,8 @@ INSERT INTO Kunder (KundeId, KundeNavn) VALUES ('100', 'Kunde1');
     FOREIGN KEY (KundeId) 
         REFERENCES Kunder (KundeId)
 ); 
-INSERT INTO Ordre (OrdreNummer, KundeID, SerieNummer, VareNavn, Status, Arbdokument) VALUES ('10000000', '100', '22222', 'SerieNR1', 'Godkjent', 'Arbdokument');
- create table if not EXISTS ServiceSkjema
+
+ create table if not EXISTS ServiceDokument
 (
     ServiceSkjemaID int PRIMARY KEY auto_increment,
     OrdreNummer int,
@@ -114,7 +113,7 @@ INSERT INTO Ordre (OrdreNummer, KundeID, SerieNummer, VareNavn, Status, Arbdokum
     ForesendelsesMaate varchar(255),
     foreign key(OrdreNummer) references Ordre(OrdreNummer)
 );
-INSERT INTO ServiceSkjema (ServiceSkjemaID, Aarsmodel, Garanti, Reparasjonsbeskrivelse, MedgaatteDeler, DeleRetur, ForesendelsesMaate) VALUES ('92321', '2010', 'Ja', 'Vinsj reparasjon', '1 del, 2 deler', 'Returdeler', 'Hentes av kunde' );
+
  create table if not EXISTS ArbDok
 (
     ArbDokID int PRIMARY KEY auto_increment,

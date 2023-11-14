@@ -16,12 +16,12 @@ namespace Igland.MVC.Repositories.EF
 
         public ServiceDokumentEntity Get(int ServiceSkjemaID)
         {
-            return dataContext.ServiceDokuments.FirstOrDefault(x => x.ServiceSkjemaID == ServiceSkjemaID);
+            return dataContext.ServiceDokument.FirstOrDefault(x => x.ServiceSkjemaID == ServiceSkjemaID);
         }
 
         public List<ServiceDokumentEntity> GetAll()
         {
-            return dataContext.ServiceDokuments.ToList();
+            return dataContext.ServiceDokument.ToList();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@using Igland.MVC.Models.ServiceSkjema;
+﻿@using Igland.MVC.Models.ServiceDokument;
 
 @model ServiceDokumentFullViewModel
 @{
@@ -59,7 +59,7 @@
 
 
     <tbody>
-            @foreach (var services in Model.ServiceDocOversikt)
+            @foreach (var services in Model.ServiceDokumentOversikt)
             {
             <tr>
                 <td>@services.ServiceSkjemaID</td>

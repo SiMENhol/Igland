@@ -1,39 +1,84 @@
-﻿﻿@using Igland.MVC.Models.ServiceSkjema;
+﻿@using Igland.MVC.Models.ServiceDokument;
 
 
 @model ServiceDokumentFullViewModel
 @{
-    ViewData["Title"] = "Ny servicedokument";
+    ViewData["Title"] = "Servicedokumenter";
 }
-<h1>Servicedokument</h1>
-<br>
-<div class="form-container">
-    <div class="left-side">
-    <form asp-action="Post" asp-controller="ServiceDokument" method="post">
-        @Html.ValidationSummary()
-        @Html.AntiForgeryToken()
 
-            <label asp-for="UpsertModel.OrdreNummer" class="input-field"></label><br />
-            <input asp-for="UpsertModel.OrdreNummer" type="number" required class="input-field" placeholder="10000000" /><br />
 
-            <label asp-for="UpsertModel.Aarsmodel"></label><br />
-            <input asp-for="UpsertModel.Aarsmodel" type="number" class="input-field"/><br />
+<div class="overskrift">
 
-            <label asp-for="UpsertModel.Garanti"></label><br />
-            <input asp-for="UpsertModel.Garanti" type="text" class="input-field" /><br />
-
-            <label asp-for="UpsertModel.Reparasjonsbeskrivelse"></label><br />
-            <textarea asp-for="UpsertModel.Reparasjonsbeskrivelse" type="text" class="comment-field" rows="5" autofocus></textarea><br />
-            <label asp-for="UpsertModel.MedgaatteDeler"></label><br />
-            <textarea asp-for="UpsertModel.MedgaatteDeler" type="text" class="comment-field" rows="5" autofocus></textarea><br />
-
-            <label asp-for="UpsertModel.DeleRetur"></label><br />
-            <input asp-for="UpsertModel.DeleRetur" type="text" class="input-field" /><br />
-
-            <label asp-for="UpsertModel.ForesendelsesMaate"></label><br />
-            <input asp-for="UpsertModel.ForesendelsesMaate" type="text" class="input-field" /><br />
-            <br />
-        <input type="submit" />
-    </form>
+    <h1>Serviceskjema</h1>
+    <br />
+    <div class="søkebar">
+        <input type="text" placeholder="Søk etter navn, nummer..">
+        @* <button type="submit"><i class="fa fa-search"></i></button>*@
     </div>
 </div>
+
+<div>
+    <a asp-controller="ServiceDokument" asp-action="Ny">Nytt serviceskjema</a>
+</div>
+
+<table id="tabell" , align="center">
+
+    @* <thred> spare </thred> *@
+    <tr>
+        <th>
+            ServiceSkjemaID
+        </th>
+
+        <th>
+            OrdreNummer
+        </th>
+
+        <th>
+            Årsmodel
+        </th>
+
+        <th>
+            Garanti
+        </th>
+
+        <th>
+            Reparasjonsbeskrivelse
+        </th>
+        <th>
+            Medgåtte deler
+        </th>
+        <th>
+            Deler og retur
+        </th>
+        <th>
+            Foresendelsesmåte
+        </th>
+
+
+
+        @* undergreier i tabellen *@
+
+
+
+    <tbody>
+            @foreach (var services in Model.ServiceDokumentOversikt)
+            {
+            <tr>
+                <td>
+                    <a asp-controller="ServiceDokument" asp-action="Rediger" asp-route-id="@services.ServiceSkjemaID">@services.ServiceSkjemaID</a>                 <form asp-action="Delete" asp-controller="ServiceDokument" method="post">
+                        <input type="hidden" name="ServiceSkjemaID" value="@services.ServiceSkjemaID" />
+                        <input type="submit" value="Slett" />
+                    </form>
+                </td>
+                <td><a asp-controller="ServiceDokument" asp-action="Rediger" asp-route-id="@services.ServiceSkjemaID">@services.OrdreNummer</a></td>
+                <td><a asp-controller="ServiceDokument" asp-action="Rediger" asp-route-id="@services.ServiceSkjemaID">@services.Aarsmodel</a></td>
+                <td>@services.Garanti</td>
+                <td>@services.Reparasjonsbeskrivelse</td>
+                <td>@services.MedgaatteDeler</td>
+                <td>@services.DeleRetur</td>
+                <td>@services.ForesendelsesMaate</td>
+            </tr>
+            }
+    </tbody>
+
+</table>

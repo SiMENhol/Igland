@@ -1,12 +1,13 @@
 ﻿@using Igland.MVC.Models.Account;
 
-@model LoginViewModel
+@model LoginFullViewModel
 
 @{
     ViewData["Title"] = "Hjem";
 }
 
-<h2>Velkommen @Model.Email</h2>
+<h2>Velkommen @User.Identity.Name.Split('@')[0]</h2>
+
 
 
 <div class="buttons">
@@ -19,40 +20,5 @@
         <div class="box">Kunder</div>
     </a>
 </div>
-@*{
-    if (userWithId1 != null)
-    {
-        <h2>Vinsjtype: @userWithId1.Id</h2>
-    }
-    <div class="w3-light-grey w3-round-xlarge">
-        <div class="w3-container w3-blue w3-round-xlarge" style="width:25%">25%</div>
-    </div>
-}
 
-*@
 
-@* Eksempel på upsert og vise innhold i en database
-<form asp-action="Post" asp-controller="Home" method="post">
-    @Html.ValidationSummary()
-    @Html.AntiForgeryToken()
-   <label asp-for="UpsertModel.Id"></label>
-    <input asp-for="UpsertModel.Id" type="text" /><br />
-
-    <label asp-for="UpsertModel.Name"></label>
-    <input asp-for="UpsertModel.Name" type="text" required />
-
-    <label asp-for="UpsertModel.Email"></label>
-    <input asp-for="UpsertModel.Email" type="email" required />
-    <input type="submit" />
-</form>
-<ul>
-    @foreach (var users in Model.UserList)
-    {
-        <li>
-            @users.Id
-            @users.Name
-            @users.Email
-        </li>
-    }
-</ul>
-*@

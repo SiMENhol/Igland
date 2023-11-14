@@ -7,5 +7,6 @@ namespace Igland.MVC.Repositories.IRepo
         void Upsert(ServiceDokumentEntity ServiceSkjemaID);
         ServiceDokumentEntity Get(int id);
         List<ServiceDokumentEntity> GetAll();
+        void Delete(int ServiceSkjemaID);
     }
 }

@@ -16,12 +16,12 @@ namespace Igland.MVC.Repositories.EF
 
         public ServiceDokumentEntity Get(int ServiceSkjemaID)
         {
-            return dataContext.ServiceDokuments.FirstOrDefault(x => x.ServiceSkjemaID == ServiceSkjemaID);
+            return dataContext.ServiceDokument.FirstOrDefault(x => x.ServiceSkjemaID == ServiceSkjemaID);
         }
 
         public List<ServiceDokumentEntity> GetAll()
         {
-            return dataContext.ServiceDokuments.ToList();
+            return dataContext.ServiceDokument.ToList();
         }
 
         public void Upsert(ServiceDokumentEntity serviceSkjema)
@@ -42,6 +42,19 @@ namespace Igland.MVC.Repositories.EF
             serviceSkjema.ServiceSkjemaID = 0;
             dataContext.Add(serviceSkjema);
             dataContext.SaveChanges();
+        }
+
+        public void Delete(int ServiceSkjemaID)
+        {
+            ServiceDokumentEntity? ServiceSkjema = GetServiceSkjemaID(ServiceSkjemaID);
+            if (ServiceSkjema == null)
+                return;
+            dataContext.ServiceDokument.Remove(ServiceSkjema);
+            dataContext.SaveChanges();
+        }
+        private ServiceDokumentEntity? GetServiceSkjemaID(int ServiceSkjemaID)
+        {
+            return dataContext.ServiceDokument.FirstOrDefault(x => x.ServiceSkjemaID == ServiceSkjemaID);
         }
     }
 }

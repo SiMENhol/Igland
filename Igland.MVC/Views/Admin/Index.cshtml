@@ -1,0 +1,17 @@
+﻿@using Igland.MVC.Models.Users
+@model UserViewModel
+@{
+    ViewData["Title"] = "Adminside";
+}
+<h2>Hva vil du gjøre @User.Identity.Name.Split('@')[0]?</h2>
+<br />
+<div>
+    <a asp-action="Oversikt">Oversikt over brukere</a>
+</div>
+<br>
+<div>
+    <a asp-action="Register">Registrer en ny bruker</a>
+</div>
+<br>
+
+

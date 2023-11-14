@@ -25,7 +25,16 @@ namespace Igland.MVC.Controllers
             model.ArbDokList = _arbdokRepository.GetAll().Select(x => new ArbDokViewModel { ArbDokID = x.ArbDokID, OrdreNummer = x.OrdreNummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
             return View("Index", model);
         }
+        [HttpGet]
+        public IActionResult Ny()
+        {
+            _logger.LogInformation("Index method called");
 
+            var model = new ArbDokFullViewModel();
+            model.ArbDokList = _arbdokRepository.GetAll().Select(x => new ArbDokViewModel { ArbDokID = x.ArbDokID, OrdreNummer = x.OrdreNummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
+
+            return View("Ny", model);
+        }
         public IActionResult Rediger()
         {
             var model = new ArbDokFullViewModel();
@@ -53,7 +62,7 @@ namespace Igland.MVC.Controllers
                 Status = arbdok.UpsertModel.Status,
             };
             _arbdokRepository.Upsert(entity);
-            return Redirect("/ArbDocsOversikt");
+            return Redirect("index");
         }
     }
 }
