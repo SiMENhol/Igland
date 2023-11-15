@@ -3,37 +3,36 @@
 
 @model ServiceDokumentFullViewModel
 @{
-    ViewData["Title"] = "Ny servicedokument";
+    ViewData["Title"] = "Nytt serviceskjema";
 }
 <h1>Servicedokument</h1>
-<br>
-<div class="form-container">
-    <div class="left-side">
+<a style="text-decoration:none" asp-controller="ServiceDokument" asp-action="Index" >
+    <div>Tilbake</div>
+</a>
+<hr />
         <form asp-action="Post" asp-controller="ServiceDokument" method="post">
             @Html.ValidationSummary()
             @Html.AntiForgeryToken()
 
-            <label asp-for="UpsertModel.OrdreNummer" class="input-field"></label><br />
-            <input asp-for="UpsertModel.OrdreNummer" type="number" required class="input-field" placeholder="10000000" /><br />
+            <label asp-for="UpsertModel.OrdreNummer"></label><br />
+            <input asp-for="UpsertModel.OrdreNummer" type="number"  /><br />
 
             <label asp-for="UpsertModel.Aarsmodel">Årsmodel</label><br />
-            <input asp-for="UpsertModel.Aarsmodel" type="number" class="input-field" /><br />
+            <input asp-for="UpsertModel.Aarsmodel" type="number" /><br />
 
             <label asp-for="UpsertModel.Garanti"></label><br />
-            <input asp-for="UpsertModel.Garanti" type="text" class="input-field" /><br />
+            <input asp-for="UpsertModel.Garanti" type="text" /><br />
 
             <label asp-for="UpsertModel.Reparasjonsbeskrivelse"></label><br />
-            <textarea asp-for="UpsertModel.Reparasjonsbeskrivelse" type="text" class="comment-field" rows="5" autofocus></textarea><br />
+            <textarea asp-for="UpsertModel.Reparasjonsbeskrivelse" type="text" rows="5" autofocus></textarea><br />
             <label asp-for="UpsertModel.MedgaatteDeler">Medgåtte deler</label><br />
-            <textarea asp-for="UpsertModel.MedgaatteDeler" type="text" class="comment-field" rows="5" autofocus></textarea><br />
+            <textarea asp-for="UpsertModel.MedgaatteDeler" type="text" rows="5" autofocus></textarea><br />
 
             <label asp-for="UpsertModel.DeleRetur">Deler og retur</label><br />
-            <input asp-for="UpsertModel.DeleRetur" type="text" class="input-field" /><br />
+            <input asp-for="UpsertModel.DeleRetur" type="text" /><br />
 
             <label asp-for="UpsertModel.ForesendelsesMaate">Foresendelsesmåte</label><br />
-            <input asp-for="UpsertModel.ForesendelsesMaate" type="text" class="input-field" /><br />
+            <input asp-for="UpsertModel.ForesendelsesMaate" type="text" /><br />
             <br />
             <input type="submit" />
         </form>
-    </div>
-</div>

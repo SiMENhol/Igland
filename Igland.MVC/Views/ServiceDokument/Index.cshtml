@@ -1,84 +1,86 @@
 ﻿@using Igland.MVC.Models.ServiceDokument;
-
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 @model ServiceDokumentFullViewModel
 @{
-    ViewData["Title"] = "Servicedokumenter";
+    ViewData["Title"] = "Serviceskjema";
 }
 
-
 <div class="overskrift">
-
     <h1>Serviceskjema</h1>
     <br />
-    <div class="søkebar">
-        <input type="text" placeholder="Søk etter navn, nummer..">
-        @* <button type="submit"><i class="fa fa-search"></i></button>*@
+    <div >
+        <input type="text" class="button-link" id="searchInput" placeholder="Søk..">
     </div>
 </div>
 
 <div>
-    <a asp-controller="ServiceDokument" asp-action="Ny">Nytt serviceskjema</a>
+    <form action="@Url.Action("Ny", "ServiceDokument")">
+        <button type="submit" class="button-link">Nytt serviceskjema</button>
+    </form>
 </div>
-
-<table id="tabell" , align="center">
-
-    @* <thred> spare </thred> *@
-    <tr>
-        <th>
-            ServiceSkjemaID
-        </th>
-
-        <th>
-            OrdreNummer
-        </th>
-
-        <th>
-            Årsmodel
-        </th>
-
-        <th>
-            Garanti
-        </th>
-
-        <th>
-            Reparasjonsbeskrivelse
-        </th>
-        <th>
-            Medgåtte deler
-        </th>
-        <th>
-            Deler og retur
-        </th>
-        <th>
-            Foresendelsesmåte
-        </th>
+<hr />
 
 
 
-        @* undergreier i tabellen *@
-
-
-
+<table id="tabell" align="center">
+    <thead>
+        <tr>
+            <th>ServiceSkjemaID</th>
+            <th>Ordrenummer</th>
+            <th>Årsmodel</th>
+            <th>Garanti</th>
+            <th>Reparasjonsbeskrivelse</th>
+            <th>Medgåtte deler</th>
+            <th>Deler og retur</th>
+            <th>Foresendelsesmåte</th>
+        </tr>
+    </thead>
     <tbody>
-            @foreach (var services in Model.ServiceDokumentOversikt)
-            {
-            <tr>
+        @foreach (var service in Model.ServiceDokumentOversikt)
+        {
+            <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "ServiceDokument", new { id = service.ServiceSkjemaID })">
                 <td>
-                    <a asp-controller="ServiceDokument" asp-action="Rediger" asp-route-id="@services.ServiceSkjemaID">@services.ServiceSkjemaID</a>                 <form asp-action="Delete" asp-controller="ServiceDokument" method="post">
-                        <input type="hidden" name="ServiceSkjemaID" value="@services.ServiceSkjemaID" />
-                        <input type="submit" value="Slett" />
+                    @service.ServiceSkjemaID
+                    <form asp-action="Delete" asp-controller="ServiceDokument" method="post" onsubmit="return confirm('Er du sikker på at du vil slette?');">
+                        <input type="hidden" name="ServiceSkjemaID" value="@service.ServiceSkjemaID" />
+                        <input type="submit"  class="button-link" value="Slett" />
                     </form>
                 </td>
-                <td><a asp-controller="ServiceDokument" asp-action="Rediger" asp-route-id="@services.ServiceSkjemaID">@services.OrdreNummer</a></td>
-                <td><a asp-controller="ServiceDokument" asp-action="Rediger" asp-route-id="@services.ServiceSkjemaID">@services.Aarsmodel</a></td>
-                <td>@services.Garanti</td>
-                <td>@services.Reparasjonsbeskrivelse</td>
-                <td>@services.MedgaatteDeler</td>
-                <td>@services.DeleRetur</td>
-                <td>@services.ForesendelsesMaate</td>
+                <td>@service.OrdreNummer</td>
+                <td>@service.Aarsmodel</td>
+                <td>@service.Garanti</td>
+                <td>@service.Reparasjonsbeskrivelse</td>
+                <td>@service.MedgaatteDeler</td>
+                <td>@service.DeleRetur</td>
+                <td>@service.ForesendelsesMaate</td>
             </tr>
-            }
+        }
     </tbody>
-
 </table>
+
+<script>
+    $(document).ready(function () {
+        // Function to filter rows based on search input
+        function filterTable() {
+            var searchText = $('#searchInput').val().toLowerCase();
+            $('.row-data').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1);
+            });
+        }
+
+        // Event listener for keyup on the search input
+        $('#searchInput').keyup(function () {
+            filterTable();
+        });
+
+        // Redirect to the details page when clicking on a row
+        $(".row-clickable").click(function () {
+            var url = $(this).data("url");
+            window.location.href = url;
+        });
+        function confirmDelete() {
+            var userConfirmed = confirm('Er du sikker på at du vil slette?');
+            return userConfirmed;
+        }
+    });
+</script>

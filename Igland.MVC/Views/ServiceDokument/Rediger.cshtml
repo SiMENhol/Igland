@@ -1,51 +1,51 @@
 ﻿﻿@using Igland.MVC.Models.ServiceDokument;
-
-
 @model ServiceDokumentFullViewModel
-<h1>Arbeidsdokument</h1>
-<br>
-<body>
-    @{
-        ViewData["Title"] = "Rediger servicedokumenter";
-        int getID()
-        {
-            int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
-            if (id <= 0 || id > Model.ServiceDokumentOversikt.Count)
-            {
-                return 0;
-            }
-            return id - 1;
-        }
+@{
+    ViewData["Title"] = "Rediger serviceskjema";
+    int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
+    int index = Model.ServiceDokumentOversikt.FindIndex(s => s.ServiceSkjemaID == id);
+    if (index == -1)
+    {
+        // Handle the case where the id is not found in the list
+        index = 0; // Set to the first item as a default
     }
+}
+<h1>Serviceskjema</h1>
+<br>
+<a style="text-decoration:none" asp-controller="ServiceDokument" asp-action="Index" class="box-link">
+    <div>Tilbake</div>
+</a>
+<hr />
 
-    <form asp-action="Post" asp-controller="ServiceDokument" method="post">
-        @Html.ValidationSummary()
-        @Html.AntiForgeryToken()
 
-        <label asp-for="UpsertModel.ServiceSkjemaID" hidden></label>
-        <input asp-for="UpsertModel.ServiceSkjemaID" type="number" value="@Model.ServiceDokumentOversikt[getID()].ServiceSkjemaID" /><br />
 
-        <label asp-for="UpsertModel.OrdreNummer"></label>
-        <input asp-for="UpsertModel.OrdreNummer" type="number" required value="@Model.ServiceDokumentOversikt[getID()].OrdreNummer" /><br />
+             <form asp-action="Post" asp-controller="ServiceDokument" method="post">
+            @Html.ValidationSummary()
+            @Html.AntiForgeryToken()
 
-        <label asp-for="UpsertModel.Aarsmodel">Årsmodel</label>
-        <input asp-for="UpsertModel.Aarsmodel" type="text" required value="@Model.ServiceDokumentOversikt[getID()].Aarsmodel" /><br />
+                <label asp-for="UpsertModel.ServiceSkjemaID" hidden></label>
+                <input asp-for="UpsertModel.ServiceSkjemaID" type="number" value="@Model.ServiceDokumentOversikt[index].ServiceSkjemaID" hidden />
 
-        <label asp-for="UpsertModel.Garanti"></label>
-        <input asp-for="UpsertModel.Garanti" type="text" required value="@Model.ServiceDokumentOversikt[getID()].Garanti" /><br />
+                <label asp-for="UpsertModel.OrdreNummer"></label> <br />
+                <input asp-for="UpsertModel.OrdreNummer" type="number" required value="@Model.ServiceDokumentOversikt[index].OrdreNummer" /><br />
 
-        <label asp-for="UpsertModel.Reparasjonsbeskrivelse"></label>
-        <input asp-for="UpsertModel.Reparasjonsbeskrivelse" type="text" value="@Model.ServiceDokumentOversikt[getID()].Reparasjonsbeskrivelse" /><br />
+                <label asp-for="UpsertModel.Aarsmodel">Årsmodel</label> <br />
+                <input asp-for="UpsertModel.Aarsmodel" type="text" required value="@Model.ServiceDokumentOversikt[index].Aarsmodel" /><br />
 
-        <label asp-for="UpsertModel.MedgaatteDeler">Medgåtte deler</label>
-        <input asp-for="UpsertModel.MedgaatteDeler" type="text" value="@Model.ServiceDokumentOversikt[getID()].MedgaatteDeler" /><br />
+                <label asp-for="UpsertModel.Garanti"></label> <br />
+                <input asp-for="UpsertModel.Garanti" type="text" required value="@Model.ServiceDokumentOversikt[index].Garanti" /><br />
 
-        <label asp-for="UpsertModel.DeleRetur">Deler og retur</label>
-        <input asp-for="UpsertModel.DeleRetur" type="text" value="@Model.ServiceDokumentOversikt[getID()].DeleRetur" /><br />
+                <label asp-for="UpsertModel.Reparasjonsbeskrivelse"></label> <br />
+                <input asp-for="UpsertModel.Reparasjonsbeskrivelse" type="text" value="@Model.ServiceDokumentOversikt[index].Reparasjonsbeskrivelse" /><br />
 
-        <label asp-for="UpsertModel.ForesendelsesMaate">Foresendelsesmåte</label>
-        <input asp-for="UpsertModel.ForesendelsesMaate" type="text" value="@Model.ServiceDokumentOversikt[getID()].ForesendelsesMaate" /><br />
+                <label asp-for="UpsertModel.MedgaatteDeler">Medgåtte deler</label> <br />
+                <input asp-for="UpsertModel.MedgaatteDeler" type="text" value="@Model.ServiceDokumentOversikt[index].MedgaatteDeler" /><br />
 
-        <input type="submit" />
-    </form>
-</body>
+                <label asp-for="UpsertModel.DeleRetur">Deler og retur</label> <br />
+                <input asp-for="UpsertModel.DeleRetur" type="text" value="@Model.ServiceDokumentOversikt[index].DeleRetur" /><br />
+
+                <label asp-for="UpsertModel.ForesendelsesMaate">Foresendelsesmåte</label> <br />
+                <input asp-for="UpsertModel.ForesendelsesMaate" type="text" value="@Model.ServiceDokumentOversikt[index].ForesendelsesMaate" /><br />
+                <br />
+                <input type="submit" />
+            </form>

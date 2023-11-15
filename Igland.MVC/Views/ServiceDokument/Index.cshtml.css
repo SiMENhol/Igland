@@ -6,3 +6,20 @@ th, tr, td {
     border: 1px solid black;
     padding: 20px;
 }
+.row-clickable:hover {
+    background-color: lightgrey; 
+    cursor: pointer;
+}
+.button-link {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 4px 10px;
+    background-color: white;
+    color: black;
+    text-decoration: black;
+    border-radius: 5px;
+}
+
+    .button-link:hover {
+        background-color: lightgrey;
+    }
