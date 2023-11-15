@@ -11,28 +11,41 @@
 
 <table>
     <tr>
-        <td>Name</td>
+        <td>Navn</td>
         <td>Email</td>
+
     </tr>
     @foreach (var user in Model.Users)
     {
         <tr>
-            <td>@user.UserName</td>
+            <td>@user.UserName.Split('@')[0]</td>
             <td>@user.Email</td>
+            
+
             <td>
-                <form asp-action="Delete" asp-controller="Admin" method="post">
+                <form asp-action="Delete" asp-controller="Admin" method="post" onsubmit="return confirm('Er du sikker på at du vil slette @user.Email?');">
                     <input type="hidden" name="Email" value="@user.Email" />
                     <input type="submit" value="Slett" />
                 </form>
             </td>
+
             <td>
-                <form asp-action="index" asp-controller="users" method="get">
-                    <input type="hidden" name="Email" value="@user.Email" />
-                    <input type="submit" value="Endre Funker ikke" />
+                <form asp-action="MakeUserAdministrator" asp-controller="Admin" method="post" onsubmit="return confirm('Er du sikker på at du vil gjøre @user.Email til Administrator');">
+                    <input type="hidden" name="UserId" value="@user.Id" />
+
+
+                    <input type="submit" value="Gjøre til Administrator" onclick="return confirm('Er du sikker på at du vil gjøre @user.Email til Administrator');" />
                 </form>
+            </td>
+
             <td>
+                <form asp-action="EditUser" asp-controller="Admin" method="post">
+                    <input type="hidden" name="Email" value="@user.Email" />
+                    <input type="submit" value="Endre(funker ikke)" />
+                </form>
             </td>
         </tr>
+        
     }
 </table>
 

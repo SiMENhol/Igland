@@ -8,9 +8,11 @@ using Igland.MVC.Models.Account;
 using Igland.MVC.Entities;
 using Igland.MVC.Repositories.IRepo;
 using Igland.MVC.Models.Users;
+using Igland.MVC.Models.ServiceDokument;
 
 namespace Igland.MVC.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AdminController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -28,6 +30,7 @@ namespace Igland.MVC.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
         [HttpGet]
+        
         public IActionResult Index(string? email)
         {
             var model = new UserViewModel();
@@ -104,12 +107,37 @@ namespace Igland.MVC.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        
         [HttpPost]
         public IActionResult Delete(string email)
         {
             userRepository.Delete(email);
-            return RedirectToAction("Index");
+            return RedirectToAction("Oversikt");
+        }
+        public async Task<IActionResult> MakeUserAdministrator(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user != null)
+            {
+                var result = await _userManager.AddToRoleAsync(user, "Administrator");
+
+                if (result.Succeeded)
+                {
+                    // User is now in the "Administrator" role
+                    return RedirectToAction("Oversikt");
+                }
+                else
+                {
+                    // Handle the case where adding the user to the role failed
+                    return RedirectToAction("Oversikt");
+                }
+            }
+            else
+            {
+                // Handle the case where the user was not found
+                return RedirectToAction("Oversikt");
+            }
         }
     }
 }

@@ -4,13 +4,13 @@
     ViewData["Title"] = "Adminside";
 }
 <h2>Hva vil du gjøre @User.Identity.Name.Split('@')[0]?</h2>
-<br />
+<hr >
 <div>
-    <a asp-action="Oversikt">Oversikt over brukere</a>
+    <a style="text-decoration:none" asp-action="Oversikt">Oversikt over brukere</a>
 </div>
 <br>
 <div>
-    <a asp-action="Register">Registrer en ny bruker</a>
+    <a style="text-decoration:none" asp-action="Register" class="textlink">Registrer en ny bruker</a>
 </div>
 <br>
 
