@@ -96,9 +96,7 @@ create table if not EXISTS AspNetRoleClaims
     SerieNummer varchar(30),
     VareNavn varchar(30),
     Status varchar(30),
-    Arbdokument varchar(255),
-    FOREIGN KEY (KundeId) 
-        REFERENCES Kunder (KundeId)
+    Arbdokument varchar(255)
 ); 
 
  create table if not EXISTS ServiceDokument
@@ -129,9 +127,7 @@ create table if not EXISTS AspNetRoleClaims
     AntallTimer int,
     BestillingFraKunde varchar(255),
     NotatFraMekaniker varchar(255),
-    Status varchar(255),
-    foreign key(OrdreNummer)
-        references Ordre(OrdreNummer)
+    Status varchar(255)
 );
  create table if not EXISTS Sjekkliste
 (

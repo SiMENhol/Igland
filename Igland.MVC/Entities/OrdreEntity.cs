@@ -8,8 +8,8 @@ namespace Igland.MVC.Entities
         {
             public int OrdreNummer { get; set; }
             public int KundeID { get; set; }
-            public string SerieNummer { get; set; }
-            public string VareNavn { get; set; }
-            public string Status { get; set; }
-            public string ArbDokument { get; set; }}
+            public string? SerieNummer { get; set; }
+            public string? VareNavn { get; set; }
+            public string? Status { get; set; }
+            public string? ArbDokument { get; set; }}
         } 

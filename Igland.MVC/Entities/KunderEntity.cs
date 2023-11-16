@@ -7,6 +7,6 @@ namespace Igland.MVC.Entities
     public class KunderEntity
     {
         public int KundeID { get; set; }
-        public string KundeNavn { get; set; }
+        public string? KundeNavn { get; set; }
     }
 }

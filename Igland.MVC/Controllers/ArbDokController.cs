@@ -51,6 +51,23 @@ namespace Igland.MVC.Controllers
 
         public IActionResult Post(ArbDokFullViewModel arbdok)
         {
+            var kunderEntity = new KunderEntity
+            {
+                KundeID = arbdok.UpsertKunder.KundeID,
+                KundeNavn = arbdok.UpsertKunder.KundeNavn,
+            };
+            _kunderRepository.Upsert(kunderEntity);
+
+            var ordreEntity = new OrdreEntity
+            {
+                OrdreNummer = arbdok.UpsertOrdre.OrdreNummer,
+                KundeID = arbdok.UpsertOrdre.KundeID, // FK
+                SerieNummer = arbdok.UpsertOrdre.SerieNummer,
+                VareNavn = arbdok.UpsertOrdre.VareNavn,
+                Status = arbdok.UpsertOrdre.Status,
+            };
+            _ordreRepository.Upsert(ordreEntity);
+
             var arbdokEntity = new ArbDok
             {
                 ArbDokID = arbdok.UpsertArbDok.ArbDokID,
@@ -70,24 +87,7 @@ namespace Igland.MVC.Controllers
             };
             _arbdokRepository.Upsert(arbdokEntity);
 
-            var ordreEntity = new OrdreEntity
-            {
-                OrdreNummer = arbdok.UpsertOrdre.OrdreNummer,
-                KundeID = arbdok.UpsertOrdre.KundeID, // FK
-                SerieNummer = arbdok.UpsertOrdre.SerieNummer,
-                VareNavn = arbdok.UpsertOrdre.VareNavn,
-                Status = arbdok.UpsertOrdre.Status,
-            };
-            _ordreRepository.Upsert(ordreEntity);
-
-            var kunderEntity = new KunderEntity
-            {
-                KundeID = arbdok.UpsertKunder.KundeID,
-                KundeNavn = arbdok.UpsertKunder.KundeNavn,
-            };
-            _kunderRepository.Upsert(kunderEntity);
-
-            return Redirect("index");
+            return Redirect("Index");
         }
 
         [Authorize(Roles = "Administrator")]
