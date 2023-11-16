@@ -4,7 +4,7 @@ namespace Igland.MVC.Repositories
 {
     public abstract class UserRepositoryBase
     {
-        UserManager<IdentityUser> userManager;
+       readonly UserManager<IdentityUser> userManager;
         public UserRepositoryBase(UserManager<IdentityUser> userManager)
         {
             this.userManager = userManager;

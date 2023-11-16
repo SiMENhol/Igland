@@ -15,8 +15,10 @@ namespace Igland.MVC.Controllers
             _logger = logger;
             _kunderRepository = kunderRepository;
         }
+        [HttpGet]
         public IActionResult Index()
         {
+            _logger.LogInformation("Index method called");
             var model = new KunderFullViewModel();
             model.KunderOversikt = _kunderRepository.GetAll().Select(x => new KunderViewModel { KundeID = x.KundeID, KundeNavn = x.KundeNavn }).ToList();
 
@@ -26,11 +28,13 @@ namespace Igland.MVC.Controllers
         [HttpPost]
         public IActionResult Post(KunderFullViewModel kunder)
         {
+            _logger.LogInformation("Upsert method called");
             var entity = new KunderEntity
             {
                 KundeID = kunder.UpsertModel.KundeID,
                 KundeNavn = kunder.UpsertModel.KundeNavn,
-            };
+
+            }; 
             _kunderRepository.Upsert(entity);
             return RedirectToAction("Index");
         }
