@@ -1,4 +1,4 @@
-﻿@*@using Igland.MVC.Models.ArbDok;
+﻿@using Igland.MVC.Models.ArbDok;
 @model ArbDokFullViewModel
 
 <h1>Arbeidsdokument</h1>
@@ -48,50 +48,50 @@
         @Html.ValidationSummary()
         @Html.AntiForgeryToken()
 
-        <label asp-for="UpsertModel.ArbDokID" hidden></label>
-        <input asp-for="UpsertModel.ArbDokID" type="number" value="@Model.ArbDokList[getID()].ArbDokID" hidden/><br />
+        <label asp-for="UpsertArbDok.ArbDokID" hidden></label>
+        <input asp-for="UpsertArbDok.ArbDokID" type="number" value="@Model.ArbDokList[getID()].ArbDokID" hidden/><br />
 
-        <label asp-for="UpsertModel.OrdreNummer"></label>
-        <input asp-for="UpsertModel.OrdreNummer" type="number" required value="@Model.ArbDokList[getID()].OrdreNummer"/><br />
+        <label asp-for="UpsertArbDok.OrdreNummer"></label>
+        <input asp-for="UpsertArbDok.OrdreNummer" type="number" required value="@Model.ArbDokList[getID()].OrdreNummer"/><br />
 
-        <label asp-for="UpsertModel.Kunde"></label>
-        <input asp-for="UpsertModel.Kunde" type="text" required value="@Model.ArbDokList[getID()].Kunde" /><br />
+        <label asp-for="UpsertArbDok.Kunde"></label>
+        <input asp-for="UpsertArbDok.Kunde" type="text" required value="@Model.ArbDokList[getID()].Kunde" /><br />
 
-        <label asp-for="UpsertModel.Vinsj"></label>
-        <input asp-for="UpsertModel.Vinsj" type="text" required value="@Model.ArbDokList[getID()].Vinsj" /><br />
+        <label asp-for="UpsertArbDok.Vinsj"></label>
+        <input asp-for="UpsertArbDok.Vinsj" type="text" required value="@Model.ArbDokList[getID()].Vinsj" /><br />
 
-        <label asp-for="UpsertModel.HenvendelseMotatt"></label>
-        <input asp-for="UpsertModel.HenvendelseMotatt" type="date" value="@formatDate(Model.ArbDokList[getID()].HenvendelseMotatt.ToString())" /><br />
+        <label asp-for="UpsertArbDok.HenvendelseMotatt"></label>
+        <input asp-for="UpsertArbDok.HenvendelseMotatt" type="date" value="@formatDate(Model.ArbDokList[getID()].HenvendelseMotatt.ToString())" /><br />
 
-        <label asp-for="UpsertModel.AvtaltLevering"></label>
-        <input asp-for="UpsertModel.AvtaltLevering" type="date" value="@formatDate(Model.ArbDokList[getID()].AvtaltLevering.ToString())" /><br />
+        <label asp-for="UpsertArbDok.AvtaltLevering"></label>
+        <input asp-for="UpsertArbDok.AvtaltLevering" type="date" value="@formatDate(Model.ArbDokList[getID()].AvtaltLevering.ToString())" /><br />
 
-        <label asp-for="UpsertModel.ProduktMotatt"></label>
-        <input asp-for="UpsertModel.ProduktMotatt" type="date" value="@formatDate(Model.ArbDokList[getID()].ProduktMotatt.ToString())" /><br />
+        <label asp-for="UpsertArbDok.ProduktMotatt"></label>
+        <input asp-for="UpsertArbDok.ProduktMotatt" type="date" value="@formatDate(Model.ArbDokList[getID()].ProduktMotatt.ToString())" /><br />
 
-        <label asp-for="UpsertModel.SjekkUtfort"></label>
-        <input asp-for="UpsertModel.SjekkUtfort" type="date" value="@formatDate(Model.ArbDokList[getID()].SjekkUtfort.ToString())" /><br />
+        <label asp-for="UpsertArbDok.SjekkUtfort"></label>
+        <input asp-for="UpsertArbDok.SjekkUtfort" type="date" value="@formatDate(Model.ArbDokList[getID()].SjekkUtfort.ToString())" /><br />
 
-        <label asp-for="UpsertModel.AvtaltFerdig"></label>
-        <input asp-for="UpsertModel.AvtaltFerdig" type="date" value="@formatDate(Model.ArbDokList[getID()].AvtaltFerdig.ToString())" /><br />
+        <label asp-for="UpsertArbDok.AvtaltFerdig"></label>
+        <input asp-for="UpsertArbDok.AvtaltFerdig" type="date" value="@formatDate(Model.ArbDokList[getID()].AvtaltFerdig.ToString())" /><br />
 
-        <label asp-for="UpsertModel.ServiceFerdig"></label>
-        <input asp-for="UpsertModel.ServiceFerdig" type="date" value="@formatDate(Model.ArbDokList[getID()].ServiceFerdig.ToString())" /><br />
+        <label asp-for="UpsertArbDok.ServiceFerdig"></label>
+        <input asp-for="UpsertArbDok.ServiceFerdig" type="date" value="@formatDate(Model.ArbDokList[getID()].ServiceFerdig.ToString())" /><br />
 
-        <label asp-for="UpsertModel.AntallTimer"></label>
-        <input asp-for="UpsertModel.AntallTimer" type="number" value="@Model.ArbDokList[getID()].AntallTimer" /><br />
+        <label asp-for="UpsertArbDok.AntallTimer"></label>
+        <input asp-for="UpsertArbDok.AntallTimer" type="number" value="@Model.ArbDokList[getID()].AntallTimer" /><br />
 
-        <label asp-for="UpsertModel.BestillingFraKunde"></label>
+        <label asp-for="UpsertArbDok.BestillingFraKunde"></label>
         <!-- <textarea asp-for="UpsertModel.BestillingFraKunde" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
-        <input asp-for="UpsertModel.BestillingFraKunde" type="text" placeholder="Maks grense 255 tegn" value="@Model.ArbDokList[getID()].BestillingFraKunde" /><br />
+        <input asp-for="UpsertArbDok.BestillingFraKunde" type="text" placeholder="Maks grense 255 tegn" value="@Model.ArbDokList[getID()].BestillingFraKunde" /><br />
 
-        <label asp-for="UpsertModel.NotatFraMekaniker"></label>
+        <label asp-for="UpsertArbDok.NotatFraMekaniker"></label>
         <!-- <textarea asp-for="UpsertModel.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
-        <input asp-for="UpsertModel.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn" value="@Model.ArbDokList[getID()].NotatFraMekaniker" /><br />
+        <input asp-for="UpsertArbDok.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn" value="@Model.ArbDokList[getID()].NotatFraMekaniker" /><br />
 
-        <label asp-for="UpsertModel.Status"></label>
-        <input asp-for="UpsertModel.Status" type="text" value="@Model.ArbDokList[getID()].Status" /><br />
+        <label asp-for="UpsertArbDok.Status"></label>
+        <input asp-for="UpsertArbDok.Status" type="text" value="@Model.ArbDokList[getID()].Status" /><br />
 
         <input type="submit" />
     </form>
-</body>*@
+</body>

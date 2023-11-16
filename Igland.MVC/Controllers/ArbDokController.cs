@@ -70,7 +70,7 @@ namespace Igland.MVC.Controllers
             };
             _arbdokRepository.Upsert(arbdokEntity);
 
-            var ordreEntity = new OrdreEntity
+            /*var ordreEntity = new OrdreEntity
             {
                 OrdreNummer = arbdok.UpsertOrdre.OrdreNummer,
                 KundeID = arbdok.UpsertOrdre.KundeID, // FK
@@ -85,7 +85,7 @@ namespace Igland.MVC.Controllers
                 KundeID = arbdok.UpsertKunder.KundeID,
                 KundeNavn = arbdok.UpsertKunder.KundeNavn,
             };
-            _kunderRepository.Upsert(kunderEntity);
+            _kunderRepository.Upsert(kunderEntity);*/
 
             return Redirect("index");
         }
