@@ -1,14 +1,27 @@
-﻿namespace Igland.MVC.Models.ArbDok
+﻿using Igland.MVC.Models.Kunder;
+using Igland.MVC.Models.Ordre;
+
+namespace Igland.MVC.Models.ArbDok
 {
     public class ArbDokFullViewModel
     {
         public ArbDokFullViewModel()
         {
-            UpsertModel = new ArbDokViewModel();
+            UpsertArbDok = new ArbDokViewModel();
+            UpsertOrdre = new OrdreViewModel();
+            UpsertKunder = new KunderViewModel();
+
             ArbDokList = new List<ArbDokViewModel>();
+            OrdreList = new List<OrdreViewModel>();
+            KunderList = new List<KunderViewModel>();
         }
-        public ArbDokViewModel UpsertModel { get; set; }
+        public ArbDokViewModel UpsertArbDok { get; set; }
+        public OrdreViewModel UpsertOrdre { get; set; }
+        public KunderViewModel UpsertKunder { get; set; }
+
         public List<ArbDokViewModel> ArbDokList { get; set;}
+        public List<OrdreViewModel> OrdreList { get; set;}
+        public List<KunderViewModel> KunderList { get; set;}
     }
     public class ArbDokViewModel
     {
