@@ -1,5 +1,4 @@
-﻿using Igland.MVC.Repositories.IRepo;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Igland.MVC.Controllers
 {

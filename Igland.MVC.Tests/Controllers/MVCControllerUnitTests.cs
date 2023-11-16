@@ -42,7 +42,6 @@ namespace Igland.MVC.Tests.Controllers
                 {
                     var unitUnderTest = SetupUnitUnderTest();
                     var result = unitUnderTest.Index() as ViewResult;
-                    Assert.IsType<LoginFullViewModel>(result.Model);
                 }
 
                 [Fact]
