@@ -22,7 +22,7 @@ namespace Igland.MVC.Tests.Controllers
 
          //Brukes ikke lengre   userRepository.GetAll().Returns(new List<UserEntity> { new UserEntity { Id = 1, UserName = "Igland Admin", Email = "Igland@example.com" } });
 
-            var unitUnderTest = new HomeController(logger, userRepository);
+            var unitUnderTest = new HomeController(logger);
 
             var result = unitUnderTest.Index() as ViewResult;
 
@@ -60,7 +60,7 @@ namespace Igland.MVC.Tests.Controllers
             var userRepository = Substitute.For<IUserRepository>();
           //Brukes ikke lengre i home  userRepository.GetAll().Returns(new List<UserEntity> { new UserEntity { Id = 1, UserName = "Igland Admin", Email = "Igland@example.com" } });
 
-            return new HomeController(logger, userRepository);
+            return new HomeController(logger);
         }
 
     }
