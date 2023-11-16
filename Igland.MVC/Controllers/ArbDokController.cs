@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
+﻿using Igland.MVC.Entities;
 using Igland.MVC.Models.ArbDok;
-using Igland.MVC.Entities;
 using Igland.MVC.Repositories.IRepo;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Igland.MVC.Controllers
 {
@@ -63,6 +62,14 @@ namespace Igland.MVC.Controllers
             };
             _arbdokRepository.Upsert(entity);
             return Redirect("index");
+        }
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int ArbDokID)
+        {
+            _arbdokRepository.Delete(ArbDokID);
+            return RedirectToAction("Index");
         }
     }
 }

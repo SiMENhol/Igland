@@ -46,15 +46,11 @@ namespace Igland.MVC.Repositories.EF
 
         public void Delete(int ServiceSkjemaID)
         {
-            ServiceDokumentEntity? ServiceSkjema = GetServiceSkjemaID(ServiceSkjemaID);
+            ServiceDokumentEntity? ServiceSkjema = Get(ServiceSkjemaID);
             if (ServiceSkjema == null)
                 return;
             dataContext.ServiceDokument.Remove(ServiceSkjema);
             dataContext.SaveChanges();
-        }
-        private ServiceDokumentEntity? GetServiceSkjemaID(int ServiceSkjemaID)
-        {
-            return dataContext.ServiceDokument.FirstOrDefault(x => x.ServiceSkjemaID == ServiceSkjemaID);
         }
     }
 }

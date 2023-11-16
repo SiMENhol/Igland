@@ -2,6 +2,7 @@
 using Igland.MVC.Models.ServiceDokument;
 using Igland.MVC.Repositories.EF;
 using Igland.MVC.Repositories.IRepo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -67,8 +68,10 @@ namespace Igland.MVC.Controllers
 
             return View("Ny", model);
         }
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public IActionResult Delete(int ServiceSKjemaID)
         {
             _servicedocRepository.Delete(ServiceSKjemaID);

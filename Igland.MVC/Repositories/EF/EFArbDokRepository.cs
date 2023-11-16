@@ -45,5 +45,13 @@ namespace Igland.MVC.Repositories.EF
             _dataContext.Add(arbdok);
             _dataContext.SaveChanges();
         }
+        public void Delete(int ArbDokID)
+        {
+            ArbDok? ArbDok = Get(ArbDokID);
+            if (ArbDok == null)
+                return;
+            _dataContext.ArbDok.Remove(ArbDok);
+            _dataContext.SaveChanges();
+        }
     }
 }

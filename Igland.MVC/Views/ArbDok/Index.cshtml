@@ -1,4 +1,5 @@
-﻿@using Igland.MVC.Models.ArbDok;
+﻿<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+@using Igland.MVC.Models.ArbDok;
 @model ArbDokFullViewModel
 @{
     ViewData["Title"] = "Arbeidsdokumenter";
@@ -9,16 +10,17 @@
 
     <h1>Arbeidsdokument </h1>
     <br />
-    <div class="søkebar">
-        <input type="text" placeholder="Søk etter navn, nummer..">
-        @* <button type="submit"><i class="fa fa-search"></i></button>*@
+    <div>
+        <input type="text" class="button-link" id="searchInput" placeholder="Søk..">
     </div>
 </div>
 
-<div>
-    <a asp-controller="Arbdok" asp-action="Ny">Nytt Arbeidsdokument</a>
-</div>
 
+<form action="@Url.Action("Ny", "ArbDok")">
+    <button type="submit" class="button-link">Nytt arbeidsdokument</button>
+</form>
+
+<hr />
 <table id="tabell" , align="center">
 
     @* <thred> spare </thred> *@
@@ -79,8 +81,14 @@
     <tbody>
             @foreach (var ArbeidsDokuments in Model.ArbDokList)
             {
-            <tr>
-                <td><a asp-controller="ArbDok" asp-action="Rediger" asp-route-id="@ArbeidsDokuments.ArbDokID">@ArbeidsDokuments.ArbDokID</a></td>
+            <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">
+
+                <td>@ArbeidsDokuments.ArbDokID
+                    <form asp-action="Delete" asp-controller="ArbDok" method="post" onsubmit="return confirm('Er du sikker på at du vil slette?');">
+                        <input type="hidden" name="ArdDokID" value="@ArbeidsDokuments.ArbDokID" />
+                        <input type="submit" class="button-link" value="Slett" />
+                    </form>
+                </td>
                 <td>@ArbeidsDokuments.OrdreNummer</td>
                 <td>@ArbeidsDokuments.Kunde</td>
                 <td>@ArbeidsDokuments.Vinsj</td>
@@ -101,4 +109,29 @@
 </table>
 
 
+<script>
+    $(document).ready(function () {
+        // Function to filter rows based on search input
+        function filterTable() {
+            var searchText = $('#searchInput').val().toLowerCase();
+            $('.row-data').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1);
+            });
+        }
 
+        // Event listener for keyup on the search input
+        $('#searchInput').keyup(function () {
+            filterTable();
+        });
+
+        // Redirect to the details page when clicking on a row
+        $(".row-clickable").click(function () {
+            var url = $(this).data("url");
+            window.location.href = url;
+        });
+        function confirmDelete() {
+            var userConfirmed = confirm('Er du sikker på at du vil slette?');
+            return userConfirmed;
+        }
+    });
+</script>
