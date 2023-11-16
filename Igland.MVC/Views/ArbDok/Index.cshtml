@@ -26,49 +26,49 @@
     @* <thred> spare </thred> *@
     <tr>
         <th>
-            ArbeidsDokumentID
+            BOOKET SERVICE TIL UKE
         </th>
 
+        <th>
+            Henvendelse mottatt og reg. ddmmåå
+        </th>
+
+        <th>
+            Case ferdig? JA/NEI (status)
+        </th>
+
+        <th>
+            Produkttype
+        </th>
+        <th>
+            Bestilling/feilbeskrivelse fra kunde
+        </th>
+        <th>
+            Kundeinfo
+        </th>
+        <th>
+            Avtalt levering ddmmåå
+        </th>
+        <th>
+            Produkt mottatt ddmmåå
+        </th>
+        <th>
+            Avtalt ferdigstillelse innen ddmmåå
+        </th>
+        <th>
+            Service ferdig ddmmåå
+        </th>
+        <th>
+            Antall timer på utført service
+        </th>
         <th>
             Ordrenummer
         </th>
-
         <th>
-            Kunde
-        </th>
-
-        <th>
-            Vinsj
+            Service skjema
         </th>
         <th>
-            HenvendelseMotatt
-        </th>
-        <th>
-            AvtaltLevering
-        </th>
-        <th>
-            ProduktMotatt
-        </th>
-        <th>
-            SjekkUtfort
-        </th>
-        <th>
-            AvtaltFerdig
-        </th>
-        <th>
-            ServiceFerdig
-        </th>
-        <th>
-            AntallTimer
-        </th>
-        <th>
-            BestillingFraKunde
-        </th>
-        <th>
-            NotatFraMekaniker
-        </th>
-        <th>
-            Status
+            (arbdokid) Slett?
         </th>
 
 
@@ -81,27 +81,30 @@
     <tbody>
             @foreach (var ArbeidsDokuments in Model.ArbDokList)
             {
-            <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">
+                var Ordre = Model.OrdreList.Find(x => x.OrdreNummer == ArbeidsDokuments.OrdreNummer);
+                var Kunde = Model.KunderList.Find(x => x.KundeID == Ordre.KundeID);
 
-                <td>@ArbeidsDokuments.ArbDokID
+            <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">
+                <td>49</td>
+                <td>@ArbeidsDokuments.HenvendelseMotatt</td>
+                <td>@Ordre.Status</td>
+                <td>@Ordre.SerieNummer @Ordre.VareNavn</td>
+                <td>@ArbeidsDokuments.BestillingFraKunde</td>
+                <td>@Kunde.KundeID @Kunde.KundeNavn</td>
+                <td>@ArbeidsDokuments.AvtaltLevering</td>
+                <td>@ArbeidsDokuments.ProduktMotatt</td>
+                <td>@ArbeidsDokuments.AvtaltFerdig</td>
+                <td>@ArbeidsDokuments.ServiceFerdig</td>
+                <td>@ArbeidsDokuments.AntallTimer</td>
+                <td>@Ordre.OrdreNummer</td>
+                <td>- Knapp til service skjema -</td>
+                <td>
+                    @ArbeidsDokuments.ArbDokID
                     <form asp-action="Delete" asp-controller="ArbDok" method="post" onsubmit="return confirm('Er du sikker på at du vil slette?');">
                         <input type="hidden" name="ArdDokID" value="@ArbeidsDokuments.ArbDokID" />
                         <input type="submit" class="button-link" value="Slett" />
                     </form>
                 </td>
-                <td>@ArbeidsDokuments.OrdreNummer</td>
-                <td>@ArbeidsDokuments.Kunde</td>
-                <td>@ArbeidsDokuments.Vinsj</td>
-                <td>@ArbeidsDokuments.HenvendelseMotatt</td>
-                <td>@ArbeidsDokuments.AvtaltLevering</td>
-                <td>@ArbeidsDokuments.ProduktMotatt</td>
-                <td>@ArbeidsDokuments.SjekkUtfort</td>
-                <td>@ArbeidsDokuments.AvtaltFerdig</td>
-                <td>@ArbeidsDokuments.ServiceFerdig</td>
-                <td>@ArbeidsDokuments.AntallTimer</td>
-                <td>@ArbeidsDokuments.BestillingFraKunde</td>
-                <td>@ArbeidsDokuments.NotatFraMekaniker</td>
-                <td>@ArbeidsDokuments.Status</td>
             </tr>
             }
     </tbody>

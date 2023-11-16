@@ -29,7 +29,10 @@ namespace Igland.MVC.Repositories.EF
             var existing = Get(Ordre.OrdreNummer);
             if (existing != null)
             {
-                existing.OrdreNummer = Ordre.OrdreNummer;
+                existing.KundeID = Ordre.KundeID;
+                existing.SerieNummer = Ordre.SerieNummer;
+                existing.VareNavn = Ordre.SerieNummer;
+                existing.Status = Ordre.Status;
                 dataContext.SaveChanges();
                 return;
             }
