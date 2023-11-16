@@ -82,21 +82,21 @@
             @foreach (var ArbeidsDokuments in Model.ArbDokList)
             {
                 var Ordre = Model.OrdreList.Find(x => x.OrdreNummer == ArbeidsDokuments.OrdreNummer);
-                @*var Kunde = Model.KunderList.Find(x => x.KundeID == Ordre.KundeID);*@
+                var Kunde = Model.KunderList.Find(x => x.KundeID == Ordre.KundeID);
 
             <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">
                 <td>49</td>
                 <td>@ArbeidsDokuments.HenvendelseMotatt</td>
-                <td>@ArbeidsDokuments.Status</td>
-                <td>@ArbeidsDokuments.Vinsj</td>
+                <td>@Ordre.Status</td>
+                <td>@Ordre.SerieNummer @Ordre.VareNavn</td>
                 <td>@ArbeidsDokuments.BestillingFraKunde</td>
-                <td>@Ordre.KundeID</td>
+                <td>@Kunde.KundeID @Kunde.KundeNavn</td>
                 <td>@ArbeidsDokuments.AvtaltLevering</td>
                 <td>@ArbeidsDokuments.ProduktMotatt</td>
                 <td>@ArbeidsDokuments.AvtaltFerdig</td>
                 <td>@ArbeidsDokuments.ServiceFerdig</td>
                 <td>@ArbeidsDokuments.AntallTimer</td>
-                <td>@Ordre</td>
+                <td>@Ordre.OrdreNummer</td>
                 <td>- Knapp til service skjema -</td>
                 <td>
                     @ArbeidsDokuments.ArbDokID

@@ -28,7 +28,7 @@ namespace Igland.MVC.Controllers
         {
             var model = new ArbDokFullViewModel();
             model.ArbDokList = _arbdokRepository.GetAll().Select(x => new ArbDokViewModel { ArbDokID = x.ArbDokID, OrdreNummer = x.OrdreNummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
-            model.OrdreList = _ordreRepository.GetAll().Select(x => new OrdreViewModel { OrdreNummer = x.OrdreNummer}).ToList();
+            model.OrdreList = _ordreRepository.GetAll().Select(x => new OrdreViewModel { OrdreNummer = x.OrdreNummer, KundeID = x.KundeID, SerieNummer = x.SerieNummer, VareNavn = x.VareNavn, Status = x.Status}).ToList();
             model.KunderList = _kunderRepository.GetAll().Select(x => new KunderViewModel { KundeID = x.KundeID, KundeNavn = x.KundeNavn }).ToList();
             return View("Index", model);
         }
