@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Igland.MVC.Models.ServiceOrdre
+namespace Igland.MVC.Models.Sjekkliste
 {
-    public class ServiceOrderViewModel
+    public class SjekklisteViewModel
     {
         [Required(ErrorMessage = "Kan ikke være tom.")]
         [StringLength(100, ErrorMessage = "Kan ikke være lengre enn 100 tegn.")]
@@ -31,11 +31,11 @@ namespace Igland.MVC.Models.ServiceOrdre
         public int ServiceOrderId { get; set; }
 
         [Required(ErrorMessage = "Listen må fylles ut.")]
-        public List<ServiceOrderJobGroupModel> JobGroups { get; set; }
+        public List<SjekklisteJobGroupModel> JobGroups { get; set; }
 
     }
   
-    public class ServiceOrderJobGroupModel
+    public class SjekklisteJobGroupModel
     {
         public string Name { get; set; }
 

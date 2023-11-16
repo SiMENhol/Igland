@@ -1,11 +1,47 @@
-﻿@model Igland.MVC.Models.ServiceOrdre.ServiceOrderViewModel
-@{
-    ViewData["Title"] = "ServiceOrdre";
-}
+﻿﻿@using Igland.MVC.Models.Sjekkliste;
 
+@model SjekklisteViewModel
+@{
+    ViewData["Title"] = "Sjekkliste";
+}
+<style type="text/css">
+    .checklist-grid {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    .checklist-item {
+        border-bottom: 1px solid gray;
+        padding: 10px;
+    }
+
+        .checklist-item input[type="radio"] {
+            float: right;
+            margin-right: 90px;
+        }
+
+    .checklistenavn {
+        float: right;
+        margin: 20px;
+    }
+
+        .checklistenavn h4 {
+            display: inline-block;
+            padding-right: 50px;
+        }
+
+    .MechanicName, .Hours, .Date, .SubmitKnapp {
+        float: left;
+        margin: 20px;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+</style>
 <h1>Saksnummer @Model.ServiceOrderId</h1>
 
-<form asp-action="Save" asp-controller="ServiceOrder" method="post">
+<form asp-action="Save" asp-controller="Sjekkliste" method="post">
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
 
@@ -18,45 +54,6 @@
     <h4>Skal endres</h4>
     <h4>Defekt</h4>
 </div>
-
-<style type="text/css">
-.checklist-grid {
-    border: 1px solid black;
-    padding: 10px;
-}
-
-.checklist-item {
-    border-bottom: 1px solid gray;
-    padding: 10px;
-      
-}
-
-.checklist-item input[type="radio"] {
-    float: right;
-    margin-right: 90px;
-}
-
-.checklistenavn {
-    float: right;
-    margin: 20px;
-        
-}
-
-.checklistenavn h4 {
-    display: inline-block;
-    padding-right: 50px;
-}
-
-.MechanicName, .Hours, .Date, .SubmitKnapp {
-    float: left;
-    margin: 20px;
-}
-
-ul {
-    list-style-type: none;
-}
-</style>
-
     <div class="checklist-grid">
         @if (Model.JobGroups != null)
         {

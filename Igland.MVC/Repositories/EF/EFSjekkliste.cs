@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Igland.MVC.Repositories.EF
 {
-    public class EFServiceSkjema : IServiceSkjema
+    public class EFSjekkliste : ISjekkliste
     {
         private readonly DataContext dataContext;
 
-        public EFServiceSkjema(DataContext dataContext, UserManager<IdentityUser> userManager)
+        public EFSjekkliste(DataContext dataContext, UserManager<IdentityUser> userManager)
         {
             this.dataContext = dataContext;
         }
