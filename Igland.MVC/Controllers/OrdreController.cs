@@ -28,6 +28,7 @@ namespace Igland.MVC.Controllers
         [HttpPost]
         public IActionResult Post(OrdreFullViewModel ordre)
         {
+            _logger.LogInformation("Post method called");
             var entity = new OrdreEntity
             {
                 OrdreNummer = ordre.UpsertModel.OrdreNummer,

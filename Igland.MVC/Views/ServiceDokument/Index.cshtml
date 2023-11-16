@@ -4,7 +4,8 @@
 @{
     ViewData["Title"] = "Serviceskjema";
 }
-
+@Html.ValidationSummary()
+@Html.AntiForgeryToken()
 <div class="overskrift">
     <h1>Serviceskjema</h1>
     <br />
@@ -19,8 +20,6 @@
     </form>
 </div>
 <hr />
-
-
 
 <table id="tabell" align="center">
     <thead>

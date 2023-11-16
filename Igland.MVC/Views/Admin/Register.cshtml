@@ -4,13 +4,14 @@
     ViewData["Title"] = "Lag ny konto";
 
 }
-
+@Html.ValidationSummary()
+@Html.AntiForgeryToken()
 <h1>@ViewData["Title"]</h1>
 <a style="text-decoration:none" asp-controller="Admin" asp-action="Index" class="box-link">
     <div class="box">Tilbake</div>
 </a>
 
-<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
+    <form asp-controller="Admin" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
     <hr />
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">

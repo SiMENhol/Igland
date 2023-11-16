@@ -24,23 +24,14 @@
     <br />
     <div class="søkebar">
         <input type="text" placeholder="Søk etter navn, nummer..">
-        @* <button type="submit"><i class="fa fa-search"></i></button>*@
     </div>
 </div>
 
 <table id="tabell" , align="center">
 
-    @* <thred> spare </thred> *@
     <tr>
-        <th>
-            KundeID
-        </th>
-
-        <th>
-            KundeNavn
-        </th>
-
-        @* undergreier i tabellen *@
+        <th>KundeID</th>
+        <th>KundeNavn</th>
 
     <tbody>
             @foreach (var kunder in Model.KunderOversikt)

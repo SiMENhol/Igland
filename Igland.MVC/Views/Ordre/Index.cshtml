@@ -8,11 +8,6 @@
     <form asp-action="Post" asp-controller="Ordre" method="post">
         @Html.ValidationSummary()
         @Html.AntiForgeryToken()
-
-
-  @*  <label asp-for="UpsertModel.OrdreNummer"></label>
-        <input asp-for="UpsertModel.OrdreNummer" type="number"  /><br /> *@
-
         <label asp-for="UpsertModel.KundeID"></label>
         <input asp-for="UpsertModel.KundeID" type="number"  placeholder="100"/><br />
 
@@ -38,38 +33,19 @@
     <br />
     <div class="søkebar">
         <input type="text" placeholder="Søk etter navn, nummer..">
-        @* <button type="submit"><i class="fa fa-search"></i></button>*@
     </div>
 </div>
 
 <table id="tabell" , align="center">
 
-    @* <thred> spare </thred> *@
     <tr>
-        <th>
-            OrdreNummer
-        </th>
+        <th>OrdreNummer</th>
+        <th>KundeID</th>
+        <th>SerieNummer </th>
+        <th>VareNavn</th>
+        <th>Status </th>
 
-        <th>
-            KundeID
-        </th>
-        <th>
-            SerieNummer
-        </th>
-
-        <th>
-            VareNavn
-        </th>
-        <th>
-            Status
-        </th>
-
-        <th>
-            ArbDokument
-        </th>
-
-        @* undergreier i tabellen *@
-
+        <th>ArbDokument</th>
     <tbody>
             @foreach (var ordre in Model.OrdreOversikt)
             {
