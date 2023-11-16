@@ -7,6 +7,6 @@ namespace Igland.MVC.Repositories.IRepo
         void Upsert(ArbDok arbdok);
         ArbDok Get(int ArbDokID);
         List<ArbDok> GetAll();
-
+        void Delete(int ArbDokID);
     }
 }
