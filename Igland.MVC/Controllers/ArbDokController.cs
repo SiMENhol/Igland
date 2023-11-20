@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Igland.MVC.Controllers
 {
-    [Authorize]
     public class ArbDokController : Controller
     {
         private readonly ILogger<ArbDokController> _logger;

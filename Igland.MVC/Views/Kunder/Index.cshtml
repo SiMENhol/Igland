@@ -1,31 +1,24 @@
 ﻿﻿@using Igland.MVC.Models.Kunder;
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 @model KunderFullViewModel
-<h1>Kunder</h1>
-<br>
-<body>
-
-    <form asp-action="Post" asp-controller="Kunder" method="post">
-        @Html.ValidationSummary()
-        @Html.AntiForgeryToken()
-
-        <label asp-for="UpsertModel.KundeID"></label>
-        <input asp-for="UpsertModel.KundeID" type="number"  /><br />
-        <label asp-for="UpsertModel.KundeNavn"></label>
-        <input asp-for="UpsertModel.KundeNavn" type="text" /><br />
-
-        <input type="submit" />
-    </form>
-    </body>
-
+@{
+    ViewData["Title"] = "Kunder";
+}
 <div class="overskrift">
-
-    <h1>Kunder </h1>
-    <br />
-    <div class="søkebar">
-        <input type="text" placeholder="Søk etter navn, nummer..">
-    </div>
+<h1>Kunder</h1>
+<br />
+<div>
+    <input type="text" class="button-link" id="searchInput" placeholder="Søk..">
 </div>
+</div>
+
+
+<div>
+    <form action="@Url.Action("Ny", "Kunder")">
+        <button type="submit" class="button-link">Ny kunde</button>
+    </form>
+</div>
+<hr />
 
 <table id="tabell" , align="center">
 
@@ -36,7 +29,7 @@
     <tbody>
             @foreach (var kunder in Model.KunderOversikt)
             {
-            <tr>
+            <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "Kunder", new { id = kunder.KundeID })">
                 <td>@kunder.KundeID</td>
                 <td>@kunder.KundeNavn</td>
             </tr>
@@ -44,3 +37,34 @@
     </tbody>
 
 </table>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        // Function to filter rows based on search input
+        function filterTable() {
+            var searchText = $('#searchInput').val().toLowerCase();
+            $('.row-data').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1);
+            });
+        }
+
+        // Event listener for keyup on the search input
+        $('#searchInput').keyup(function () {
+            filterTable();
+        });
+
+        // Redirect to the details page when clicking on a row
+        $(".row-clickable").click(function () {
+            var url = $(this).data("url");
+            window.location.href = url;
+        });
+        function confirmDelete() {
+            var userConfirmed = confirm('Er du sikker på at du vil slette?');
+            return userConfirmed;
+        }
+    });
+</script>

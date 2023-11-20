@@ -1,0 +1,34 @@
+﻿﻿@using Igland.MVC.Models.Kunder;
+@model KunderFullViewModel
+@{
+    ViewData["Title"] = "Rediger kunde";
+    int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
+    int index = Model.KunderOversikt.FindIndex(s => s.KundeID == id);
+    if (index == -1)
+    {
+        // Handle the case where the id is not found in the list
+        index = 0; // Set to the first item as a default
+    }
+}
+<h1>Kunder</h1>
+<br>
+<a style="text-decoration:none" asp-controller="Kunder" asp-action="Index" class="box-link">
+    <div>Tilbake</div>
+</a>
+<hr />
+
+
+
+            <form asp-action="Post" asp-controller="Kunder" method="post">
+            @Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+
+                
+                <input asp-for="UpsertModel.KundeID" type="hidden" required value="@Model.KunderOversikt[index].KundeID" />
+
+                <label asp-for="UpsertModel.KundeNavn">Kundenavn</label> <br />
+                <input asp-for="UpsertModel.KundeNavn" type="text" required value="@Model.KunderOversikt[index].KundeNavn" /><br />
+
+                <br />
+                <input type="submit" />
+            </form>

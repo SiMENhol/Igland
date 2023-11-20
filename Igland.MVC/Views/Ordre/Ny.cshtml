@@ -1,0 +1,37 @@
+﻿﻿@using Igland.MVC.Models.Ordre;
+
+
+@model OrdreFullViewModel
+@{
+    ViewData["Title"] = "Ny ordre";
+}
+<h1>Ordre</h1>
+<a style="text-decoration:none" asp-controller="Ordre" asp-action="Index">
+    <div>Tilbake</div>
+</a>
+<hr />
+<body>
+
+    <form asp-action="Post" asp-controller="Ordre" method="post">
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+        <label asp-for="UpsertModel.KundeID">
+            KundeID. Denne må finnes, <a style="text-decoration:none" asp-controller="Kunder" asp-action="Index">klikk her for å finne KundeID</a>
+        </label> <br />
+        <input asp-for="UpsertModel.KundeID" type="number" placeholder="100" /><br />
+
+        <label asp-for="UpsertModel.SerieNummer"></label> <br />
+        <input asp-for="UpsertModel.SerieNummer" type="text" /><br />
+
+        <label asp-for="UpsertModel.VareNavn"></label> <br />
+        <input asp-for="UpsertModel.VareNavn" type="text" /><br />
+
+        <label asp-for="UpsertModel.Status"></label> <br />
+        <input asp-for="UpsertModel.Status" type="text" /><br />
+
+        <label asp-for="UpsertModel.ArbDokument"></label> <br />
+        <input asp-for="UpsertModel.ArbDokument" type="text" /><br />
+
+        <input type="submit" />
+    </form>
+</body>

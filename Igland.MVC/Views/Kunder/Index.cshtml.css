@@ -1,33 +1,4 @@
-﻿
-
-div {
-    display: inline-table;
-}
-
-.form-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.left-side, .right-side {
-    width: 45%;
-    margin-left: 20px;
-}
-
-.input-field, .comment-field {
-    width: 100%;
-}
-
-.comment-field {
-    height: 150px;
-}
-
-#image-preview img {
-    max-width: 100%;
-    max-height: 200px;
-}
-
-.overskrift, tabell {
+﻿.overskrift, tabell {
     text-align: center;
 }
 
@@ -36,3 +7,21 @@ th, tr, td {
     padding: 20px;
 }
 
+.row-clickable:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.button-link {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 4px 10px;
+    background-color: white;
+    color: black;
+    text-decoration: black;
+    border-radius: 5px;
+}
+
+    .button-link:hover {
+        background-color: lightgrey;
+    }

@@ -2,7 +2,10 @@
 @model ArbDokFullViewModel
 
 <h1>Arbeidsdokument</h1>
-<br>
+<a style="text-decoration:none" asp-controller="ArbDok" asp-action="Index">
+    <div>Tilbake</div>
+</a>
+<hr />
 <body>
     <form asp-action="Post" asp-controller="ArbDok" method="post">
         @Html.ValidationSummary()
@@ -11,45 +14,45 @@
         <!-- <label asp-for="UpsertArbDok.ArbDokID"></label>
         <input asp-for="UpsertArbDok.ArbDokID" type="number" /><br /> -->
 
-        <label asp-for="UpsertArbDok.OrdreNummer"></label>
+        <label asp-for="UpsertArbDok.OrdreNummer"></label><br />
         <input asp-for="UpsertArbDok.OrdreNummer" type="number" required/><br />
 
-        <label asp-for="UpsertArbDok.Kunde"></label>
+        <label asp-for="UpsertArbDok.Kunde"></label><br />
         <input asp-for="UpsertArbDok.Kunde" type="text" required/><br />
 
-        <label asp-for="UpsertArbDok.Vinsj"></label>
+        <label asp-for="UpsertArbDok.Vinsj"></label><br />
         <input asp-for="UpsertArbDok.Vinsj" type="text" required/><br />
 
-        <label asp-for="UpsertArbDok.HenvendelseMotatt"></label>
+        <label asp-for="UpsertArbDok.HenvendelseMotatt"></label><br />
         <input asp-for="UpsertArbDok.HenvendelseMotatt" type="date" required/><br />
 
-        <label asp-for="UpsertArbDok.AvtaltLevering"></label>
+        <label asp-for="UpsertArbDok.AvtaltLevering"></label><br />
         <input asp-for="UpsertArbDok.AvtaltLevering" type="date" /><br />
 
-        <label asp-for="UpsertArbDok.ProduktMotatt"></label>
+        <label asp-for="UpsertArbDok.ProduktMotatt"></label><br />
         <input asp-for="UpsertArbDok.ProduktMotatt" type="date" /><br />
 
-        <label asp-for="UpsertArbDok.SjekkUtfort"></label>
+        <label asp-for="UpsertArbDok.SjekkUtfort"></label><br />
         <input asp-for="UpsertArbDok.SjekkUtfort" type="date" /><br />
 
-        <label asp-for="UpsertArbDok.AvtaltFerdig"></label>
+        <label asp-for="UpsertArbDok.AvtaltFerdig"></label><br />
         <input asp-for="UpsertArbDok.AvtaltFerdig" type="date" /><br />
 
-        <label asp-for="UpsertArbDok.ServiceFerdig"></label>
+        <label asp-for="UpsertArbDok.ServiceFerdig"></label><br />
         <input asp-for="UpsertArbDok.ServiceFerdig" type="date" /><br />
 
-        <label asp-for="UpsertArbDok.AntallTimer"></label>
+        <label asp-for="UpsertArbDok.AntallTimer"></label><br />
         <input asp-for="UpsertArbDok.AntallTimer" type="number" /><br />
 
-        <label asp-for="UpsertArbDok.BestillingFraKunde"></label>
+        <label asp-for="UpsertArbDok.BestillingFraKunde"></label><br />
         <!-- <textarea asp-for="UpsertModel.BestillingFraKunde" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
         <input asp-for="UpsertArbDok.BestillingFraKunde" type="text" placeholder="Maks grense 255 tegn" /><br />
 
-        <label asp-for="UpsertArbDok.NotatFraMekaniker"></label>
+        <label asp-for="UpsertArbDok.NotatFraMekaniker"></label><br />
         <!-- <textarea asp-for="UpsertModel.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
         <input asp-for="UpsertArbDok.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn" /><br />
 
-        <label asp-for="UpsertArbDok.Status"></label>
+        <label asp-for="UpsertArbDok.Status"></label><br />
         <input asp-for="UpsertArbDok.Status" type="text" /><br />
 
         <input type="submit"/>

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Igland.MVC.Repositories.IRepo;
 using Igland.MVC.Models.Ordre;
+using Igland.MVC.Models.Kunder;
+using Igland.MVC.Models.ServiceDokument;
 
 namespace Igland.MVC.Controllers
 {
@@ -19,10 +21,21 @@ namespace Igland.MVC.Controllers
         {
             _logger.LogInformation("Index method called");
 
-            var model = new OrdreFullViewModel();
-            model.OrdreOversikt = _ordreRepository.GetAll().Select(x => new OrdreViewModel { OrdreNummer = x.OrdreNummer, KundeID = x.KundeID, SerieNummer = x.SerieNummer, VareNavn = x.VareNavn, Status = x.Status, ArbDokument = x.ArbDokument }).ToList();
-
+            var model = CreateOrdreFullViewModel();
             return View("Index", model);
+        }
+        [HttpGet]
+        public IActionResult Ny()
+        {
+            _logger.LogInformation("Index method called");
+
+            var model = CreateOrdreFullViewModel();
+            return View("Ny", model);
+        }
+        public IActionResult Rediger()
+        {
+            var model = CreateOrdreFullViewModel();
+            return View("Rediger", model);
         }
 
         [HttpPost]
@@ -40,6 +53,24 @@ namespace Igland.MVC.Controllers
             };
             _ordreRepository.Upsert(entity);
             return RedirectToAction("Index");
+        }
+
+        private OrdreFullViewModel CreateOrdreFullViewModel()
+        {
+            return new OrdreFullViewModel
+            {
+                OrdreOversikt = _ordreRepository.GetAll()
+                    .Select(x => new OrdreViewModel
+                    {
+                        OrdreNummer = x.OrdreNummer,
+                        KundeID = x.KundeID,
+                        SerieNummer = x.SerieNummer,
+                        VareNavn = x.VareNavn,
+                        Status = x.Status,
+                        ArbDokument = x.ArbDokument
+                    })
+                    .ToList()
+            };
         }
     }
 }
