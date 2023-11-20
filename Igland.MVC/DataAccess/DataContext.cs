@@ -21,6 +21,8 @@ namespace Igland.MVC.DataAccess
             modelBuilder.Entity<ArbDok>().ToTable("ArbDok").HasKey(x => x.ArbDokID);
             modelBuilder.Entity<OrdreEntity>().ToTable("Ordre").HasKey(x => x.OrdreNummer);
             modelBuilder.Entity<KunderEntity>().ToTable("Kunder").HasKey(x => x.KundeID);
+            modelBuilder.Entity<SjekklisteEntity>().ToTable("Sjekkliste").HasKey(x => x.SjekklisteID);
+            modelBuilder.Entity<SjekklisteItemEntity>().ToTable("SjekklisteItem").HasKey(x => x.SjekklisteItemID);
             base.OnModelCreating(modelBuilder);
         }
 
@@ -29,5 +31,7 @@ namespace Igland.MVC.DataAccess
         public DbSet<ArbDok> ArbDok { get; set; }
         public DbSet<OrdreEntity> Ordre { get; set; }
         public DbSet<KunderEntity> Kunder { get; set; }
+        public DbSet<SjekklisteEntity> Sjekkliste { get; set; }
+        public DbSet<SjekklisteItemEntity> SjekklisteItem { get; set; }
     }
 }

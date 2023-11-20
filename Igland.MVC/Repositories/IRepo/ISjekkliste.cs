@@ -2,10 +2,11 @@
 
 namespace Igland.MVC.Repositories.IRepo
 {
-    public interface ISjekkliste
+    public interface ISjekklisteRepository
     {
-        //  void Upsert(ServiceDokumentEntity user);
-        ServiceDokumentEntity Get(int id);
-        List<ServiceDokumentEntity> GetAll();
+        void Upsert(SjekklisteEntity SjekklisteID);
+        SjekklisteEntity Get(int id);
+        List<SjekklisteEntity> GetAll();
+        void Delete(int SjekklisteID);
     }
 }

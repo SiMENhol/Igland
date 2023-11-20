@@ -1,6 +1,6 @@
 ﻿﻿@using Igland.MVC.Models.Sjekkliste;
 
-@model SjekklisteViewModel
+@model SjekklisteFullViewModel
 @{
     ViewData["Title"] = "Sjekkliste";
 }
@@ -30,7 +30,7 @@
             padding-right: 50px;
         }
 
-    .MechanicName, .Hours, .Date, .SubmitKnapp {
+    .MekanikerNavn, .AntallTimer, .Dato, .SubmitKnapp {
         float: left;
         margin: 20px;
     }
@@ -39,22 +39,24 @@
         list-style-type: none;
     }
 </style>
-<h1>Saksnummer @Model.ServiceOrderId</h1>
 
-<form asp-action="Save" asp-controller="Sjekkliste" method="post">
+
+<form asp-action="Post" asp-controller="Sjekkliste" method="post">
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
 
+    <label asp-for="UpsertModel.OrdreNummer" Text="Serienummer"></label>
+    <input asp-for="UpsertModel.OrdreNummer" type="number" />
 
-<label asp-for="SerialNumber" Text="Serienummer"></label>
-<input asp-for="SerialNumber" type="string name="Serienummer" />
+    <label asp-for="UpsertModel.SerieNummer" Text="Serienummer"></label>
+    <input asp-for="UpsertModel.SerieNummer" type="string name="Serienummer" />
 
 <div class="checklistenavn">
     <h4>OK</h4>
     <h4>Skal endres</h4>
     <h4>Defekt</h4>
 </div>
-    <div class="checklist-grid">
+    @* <div class="checklist-grid">
         @if (Model.JobGroups != null)
         {
             foreach (var jobGroup in Model.JobGroups)
@@ -77,27 +79,26 @@
             }
         }
     </div>
-
+    *@
     
     <h3>Kommentarer</h3>
-    <div class="MechanicComment">
-    <textarea asp-for="MechanicComment" class="form-control-md" style="width: 100%; height: 100px;"> </textarea>
+    <div class="MekanikerKommentar">
+        <textarea asp-for="UpsertModel.MekanikerKommentar" class="form-control-md" style="width: 100%; height: 100px;"> </textarea>
     </div>
     
-    <div class="MechanicName">
-    <label asp-for="Mechanic"></label>
-    <input asp-for="Mechanic" type="text" /><br />
+    <div class="MekanikerNavn">
+        <label asp-for="UpsertModel.MekanikerNavn"></label>
+        <input asp-for="UpsertModel.MekanikerNavn" type="text" /><br />
     </div>
 
-    <div class="Hours">
-    <label asp-for="ConsumedHours"></label>
-    <input asp-for="ConsumedHours" type="number" />
-    @Html.ValidationMessageFor(x=>x.ConsumedHours)<br/>
+    <div class="AntallTimer">
+        <label asp-for="UpsertModel.AntallTimer"></label>
+        <input asp-for="UpsertModel.AntallTimer" type="number" />
     </div>
 
-    <div class="Date">
-    <label asp-for="CreatedDate"></label>
-    <input asp-for="CreatedDate" type="DateOnly" />
+    <div class="Dato">
+        <label asp-for="UpsertModel.Dato"></label>
+        <input asp-for="UpsertModel.Dato" type="date" />
     </div>
 
     <div class="SubmitKnapp">

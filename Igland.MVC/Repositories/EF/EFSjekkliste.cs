@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Igland.MVC.Repositories.EF
 {
-    public class EFSjekkliste : ISjekkliste
+    public class EFSjekkliste : ISjekklisteRepository
     {
         private readonly DataContext dataContext;
 
@@ -14,14 +14,42 @@ namespace Igland.MVC.Repositories.EF
             this.dataContext = dataContext;
         }
 
-        public ServiceDokumentEntity Get(int ServiceSkjemaID)
+        public SjekklisteEntity Get(int SjekklisteID)
         {
-            return dataContext.ServiceDokument.FirstOrDefault(x => x.ServiceSkjemaID == ServiceSkjemaID);
+            return dataContext.Sjekkliste.FirstOrDefault(x => x.SjekklisteID == SjekklisteID);
         }
 
-        public List<ServiceDokumentEntity> GetAll()
+        public List<SjekklisteEntity> GetAll()
         {
-            return dataContext.ServiceDokument.ToList();
+            return dataContext.Sjekkliste.ToList();
+        }
+
+        public void Upsert(SjekklisteEntity sjekkliste)
+        {
+            var existing = Get(sjekkliste.SjekklisteID);
+            if (existing != null)
+            {
+                existing.MekanikerNavn = sjekkliste.MekanikerNavn;
+                existing.SerieNummer = sjekkliste.SerieNummer;
+                existing.Dato = sjekkliste.Dato;
+                existing.AntallTimer = sjekkliste.AntallTimer;
+                existing.MekanikerKommentar = sjekkliste.MekanikerKommentar;
+                existing.OrdreNummer = sjekkliste.OrdreNummer;
+                dataContext.SaveChanges();
+                return;
+            }
+            sjekkliste.SjekklisteID = 0;
+            dataContext.Add(sjekkliste);
+            dataContext.SaveChanges();
+        }
+
+        public void Delete(int SjekklisteID)
+        {
+            SjekklisteEntity? Sjekkliste = Get(SjekklisteID);
+            if (Sjekkliste == null)
+                return;
+            dataContext.Sjekkliste.Remove(Sjekkliste);
+            dataContext.SaveChanges();
         }
     }
 }

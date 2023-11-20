@@ -63,7 +63,7 @@ public class Program
             options.UseMySql(builder.Configuration.GetConnectionString("MariaDb"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MariaDb")));
         });
         builder.Services.AddScoped<IUserRepository, EFUserRepository>();
-        builder.Services.AddScoped<ISjekkliste, EFSjekkliste>();
+        builder.Services.AddScoped<ISjekklisteRepository, EFSjekkliste>();
         builder.Services.AddScoped<IArbDokRepository, EFArbDokRepository>();
         builder.Services.AddScoped<IServiceDokumentRepository, EFServiceDokument>();
         builder.Services.AddScoped<IOrdreRepository, EFOrdre>();

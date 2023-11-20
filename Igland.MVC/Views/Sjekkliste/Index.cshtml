@@ -1,6 +1,6 @@
-﻿@using Igland.MVC.Models.ServiceDokument;
+﻿@using Igland.MVC.Models.Sjekkliste;
 
-@model ServiceDokumentFullViewModel
+@model SjekklisteFullViewModel
 @{
     ViewData["Title"] = "Sjekkliste";
 }
@@ -62,17 +62,15 @@
 
 
     <tbody>
-            @foreach (var services in Model.ServiceDokumentOversikt)
+            @foreach (var sjekklister in Model.SjekklisteOversikt)
             {
             <tr>
-                <td>@services.ServiceSkjemaID</td>
-                <td>@services.OrdreNummer</td>
-                <td>@services.Aarsmodel</td>
-                <td>@services.Garanti</td>
-                <td>@services.Reparasjonsbeskrivelse</td>
-                <td>@services.MedgaatteDeler</td>
-                <td>@services.DeleRetur</td>
-                <td>@services.ForesendelsesMaate</td>
+                <td>@sjekklister.MekanikerNavn</td>
+                <td>@sjekklister.SerieNummer</td>
+                <td>@sjekklister.Dato</td>
+                <td>@sjekklister.AntallTimer</td>
+                <td>@sjekklister.MekanikerKommentar</td>
+                <td>@sjekklister.SjekklisteID</td>
             </tr>
             }
     </tbody>
