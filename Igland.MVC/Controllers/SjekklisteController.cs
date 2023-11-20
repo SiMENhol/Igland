@@ -21,7 +21,7 @@ namespace Igland.MVC.Controllers
         [HttpGet]
         public IActionResult Ny()
         {
-          /*  var model = new SjekklisteFullViewModel
+            var model = new SjekklisteViewModel
             {
                 AntallTimer = 0,
                 Dato = DateOnly.FromDateTime(DateTime.Today),
@@ -37,7 +37,7 @@ namespace Igland.MVC.Controllers
                 SerieNummer = "",
                 SjekklisteID = 1
             };
-          */
+          
             return View("Ny");
         }
         

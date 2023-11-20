@@ -140,7 +140,7 @@ create table if not EXISTS AspNetRoleClaims
     MekanikerKommentar varchar(255),
     MekanikerNavn varchar(100),
     Dato date,
-    SerieNummer int,
+    SerieNummer varchar(255),
     AntallTimer decimal,
     FOREIGN KEY(OrdreNummer) REFERENCES Ordre(OrdreNummer)
 );
