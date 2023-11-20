@@ -19,12 +19,38 @@ namespace Igland.MVC.Controllers
         public IActionResult Index()
         {
             _logger.LogInformation("Index method called");
-            var model = new KunderFullViewModel();
-            model.KunderOversikt = _kunderRepository.GetAll().Select(x => new KunderViewModel { KundeID = x.KundeID, KundeNavn = x.KundeNavn }).ToList();
-
+            var model = CreateKunderFullViewModel();
             return View("Index", model);
         }
 
+        [HttpGet]
+        public IActionResult Ny()
+        {
+            _logger.LogInformation("Index method called");
+            var model = CreateKunderFullViewModel();
+            return View("Ny", model);
+        }
+        public IActionResult Rediger()
+        {
+            _logger.LogInformation("Rediger method called");
+            var model = CreateKunderFullViewModel();
+            return View("Rediger", model);
+        }
+        private KunderFullViewModel CreateKunderFullViewModel()
+        {
+            _logger.LogInformation("CreateKunderFullViewModel method called");
+            return new KunderFullViewModel
+            {
+                KunderOversikt = _kunderRepository.GetAll()
+                    .Select(x => new KunderViewModel
+                    {
+                        KundeID = x.KundeID,
+                        KundeNavn = x.KundeNavn
+
+                    })
+                    .ToList()
+            };
+        }
         [HttpPost]
         public IActionResult Post(KunderFullViewModel kunder)
         {
@@ -38,5 +64,6 @@ namespace Igland.MVC.Controllers
             _kunderRepository.Upsert(entity);
             return RedirectToAction("Index");
         }
+        
     }
 }

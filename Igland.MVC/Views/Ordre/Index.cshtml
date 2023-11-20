@@ -1,40 +1,23 @@
 ﻿﻿@using Igland.MVC.Models.Ordre;
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 @model OrdreFullViewModel
-<h1>Ordre</h1>
-<br>
-<body>
-
-    <form asp-action="Post" asp-controller="Ordre" method="post">
-        @Html.ValidationSummary()
-        @Html.AntiForgeryToken()
-        <label asp-for="UpsertModel.KundeID"></label>
-        <input asp-for="UpsertModel.KundeID" type="number"  placeholder="100"/><br />
-
-        <label asp-for="UpsertModel.SerieNummer"></label>
-        <input asp-for="UpsertModel.SerieNummer" type="text" /><br />
-
-        <label asp-for="UpsertModel.VareNavn"></label>
-        <input asp-for="UpsertModel.VareNavn" type="text" /><br />
-
-        <label asp-for="UpsertModel.Status"></label>
-        <input asp-for="UpsertModel.Status" type="text" /><br />
-
-        <label asp-for="UpsertModel.ArbDokument"></label>
-        <input asp-for="UpsertModel.ArbDokument" type="text" /><br />
-
-        <input type="submit" />
-    </form>
-    </body>
+@{
+    ViewData["Title"] = "Ordre";
+}
 
 <div class="overskrift">
-
-    <h1>Ordre </h1>
+    <h1>Ordre</h1>
     <br />
-    <div class="søkebar">
-        <input type="text" placeholder="Søk etter navn, nummer..">
+    <div>
+        <input type="text" class="button-link" id="searchInput" placeholder="Søk..">
     </div>
 </div>
+<div>
+    <form action="@Url.Action("Ny", "Ordre")">
+        <button type="submit" class="button-link">Ny ordre</button>
+    </form>
+</div>
+<hr />
 
 <table id="tabell" , align="center">
 
@@ -44,12 +27,12 @@
         <th>SerieNummer </th>
         <th>VareNavn</th>
         <th>Status </th>
-
         <th>ArbDokument</th>
+
     <tbody>
             @foreach (var ordre in Model.OrdreOversikt)
             {
-            <tr>
+            <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "Ordre", new { id = ordre.OrdreNummer })">
                 <td>@ordre.OrdreNummer</td>
                 <td>@ordre.KundeID</td>
                 <td>@ordre.SerieNummer</td>
@@ -61,3 +44,30 @@
     </tbody>
 
 </table>
+
+<script>
+    $(document).ready(function () {
+        // Function to filter rows based on search input
+        function filterTable() {
+            var searchText = $('#searchInput').val().toLowerCase();
+            $('.row-data').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1);
+            });
+        }
+
+        // Event listener for keyup on the search input
+        $('#searchInput').keyup(function () {
+            filterTable();
+        });
+
+        // Redirect to the details page when clicking on a row
+        $(".row-clickable").click(function () {
+            var url = $(this).data("url");
+            window.location.href = url;
+        });
+        function confirmDelete() {
+            var userConfirmed = confirm('Er du sikker på at du vil slette?');
+            return userConfirmed;
+        }
+    });
+</script>﻿

@@ -1,0 +1,24 @@
+﻿﻿@using Igland.MVC.Models.Kunder;
+@model KunderFullViewModel
+@{
+    ViewData["Title"] = "Kunder";
+}
+
+<h1>Kunder</h1>
+<a style="text-decoration:none" asp-controller="Kunder" asp-action="Index">
+    <div>Tilbake</div>
+</a>
+<hr />
+<body>
+
+    <form asp-action="Post" asp-controller="Kunder" method="post">
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+
+
+        <label asp-for="UpsertModel.KundeNavn"></label>
+        <input asp-for="UpsertModel.KundeNavn" type="text" /><br />
+
+        <input type="submit" />
+    </form>
+</body>

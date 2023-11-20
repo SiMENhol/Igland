@@ -1,0 +1,43 @@
+﻿﻿@using Igland.MVC.Models.Ordre;
+@model OrdreFullViewModel
+@{
+    ViewData["Title"] = "Rediger ordre";
+    int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
+    int index = Model.OrdreOversikt.FindIndex(s => s.OrdreNummer == id);
+    if (index == -1)
+    {
+        // Handle the case where the id is not found in the list
+        index = 0; // Set to the first item as a default
+    }
+}
+<h1>Ordre</h1>
+<br>
+<a style="text-decoration:none" asp-controller="Ordre" asp-action="Index" class="box-link">
+    <div>Tilbake</div>
+</a>
+<hr />
+
+
+
+<form asp-action="Post" asp-controller="Ordre" method="post">
+            @Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+                <input asp-for="UpsertModel.OrdreNummer" type="hidden" required value="@Model.OrdreOversikt[index].OrdreNummer" />
+
+                <input asp-for="UpsertModel.KundeID" type="hidden" required value="@Model.OrdreOversikt[index].KundeID" />
+
+                <label asp-for="UpsertModel.SerieNummer"></label> <br />
+                <input asp-for="UpsertModel.SerieNummer" type="number" required value="@Model.OrdreOversikt[index].SerieNummer" /><br />
+
+                <label asp-for="UpsertModel.VareNavn">VareNavn</label> <br />
+                <input asp-for="UpsertModel.VareNavn" type="text" required value="@Model.OrdreOversikt[index].VareNavn" /><br />
+
+                <label asp-for="UpsertModel.Status"></label> <br />
+                <input asp-for="UpsertModel.Status" type="text" required value="@Model.OrdreOversikt[index].Status" /><br />
+
+                <label asp-for="UpsertModel.ArbDokument"></label> <br />
+                <input asp-for="UpsertModel.ArbDokument" type="text" value="@Model.OrdreOversikt[index].ArbDokument" /><br />
+
+        <br />
+        <input type="submit" />
+</form>
