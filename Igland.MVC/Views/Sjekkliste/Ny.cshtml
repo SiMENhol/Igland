@@ -56,10 +56,10 @@
     <h4>Skal endres</h4>
     <h4>Defekt</h4>
 </div>
-   @*  <div class="checklist-grid">
-        @if (Model.JobGroups != null)
+     <div class="checklist-grid">
+        @if (Model.UpsertModel.JobGroups != null)
         {
-            foreach (var jobGroup in Model.JobGroups)
+            foreach (var jobGroup in Model.UpsertModel.JobGroups)
             {
                 <h3>@jobGroup.Name</h3>
                 <ul>
@@ -79,7 +79,7 @@
             }
         }
     </div>
-    *@
+    
     
     
     <h3>Kommentarer</h3>

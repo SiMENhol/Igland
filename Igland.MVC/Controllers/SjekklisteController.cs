@@ -21,35 +21,38 @@ namespace Igland.MVC.Controllers
         [HttpGet]
         public IActionResult Ny()
         {
-            var model = new SjekklisteViewModel
+            var model = new SjekklisteFullViewModel
             {
-                AntallTimer = 0,
-                Dato = DateOnly.FromDateTime(DateTime.Today),
-                JobGroups = new List<SjekklisteJobGroupModel> {
+                UpsertModel = new SjekklisteViewModel
+                {
+                    AntallTimer = 0,
+                    Dato = DateOnly.FromDateTime(DateTime.Today),
+                    JobGroups = new List<SjekklisteJobGroupModel> {
                     new SjekklisteJobGroupModel {Name ="Mekanisk", Jobs=new List<string>{"Sjekk clutch lameller for slitasje", "Sjekk bremser. Bånd/Pal", "Sjekk lager for trommel", "Sjekk PTO og opplagring", "Sjekk kjedestrammer", "Sjekk wire", "Sjekk pinion lager", "Sjekk kile på kjedehjul"} },
                     new SjekklisteJobGroupModel{ Name="Hydraulisk", Jobs=new List<string>{"Sjekk hydraulisk sylinder for lekkasje","Sjekk slanger for skader og lekkasje", "Test hydraulikkblokk i testbenk", "Skift olje i tank", "Skift olje på gir boks", "Sjekk Ringsylinder åpne og skift tetninger", "Sjekk bremse sylinder åpne og skift tetninger" } },
                     new SjekklisteJobGroupModel{ Name="Elektro", Jobs=new List<string>{"Sjekk ledningsnett på vinsj","Sjekk og test radio","Sjekk og test knappekasse" } },
                     new SjekklisteJobGroupModel{ Name="Trykk settinger", Jobs=new List<string>{"xx- bar" } },
                     new SjekklisteJobGroupModel{ Name="Funksjons test", Jobs=new List<string>{"Test vinsj og kjør alle funksjoner", "Trekkraft KN", "Bremse kraft KN" } },
                 },
-                MekanikerNavn = "",
-                MekanikerKommentar = "",
-                SerieNummer = "",
-                SjekklisteID = 1
+                    MekanikerNavn = "",
+                    MekanikerKommentar = "",
+                    SerieNummer = "",
+                    SjekklisteID = 1
+                }
             };
           
-            return View("Ny");
+            return View("Ny", model);
         }
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Save(SjekklisteViewModel model)
+        public IActionResult Save(SjekklisteFullViewModel model)
         {
-            foreach (var jobGroup in model.JobGroups)
+            foreach (var jobGroup in model.UpsertModel.JobGroups)
             {
                 foreach (var job in jobGroup.Jobs)
                 {
-                    var radioButtonValue = model.RadioButtonValue;
+                    var radioButtonValue = model.UpsertModel.RadioButtonValue;
                 }
             }
             return View("Index", model);
