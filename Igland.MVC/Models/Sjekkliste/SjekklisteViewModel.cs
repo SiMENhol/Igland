@@ -9,12 +9,9 @@ namespace Igland.MVC.Models.Sjekkliste
         {
             UpsertModel = new SjekklisteViewModel();
             SjekklisteOversikt = new List<SjekklisteViewModel>();
-            
         }
         public SjekklisteViewModel UpsertModel { get; set; }
         public List<SjekklisteViewModel> SjekklisteOversikt { get; set; }
-        public List<SjekklisteJobGroupModel> JobGroups { get; set; }
-
     }
     public class SjekklisteViewModel
     {
@@ -57,7 +54,7 @@ namespace Igland.MVC.Models.Sjekkliste
 
     public class SjekklisteJobGroupModel
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public List<string> Jobs { get; set; }
     }

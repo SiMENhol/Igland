@@ -11,11 +11,13 @@ namespace Igland.MVC.Controllers
         private readonly ILogger<SjekklisteController> _logger;
 
         private readonly ISjekklisteRepository _sjekklisteRepository;
+        private readonly ISjekklisteItemRepository _sjekklisteItemRepository;
 
-        public SjekklisteController(ILogger<SjekklisteController> logger, ISjekklisteRepository sjekklisteRepository)
+        public SjekklisteController(ILogger<SjekklisteController> logger, ISjekklisteRepository sjekklisteRepository, ISjekklisteItemRepository sjekklisteItemRepository)
         {
             _logger = logger;
             _sjekklisteRepository = sjekklisteRepository;
+            _sjekklisteItemRepository = sjekklisteItemRepository;
         }
 
         [HttpGet]
@@ -52,11 +54,21 @@ namespace Igland.MVC.Controllers
             {
                 foreach (var job in jobGroup.Jobs)
                 {
-                    var radioButtonValue = model.UpsertModel.RadioButtonValue;
+                    var entity = new SjekklisteItemEntity
+                    {
+                        // var radioButtonValue = model.UpsertModel.RadioButtonValue;
+                        SjekklisteItemID = model.UpsertModel.SjekklisteID,
+                        SjekklisteID = model.UpsertModel.SjekklisteID,
+                        Jobs = job,
+                        JobGroups = jobGroup.Name,
+                        RadioButtonValue = model.UpsertModel.RadioButtonValue,
+                    };
+                    _sjekklisteItemRepository.Upsert(entity);
                 }
             }
-            return View("Index", model);
+            return Redirect("Index");
         }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -82,7 +94,10 @@ namespace Igland.MVC.Controllers
                 OrdreNummer = sjekkliste.UpsertModel.OrdreNummer,
             };
             _sjekklisteRepository.Upsert(entity);
-            return Redirect("index");
+
+            Save(sjekkliste);
+
+            return Redirect("Index");
         }
 
     }
