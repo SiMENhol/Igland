@@ -26,7 +26,7 @@
     @* <thred> spare </thred> *@
     <tr>
         <th>
-            ServiceSkjemaID
+            SjekklisteID
         </th>
 
         <th>
@@ -34,24 +34,24 @@
         </th>
 
         <th>
-            Årsmodel
+            SerieNummer
         </th>
 
         <th>
-            Garanti
+            Dato
         </th>
 
         <th>
-            Reparasjonsbeskrivelse
+            Antall timer
         </th>
         <th>
-            MedgåtteDeler
+            Kommentar
         </th>
         <th>
-            DeleRetur
+            Mekaniker
         </th>
         <th>
-            ForesendelsesMåte
+            test
         </th>
 
 
@@ -65,12 +65,14 @@
             @foreach (var sjekklister in Model.SjekklisteOversikt)
             {
             <tr>
-                <td>@sjekklister.MekanikerNavn</td>
+                <td>@sjekklister.SjekklisteID</td>
+                <td>@sjekklister.OrdreNummer</td>
                 <td>@sjekklister.SerieNummer</td>
                 <td>@sjekklister.Dato</td>
                 <td>@sjekklister.AntallTimer</td>
                 <td>@sjekklister.MekanikerKommentar</td>
-                <td>@sjekklister.SjekklisteID</td>
+                <td>@sjekklister.MekanikerNavn</td>
+                <td>@sjekklister.RadioButtonValues</td>
             </tr>
             }
     </tbody>
