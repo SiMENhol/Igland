@@ -143,6 +143,7 @@ create table if not EXISTS AspNetRoleClaims
     SerieNummer varchar(255),
     AntallTimer decimal,
     RadioButtonValues varchar(255),
+    StatusString varchar(255),
     FOREIGN KEY(OrdreNummer) REFERENCES Ordre(OrdreNummer)
 );
 

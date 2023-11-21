@@ -62,6 +62,8 @@ namespace Igland.MVC.Controllers
         public IActionResult Post(SjekklisteFullViewModel sjekkliste)
         {
             _logger.LogInformation("Post method called with data: {@sjekkliste}", sjekkliste);
+            var statusString = sjekkliste.UpsertModel.ClutchLameller;
+
             var entity = new SjekklisteEntity
             {
                 MekanikerNavn = sjekkliste.UpsertModel.MekanikerNavn,
@@ -71,7 +73,8 @@ namespace Igland.MVC.Controllers
                 MekanikerKommentar = sjekkliste.UpsertModel.MekanikerKommentar,
                 SjekklisteID = sjekkliste.UpsertModel.SjekklisteID,
                 OrdreNummer = sjekkliste.UpsertModel.OrdreNummer,
-                RadioButtonValues = Save(sjekkliste),
+                StatusString = statusString,
+                //RadioButtonValues = Save(sjekkliste),
             };
             _sjekklisteRepository.Upsert(entity);
             return Redirect("Index");

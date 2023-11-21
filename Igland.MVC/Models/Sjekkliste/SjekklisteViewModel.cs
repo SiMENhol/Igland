@@ -48,8 +48,8 @@ namespace Igland.MVC.Models.Sjekkliste
         [Required(ErrorMessage = "Listen må fylles ut.")]
         public List<SjekklisteJobGroupModel> JobGroups { get; set; }
 
+        public string? ClutchLameller { get; set; }
 
-        
     }
 
     public class SjekklisteJobGroupModel

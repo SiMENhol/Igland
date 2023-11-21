@@ -14,5 +14,6 @@ namespace Igland.MVC.Entities
             public int SjekklisteID { get; set; }
             public int OrdreNummer { get; set; }
             public string? RadioButtonValues {  get; set; }
+            public string? StatusString { get; set; }
     }
 } 

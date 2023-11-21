@@ -35,7 +35,8 @@ namespace Igland.MVC.Repositories.EF
                 existing.AntallTimer = sjekkliste.AntallTimer;
                 existing.MekanikerKommentar = sjekkliste.MekanikerKommentar;
                 existing.OrdreNummer = sjekkliste.OrdreNummer;
-                existing.RadioButtonValues = sjekkliste.RadioButtonValues;
+                //existing.RadioButtonValues = sjekkliste.RadioButtonValues;
+                existing.StatusString = sjekkliste.StatusString;
                 dataContext.SaveChanges();
                 return;
             }

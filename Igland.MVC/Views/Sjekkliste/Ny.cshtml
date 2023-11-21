@@ -41,7 +41,7 @@
 </style>
 
 
-<form asp-action="Post" asp-controller="Sjekkliste" method="post">
+<form id="mainForm" asp-action="Post" asp-controller="Sjekkliste" method="post">
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
 
@@ -57,6 +57,18 @@
     <h4>Defekt</h4>
 </div>
      <div class="checklist-grid">
+        <h3>Mekanisk</h3>
+        <ul>
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk clutch lameller for slitasje</label>
+                    <input asp-for="UpsertModel.ClutchLameller" type="radio" name="clutch lameller" value="hello" />
+                    <input asp-for="UpsertModel.ClutchLameller" type="radio" name="clutch lameller" value="hei" />
+                    <input asp-for="UpsertModel.ClutchLameller" type="radio" name="clutch lameller" value="hola" />
+                </div>
+            </li>
+        </ul>
+         @*
         @if (Model.UpsertModel.JobGroups != null)
         {
             foreach (var jobGroup in Model.UpsertModel.JobGroups)
@@ -68,9 +80,9 @@
                         <li>
                             <div class="checklist-item">
                                 <label>@jobs.Name</label>
-                                <input asp-for="@jobs.Value" type="radio" name="@jobs.Name" value="0"> @*OK*@
-                                <input asp-for="@jobs.Value" type="radio" name="@jobs.Name" value="1"> @*Skal endres*@
-                                <input asp-for="@jobs.Value" type="radio" name="@jobs.Name" value="2"> @*Defekt*@
+                                <input asp-for="@jobs.Value" type="radio" name="@jobs.Name" value="0">
+                                <input asp-for="@jobs.Value" type="radio" name="@jobs.Name" value="1">
+                                <input asp-for="@jobs.Value" type="radio" name="@jobs.Name" value="2">
                             </div>
                         </li>
 
@@ -78,6 +90,7 @@
                 </ul>
             }
         }
+        *@
     </div>
     
     
@@ -111,3 +124,7 @@
     <br>
     <br>
 </form>
+
+        <script>
+            $("#")
+        </script>
