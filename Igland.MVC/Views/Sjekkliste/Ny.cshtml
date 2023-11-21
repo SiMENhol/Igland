@@ -66,6 +66,8 @@
                     <input asp-for="UpsertModel.ClutchLameller" type="radio" value="1" /> @*Skal endres*@
                     <input asp-for="UpsertModel.ClutchLameller" type="radio" value="2" /> @*OK*@
                 </div>
+            </li>
+            <li>
                 <div class="checklist-item">
                     <label>Sjekk bremser. Bånd/pal</label>
                     <input asp-for="UpsertModel.Bremser" type="radio" value="0" /> @*Defekt*@
@@ -74,7 +76,23 @@
                 </div>
             </li>
         </ul>
-        
+        <h3>Hydraulisk</h3>
+        <ul>
+
+        </ul>
+        <h3>Elektro</h3>
+        <ul>
+
+        </ul>
+        <h3>Trykksettinger</h3>
+        <ul>
+
+        </ul>
+        <h3>Funksjonstest</h3>
+        <ul>
+
+        </ul>
+
         @*@if (Model.UpsertModel.JobGroups != null)
         {
             foreach (var jobGroup in Model.UpsertModel.JobGroups)
