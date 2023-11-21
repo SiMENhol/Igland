@@ -50,6 +50,7 @@ namespace Igland.MVC.Models.Sjekkliste
 
         public string? ClutchLameller { get; set; }
         public string? Bremser {  get; set; }
+        public string? Trommel { get; set; }
 
     }
 

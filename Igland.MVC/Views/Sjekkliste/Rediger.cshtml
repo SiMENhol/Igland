@@ -4,6 +4,40 @@
 @{
     ViewData["Title"] = "Sjekkliste";
 
+    int getID()
+    {
+        int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
+        if (id <= 0 || id > Model.SjekklisteOversikt.Count)
+        {
+            return 0;
+        }
+        return id - 1;
+    }
+
+    String formatDate(String str)
+    {
+        String d = "";
+        String m = "";
+        String y = "";
+        int numberOfPeriods = 0;
+
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (str[i].Equals('/'))
+                numberOfPeriods++;
+            else
+            {
+                if (numberOfPeriods == 0)
+                    m += str[i];
+                else if (numberOfPeriods == 1)
+                    d += str[i];
+                else
+                    y += str[i];
+            }
+        }
+        return y + "-" + m + "-" + d;
+    }
+
     List<string> toText(String statusString)
     {
         string returnString = "";
@@ -16,15 +50,17 @@
                 returnString = "";
             }
             else if (statusString[i].Equals('0'))
-                returnString += "Defekt";
+                returnString += "0"; // "Defekt"
             else if (statusString[i].Equals('1'))
-                returnString += "Skal endres";
+                returnString += "1"; //"Skal endres"
             else if (statusString[i].Equals('2'))
-                returnString += "OK";
+                returnString += "2"; //"OK
             else returnString += "unexpected input";
         }
         return liste;
     }
+
+    var elementID = -1; //La stå!
 }
 <style type="text/css">
     .checklist-grid {
@@ -62,23 +98,22 @@
     }
 </style>
 
-
 <form asp-action="Post" asp-controller="Sjekkliste" method="post">
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
 
     <label asp-for="UpsertModel.OrdreNummer" Text="Serienummer"></label>
-    <input asp-for="UpsertModel.OrdreNummer" type="number" required/>
+    <input asp-for="UpsertModel.OrdreNummer" type="number" value="@Model.SjekklisteOversikt[getID()].OrdreNummer" required />
 
     <label asp-for="UpsertModel.SerieNummer" Text="Serienummer"></label>
-    <input asp-for="UpsertModel.SerieNummer" type="string name="Serienummer" />
+    <input asp-for="UpsertModel.SerieNummer" type="string name="Serienummer" value="@Model.SjekklisteOversikt[getID()].SerieNummer" />
 
-<div class="checklistenavn">
-    <h4>OK</h4>
-    <h4>Skal endres</h4>
-    <h4>Defekt</h4>
-</div>
-     <div class="checklist-grid">
+    <div class="checklistenavn">
+        <h4>OK</h4>
+        <h4>Skal endres</h4>
+        <h4>Defekt</h4>
+    </div>
+    <div class="checklist-grid"> @*Ikke bytt klassenavn*@
         <h3>Mekanisk</h3>
         <ul>
             <li>
@@ -122,54 +157,32 @@
         <ul>
 
         </ul>
-
-        @*@if (Model.UpsertModel.JobGroups != null)
-        {
-            foreach (var jobGroup in Model.UpsertModel.JobGroups)
-            {
-                <h3>@jobGroup.Name</h3>
-                <ul>
-                    @foreach (var jobs in jobGroup.Jobs)
-                    {
-                        <li>
-                            <div class="checklist-item">
-                                <label>@jobs.Name</label>
-                                <input asp-for="@jobs.Value" type="radio" value="0">
-                                <input asp-for="@jobs.Value" type="radio" value="1">
-                                <input asp-for="@jobs.Value" type="radio" value="2">
-                            </div>
-                        </li>
-
-                    }
-                </ul>
-            }
-        }*@
     </div>
-    
-    
-    
+
+
+
     <h3>Kommentarer</h3>
     <div class="MekanikerKommentar">
-        <textarea asp-for="UpsertModel.MekanikerKommentar" class="form-control-md" style="width: 100%; height: 100px;"> </textarea>
+        <textarea asp-for="UpsertModel.MekanikerKommentar" class="form-control-md" style="width: 100%; height: 100px;" value="@Model.SjekklisteOversikt[getID()].MekanikerKommentar"> </textarea>
     </div>
-    
+
     <div class="MekanikerNavn">
         <label asp-for="UpsertModel.MekanikerNavn"></label>
-        <input asp-for="UpsertModel.MekanikerNavn" type="text" /><br />
+        <input asp-for="UpsertModel.MekanikerNavn" type="text" value="@Model.SjekklisteOversikt[getID()].MekanikerNavn" /><br />
     </div>
 
     <div class="AntallTimer">
         <label asp-for="UpsertModel.AntallTimer"></label>
-        <input asp-for="UpsertModel.AntallTimer" type="number" />
+        <input asp-for="UpsertModel.AntallTimer" type="number" value="@Model.SjekklisteOversikt[getID()].AntallTimer" />
     </div>
 
     <div class="Dato">
         <label asp-for="UpsertModel.Dato"></label>
-        <input asp-for="UpsertModel.Dato" type="date" />
+        <input asp-for="UpsertModel.Dato" type="date" value="@formatDate(Model.SjekklisteOversikt[getID()].Dato.ToString())" />
     </div>
 
     <div class="SubmitKnapp">
-    <input type="submit" />
+        <input type="submit" />
     </div>
 
     <br>
@@ -178,3 +191,14 @@
     <br>
 
 </form>
+
+<!-- Funksjon som sjekker av radioboksene basert på data i databasen -->
+    @foreach (var value in toText(Model.SjekklisteOversikt[getID()].StatusString))
+    {
+        elementID++;
+        <script type="text/javascript">
+            var element = document.getElementsByClassName("checklist-grid")[0].getElementsByTagName("li")[@elementID]
+            var radioButton = element.getElementsByTagName("input");
+            radioButton[@value].checked = true;
+        </script>
+    }
