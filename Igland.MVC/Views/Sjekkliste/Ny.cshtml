@@ -63,14 +63,14 @@
             {
                 <h3>@jobGroup.Name</h3>
                 <ul>
-                    @foreach (var group in jobGroup.Jobs)
+                    @foreach (var jobs in jobGroup.Jobs)
                     {
                         <li>
                             <div class="checklist-item">
-                                @group
-                                <input type="radio" name="@group" value="OK">
-                                <input type="radio" name="@group" value="Skal endres">
-                                <input type="radio" name="@group" value="Defekt">
+                                <label>@jobs.Name</label>
+                                <input asp-for="@jobs.Value" type="radio" name="@jobs.Name" value="0"> @*OK*@
+                                <input asp-for="@jobs.Value" type="radio" name="@jobs.Name" value="1"> @*Skal endres*@
+                                <input asp-for="@jobs.Value" type="radio" name="@jobs.Name" value="2"> @*Defekt*@
                             </div>
                         </li>
 

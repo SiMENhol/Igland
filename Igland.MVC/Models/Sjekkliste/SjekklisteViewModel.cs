@@ -43,7 +43,7 @@ namespace Igland.MVC.Models.Sjekkliste
 
         public int OrdreNummer { get; set; }
 
-        public string? RadioButtonValue { get; set; }
+        public string? RadioButtonValues { get; set; }
 
         [Required(ErrorMessage = "Listen må fylles ut.")]
         public List<SjekklisteJobGroupModel> JobGroups { get; set; }
@@ -56,7 +56,13 @@ namespace Igland.MVC.Models.Sjekkliste
     {
         public string? Name { get; set; }
 
-        public List<string> Jobs { get; set; }
+        public List<Jobs> Jobs { get; set; }
+    }
+
+    public class Jobs
+    {
+        public string? Name { get; set; }
+        public int Value { get; set; }
     }
 
 

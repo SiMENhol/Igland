@@ -30,12 +30,12 @@ namespace Igland.MVC.Controllers
                     AntallTimer = 0,
                     Dato = DateOnly.FromDateTime(DateTime.Today),
                     JobGroups = new List<SjekklisteJobGroupModel> {
-                    new SjekklisteJobGroupModel {Name ="Mekanisk", Jobs=new List<string>{"Sjekk clutch lameller for slitasje", "Sjekk bremser. Bånd/Pal", "Sjekk lager for trommel", "Sjekk PTO og opplagring", "Sjekk kjedestrammer", "Sjekk wire", "Sjekk pinion lager", "Sjekk kile på kjedehjul"} },
-                    new SjekklisteJobGroupModel{ Name="Hydraulisk", Jobs=new List<string>{"Sjekk hydraulisk sylinder for lekkasje","Sjekk slanger for skader og lekkasje", "Test hydraulikkblokk i testbenk", "Skift olje i tank", "Skift olje på gir boks", "Sjekk Ringsylinder åpne og skift tetninger", "Sjekk bremse sylinder åpne og skift tetninger" } },
-                    new SjekklisteJobGroupModel{ Name="Elektro", Jobs=new List<string>{"Sjekk ledningsnett på vinsj","Sjekk og test radio","Sjekk og test knappekasse" } },
-                    new SjekklisteJobGroupModel{ Name="Trykk settinger", Jobs=new List<string>{"xx- bar" } },
-                    new SjekklisteJobGroupModel{ Name="Funksjons test", Jobs=new List<string>{"Test vinsj og kjør alle funksjoner", "Trekkraft KN", "Bremse kraft KN" } },
-                },
+                    new SjekklisteJobGroupModel{ Name ="Mekanisk", Jobs=new List<Jobs>{ new Jobs { Name="Sjekk clutch lameller for slitasje", Value=-1 }, new Jobs { Name="Sjekk bremser. Bånd/Pal", Value = -1 }, new Jobs { Name="Sjekk lager for trommel", Value = -1 }, new Jobs { Name="Sjekk PTO og opplagring", Value = -1 }, new Jobs { Name="Sjekk kjedestrammer", Value = -1 }, new Jobs { Name="Sjekk wire", Value = -1 }, new Jobs { Name="Sjekk pinion lager", Value = -1 }, new Jobs { Name="Sjekk kile på kjedehjul", Value = -1 } } },
+                    new SjekklisteJobGroupModel{ Name="Hydraulisk", Jobs=new List<Jobs>{ new Jobs { Name = "Sjekk hydraulisk sylinder for lekkasje", Value = -1 }, new Jobs { Name = "Sjekk slanger for skader og lekkasje", Value = -1 }, new Jobs { Name= "Test hydraulikkblokk i testbenk", Value = -1 }, new Jobs { Name = "Skift olje i tank", Value = -1 }, new Jobs { Name = "Skift olje på gir boks", Value = -1 }, new Jobs { Name = "Sjekk Ringsylinder åpne og skift tetninger", Value = -1 }, new Jobs { Name = "Sjekk bremse sylinder åpne og skift tetninger", Value = -1 } } },
+                    new SjekklisteJobGroupModel{ Name="Elektro", Jobs=new List<Jobs>{new Jobs { Name = "Sjekk ledningsnett på vinsj", Value = -1 },new Jobs { Name = "Sjekk og test radio", Value = -1 },new Jobs { Name = "Sjekk og test knappekasse", Value = -1 } } },
+                    new SjekklisteJobGroupModel{ Name="Trykk settinger", Jobs=new List<Jobs>{new Jobs { Name = "xx- bar", Value = -1 } } },
+                    new SjekklisteJobGroupModel{ Name="Funksjons test", Jobs=new List<Jobs>{new Jobs { Name = "Test vinsj og kjør alle funksjoner", Value = -1 }, new Jobs { Name = "Trekkraft KN", Value = -1 }, new Jobs { Name = "Bremse kraft KN", Value = -1 } } },
+               },
                     MekanikerNavn = "",
                     MekanikerKommentar = "",
                     SerieNummer = "",
@@ -46,29 +46,6 @@ namespace Igland.MVC.Controllers
             return View("Ny", model);
         }
         
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Save(SjekklisteFullViewModel model)
-        {
-            foreach (var jobGroup in model.UpsertModel.JobGroups)
-            {
-                foreach (var job in jobGroup.Jobs)
-                {
-                    var entity = new SjekklisteItemEntity
-                    {
-                        // var radioButtonValue = model.UpsertModel.RadioButtonValue;
-                        SjekklisteItemID = model.UpsertModel.SjekklisteID,
-                        SjekklisteID = model.UpsertModel.SjekklisteID,
-                        Jobs = job,
-                        JobGroups = jobGroup.Name,
-                        RadioButtonValue = model.UpsertModel.RadioButtonValue,
-                    };
-                    _sjekklisteItemRepository.Upsert(entity);
-                }
-            }
-            return Redirect("Index");
-        }
-
         [HttpGet]
         public IActionResult Index()
         {
@@ -80,6 +57,8 @@ namespace Igland.MVC.Controllers
             return View("Index", model); 
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Post(SjekklisteFullViewModel sjekkliste)
         {
             _logger.LogInformation("Post method called with data: {@sjekkliste}", sjekkliste);
@@ -92,13 +71,23 @@ namespace Igland.MVC.Controllers
                 MekanikerKommentar = sjekkliste.UpsertModel.MekanikerKommentar,
                 SjekklisteID = sjekkliste.UpsertModel.SjekklisteID,
                 OrdreNummer = sjekkliste.UpsertModel.OrdreNummer,
+                RadioButtonValues = Save(sjekkliste),
             };
             _sjekklisteRepository.Upsert(entity);
-
-            Save(sjekkliste);
-
             return Redirect("Index");
         }
 
+        public string Save(SjekklisteFullViewModel model)
+        {
+            var returnString = "";
+            foreach (var jobGroup in model.UpsertModel.JobGroups)
+            {
+                foreach (var jobs in jobGroup.Jobs)
+                {
+                    returnString += jobs.Value + ",";
+                }
+            }
+            return returnString;
+        }
     }
 }

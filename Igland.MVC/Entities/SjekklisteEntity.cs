@@ -13,5 +13,6 @@ namespace Igland.MVC.Entities
             public string? MekanikerKommentar { get; set; }
             public int SjekklisteID { get; set; }
             public int OrdreNummer { get; set; }
+            public string? RadioButtonValues {  get; set; }
     }
 } 
