@@ -43,12 +43,13 @@ namespace Igland.MVC.Models.Sjekkliste
 
         public int OrdreNummer { get; set; }
 
-        public string? RadioButtonValues { get; set; }
-
         [Required(ErrorMessage = "Listen må fylles ut.")]
         public List<SjekklisteJobGroupModel> JobGroups { get; set; }
 
+        public string? StatusString { get; set; }
+
         public string? ClutchLameller { get; set; }
+        public string? Bremser {  get; set; }
 
     }
 
