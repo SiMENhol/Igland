@@ -55,6 +55,7 @@
     <footer class="border-top footer text-muted">
         <div class="footerContent" style="color: #9CB7C2; font-size:18px">
             &copy; 2023 - Igland - <a asp-area="" style="text-decoration:none" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <a href="#" onclick="showAlert()" style="float:right; margin-right:10px">Noe er galt</a>
         </div>
     </footer>
 
@@ -62,6 +63,12 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        function showAlert() {
+            alert("Vennligst rapporter problemet til ledelsen");
+        }
+    </script>
 
 </body>
 </html>
