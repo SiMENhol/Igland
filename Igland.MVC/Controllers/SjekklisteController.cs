@@ -93,6 +93,25 @@ namespace Igland.MVC.Controllers
             statusString += sjekkliste.UpsertModel.ClutchLameller + ",";
             statusString += sjekkliste.UpsertModel.Bremser + ",";
             statusString += sjekkliste.UpsertModel.Trommel + ",";
+            statusString += sjekkliste.UpsertModel.PTO + ",";
+            statusString += sjekkliste.UpsertModel.Kjedestrammer + ",";
+            statusString += sjekkliste.UpsertModel.Wire + ",";
+            statusString += sjekkliste.UpsertModel.Pinion + ",";
+            statusString += sjekkliste.UpsertModel.Kjedehjul + ",";
+            statusString += sjekkliste.UpsertModel.Hydraulisksylinder + ",";
+            statusString += sjekkliste.UpsertModel.Slanger + ",";
+            statusString += sjekkliste.UpsertModel.Hydraulikkblokk + ",";
+            statusString += sjekkliste.UpsertModel.Oljetank + ",";
+            statusString += sjekkliste.UpsertModel.Oljegir + ",";
+            statusString += sjekkliste.UpsertModel.Ringsylinder + ",";
+            statusString += sjekkliste.UpsertModel.Bremsesylinder + ",";
+            statusString += sjekkliste.UpsertModel.Ledningsnett + ",";
+            statusString += sjekkliste.UpsertModel.Testradio + ",";
+            statusString += sjekkliste.UpsertModel.Knappekasse + ",";
+            statusString += sjekkliste.UpsertModel.Xxbar + ",";
+            statusString += sjekkliste.UpsertModel.Testvinsj + ",";
+            statusString += sjekkliste.UpsertModel.Trekkraftkn + ",";
+            statusString += sjekkliste.UpsertModel.Bremsekraft + ",";
 
             var entity = new SjekklisteEntity
             {

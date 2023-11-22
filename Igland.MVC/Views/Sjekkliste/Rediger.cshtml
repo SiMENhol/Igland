@@ -62,46 +62,13 @@
 
     var elementID = -1; //La stå!
 }
-<style type="text/css">
-    .checklist-grid {
-        border: 1px solid black;
-        padding: 10px;
-    }
 
-    .checklist-item {
-        border-bottom: 1px solid gray;
-        padding: 10px;
-    }
-
-        .checklist-item input[type="radio"] {
-            float: right;
-            margin-right: 90px;
-        }
-
-    .checklistenavn {
-        float: right;
-        margin: 20px;
-    }
-
-        .checklistenavn h4 {
-            display: inline-block;
-            padding-right: 50px;
-        }
-
-    .MekanikerNavn, .AntallTimer, .Dato, .SubmitKnapp {
-        float: left;
-        margin: 20px;
-    }
-
-    ul {
-        list-style-type: none;
-    }
-</style>
 
 <form asp-action="Post" asp-controller="Sjekkliste" method="post">
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
-
+    <label asp-for="UpsertModel.SjekklisteID" hidden></label>
+    <input asp-for="UpsertModel.SjekklisteID" type="number" value="@Model.SjekklisteOversikt[getID()].SjekklisteID" hidden/>
     <label asp-for="UpsertModel.OrdreNummer" Text="Serienummer"></label>
     <input asp-for="UpsertModel.OrdreNummer" type="number" value="@Model.SjekklisteOversikt[getID()].OrdreNummer" required />
 
@@ -140,22 +107,170 @@
                     <input asp-for="UpsertModel.Trommel" type="radio" value="2" /> @*OK*@
                 </div>
             </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk PTO og opplagring</label>
+                    <input asp-for="UpsertModel.PTO" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.PTO" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.PTO" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk kjedestrammer</label>
+                    <input asp-for="UpsertModel.Kjedestrammer" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Kjedestrammer" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Kjedestrammer" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk wire</label>
+                    <input asp-for="UpsertModel.Wire" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Wire" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Wire" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk pinion lager</label>
+                    <input asp-for="UpsertModel.Pinion" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Pinion" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Pinion" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk kile på kjedehjul</label>
+                    <input asp-for="UpsertModel.Kjedehjul" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Kjedehjul" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Kjedehjul" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
         </ul>
         <h3>Hydraulisk</h3>
         <ul>
-
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk hydraulisk sylinder for lekkasje</label>
+                    <input asp-for="UpsertModel.Hydraulisksylinder" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Hydraulisksylinder" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Hydraulisksylinder" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk slanger for skader og lekkasje</label>
+                    <input asp-for="UpsertModel.Slanger" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Slanger" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Slanger" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Test hydraulikkblokk i testbenk</label>
+                    <input asp-for="UpsertModel.Hydraulikkblokk" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Hydraulikkblokk" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Hydraulikkblokk" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Skift olje i tank</label>
+                    <input asp-for="UpsertModel.Oljetank" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Oljetank" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Oljetank" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Skift olje på gir boks</label>
+                    <input asp-for="UpsertModel.Oljegir" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Oljegir" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Oljegir" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk Ringsylinder åpne og skift tetninger</label>
+                    <input asp-for="UpsertModel.Ringsylinder" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Ringsylinder" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Ringsylinder" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk bremse sylinder åpne og skift tetninger</label>
+                    <input asp-for="UpsertModel.Bremsesylinder" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Bremsesylinder" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Bremsesylinder" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
         </ul>
         <h3>Elektro</h3>
         <ul>
-
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk ledningsnett på vinsj</label>
+                    <input asp-for="UpsertModel.Ledningsnett" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Ledningsnett" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Ledningsnett" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk og test radio</label>
+                    <input asp-for="UpsertModel.Testradio" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Testradio" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Testradio" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Sjekk og test knappekasse</label>
+                    <input asp-for="UpsertModel.Knappekasse" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Knappekasse" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Knappekasse" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
         </ul>
         <h3>Trykksettinger</h3>
         <ul>
-
+            <li>
+                <div class="checklist-item">
+                    <label>xx- bar</label>
+                    <input asp-for="UpsertModel.Xxbar" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Xxbar" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Xxbar" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
         </ul>
         <h3>Funksjonstest</h3>
         <ul>
-
+            <li>
+                <div class="checklist-item">
+                    <label>Test vinsj og kjør alle funksjoner</label>
+                    <input asp-for="UpsertModel.Testvinsj" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Testvinsj" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Testvinsj" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Trekkraft KN</label>
+                    <input asp-for="UpsertModel.Trekkraftkn" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Trekkraftkn" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Trekkraftkn" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
+            <li>
+                <div class="checklist-item">
+                    <label>Bremse kraft KN</label>
+                    <input asp-for="UpsertModel.Bremsekraft" type="radio" value="0" /> @*Defekt*@
+                    <input asp-for="UpsertModel.Bremsekraft" type="radio" value="1" /> @*Skal endres*@
+                    <input asp-for="UpsertModel.Bremsekraft" type="radio" value="2" /> @*OK*@
+                </div>
+            </li>
         </ul>
     </div>
 
@@ -202,3 +317,40 @@
             radioButton[@value].checked = true;
         </script>
     }
+
+
+<style type="text/css">
+    .checklist-grid {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    .checklist-item {
+        border-bottom: 1px solid gray;
+        padding: 10px;
+    }
+
+        .checklist-item input[type="radio"] {
+            float: right;
+            margin-right: 90px;
+        }
+
+    .checklistenavn {
+        float: right;
+        margin: 20px;
+    }
+
+        .checklistenavn h4 {
+            display: inline-block;
+            padding-right: 50px;
+        }
+
+    .MekanikerNavn, .AntallTimer, .Dato, .SubmitKnapp {
+        float: left;
+        margin: 20px;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+</style>
