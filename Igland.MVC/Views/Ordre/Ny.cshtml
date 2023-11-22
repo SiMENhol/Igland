@@ -36,11 +36,9 @@
         <input asp-for="UpsertModel.VareNavn" type="text" /><br />
 
         <label asp-for="UpsertModel.Status"></label> <br />
-        <input asp-for="UpsertModel.Status" type="text" /><br />
-
-        <label asp-for="UpsertModel.ArbDokument"></label> <br />
-        <input asp-for="UpsertModel.ArbDokument" type="text" /><br />
-
+        <input id="commonInputforStatus" type="text" required /><br />
+        <input asp-for="UpsertModel.Status" type="hidden" />
+        <input asp-for="UpsertArbDok.Status" type="hidden" />
 
         <input type="submit" />
     </form>
@@ -56,6 +54,13 @@
             $('input[name="UpsertArbDok.OrdreNummer"]').val(inputValue);
             $('input[name="UpsertSjekkliste.OrdreNummer"]').val(inputValue);
             $('input[name="UpsertServicedokument.OrdreNummer"]').val(inputValue);
+        });
+    });
+    $(document).ready(function () {
+        $('#commonInputforStatus').on('input', function () {
+            var inputValue = $(this).val();
+            $('input[name="UpsertModel.Status"]').val(inputValue);
+            $('input[name="UpsertArbDok.Status"]').val(inputValue);
         });
     });
 </script>

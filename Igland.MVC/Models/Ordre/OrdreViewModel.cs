@@ -41,7 +41,6 @@ namespace Igland.MVC.Models.Ordre
         public string SerieNummer { get; set; }
         public string VareNavn { get; set; }
         public string Status { get; set; }
-        public string ArbDokument { get; set; }
     }
 }
 

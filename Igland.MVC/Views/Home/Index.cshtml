@@ -1,6 +1,6 @@
-﻿@using Igland.MVC.Models.Account;
+﻿@using Igland.MVC.Models.Home;
 
-@model LoginFullViewModel
+@model HomeViewModel
 
 @{
     ViewData["Title"] = "Hjem";
@@ -21,4 +21,68 @@
     </a>
 </div>
 
+<table id="tabell" , align="center">
 
+    @* <thred> spare </thred> *@
+    <tr>
+        <th>
+            Avtalt ferdig
+        </th>
+
+        <th>
+            Ordre
+        </th>
+
+        <th>
+            Kunde
+        </th>
+
+        <th>
+           Status
+        </th>
+        <th>
+            
+        </th>
+
+        
+
+
+
+
+        @* undergreier i tabellen *@
+
+
+
+
+    <tbody>
+            @foreach (var ArbeidsDokuments in Model.ArbDokList)
+            {
+                var Ordre = Model.OrdreOversikt.Find(x => x.OrdreNummer == ArbeidsDokuments.OrdreNummer);
+                var Kunde = Model.KunderOversitk.Find(x => x.KundeID == Ordre.KundeID);
+                // Check if the status is "pågår" before rendering the row
+                if (Ordre.Status == "Opprettet" || Ordre.Status == "Pågår")
+                {
+            <tr class="row-data">
+                <td data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">@ArbeidsDokuments.AvtaltFerdig</td>
+                <td data-url="@Url.Action("Rediger", "ArbDok", new { id = Ordre.OrdreNummer })">@Ordre.OrdreNummer</td>
+                <td data-url="@Url.Action("Rediger", "Kunder", new { id = Kunde.KundeID })">@Kunde.KundeID @Kunde.KundeNavn</td>
+                <td data-url="@Url.Action("Rediger", "ArbDok", new { id = Ordre.OrdreNummer })">@Ordre.Status</td>
+                <td data-url="@Url.Action("Rediger", "Sjekkliste", new { id = ArbeidsDokuments.ArbDokID })">- Til Sjekkliste -</td>
+            </tr>
+            }
+            }
+    </tbody>
+
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.row-data td').click(function () {
+            var url = $(this).data('url');
+            if (url) {
+                window.location.href = url;
+            }
+        });
+    });
+</script>
