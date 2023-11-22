@@ -54,8 +54,8 @@
         <label asp-for="UpsertArbDok.ArbDokID" hidden></label>
         <input asp-for="UpsertArbDok.ArbDokID" type="number" value="@Model.ArbDokList[getID()].ArbDokID" hidden/>
 
-        <label asp-for="UpsertArbDok.OrdreNummer"></label><br />
-        <input asp-for="UpsertArbDok.OrdreNummer" type="number" required value="@Model.ArbDokList[getID()].OrdreNummer"/><br />
+        <label asp-for="UpsertArbDok.OrdreNummer" hidden></label><br />
+        <input asp-for="UpsertArbDok.OrdreNummer" type="number" required value="@Model.ArbDokList[getID()].OrdreNummer" hidden /><br />
 
         <label asp-for="UpsertArbDok.Kunde"></label><br />
         <input asp-for="UpsertArbDok.Kunde" type="text" required value="@Model.ArbDokList[getID()].Kunde" /><br />

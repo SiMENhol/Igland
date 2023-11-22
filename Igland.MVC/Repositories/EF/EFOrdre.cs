@@ -24,21 +24,26 @@ namespace Igland.MVC.Repositories.EF
             return dataContext.Ordre.ToList();
         }
 
-        public void Upsert(OrdreEntity Ordre)
+        public void Upsert(OrdreEntity ordre)
         {
-            var existing = Get(Ordre.OrdreNummer);
+            var existing = Get(ordre.OrdreNummer);
+
             if (existing != null)
             {
-                existing.KundeID = Ordre.KundeID;
-                existing.SerieNummer = Ordre.SerieNummer;
-                existing.VareNavn = Ordre.SerieNummer;
-                existing.Status = Ordre.Status;
+                // Update existing entity
+                existing.OrdreNummer = ordre.OrdreNummer;
+                existing.KundeID = ordre.KundeID;
+                existing.SerieNummer = ordre.SerieNummer;
+                existing.VareNavn = ordre.VareNavn;
+                existing.Status = ordre.Status;
                 dataContext.SaveChanges();
-                return;
             }
-            Ordre.OrdreNummer = 0;
-            dataContext.Add(Ordre);
-            dataContext.SaveChanges();
+            else
+            {
+                // Insert new entity
+                dataContext.Add(ordre);
+                dataContext.SaveChanges();
+            }
         }
     }
 }
