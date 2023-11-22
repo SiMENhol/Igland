@@ -51,6 +51,25 @@ namespace Igland.MVC.Models.Sjekkliste
         public string? ClutchLameller { get; set; }
         public string? Bremser {  get; set; }
         public string? Trommel { get; set; }
+        public string? PTO { get; set; }
+        public string? Kjedestrammer { get; set; }
+        public string? Wire { get; set; }
+        public string? Pinion { get; set; }
+        public string? Kjedehjul { get; set; }
+        public string? Hydraulisksylinder { get; set; }
+        public string? Slanger { get; set; }
+        public string? Hydraulikkblokk { get; set; }
+        public string? Oljetank { get; set; }
+        public string? Oljegir { get; set; }
+        public string? Ringsylinder { get; set; }
+        public string? Bremsesylinder { get; set; }
+        public string? Ledningsnett { get; set; }
+        public string? Testradio { get; set; }
+        public string? Knappekasse { get; set; }
+        public string? Xxbar { get; set; }
+        public string? Testvinsj { get; set; }
+        public string? Trekkraftkn { get; set; }
+        public string? Bremsekraft { get; set; }
 
     }
 
