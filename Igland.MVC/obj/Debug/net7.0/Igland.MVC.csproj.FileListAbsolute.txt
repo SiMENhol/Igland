@@ -395,3 +395,9 @@ C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\ref\Igland.MVC.dl
 C:\Users\simen\Source\Repos\SiMENhol\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ArbDok\Index.cshtml.rz.scp.css
 C:\Users\simen\Source\Repos\SiMENhol\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ServiceDokument\Index.cshtml.rz.scp.css
 C:\Users\simen\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Sjekkliste\Index.cshtml.rz.scp.css
+C:\Users\Victor\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ArbDok\Index.cshtml.rz.scp.css
+C:\Users\Victor\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Home\Index.cshtml.rz.scp.css
+C:\Users\Victor\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Kunder\Index.cshtml.rz.scp.css
+C:\Users\Victor\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Ordre\Index.cshtml.rz.scp.css
+C:\Users\Victor\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\ServiceDokument\Index.cshtml.rz.scp.css
+C:\Users\Victor\source\repos\Igland\Igland.MVC\obj\Debug\net7.0\scopedcss\Views\Sjekkliste\Index.cshtml.rz.scp.css

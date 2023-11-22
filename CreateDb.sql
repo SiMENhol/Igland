@@ -133,28 +133,30 @@ create table if not EXISTS AspNetRoleClaims
     foreign key(OrdreNummer)
         references Ordre(OrdreNummer)
 );
- create table if not EXISTS Sjekkliste
+ CREATE TABLE IF NOT EXISTS Sjekkliste
 (
-    SjekklisteID int PRIMARY KEY,
+    SjekklisteID int PRIMARY KEY AUTO_INCREMENT,
     OrdreNummer int,
-    Sjekklisteinnholdet varchar(255),
-    Kommentar varchar(255),
-    Signatur varchar(100),
-    Dato datetime,
-    SerieNr int,
-    Type varchar(255),
-    foreign key(OrdreNummer)
-        references Ordre(OrdreNummer)
+    MekanikerKommentar varchar(255),
+    MekanikerNavn varchar(100),
+    Dato date,
+    SerieNummer varchar(255),
+    AntallTimer decimal,
+    StatusString varchar(255),
+    FOREIGN KEY(OrdreNummer) REFERENCES Ordre(OrdreNummer)
 );
- create table if not EXISTS SjekklisteItem
+
+ CREATE TABLE IF NOT EXISTS SjekklisteItem
 (
-    SjekklisteItemID int PRIMARY KEY,
+    SjekklisteItemID int PRIMARY KEY AUTO_INCREMENT,
     SjekklisteID int,
-    CheckBoksNavn varchar(255),
-    CheckboksValue varchar(255),
-    foreign key(SjekklisteID)
-        references Sjekkliste(SjekklisteID)
-);       
+    Jobs varchar(255),
+    JobGroups varchar(255),
+    RadioButtonValue varchar(20),
+    FOREIGN KEY(SjekklisteID) REFERENCES Sjekkliste(SjekklisteID)
+);
+
+       
  create table if not EXISTS KoblingsTabell
 (
     OrdreNummer int,
