@@ -33,6 +33,8 @@ namespace Igland.MVC.Models.Sjekkliste
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
         public decimal AntallTimer { get; set; }
 
+
+
         [Required(ErrorMessage = "Kan ikke være tom.")]
         [StringLength(300, ErrorMessage = "Kan ikke være lengre enn 300 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9\s]*$", ErrorMessage = "Kun alfanumeriske tegn er tillatt.")]

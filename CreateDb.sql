@@ -91,7 +91,7 @@ create table if not EXISTS AspNetRoleClaims
 
  create table if not EXISTS Ordre
 (
-    OrdreNummer int PRIMARY KEY auto_increment,
+    OrdreNummer int PRIMARY KEY,
     KundeID int,
     SerieNummer varchar(30),
     VareNavn varchar(30),

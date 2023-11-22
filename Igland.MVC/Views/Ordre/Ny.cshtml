@@ -15,6 +15,15 @@
     <form asp-action="Post" asp-controller="Ordre" method="post">
         @Html.ValidationSummary()
         @Html.AntiForgeryToken()
+
+        <label asp-for="UpsertModel.OrdreNummer"></label> <br />
+        <input id="commonInput" type="number" required /><br />
+        <input asp-for="UpsertModel.OrdreNummer" type="hidden" />
+        <input asp-for="UpsertArbDok.OrdreNummer" type="hidden" />
+        <input asp-for="UpsertSjekkliste.OrdreNummer" type="hidden" />
+        <input asp-for="UpsertServicedokument.OrdreNummer" type="hidden" />
+
+
         <label asp-for="UpsertModel.KundeID">
             KundeID. Denne må finnes, <a style="text-decoration:none" asp-controller="Kunder" asp-action="Index">klikk her for å finne KundeID</a>
         </label> <br />
@@ -32,6 +41,21 @@
         <label asp-for="UpsertModel.ArbDokument"></label> <br />
         <input asp-for="UpsertModel.ArbDokument" type="text" /><br />
 
+
         <input type="submit" />
     </form>
 </body>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#commonInput').on('input', function () {
+            var inputValue = $(this).val();
+            $('input[name="UpsertModel.OrdreNummer"]').val(inputValue);
+            $('input[name="UpsertArbDok.OrdreNummer"]').val(inputValue);
+            $('input[name="UpsertSjekkliste.OrdreNummer"]').val(inputValue);
+            $('input[name="UpsertServicedokument.OrdreNummer"]').val(inputValue);
+        });
+    });
+</script>
