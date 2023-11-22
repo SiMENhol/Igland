@@ -96,7 +96,6 @@ create table if not EXISTS AspNetRoleClaims
     SerieNummer varchar(30),
     VareNavn varchar(30),
     Status varchar(30),
-    Arbdokument varchar(255),
     FOREIGN KEY (KundeId) 
         REFERENCES Kunder (KundeId)
 ); 

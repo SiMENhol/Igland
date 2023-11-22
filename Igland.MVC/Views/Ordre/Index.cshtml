@@ -30,7 +30,7 @@
         <th>ArbDokument</th>
 
     <tbody>
-            @foreach (var ordre in Model.OrdreOversikt)
+            @foreach (var ordre in Model.OrdreOversikt.OrderByDescending(x => x.OrdreNummer))
             {
             <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "Ordre", new { id = ordre.OrdreNummer })">
                 <td>@ordre.OrdreNummer</td>
@@ -38,7 +38,6 @@
                 <td>@ordre.SerieNummer</td>
                 <td>@ordre.VareNavn</td>
                 <td>@ordre.Status</td>
-                <td>@ordre.ArbDokument</td>
             </tr>
             }
     </tbody>

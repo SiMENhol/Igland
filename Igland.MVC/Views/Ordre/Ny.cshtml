@@ -36,12 +36,19 @@
         <input asp-for="UpsertModel.VareNavn" type="text" /><br />
 
         <label asp-for="UpsertModel.Status"></label> <br />
-        <input asp-for="UpsertModel.Status" type="text" /><br />
-
-        <label asp-for="UpsertModel.ArbDokument"></label> <br />
-        <input asp-for="UpsertModel.ArbDokument" type="text" /><br />
-
-
+        <select asp-for="UpsertModel.Status" required>
+            <option value="Ordre opprettet">Ordre opprettet</option>
+            <option value="Produkt mottatt">Produkt mottatt</option>
+            <option value="Sjekk utført">Sjekk utført</option>
+            <option value="Service ferdig">Service ferdig</option>
+            <option value="Case ferdig">Case ferdig</option>
+        </select>
+        <br /><br />
+        @*
+        <input id="commonInputforStatus" type="text" required /><br />
+        <input asp-for="UpsertModel.Status" type="hidden" />
+        <input asp-for="UpsertArbDok.Status" type="hidden" />
+        *@
         <input type="submit" />
     </form>
 </body>
@@ -56,6 +63,13 @@
             $('input[name="UpsertArbDok.OrdreNummer"]').val(inputValue);
             $('input[name="UpsertSjekkliste.OrdreNummer"]').val(inputValue);
             $('input[name="UpsertServicedokument.OrdreNummer"]').val(inputValue);
+        });
+    });
+    $(document).ready(function () {
+        $('#commonInputforStatus').on('input', function () {
+            var inputValue = $(this).val();
+            $('input[name="UpsertModel.Status"]').val(inputValue);
+            $('input[name="UpsertArbDok.Status"]').val(inputValue);
         });
     });
 </script>

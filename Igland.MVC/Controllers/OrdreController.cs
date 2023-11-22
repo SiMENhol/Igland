@@ -56,7 +56,6 @@ namespace Igland.MVC.Controllers
                 SerieNummer = ordre.UpsertModel.SerieNummer,
                 VareNavn = ordre.UpsertModel.VareNavn,
                 Status = ordre.UpsertModel.Status,
-                ArbDokument = ordre.UpsertModel.ArbDokument,
             };
             _ordreRepository.Upsert(entity);
             var arbdokEntity = new ArbDok
@@ -123,7 +122,6 @@ namespace Igland.MVC.Controllers
                         SerieNummer = x.SerieNummer,
                         VareNavn = x.VareNavn,
                         Status = x.Status,
-                        ArbDokument = x.ArbDokument
                     })
                     .ToList()
             };

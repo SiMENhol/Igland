@@ -85,7 +85,7 @@
 
 
     <tbody>
-            @foreach (var sjekklister in Model.SjekklisteOversikt)
+            @foreach (var sjekklister in Model.SjekklisteOversikt.OrderByDescending(x => x.OrdreNummer))
             {
             <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "Sjekkliste", new { id = sjekklister.SjekklisteID })">
                 <td>@sjekklister.SjekklisteID</td>

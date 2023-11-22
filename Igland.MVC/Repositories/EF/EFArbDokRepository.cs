@@ -6,19 +6,19 @@ namespace Igland.MVC.Repositories.EF
 {
     public class EFArbDokRepository : IArbDokRepository
     {
-        private readonly DataContext _dataContext;
+        private readonly DataContext dataContext;
 
         public EFArbDokRepository(DataContext dataContext)
         {
-            _dataContext = dataContext;
+            this.dataContext = dataContext;
         }
         public ArbDok Get(int ArbDokID)
         {
-            return _dataContext.ArbDok.FirstOrDefault(x => x.ArbDokID == ArbDokID);
+            return dataContext.ArbDok.FirstOrDefault(x => x.ArbDokID == ArbDokID);
         }
         public List<ArbDok> GetAll()
         {
-            return _dataContext.ArbDok.ToList();
+            return dataContext.ArbDok.ToList();
         }
         public void Upsert(ArbDok arbdok)
         {
@@ -38,20 +38,20 @@ namespace Igland.MVC.Repositories.EF
                 existing.BestillingFraKunde = arbdok.BestillingFraKunde;
                 existing.NotatFraMekaniker = arbdok.NotatFraMekaniker;
                 existing.Status = arbdok.Status;
-                _dataContext.SaveChanges();
+                dataContext.SaveChanges();
                 return;
             }
             arbdok.ArbDokID = 0;
-            _dataContext.Add(arbdok);
-            _dataContext.SaveChanges();
+            dataContext.Add(arbdok);
+            dataContext.SaveChanges();
         }
         public void Delete(int ArbDokID)
         {
-            ArbDok? ArbDok = Get(ArbDokID);
-            if (ArbDok == null)
+            ArbDok? arbdok = Get(ArbDokID);
+            if (arbdok == null)
                 return;
-            _dataContext.ArbDok.Remove(ArbDok);
-            _dataContext.SaveChanges();
+            dataContext.ArbDok.Remove(arbdok);
+            dataContext.SaveChanges();
         }
     }
 }
