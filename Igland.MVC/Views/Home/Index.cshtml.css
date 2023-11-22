@@ -39,7 +39,7 @@ th, tr, td {
     padding: 20px;
 }
 
-.row-clickable:hover {
+.row-data:hover {
     background-color: lightgrey;
     cursor: pointer;
 }

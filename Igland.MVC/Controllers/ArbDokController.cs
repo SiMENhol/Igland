@@ -94,6 +94,7 @@ namespace Igland.MVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int ArbDokID)
         {
+            _logger.LogInformation("Post delete method called");
             _arbdokRepository.Delete(ArbDokID);
             return RedirectToAction("Index");
         }

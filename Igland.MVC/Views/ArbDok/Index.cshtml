@@ -41,7 +41,7 @@
             Produkttype
         </th>
         <th>
-            Bestilling/feilbeskrivelse fra kunde
+            Bestilling fra kunde
         </th>
         <th>
             Kundeinfo
@@ -65,10 +65,7 @@
             Ordrenummer
         </th>
         <th>
-            Service skjema
-        </th>
-        <th>
-            (arbdokid) Slett?
+            Slett?
         </th>
 
 
@@ -76,10 +73,8 @@
 
         @* undergreier i tabellen *@
 
-
-
     <tbody>
-            @foreach (var ArbeidsDokuments in Model.ArbDokList)
+                    @foreach (var ArbeidsDokuments in Model.ArbDokList.OrderByDescending(x => x.OrdreNummer))
             {
                 var Ordre = Model.OrdreList.Find(x => x.OrdreNummer == ArbeidsDokuments.OrdreNummer);
                 var Kunde = Model.KunderList.Find(x => x.KundeID == Ordre.KundeID);
@@ -97,11 +92,10 @@
                 <td>@ArbeidsDokuments.ServiceFerdig</td>
                 <td>@ArbeidsDokuments.AntallTimer</td>
                 <td>@Ordre.OrdreNummer</td>
-                <td>- Knapp til service skjema -</td>
                 <td>
                     @ArbeidsDokuments.ArbDokID
                     <form asp-action="Delete" asp-controller="ArbDok" method="post" onsubmit="return confirm('Er du sikker på at du vil slette?');">
-                        <input type="hidden" name="ArdDokID" value="@ArbeidsDokuments.ArbDokID" />
+                        <input type="hidden" name="ArbDokID" value="@ArbeidsDokuments.ArbDokID" />
                         <input type="submit" class="button-link" value="Slett" />
                     </form>
                 </td>

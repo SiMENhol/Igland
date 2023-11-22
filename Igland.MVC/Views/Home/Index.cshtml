@@ -55,18 +55,18 @@
 
 
     <tbody>
-            @foreach (var ArbeidsDokuments in Model.ArbDokList)
+            @foreach (var ArbeidsDokuments in Model.ArbDokList.OrderByDescending(x => x.OrdreNummer))
             {
                 var Ordre = Model.OrdreOversikt.Find(x => x.OrdreNummer == ArbeidsDokuments.OrdreNummer);
                 var Kunde = Model.KunderOversitk.Find(x => x.KundeID == Ordre.KundeID);
                 // Check if the status is "pågår" before rendering the row
-                if (Ordre.Status == "Opprettet" || Ordre.Status == "Pågår")
+                if (Ordre.Status != "Case ferdig")
                 {
             <tr class="row-data">
                 <td data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">@ArbeidsDokuments.AvtaltFerdig</td>
-                <td data-url="@Url.Action("Rediger", "ArbDok", new { id = Ordre.OrdreNummer })">@Ordre.OrdreNummer</td>
+                    <td data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">@Ordre.OrdreNummer</td>
                 <td data-url="@Url.Action("Rediger", "Kunder", new { id = Kunde.KundeID })">@Kunde.KundeID @Kunde.KundeNavn</td>
-                <td data-url="@Url.Action("Rediger", "ArbDok", new { id = Ordre.OrdreNummer })">@Ordre.Status</td>
+                    <td data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">@Ordre.Status</td>
                 <td data-url="@Url.Action("Rediger", "Sjekkliste", new { id = ArbeidsDokuments.ArbDokID })">- Til Sjekkliste -</td>
             </tr>
             }
