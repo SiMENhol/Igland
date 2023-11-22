@@ -197,16 +197,25 @@
         <label asp-for="Password" class="placeholder"><b>Passord</b></label>
         <span asp-validation-for="Password" class="text-danger"></span>
             <button type="submit" class="submit">Login</button>
-
+            <div>
+                <a href="#" onclick="showAlert()" style="text-decoration:underline; display:flex; margin-top:30px; justify-content:center", >Noe er galt</a>
             </div>
-
-        
+            </div>
+   
     </form>
     
     </div>
 
+    
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
+<script>
+    function showAlert() {
+        alert("Vennligst rapporter problemet til ledelsen");
+    }
+</script>
+
