@@ -20,6 +20,10 @@ namespace Igland.MVC.Controllers
             _servicedocRepository = servicedocRepository;
         }
 
+        /// <summary>
+        /// Get the view of ServiceDokument/Index, based on the CreateServiceDokumentFullViewModel.
+        /// </summary>
+        /// <returns>A IActionResult View called "Index" with a model called "model".</returns>
         [HttpGet]
         public IActionResult Index()
         {
@@ -29,14 +33,11 @@ namespace Igland.MVC.Controllers
             return View("Index", model);
         }
 
-        public IActionResult Rediger()
-        {
-            _logger.LogInformation("Rediger method called");
 
-            var model = CreateServiceDokumentFullViewModel();
-            return View("Rediger", model);
-        }
-
+  /// <summary>
+        /// Get the view of ServiceDokument/Ny, based on the CreateServiceDokumentFullViewModel.
+        /// </summary>
+        /// <returns>A IActionResult View called "Ny" with a model called "model".</returns>
         [HttpGet]
         public IActionResult Ny()
         {
@@ -46,8 +47,31 @@ namespace Igland.MVC.Controllers
             return View("Ny", model);
         }
 
+
+        /// <summary>
+        /// Get the view of ServiceDokument/Rediger, based on the CreateServiceDokumentFullViewModel.
+        /// </summary>
+        /// <returns>A IActionResult View called "Rediger" with a model called "model".</returns>
+        [HttpGet]
+        public IActionResult Rediger()
+        {
+            _logger.LogInformation("Rediger method called");
+
+            var model = CreateServiceDokumentFullViewModel();
+            return View("Rediger", model);
+        }
+
+      
+
+
+        /// <summary>
+        /// Creates a ServiceDokumentFullViewModel for other methods to use. 
+        /// Data from "servicedocRepository" is sent into model called "ServiceDokumentViewModel" with selected instances.
+        /// </summary>
+        /// <returns>A ServiceDokumentFullViewModel containing list of instances in kunder.</returns>
         private ServiceDokumentFullViewModel CreateServiceDokumentFullViewModel()
         {
+            _logger.LogInformation("CreateServiceDokumentFullViewModel method called");
             return new ServiceDokumentFullViewModel
             {
                 ServiceDokumentOversikt = _servicedocRepository.GetAll()
@@ -65,7 +89,14 @@ namespace Igland.MVC.Controllers
                     .ToList()
             };
         }
+
+        /// <summary>
+        /// Post data from where the method is called, based on the ServiceDokumentFullViewModel, creating an ServiceDokument entity that is Upserted to the servicedoc repository.
+        /// </summary>
+        /// <param name="servicedokument">The ServiceDokumentFullViewModel.</param>
+        /// <returns>A IActionResult Redirect to the View called "Index".</returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Post(ServiceDokumentFullViewModel servicedokument)
         {
             _logger.LogInformation("Post method called with data: {@servicedokument}", servicedokument);
@@ -81,13 +112,18 @@ namespace Igland.MVC.Controllers
                 ForesendelsesMaate = servicedokument.UpsertModel.ForesendelsesMaate,
             };
             _servicedocRepository.Upsert(entity);
-            return Redirect("index");
+            return Redirect("Index");
         }
-       
+
+
+        /// <summary>
+        /// Delete data from repository servicedoc, based on ServiceSKjemaID.
+        /// </summary>
+        /// <param name="ServiceSKjemaID">The unique ID for an ServiceDokument</param>
+        /// <returns>A IActionResult RedirectToAction  "Index".</returns>
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
         public IActionResult Delete(int ServiceSKjemaID)
         {
             _logger.LogInformation("Post delete method called");

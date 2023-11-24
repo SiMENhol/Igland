@@ -22,6 +22,12 @@ namespace Igland.MVC.Controllers
             _ordreRepository = ordreRepository;
             _kunderRepository = kunderRepository;
         }
+
+
+        /// <summary>
+        /// Get the view of Home/Index, based on the HomeViewModel, including database data from the arbdok, ordre and kunder repositories.
+        /// </summary>
+        /// <returns>A IActionResult View called "Index" with a model called "model".</returns>
         [HttpGet]
         public IActionResult Index()
         {
@@ -34,6 +40,10 @@ namespace Igland.MVC.Controllers
             
         }
 
+        /// <summary>
+        /// Get the view of Home/Privacy.
+        /// </summary>
+        /// <returns>A IActionResult View called "Privacy".</returns>
         [HttpGet]
         public IActionResult Privacy()
         {
