@@ -19,7 +19,7 @@
 
 
 
-<form asp-action="Post" asp-controller="Ordre" method="post">
+<form asp-action="Posten" asp-controller="Ordre" method="post">
             @Html.ValidationSummary()
             @Html.AntiForgeryToken()
                 <input asp-for="UpsertModel.OrdreNummer" type="hidden" required value="@Model.OrdreOversikt[index].OrdreNummer" />
