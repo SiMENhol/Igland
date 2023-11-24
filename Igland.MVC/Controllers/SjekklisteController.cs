@@ -11,13 +11,12 @@ namespace Igland.MVC.Controllers
         private readonly ILogger<SjekklisteController> _logger;
 
         private readonly ISjekklisteRepository _sjekklisteRepository;
-        private readonly ISjekklisteItemRepository _sjekklisteItemRepository;
 
-        public SjekklisteController(ILogger<SjekklisteController> logger, ISjekklisteRepository sjekklisteRepository, ISjekklisteItemRepository sjekklisteItemRepository)
+        public SjekklisteController(ILogger<SjekklisteController> logger, ISjekklisteRepository sjekklisteRepository)
         {
             _logger = logger;
             _sjekklisteRepository = sjekklisteRepository;
-            _sjekklisteItemRepository = sjekklisteItemRepository;
+
         }
 
         [HttpGet]
