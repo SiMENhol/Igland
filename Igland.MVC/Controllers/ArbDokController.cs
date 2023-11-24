@@ -31,10 +31,7 @@ namespace Igland.MVC.Controllers
         public IActionResult Index()
         {
             _logger.LogInformation("Index method called");
-            var model = new ArbDokFullViewModel();
-            model.ArbDokList = _arbdokRepository.GetAll().Select(x => new ArbDokViewModel { ArbDokID = x.ArbDokID, OrdreNummer = x.OrdreNummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
-            model.OrdreList = _ordreRepository.GetAll().Select(x => new OrdreViewModel { OrdreNummer = x.OrdreNummer, KundeID = x.KundeID, SerieNummer = x.SerieNummer, VareNavn = x.VareNavn, Status = x.Status}).ToList();
-            model.KunderList = _kunderRepository.GetAll().Select(x => new KunderViewModel { KundeID = x.KundeID, KundeNavn = x.KundeNavn }).ToList();
+            var model = CreateArbDokFullViewModel();
             return View("Index", model);
         }
 
@@ -43,11 +40,11 @@ namespace Igland.MVC.Controllers
         /// </summary>
         /// <returns>A IActionResult View called "Ny".</returns>
         [HttpGet]
-        [ValidateAntiForgeryToken]
         public IActionResult Ny()
         {
             _logger.LogInformation("Ny method called");
-            return View("Ny");
+            var model = CreateArbDokFullViewModel();
+            return View("Ny", model);
         }
 
         /// <summary>
@@ -55,14 +52,10 @@ namespace Igland.MVC.Controllers
         /// </summary>
         /// <returns>A IActionResult View called "Rediger" with a model called "model".</returns>
         [HttpGet]
-        [ValidateAntiForgeryToken]
         public IActionResult Rediger()
         {
             _logger.LogInformation("Rediger method called");
-            var model = new ArbDokFullViewModel();
-            model.ArbDokList = _arbdokRepository.GetAll().Select(x => new ArbDokViewModel { ArbDokID = x.ArbDokID, OrdreNummer = x.OrdreNummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
-            model.OrdreList = _ordreRepository.GetAll().Select(x => new OrdreViewModel { OrdreNummer = x.OrdreNummer, KundeID = x.KundeID, SerieNummer = x.SerieNummer, VareNavn = x.VareNavn, Status = x.Status }).ToList();
-            model.KunderList = _kunderRepository.GetAll().Select(x => new KunderViewModel { KundeID = x.KundeID, KundeNavn = x.KundeNavn }).ToList();
+            var model = CreateArbDokFullViewModel();
             return View("Rediger", model);
         }
 
@@ -95,7 +88,7 @@ namespace Igland.MVC.Controllers
             };
             _arbdokRepository.Upsert(arbdokEntity);
 
-            /// Old attempt at updating all three repositories at the same time
+            // Old attempt at updating all three repositories at the same time
                 /*var ordreEntity = new OrdreEntity
                 {
                     OrdreNummer = arbdok.UpsertOrdre.OrdreNummer,
@@ -131,5 +124,47 @@ namespace Igland.MVC.Controllers
             _arbdokRepository.Delete(ArbDokID);
             return RedirectToAction("Index");
         }
+
+        /// <summary>
+        /// Creates a ArbDokFullViewModel for other methods to use.
+        /// </summary>
+        /// <returns>A ArbDokFullViewModel containing Lists of all instances in the arbdok, ordre and kunde repositories.</returns>
+        private ArbDokFullViewModel CreateArbDokFullViewModel()
+        {
+            return new ArbDokFullViewModel()
+            {
+                ArbDokList = _arbdokRepository.GetAll().Select(x => new ArbDokViewModel 
+                { 
+                    ArbDokID = x.ArbDokID, 
+                    OrdreNummer = x.OrdreNummer, 
+                    Kunde = x.Kunde, 
+                    Vinsj = x.Vinsj, 
+                    HenvendelseMotatt = x.HenvendelseMotatt, 
+                    AvtaltLevering = x.AvtaltLevering, 
+                    ProduktMotatt = x.ProduktMotatt, 
+                    SjekkUtfort = x.SjekkUtfort, 
+                    AvtaltFerdig = x.AvtaltFerdig, 
+                    ServiceFerdig = x.ServiceFerdig, 
+                    AntallTimer = x.AntallTimer, 
+                    BestillingFraKunde = x.BestillingFraKunde, 
+                    NotatFraMekaniker = x.NotatFraMekaniker, 
+                    Status = x.Status 
+                }).ToList(),
+                OrdreList = _ordreRepository.GetAll().Select(x => new OrdreViewModel 
+                { 
+                    OrdreNummer = x.OrdreNummer, 
+                    KundeID = x.KundeID, 
+                    SerieNummer = x.SerieNummer, 
+                    VareNavn = x.VareNavn, 
+                    Status = x.Status 
+                }).ToList(),
+                KunderList = _kunderRepository.GetAll().Select(x => new KunderViewModel 
+                { 
+                    KundeID = x.KundeID, 
+                    KundeNavn = x.KundeNavn 
+                }).ToList()
+            };
+
+         }
     }
 }
