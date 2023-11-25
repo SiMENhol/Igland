@@ -85,7 +85,7 @@ namespace Igland.MVC.Controllers
         /// </summary>
         /// <param name="sjekkliste">The SjekklisteFullViewModel.</param>
         /// <returns>A string containing values of radio buttons</returns>
-        public string createStatusString (SjekklisteFullViewModel sjekkliste)
+        private string createStatusString (SjekklisteFullViewModel sjekkliste)
         {
             var statusString = "";
             statusString += sjekkliste.UpsertModel.ClutchLameller + ",";

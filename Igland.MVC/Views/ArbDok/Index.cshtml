@@ -1,8 +1,10 @@
 ﻿<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 @using Igland.MVC.Models.ArbDok;
+@using Igland.MVC.CommonMethods;
 @model ArbDokFullViewModel
 @{
     ViewData["Title"] = "Arbeidsdokumenter";
+    Date date = new Date();
 }
 
 
@@ -15,10 +17,11 @@
     </div>
 </div>
 
-
-<form action="@Url.Action("Ny", "ArbDok")">
+<!--
+    <form action="@Url.Action("Ny", "ArbDok")">
     <button type="submit" class="button-link">Nytt arbeidsdokument</button>
-</form>
+    </form>
+-->
 
 <hr />
 <table id="tabell" , align="center">
@@ -30,11 +33,11 @@
         </th>
 
         <th>
-            Henvendelse mottatt og reg. ddmmåå
+            Henvendelse mottatt
         </th>
 
         <th>
-            Case ferdig? JA/NEI (status)
+            Status
         </th>
 
         <th>
@@ -44,19 +47,19 @@
             Bestilling fra kunde
         </th>
         <th>
-            Kundeinfo
+            Kunde
         </th>
         <th>
-            Avtalt levering ddmmåå
+            Avtalt levering
         </th>
         <th>
-            Produkt mottatt ddmmåå
+            Produkt mottatt
         </th>
         <th>
-            Avtalt ferdigstillelse innen ddmmåå
+            Avtalt ferdig innen
         </th>
         <th>
-            Service ferdig ddmmåå
+            Service ferdig
         </th>
         <th>
             Antall timer på utført service
@@ -74,33 +77,32 @@
         @* undergreier i tabellen *@
 
     <tbody>
-                    @foreach (var ArbeidsDokuments in Model.ArbDokList.OrderByDescending(x => x.OrdreNummer))
-            {
-                var Ordre = Model.OrdreList.Find(x => x.OrdreNummer == ArbeidsDokuments.OrdreNummer);
-                var Kunde = Model.KunderList.Find(x => x.KundeID == Ordre.KundeID);
+        @foreach (var ArbeidsDokuments in Model.ArbDokList.OrderByDescending(x => x.OrdreNummer))
+        {
+            var Ordre = Model.OrdreList.Find(x => x.OrdreNummer == ArbeidsDokuments.OrdreNummer);
+            var Kunde = Model.KunderList.Find(x => x.KundeID == Ordre.KundeID);
 
             <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">
                 <td>49</td>
-                <td>@ArbeidsDokuments.HenvendelseMotatt</td>
+                <td>@date.formatDateForViewing(ArbeidsDokuments.HenvendelseMotatt.ToString())</td>
                 <td>@Ordre.Status</td>
-                <td>@Ordre.SerieNummer @Ordre.VareNavn</td>
+                <td>@Ordre.VareNavn @Ordre.SerieNummer</td>
                 <td>@ArbeidsDokuments.BestillingFraKunde</td>
-                <td>@Kunde.KundeID @Kunde.KundeNavn</td>
-                <td>@ArbeidsDokuments.AvtaltLevering</td>
-                <td>@ArbeidsDokuments.ProduktMotatt</td>
-                <td>@ArbeidsDokuments.AvtaltFerdig</td>
-                <td>@ArbeidsDokuments.ServiceFerdig</td>
+                <td>@Kunde.KundeNavn</td>
+                <td>@date.formatDateForViewing(ArbeidsDokuments.AvtaltLevering.ToString())</td>
+                <td>@date.formatDateForViewing(ArbeidsDokuments.ProduktMotatt.ToString())</td>
+                <td>@date.formatDateForViewing(ArbeidsDokuments.AvtaltFerdig.ToString())</td>
+                <td>@date.formatDateForViewing(ArbeidsDokuments.ServiceFerdig.ToString())</td>
                 <td>@ArbeidsDokuments.AntallTimer</td>
                 <td>@Ordre.OrdreNummer</td>
                 <td>
-                    @ArbeidsDokuments.ArbDokID
                     <form asp-action="Delete" asp-controller="ArbDok" method="post" onsubmit="return confirm('Er du sikker på at du vil slette?');">
-                        <input type="hidden" name="ArbDokID" value="@ArbeidsDokuments.ArbDokID" />
+                        <input type="hidden" name="ArbDokID" value="@ArbeidsDokuments.ArbDokID" /> <!-- type="hidden". Only used to track ID-->
                         <input type="submit" class="button-link" value="Slett" />
                     </form>
                 </td>
             </tr>
-            }
+        }
     </tbody>
 
 </table>
