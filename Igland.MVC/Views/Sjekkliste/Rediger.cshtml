@@ -12,7 +12,7 @@
     var Sjekkliste = Model.SjekklisteOversikt[index];
 
     SjekklisteRadioButtonValues radiobuttons = new SjekklisteRadioButtonValues();
-    var elementID = 0; //La stå!
+    var elementID = 0;
 }
 
 
@@ -259,14 +259,23 @@
 
 </form>
 
-<!-- Funksjon som sjekker av radioboksene basert på data i databasen -->
-@foreach (var value in radiobuttons.sortStatusString(Sjekkliste.StatusString))
+<!--
+    /// <summary>
+    /// Go through the list of radio button values from the statusString from the Sjekkliste model.
+    /// Assign the values to their respective HTML input type="radio" element.
+    /// </summary>
+-->
+    @foreach (var value in radiobuttons.sortStatusString(Sjekkliste.StatusString))
     {
         <script type="text/javascript">
+            @* Get the current <li> element from the "checklist-grid" based on which radio button is being read *@
             var segment = document.getElementsByClassName("checklist-grid")[0].getElementsByTagName("li")[@elementID]
+            @* Get a list of the radio buttons in that element *@
             var radioButtons = segment.getElementsByTagName("input");
+            @* Check the radio button who's index matches with the value from statusString *@
             radioButtons[@value].checked = true;
         </script>
+        // Increase elementID for each radio button value in statusString
         elementID++;
     }
 

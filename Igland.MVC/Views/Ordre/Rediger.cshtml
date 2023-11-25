@@ -45,13 +45,25 @@
         <input type="submit" />
 </form>
 
-@*Funksjon som velger riktig option i select basert på data fra db*@
-@*Spaghetti kode, men det funker så ikke rør*@
+<!--
+    /// <summary>
+    /// Go through the list of radio button values from the statusString from the Sjekkliste model.
+    /// Assign the values to their respective HTML input type="radio" element.
+    /// </summary>
+-->
+
+@* Creates a hidden element to keep track of Status from the model *@
 <p id="statusElement" hidden>@Model.OrdreOversikt[index].Status<p>
+
 <script type="text/javascript">
-    var element = document.getElementsByTagName("select")[0];
-    var options = element.getElementsByTagName("option");
     var statusElement = document.getElementById("statusElement").innerHTML
+
+    @* Get the <select> element *@
+    var menu = document.getElementsByTagName("select")[0];
+    @* Get the <option> elements in the <select> menu *@
+    var options = menu.getElementsByTagName("option");
+    
+    @* Go through the list of options and select the one with matching content as the hidden statusElement *@
     let i = 0;
     while (i < options.length) {
         if (statusElement == options[i].value) {

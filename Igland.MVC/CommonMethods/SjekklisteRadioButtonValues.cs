@@ -5,10 +5,10 @@ namespace Igland.MVC.CommonMethods
     public class SjekklisteRadioButtonValues
     {
         /// <summary>
-        /// Create the statusString that contains values of the radio buttons from the Sjekkliste/Ny View
+        /// Create a statusString that contains values of the radio buttons from the Sjekkliste/Ny View
         /// </summary>
         /// <param name="sjekkliste">The SjekklisteFullViewModel.</param>
-        /// <returns>A string containing values of radio buttons</returns>
+        /// <returns>A string containing values of radio buttons, separated by a comma(,).</returns>
         public string createStatusString(SjekklisteFullViewModel sjekkliste)
         {
             var statusString = "";
@@ -37,6 +37,11 @@ namespace Igland.MVC.CommonMethods
             return statusString;
         }
 
+        /// <summary>
+        /// Breaks up the specified statusString and sorts the different values into a list.
+        /// </summary>
+        /// <param name="str">The desired statusString to be sorted.</param>
+        /// <returns>A list of strings, containing values for each individual radio button.</returns>
         public List<string> sortStatusString(string str)
         {
             string itemValue = "";
@@ -58,7 +63,6 @@ namespace Igland.MVC.CommonMethods
                 else 
                     itemValue += "-1"; // tom
             }
-
             return liste;
         }
     }
