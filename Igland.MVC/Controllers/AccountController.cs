@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Security.Claims;
 using Igland.MVC.Models.Account;
 using Igland.MVC.Repositories.IRepo;
 using Igland.MVC.Models.Users;
@@ -14,17 +11,15 @@ namespace Igland.MVC.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly IEmailSender _emailSender;
         private readonly IUserRepository userRepository;
-        private readonly ILogger _logger;
+        private readonly ILogger<AccountController> _logger;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IEmailSender emailSender, ILoggerFactory loggerFactory, IUserRepository userRepository)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ILogger<AccountController> logger, IUserRepository userRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _emailSender = emailSender;
             this.userRepository = userRepository;
-            _logger = loggerFactory.CreateLogger<AccountController>();
+            _logger = logger;
         }
 
         [HttpGet]
@@ -114,6 +109,9 @@ namespace Igland.MVC.Controllers
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
+        }
+    }
+}
             /**
             //
             // POST: /Account/ExternalLogin
@@ -523,8 +521,8 @@ namespace Igland.MVC.Controllers
             }
 
             
-            }*/
+            }
         }
     }
 }
-       
+  */     

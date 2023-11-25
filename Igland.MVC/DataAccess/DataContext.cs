@@ -1,4 +1,4 @@
-﻿using Igland.MVC.Entities;
+using Igland.MVC.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
