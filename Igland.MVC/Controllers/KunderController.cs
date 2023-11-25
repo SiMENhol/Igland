@@ -36,7 +36,6 @@ namespace Igland.MVC.Controllers
         [HttpGet]
         public IActionResult Ny()
         {
-            _logger.LogInformation("Ny method called");
             var model = CreateKunderFullViewModel();
             return View("Ny", model);
         }
