@@ -64,7 +64,6 @@ public class Program
         });
         builder.Services.AddScoped<IUserRepository, EFUserRepository>();
         builder.Services.AddScoped<ISjekklisteRepository, EFSjekkliste>();
-        builder.Services.AddScoped<ISjekklisteItemRepository, EFSjekklisteItem>();
         builder.Services.AddScoped<IArbDokRepository, EFArbDokRepository>();
         builder.Services.AddScoped<IServiceDokumentRepository, EFServiceDokument>();
         builder.Services.AddScoped<IOrdreRepository, EFOrdre>();

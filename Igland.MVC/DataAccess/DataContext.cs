@@ -49,6 +49,5 @@ namespace Igland.MVC.DataAccess
         public DbSet<OrdreEntity> Ordre { get; set; }
         public DbSet<KunderEntity> Kunder { get; set; }
         public DbSet<SjekklisteEntity> Sjekkliste { get; set; }
-        public DbSet<SjekklisteItemEntity> SjekklisteItem { get; set; }
     }
 }
