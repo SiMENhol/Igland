@@ -113,7 +113,6 @@ namespace Igland.MVC.Controllers
         /// Delete data from repository arbdok, based on ArbDokID.
         /// </summary>
         /// <param name="ArbDokID">The unique ID for an ArbDok</param>
-        /// <param name="ArbDokID">The unique ID for an ArbDok</param>
         /// <returns>A IActionResult RedirectToAction  "Index".</returns>
         [Authorize(Roles = "Administrator")]
         [HttpPost]

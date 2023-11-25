@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Igland.MVC.Models.Kunder;
 using Igland.MVC.Repositories.IRepo;
+using Igland.MVC.Repositories.EF;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Igland.MVC.Controllers
 {
@@ -28,7 +30,6 @@ namespace Igland.MVC.Controllers
             return View("Index", model);
         }
 
-
         /// <summary>
         /// Get the view of Kunder/Ny, based on the CreateKunderFullViewModel.
         /// </summary>
@@ -41,7 +42,6 @@ namespace Igland.MVC.Controllers
             return View("Ny", model);
         }
 
-
         /// <summary>
         /// Get the view of Kunder/Rediger, based on the CreateKunderFullViewModel.
         /// </summary>
@@ -53,9 +53,6 @@ namespace Igland.MVC.Controllers
             var model = CreateKunderFullViewModel();
             return View("Rediger", model);
         }
-
-
-
 
         /// <summary>
         /// Creates a KunderFullViewModel for other methods to use. 
@@ -72,7 +69,6 @@ namespace Igland.MVC.Controllers
                     {
                         KundeID = x.KundeID,
                         KundeNavn = x.KundeNavn
-                        
                     })
                     .ToList()
             };
@@ -97,6 +93,5 @@ namespace Igland.MVC.Controllers
             _kunderRepository.Upsert(entity);
             return RedirectToAction("Index");
         }
-        
     }
 }
