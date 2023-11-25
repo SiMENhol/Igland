@@ -32,7 +32,7 @@ namespace Igland.MVC.Controllers
         public IActionResult Index()
         {
             _logger.LogInformation("Index method called");
-            var model = CreateHomeViewModel;
+            var model = CreateHomeViewModel();
             return View("Index", model);
             
         }

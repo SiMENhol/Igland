@@ -58,7 +58,7 @@
             @foreach (var ArbeidsDokuments in Model.ArbDokList.OrderByDescending(x => x.OrdreNummer))
             {
                 var Ordre = Model.OrdreOversikt.Find(x => x.OrdreNummer == ArbeidsDokuments.OrdreNummer);
-                var Kunde = Model.KunderOversitk.Find(x => x.KundeID == Ordre.KundeID);
+                var Kunde = Model.KunderOversikt.Find(x => x.KundeID == Ordre.KundeID);
                 // Check if the status is "pågår" before rendering the row
                 if (Ordre.Status != "Case ferdig")
                 {
