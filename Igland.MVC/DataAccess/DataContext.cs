@@ -7,9 +7,6 @@ namespace Igland.MVC.DataAccess
 {
     public class DataContext : IdentityDbContext<IdentityUser>
     {
-        public DataContext()
-        {
-        }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
