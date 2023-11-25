@@ -13,17 +13,27 @@ namespace Igland.MVC.Tests.Controllers
     {
         private ILogger<ArbDokController> logger;
         private IArbDokRepository arbDokRepository;
+        private IOrdreRepository ordreRepository;
+        private IKunderRepository kunderRepository;
         private void InitializeFakes()
         {
             arbDokRepository = Substitute.For<IArbDokRepository>();
             arbDokRepository.GetAll().Returns(new List<ArbDok> { new ArbDok { ArbDokID = 10, OrdreNummer = 12345678, Kunde = "Kunde 1", Vinsj = "Vinsj 1", HenvendelseMotatt = new DateOnly(2023, 11, 24), AvtaltLevering = new DateOnly(2023, 11, 24), ProduktMotatt = new DateOnly(2023, 11, 24), SjekkUtfort = new DateOnly(2023, 11, 24), AvtaltFerdig = new DateOnly(2023, 11, 24), ServiceFerdig = new DateOnly(2023, 11, 24), AntallTimer = 5, BestillingFraKunde = "Bestilling fra kunde", NotatFraMekaniker = "Notat fra mekaniker", Status = "Status 1" }, });
+
+            kunderRepository = Substitute.For<IKunderRepository>();
+            kunderRepository.GetAll().Returns(new List<KunderEntity> { new KunderEntity { KundeID = 1, KundeNavn = "Pumba" } });
+
+            ordreRepository = Substitute.For<IOrdreRepository>();
+            ordreRepository.GetAll().Returns(new List<OrdreEntity> { new OrdreEntity { OrdreNummer = 12345678, KundeID = 1, SerieNummer = "Serienummer1", VareNavn = "VareNavn", Status = "Status" }, });
+
+
         }
 
         private ArbDokController GetUnitUnderTest()
         {
             InitializeFakes();
             var logger = Substitute.For<ILogger<ArbDokController>>();
-            return new ArbDokController(logger, arbDokRepository);
+            return new ArbDokController(logger, arbDokRepository, ordreRepository, kunderRepository);
         }
         [Fact]
         public async Task IndexReturnsCorrectModelType()
@@ -52,7 +62,7 @@ namespace Igland.MVC.Tests.Controllers
         {
             var unitUnderTest = GetUnitUnderTest();
             var logger = Substitute.For<ILogger<ArbDokController>>();
-            var controller = new ArbDokController(logger, arbDokRepository);
+            var controller = new ArbDokController(logger, arbDokRepository, ordreRepository, kunderRepository);
 
             var result = controller.Index() as ViewResult;
 
@@ -70,7 +80,7 @@ namespace Igland.MVC.Tests.Controllers
         {
             var logger = Substitute.For<ILogger<ArbDokController>>();
             var unitUnderTest = GetUnitUnderTest();
-            var controller = new ArbDokController(logger, arbDokRepository);
+            var controller = new ArbDokController(logger, arbDokRepository, ordreRepository, kunderRepository);
             var result = controller.Index() as ViewResult;
             var model = result.Model as ArbDokFullViewModel;
             Assert.NotNull(model);
@@ -83,7 +93,7 @@ namespace Igland.MVC.Tests.Controllers
         {
             var unitUnderTest = GetUnitUnderTest();
             var logger = Substitute.For<ILogger<ArbDokController>>();
-            var controller = new ArbDokController(logger, arbDokRepository);
+            var controller = new ArbDokController(logger, arbDokRepository, ordreRepository, kunderRepository);
 
             var result = controller.Ny() as ViewResult;
 
@@ -101,7 +111,7 @@ namespace Igland.MVC.Tests.Controllers
         {
             var logger = Substitute.For<ILogger<ArbDokController>>();
             var unitUnderTest = GetUnitUnderTest();
-            var controller = new ArbDokController(logger, arbDokRepository);
+            var controller = new ArbDokController(logger, arbDokRepository, ordreRepository, kunderRepository);
             var result = controller.Ny() as ViewResult;
             var model = result.Model as ArbDokFullViewModel;
             Assert.NotNull(model);
@@ -113,7 +123,7 @@ namespace Igland.MVC.Tests.Controllers
         {
             var unitUnderTest = GetUnitUnderTest();
             var logger = Substitute.For<ILogger<ArbDokController>>();
-            var controller = new ArbDokController(logger, arbDokRepository);
+            var controller = new ArbDokController(logger, arbDokRepository, ordreRepository, kunderRepository);
 
             var result = controller.Rediger() as ViewResult;
 
@@ -131,7 +141,7 @@ namespace Igland.MVC.Tests.Controllers
         {
             var logger = Substitute.For<ILogger<ArbDokController>>();
             var unitUnderTest = GetUnitUnderTest();
-            var controller = new ArbDokController(logger, arbDokRepository);
+            var controller = new ArbDokController(logger, arbDokRepository, ordreRepository, kunderRepository);
             var result = controller.Rediger() as ViewResult;
             var model = result.Model as ArbDokFullViewModel;
             Assert.NotNull(model);
