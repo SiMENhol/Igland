@@ -1,31 +1,12 @@
 ﻿<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 @using Igland.MVC.Models.Sjekkliste;
+@using Igland.MVC.CommonMethods;
 
 @model SjekklisteFullViewModel
 @{
     ViewData["Title"] = "Sjekkliste";
 
-    List<string> toText(String statusString)
-    {
-        string returnString = "";
-        List<string> liste = new List<string>();
-        for (int i = 0; i < statusString.Length; i++)
-        {
-            if (statusString[i].Equals(','))
-            {
-                liste.Add(returnString);
-                returnString = "";
-            }
-            else if (statusString[i].Equals('0'))
-                returnString += "Defekt";
-            else if (statusString[i].Equals('1'))
-                returnString += "Skal endres";
-            else if (statusString[i].Equals('2'))
-                returnString += "OK";
-            else returnString += "unexpected input";
-        }
-        return liste;
-    }
+    Date date = new Date();
 }
 
 <div class="overskrift">
@@ -64,7 +45,7 @@
         </th>
 
         <th>
-            Dato
+            Utført dato
         </th>
 
         <th>
@@ -91,7 +72,7 @@
                 <td>@sjekklister.SjekklisteID</td>
                 <td>@sjekklister.OrdreNummer</td>
                 <td>@sjekklister.SerieNummer</td>
-                <td>@sjekklister.Dato</td>
+                <td>@date.formatDateForViewing(sjekklister.Dato)</td>
                 <td>@sjekklister.AntallTimer</td>
                 <td>@sjekklister.MekanikerKommentar</td>
                 <td>@sjekklister.MekanikerNavn</td>

@@ -84,15 +84,15 @@
 
             <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">
                 <td>49</td>
-                <td>@date.formatDateForViewing(ArbeidsDokuments.HenvendelseMotatt.ToString())</td>
+                <td>@date.formatDateForViewing(ArbeidsDokuments.HenvendelseMotatt)</td>
                 <td>@Ordre.Status</td>
                 <td>@Ordre.VareNavn @Ordre.SerieNummer</td>
                 <td>@ArbeidsDokuments.BestillingFraKunde</td>
                 <td>@Kunde.KundeNavn</td>
-                <td>@date.formatDateForViewing(ArbeidsDokuments.AvtaltLevering.ToString())</td>
-                <td>@date.formatDateForViewing(ArbeidsDokuments.ProduktMotatt.ToString())</td>
-                <td>@date.formatDateForViewing(ArbeidsDokuments.AvtaltFerdig.ToString())</td>
-                <td>@date.formatDateForViewing(ArbeidsDokuments.ServiceFerdig.ToString())</td>
+                <td>@date.formatDateForViewing(ArbeidsDokuments.AvtaltLevering)</td>
+                <td>@date.formatDateForViewing(ArbeidsDokuments.ProduktMotatt)</td>
+                <td>@date.formatDateForViewing(ArbeidsDokuments.AvtaltFerdig)</td>
+                <td>@date.formatDateForViewing(ArbeidsDokuments.ServiceFerdig)</td>
                 <td>@ArbeidsDokuments.AntallTimer</td>
                 <td>@Ordre.OrdreNummer</td>
                 <td>

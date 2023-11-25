@@ -45,14 +45,14 @@
             return returString;
         }
 
-        public string formatDateForViewing(string inputString)
+        public string formatDateForViewing(DateOnly date)
         {
-            return formatDate(inputString, "viewing");
+            return formatDate(date.ToString(), "viewing");
         }
 
-        public string formatDateForInputField(string inputString)
+        public string formatDateForInputField(DateOnly date)
         {
-            return formatDate(inputString, "input field");
+            return formatDate(date.ToString(), "input field");
         }
     }
 }

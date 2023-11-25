@@ -5,6 +5,7 @@ using Igland.MVC.Models.Ordre;
 using Igland.MVC.Models.ArbDok;
 using Igland.MVC.Models.Sjekkliste;
 using Igland.MVC.Models.ServiceDokument;
+using Igland.MVC.CommonMethods;
 
 namespace Igland.MVC.Controllers
 {
@@ -75,6 +76,8 @@ namespace Igland.MVC.Controllers
         public IActionResult Post(OrdreFullViewModel ordre, ArbDokFullViewModel arbdok, SjekklisteFullViewModel sjekkliste, ServiceDokumentFullViewModel servicedokument)
         {
             _logger.LogInformation("Post method called");
+            SjekklisteRadioButtonValues radiobuttons = new SjekklisteRadioButtonValues();
+
             var entity = new OrdreEntity
             {
                 OrdreNummer = ordre.UpsertModel.OrdreNummer,
@@ -112,7 +115,7 @@ namespace Igland.MVC.Controllers
                 MekanikerKommentar = sjekkliste.UpsertModel.MekanikerKommentar,
                 SjekklisteID = sjekkliste.UpsertModel.SjekklisteID,
                 OrdreNummer = sjekkliste.UpsertModel.OrdreNummer,
-                StatusString = createStatusString(sjekkliste),
+                StatusString = radiobuttons.createStatusString(sjekkliste),
             };
             _sjekklisteRepository.Upsert(sjekklisteEntity);
             var servicedokumentEntity = new ServiceDokumentEntity
@@ -150,39 +153,6 @@ namespace Igland.MVC.Controllers
                     })
                     .ToList()
             };
-        }
-
-        /// <summary>
-        /// Create the statusString that contains values of the radio buttons from the Sjekkliste/Ny View
-        /// </summary>
-        /// <param name="sjekkliste">The SjekklisteFullViewModel.</param>
-        /// <returns>A string containing values of radio buttons</returns>
-        private string createStatusString(SjekklisteFullViewModel sjekkliste)
-        {
-            var statusString = "";
-            statusString += sjekkliste.UpsertModel.ClutchLameller + ",";
-            statusString += sjekkliste.UpsertModel.Bremser + ",";
-            statusString += sjekkliste.UpsertModel.Trommel + ",";
-            statusString += sjekkliste.UpsertModel.PTO + ",";
-            statusString += sjekkliste.UpsertModel.Kjedestrammer + ",";
-            statusString += sjekkliste.UpsertModel.Wire + ",";
-            statusString += sjekkliste.UpsertModel.Pinion + ",";
-            statusString += sjekkliste.UpsertModel.Kjedehjul + ",";
-            statusString += sjekkliste.UpsertModel.Hydraulisksylinder + ",";
-            statusString += sjekkliste.UpsertModel.Slanger + ",";
-            statusString += sjekkliste.UpsertModel.Hydraulikkblokk + ",";
-            statusString += sjekkliste.UpsertModel.Oljetank + ",";
-            statusString += sjekkliste.UpsertModel.Oljegir + ",";
-            statusString += sjekkliste.UpsertModel.Ringsylinder + ",";
-            statusString += sjekkliste.UpsertModel.Bremsesylinder + ",";
-            statusString += sjekkliste.UpsertModel.Ledningsnett + ",";
-            statusString += sjekkliste.UpsertModel.Testradio + ",";
-            statusString += sjekkliste.UpsertModel.Knappekasse + ",";
-            statusString += sjekkliste.UpsertModel.Xxbar + ",";
-            statusString += sjekkliste.UpsertModel.Testvinsj + ",";
-            statusString += sjekkliste.UpsertModel.Trekkraftkn + ",";
-            statusString += sjekkliste.UpsertModel.Bremsekraft + ",";
-            return statusString;
         }
     }
 }
