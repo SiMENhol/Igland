@@ -12,29 +12,29 @@ namespace Igland.MVC.Controllers
     {
         private readonly ILogger<ArbDokController> _logger;
         private readonly IArbDokRepository _arbdokRepository;
-       // private readonly IOrdreRepository _ordreRepository;
-       // private readonly IKunderRepository _kunderRepository;
+        private readonly IOrdreRepository _ordreRepository;
+        private readonly IKunderRepository _kunderRepository;
 
-        public ArbDokController(ILogger<ArbDokController> logger, IArbDokRepository arbdokRepository)//, IOrdreRepository ordreRepository, IKunderRepository kunderRepository)
+        public ArbDokController(ILogger<ArbDokController> logger, IArbDokRepository arbdokRepository, IOrdreRepository ordreRepository, IKunderRepository kunderRepository)
         {
             _logger = logger;
             _arbdokRepository = arbdokRepository;
-           // _ordreRepository = ordreRepository;
-           // _kunderRepository = kunderRepository;
+            _ordreRepository = ordreRepository;
+            _kunderRepository = kunderRepository;
         }
 
         public IActionResult Index()
         {
             var model = new ArbDokFullViewModel();
             model.ArbDokList = _arbdokRepository.GetAll().Select(x => new ArbDokViewModel { ArbDokID = x.ArbDokID, OrdreNummer = x.OrdreNummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
-          //  model.OrdreList = _ordreRepository.GetAll().Select(x => new OrdreViewModel { OrdreNummer = x.OrdreNummer, KundeID = x.KundeID, SerieNummer = x.SerieNummer, VareNavn = x.VareNavn, Status = x.Status}).ToList();
-          //  model.KunderList = _kunderRepository.GetAll().Select(x => new KunderViewModel { KundeID = x.KundeID, KundeNavn = x.KundeNavn }).ToList();
+            model.OrdreList = _ordreRepository.GetAll().Select(x => new OrdreViewModel { OrdreNummer = x.OrdreNummer, KundeID = x.KundeID, SerieNummer = x.SerieNummer, VareNavn = x.VareNavn, Status = x.Status}).ToList();
+            model.KunderList = _kunderRepository.GetAll().Select(x => new KunderViewModel { KundeID = x.KundeID, KundeNavn = x.KundeNavn }).ToList();
             return View("Index", model);
         }
         [HttpGet]
         public IActionResult Ny()
         {
-            _logger.LogInformation("Index method called");
+            _logger.LogInformation("Ny method called");
 
             var model = new ArbDokFullViewModel();
             model.ArbDokList = _arbdokRepository.GetAll().Select(x => new ArbDokViewModel { ArbDokID = x.ArbDokID, OrdreNummer = x.OrdreNummer, Kunde = x.Kunde, Vinsj = x.Vinsj, HenvendelseMotatt = x.HenvendelseMotatt, AvtaltLevering = x.AvtaltLevering, ProduktMotatt = x.ProduktMotatt, SjekkUtfort = x.SjekkUtfort, AvtaltFerdig = x.AvtaltFerdig, ServiceFerdig = x.ServiceFerdig, AntallTimer = x.AntallTimer, BestillingFraKunde = x.BestillingFraKunde, NotatFraMekaniker = x.NotatFraMekaniker, Status = x.Status }).ToList();
