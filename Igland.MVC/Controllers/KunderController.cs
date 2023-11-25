@@ -25,7 +25,6 @@ namespace Igland.MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            _logger.LogInformation("Index method called");
             var model = CreateKunderFullViewModel();
             return View("Index", model);
         }
@@ -49,7 +48,6 @@ namespace Igland.MVC.Controllers
         [HttpGet]
         public IActionResult Rediger()
         {
-            _logger.LogInformation("Rediger method called");
             var model = CreateKunderFullViewModel();
             return View("Rediger", model);
         }
@@ -61,7 +59,6 @@ namespace Igland.MVC.Controllers
         /// <returns>A KunderFullViewModel containing list of instances in kunder.</returns>
         private KunderFullViewModel CreateKunderFullViewModel()
         {
-            _logger.LogInformation("CreateKunderFullViewModel method called");
             return new KunderFullViewModel
             {
                 KunderOversikt = _kunderRepository.GetAll()
@@ -83,7 +80,6 @@ namespace Igland.MVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Post(KunderFullViewModel kunder)
         {
-            _logger.LogInformation("Upsert method called");
             var entity = new KunderEntity
             {
                 KundeID = kunder.UpsertModel.KundeID,

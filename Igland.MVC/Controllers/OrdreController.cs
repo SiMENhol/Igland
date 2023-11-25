@@ -133,6 +133,21 @@ namespace Igland.MVC.Controllers
             
             return Redirect("Index");
         }
+        [HttpPost]
+        public IActionResult Posten(OrdreFullViewModel ordre)
+        {
+            _logger.LogInformation("Post method called");
+            var entity = new OrdreEntity
+            {
+                OrdreNummer = ordre.UpsertModel.OrdreNummer,
+                KundeID = ordre.UpsertModel.KundeID,
+                SerieNummer = ordre.UpsertModel.SerieNummer,
+                VareNavn = ordre.UpsertModel.VareNavn,
+                Status = ordre.UpsertModel.Status,
+            };
+            _ordreRepository.Upsert(entity);
+            return Redirect("Index");
+        }
 
         /// <summary>
         /// Creates a OrdreFullViewModel for other methods to use.

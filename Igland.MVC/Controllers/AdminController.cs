@@ -13,13 +13,13 @@ namespace Igland.MVC.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IUserRepository userRepository;
-        private readonly ILogger _logger;
+        private readonly ILogger<AdminController> _logger;
 
-        public AdminController(UserManager<IdentityUser> userManager, ILoggerFactory loggerFactory, IUserRepository userRepository)
+        public AdminController(UserManager<IdentityUser> userManager, ILogger<AdminController> logger, IUserRepository userRepository)
         {
             _userManager = userManager;
             this.userRepository = userRepository;
-            _logger = loggerFactory.CreateLogger<AccountController>();
+            _logger = logger;
         }
 
         private UserViewModel CreateUserViewModel(string? email)
