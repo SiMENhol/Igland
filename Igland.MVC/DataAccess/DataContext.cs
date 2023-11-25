@@ -34,7 +34,6 @@ namespace Igland.MVC.DataAccess
             modelBuilder.Entity<OrdreEntity>().ToTable("Ordre").HasKey(x => x.OrdreNummer);
             modelBuilder.Entity<KunderEntity>().ToTable("Kunder").HasKey(x => x.KundeID);
             modelBuilder.Entity<SjekklisteEntity>().ToTable("Sjekkliste").HasKey(x => x.SjekklisteID);
-            modelBuilder.Entity<SjekklisteItemEntity>().ToTable("SjekklisteItem").HasKey(x => x.SjekklisteItemID);
             base.OnModelCreating(modelBuilder);
         }
 

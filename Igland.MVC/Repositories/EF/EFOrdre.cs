@@ -15,7 +15,7 @@ namespace Igland.MVC.Repositories.EF
         }
 
         /// <summary>
-        /// Get an instance from the db table Ordre based on the KundeID.
+        /// Get an instance from the db table Ordre based on the OrdreNummer.
         /// </summary>
         /// <param name="OrdreNummer">The ID of the desired instance.</param>
         /// <returns>An entity of OrdreEntity.</returns>
@@ -39,7 +39,6 @@ namespace Igland.MVC.Repositories.EF
         /// If the specified OrdreNummer does exist in the db, the instance will be updated with the specified values.
         /// </summary>
         /// <param name="ordre">The entity that is to be Upserted to the db.</param>
-        /// <returns>Nothing.</returns>
         public void Upsert(OrdreEntity ordre)
         {
             var existing = Get(ordre.OrdreNummer);
