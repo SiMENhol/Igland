@@ -53,7 +53,7 @@ namespace Igland.MVC.Tests.Controllers
             Assert.Equal("Index", result.ViewName);
             Assert.IsType<HomeViewModel>(result.Model);
             Assert.NotNull(model);
-            Assert.NotNull(model.KunderOversitk);
+            Assert.NotNull(model.KunderOversikt);
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace Igland.MVC.Tests.Controllers
             Assert.NotNull(model);
             Assert.NotNull(model.ArbDokList);
             Assert.NotNull(model.OrdreOversikt);
-            Assert.NotNull(model.KunderOversitk);
+            Assert.NotNull(model.KunderOversikt);
         }
 
         [Fact]
