@@ -9,7 +9,8 @@ namespace Igland.MVC.CommonMethods
             int id = Convert.ToInt32(viewContext.RouteData.Values["id"]);
             if (id <= 0 || id > countOfObjectsInList)
             {
-                return 0;
+                // Handle the case where the id is not found in the list
+                return 0; // Set to the first item as a default
             }
             return id - 1;
         }

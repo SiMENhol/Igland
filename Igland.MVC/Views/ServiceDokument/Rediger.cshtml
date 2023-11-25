@@ -1,15 +1,16 @@
 ﻿﻿@using Igland.MVC.Models.ServiceDokument;
+@using Igland.MVC.CommonMethods;
+
 @model ServiceDokumentFullViewModel
+
 @{
     ViewData["Title"] = "Rediger serviceskjema";
-    int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
-    int index = Model.ServiceDokumentOversikt.FindIndex(s => s.ServiceSkjemaID == id);
-    if (index == -1)
-    {
-        // Handle the case where the id is not found in the list
-        index = 0; // Set to the first item as a default
-    }
+
+    ID id = new ID();
+    int index = id.getID(ViewContext, Model.ServiceDokumentOversikt.Count);
+    var Sjekkliste = Model.ServiceDokumentOversikt[index];
 }
+
 <h1>Serviceskjema</h1>
 <br>
 <a style="text-decoration:none" asp-controller="ServiceDokument" asp-action="Index" class="box-link">

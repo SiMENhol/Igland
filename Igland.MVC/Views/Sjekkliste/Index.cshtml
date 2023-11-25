@@ -33,10 +33,6 @@
     @* <thred> spare </thred> *@
     <tr>
         <th>
-            SjekklisteID
-        </th>
-
-        <th>
             OrdreNummer
         </th>
 
@@ -69,7 +65,6 @@
             @foreach (var sjekklister in Model.SjekklisteOversikt.OrderByDescending(x => x.OrdreNummer))
             {
             <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "Sjekkliste", new { id = sjekklister.SjekklisteID })">
-                <td>@sjekklister.SjekklisteID</td>
                 <td>@sjekklister.OrdreNummer</td>
                 <td>@sjekklister.SerieNummer</td>
                 <td>@date.formatDateForViewing(sjekklister.Dato)</td>
