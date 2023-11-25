@@ -1,4 +1,4 @@
-﻿using Igland.MVC.Entities;
+using Igland.MVC.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -10,10 +10,10 @@ namespace Igland.MVC.DataAccess
         public DataContext()
         {
         }
+
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserEntity>().ToTable("aspnetusers").HasKey(x => x.Id);
