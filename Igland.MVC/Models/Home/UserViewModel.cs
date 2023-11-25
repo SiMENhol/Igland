@@ -13,14 +13,12 @@ namespace Igland.MVC.Models.Home
             LoginOversikt = new List<LoginViewModel>();
             OrdreOversikt = new List<OrdreViewModel>();
             ArbDokList = new List<ArbDokViewModel>();
-            KunderOversitk = new List<KunderViewModel>();
+            KunderOversikt = new List<KunderViewModel>();
         }
         public List<LoginViewModel> LoginOversikt { get; set; }
         public List<OrdreViewModel> OrdreOversikt { get; set; }
         public List<ArbDokViewModel> ArbDokList { get; set; }
-   
-
-        public List<KunderViewModel> KunderOversitk { get; set; }
+        public List<KunderViewModel> KunderOversikt { get; set; }
     }
 
 }
