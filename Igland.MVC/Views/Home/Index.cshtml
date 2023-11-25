@@ -1,9 +1,12 @@
 ﻿@using Igland.MVC.Models.Home;
+@using Igland.MVC.CommonMethods;
 
 @model HomeViewModel
 
 @{
     ViewData["Title"] = "Hjem";
+
+    Date date = new Date();
 }
 
 <h2>Velkommen @User.Identity.Name.Split('@')[0]</h2>
@@ -63,9 +66,9 @@
                 if (Ordre.Status != "Case ferdig")
                 {
             <tr class="row-data">
-                <td data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">@ArbeidsDokuments.AvtaltFerdig</td>
+                <td data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">@date.formatDateForViewing(ArbeidsDokuments.AvtaltFerdig)</td>
                     <td data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">@Ordre.OrdreNummer</td>
-                <td data-url="@Url.Action("Rediger", "Kunder", new { id = Kunde.KundeID })">@Kunde.KundeID @Kunde.KundeNavn</td>
+                <td data-url="@Url.Action("Rediger", "Kunder", new { id = Kunde.KundeID })">@Kunde.KundeNavn</td>
                     <td data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">@Ordre.Status</td>
                 <td data-url="@Url.Action("Rediger", "Sjekkliste", new { id = ArbeidsDokuments.ArbDokID })">- Til Sjekkliste -</td>
             </tr>
