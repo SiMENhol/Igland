@@ -32,7 +32,9 @@ For at klientens utviklere får kjøre applikasjonen på en riktig måte
 
 4. Bygg applikasjonen med Visual Studio. 
 
-5. Kjør applikasjonen fra Visual Studio med Docker. 
+5. Kjør applikasjonen fra Visual Studio med Docker.
+
+6. Hvis en ikke får kobling til databasen, sjekk IP på mariadb container og oppdater appsetting til korrekt IP. 
 
  
 
