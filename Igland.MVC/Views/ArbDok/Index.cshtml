@@ -1,8 +1,10 @@
-﻿<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-@using Igland.MVC.Models.ArbDok;
-@model ArbDokFullViewModel
+﻿<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!--inkluderer jquery bibliotek-->
+@using Igland.MVC.Models.ArbDok; <!--modellen bruker ArbDok-->
+@using Igland.MVC.CommonMethods; <!--modellen bruker CommonMethods-->
+@model ArbDokFullViewModel 
 @{
-    ViewData["Title"] = "Arbeidsdokumenter";
+    ViewData["Title"] = "Arbeidsdokumenter"; // definerer viewen som Arbeidsdokumenter
+    Date date = new Date();
 }
 
 
@@ -15,26 +17,27 @@
     </div>
 </div>
 
-
-<form action="@Url.Action("Ny", "ArbDok")">
+<!--
+    <form action="@Url.Action("Ny", "ArbDok")">
     <button type="submit" class="button-link">Nytt arbeidsdokument</button>
-</form>
+    </form>
+-->
 
 <hr />
-<table id="tabell" , align="center">
+<table id="tabell" , align="center"> <!-- Lager tabell og sentrerer den-->
 
     @* <thred> spare </thred> *@
-    <tr>
+    <tr> <!--definerer navn på kolonner i Arbdeidsdokument tabellen -->
         <th>
             BOOKET SERVICE TIL UKE
         </th>
 
         <th>
-            Henvendelse mottatt og reg. ddmmåå
+            Henvendelse mottatt
         </th>
 
         <th>
-            Case ferdig? JA/NEI (status)
+            Status
         </th>
 
         <th>
@@ -44,19 +47,19 @@
             Bestilling fra kunde
         </th>
         <th>
-            Kundeinfo
+            Kunde
         </th>
         <th>
-            Avtalt levering ddmmåå
+            Avtalt levering
         </th>
         <th>
-            Produkt mottatt ddmmåå
+            Produkt mottatt
         </th>
         <th>
-            Avtalt ferdigstillelse innen ddmmåå
+            Avtalt ferdig innen
         </th>
         <th>
-            Service ferdig ddmmåå
+            Service ferdig
         </th>
         <th>
             Antall timer på utført service
@@ -74,33 +77,32 @@
         @* undergreier i tabellen *@
 
     <tbody>
-                    @foreach (var ArbeidsDokuments in Model.ArbDokList.OrderByDescending(x => x.OrdreNummer))
-            {
-                var Ordre = Model.OrdreList.Find(x => x.OrdreNummer == ArbeidsDokuments.OrdreNummer);
-                var Kunde = Model.KunderList.Find(x => x.KundeID == Ordre.KundeID);
+            @foreach (var ArbeidsDokuments in Model.ArbDokList.OrderByDescending(x => x.OrdreNummer)) @* <!--lager en foreach løkke som itererer lagrer en rad med ArbDokList for hvert OrdreNummer i tabellen.-->*@
+        {
+            var Ordre = Model.OrdreList.Find(x => x.OrdreNummer == ArbeidsDokuments.OrdreNummer);  <!--Henter elementet fra OrdreList der OrdreNummer matcher Arbeidsdokuments OrdreNummer og lagrer det som variabelen Ordre -->
+            var Kunde = Model.KunderList.Find(x => x.KundeID == Ordre.KundeID);<!--Henter elementet fra KunderList der KundeID matcher Arbeidsdokuments KundeID og lagrer det som variabelen Kunde -->
 
-            <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })">
+            <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })"> <!--url til "Rediger" og "Ny" views i ArbDok-->
                 <td>49</td>
-                <td>@ArbeidsDokuments.HenvendelseMotatt</td>
-                <td>@Ordre.Status</td>
-                <td>@Ordre.SerieNummer @Ordre.VareNavn</td>
-                <td>@ArbeidsDokuments.BestillingFraKunde</td>
-                <td>@Kunde.KundeID @Kunde.KundeNavn</td>
-                <td>@ArbeidsDokuments.AvtaltLevering</td>
-                <td>@ArbeidsDokuments.ProduktMotatt</td>
-                <td>@ArbeidsDokuments.AvtaltFerdig</td>
-                <td>@ArbeidsDokuments.ServiceFerdig</td>
-                <td>@ArbeidsDokuments.AntallTimer</td>
-                <td>@Ordre.OrdreNummer</td>
+                <td>@date.formatDateForViewing(ArbeidsDokuments.HenvendelseMotatt)</td> <!--skifter kolonne og legger inn en verdi for HenvendelseMottat hentet fra ArbeidsDokuments variabelen-->
+                <td>@Ordre.Status</td> <!--skifter kolonne og legger inn en verdi for Status hentet fra Ordre variabelen-->
+                <td>@Ordre.VareNavn @Ordre.SerieNummer</td> <!--skifter kolonne og legger inn en verdi for SerieNummer hentet fra Ordre Variabelen-->
+                <td>@ArbeidsDokuments.BestillingFraKunde</td> <!--skifter kolonne og legger inn en verdi for BestillingFraKunde hentet fra ArbeidsDokuments variabelen-->
+                <td>@Kunde.KundeNavn</td> <!--skifter kolonne og legger inn en verdi for KundeNavn hentet fra Kunde variabelen-->
+                <td>@date.formatDateForViewing(ArbeidsDokuments.AvtaltLevering)</td> <!--skifter kolonne og legger inn en verdi for AvtaltLevering hentet fra ArbeidsDokuments variabelen-->
+                <td>@date.formatDateForViewing(ArbeidsDokuments.ProduktMotatt)</td> <!--skifter kolonne og legger inn en verdi for ProduktMottat hentet fra ArbeidsDokuments variabelen-->
+                <td>@date.formatDateForViewing(ArbeidsDokuments.AvtaltFerdig)</td> <!--skifter kolonne og legger inn en verdi for AvtaltFerdig hentet fra ArbeidsDokuments variabelen-->
+                <td>@date.formatDateForViewing(ArbeidsDokuments.ServiceFerdig)</td> <!--skifter kolonne og legger inn en verdi for ServiceFerdig hentet fra ArbeidsDokuments variabelen-->
+                <td>@ArbeidsDokuments.AntallTimer</td> <!--skifter kolonne og legger inn en verdi for AntallTimer hentet fra ArbeidsDokuments variabelen-->
+                <td>@Ordre.OrdreNummer</td> <!--skifter kolonne og legger inn en verdi for OrdreNummer hentet fra Ordre variabelen-->
                 <td>
-                    @ArbeidsDokuments.ArbDokID
-                    <form asp-action="Delete" asp-controller="ArbDok" method="post" onsubmit="return confirm('Er du sikker på at du vil slette?');">
-                        <input type="hidden" name="ArbDokID" value="@ArbeidsDokuments.ArbDokID" />
-                        <input type="submit" class="button-link" value="Slett" />
+                    <form asp-action="Delete" asp-controller="ArbDok" method="post" onsubmit="return confirm('Er du sikker på at du vil slette?');"> <!--lager en ASP.NET form som sletter data om den returnerer true-->
+                        <input type="hidden" name="ArbDokID" value="@ArbeidsDokuments.ArbDokID" /> <!-- type="hidden". Only used to track ID--> <!--inputter en ArbDokID med value fra ArbeidsDokuments variabelen-->
+                        <input type="submit" class="button-link" value="Slett" /> <!--lager en knapp med et styling class "button-link" som submitter "Slett"-->
                     </form>
                 </td>
             </tr>
-            }
+        }
     </tbody>
 
 </table>

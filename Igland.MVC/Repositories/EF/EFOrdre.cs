@@ -14,16 +14,31 @@ namespace Igland.MVC.Repositories.EF
             this.dataContext = dataContext;
         }
 
+        /// <summary>
+        /// Get an instance from the db table Ordre based on the OrdreNummer.
+        /// </summary>
+        /// <param name="OrdreNummer">The ID of the desired instance.</param>
+        /// <returns>An entity of OrdreEntity.</returns>
         public OrdreEntity Get(int OrdreNummer)
         {
             return dataContext.Ordre.FirstOrDefault(x => x.OrdreNummer == OrdreNummer);
         }
 
+        /// <summary>
+        /// Get all instances from the db table Ordre.
+        /// </summary>
+        /// <returns>A list of entities of OrdreEntity.</returns>
         public List<OrdreEntity> GetAll()
         {
             return dataContext.Ordre.ToList();
         }
 
+        /// <summary>
+        /// Update/Insert.
+        /// If the specified OrdreNummer does not exist in the db, a new instance will be created.
+        /// If the specified OrdreNummer does exist in the db, the instance will be updated with the specified values.
+        /// </summary>
+        /// <param name="ordre">The entity that is to be Upserted to the db.</param>
         public void Upsert(OrdreEntity ordre)
         {
             var existing = Get(ordre.OrdreNummer);

@@ -119,12 +119,12 @@ create table if not EXISTS AspNetRoleClaims
     OrdreNummer int,
     Kunde varchar(255),
     Vinsj varchar(255),
-    HenvendelseMotatt DATETIME,
-    AvtaltLevering DATETIME,
-    ProduktMotatt DATETIME,
-    SjekkUtfort DATETIME,
-    AvtaltFerdig DATETIME,
-    ServiceFerdig DATETIME,
+    HenvendelseMotatt DATE,
+    AvtaltLevering DATE,
+    ProduktMotatt DATE,
+    SjekkUtfort DATE,
+    AvtaltFerdig DATE,
+    ServiceFerdig DATE,
     AntallTimer int,
     BestillingFraKunde varchar(255),
     NotatFraMekaniker varchar(255),
@@ -144,18 +144,7 @@ create table if not EXISTS AspNetRoleClaims
     StatusString varchar(255),
     FOREIGN KEY(OrdreNummer) REFERENCES Ordre(OrdreNummer)
 );
-
- CREATE TABLE IF NOT EXISTS SjekklisteItem
-(
-    SjekklisteItemID int PRIMARY KEY AUTO_INCREMENT,
-    SjekklisteID int,
-    Jobs varchar(255),
-    JobGroups varchar(255),
-    RadioButtonValue varchar(20),
-    FOREIGN KEY(SjekklisteID) REFERENCES Sjekkliste(SjekklisteID)
-);
-
-       
+    
  create table if not EXISTS KoblingsTabell
 (
     OrdreNummer int,

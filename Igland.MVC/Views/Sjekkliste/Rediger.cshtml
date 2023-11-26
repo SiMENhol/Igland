@@ -1,66 +1,18 @@
 ﻿﻿@using Igland.MVC.Models.Sjekkliste;
+@using Igland.MVC.CommonMethods;
 
 @model SjekklisteFullViewModel
 @{
     ViewData["Title"] = "Sjekkliste";
 
-    int getID()
-    {
-        int id = Convert.ToInt32(ViewContext.RouteData.Values["id"]);
-        if (id <= 0 || id > Model.SjekklisteOversikt.Count)
-        {
-            return 0;
-        }
-        return id - 1;
-    }
+    Date date = new Date();
 
-    String formatDate(String str)
-    {
-        String d = "";
-        String m = "";
-        String y = "";
-        int numberOfPeriods = 0;
+    ID id = new ID();
+    int index = id.getID(ViewContext, Model.SjekklisteOversikt.Count);
+    var Sjekkliste = Model.SjekklisteOversikt[index];
 
-        for (int i = 0; i < str.Length; i++)
-        {
-            if (str[i].Equals('/'))
-                numberOfPeriods++;
-            else
-            {
-                if (numberOfPeriods == 0)
-                    m += str[i];
-                else if (numberOfPeriods == 1)
-                    d += str[i];
-                else
-                    y += str[i];
-            }
-        }
-        return y + "-" + m + "-" + d;
-    }
-
-    List<string> toText(String statusString)
-    {
-        string returnString = "";
-        List<string> liste = new List<string>();
-        for (int i = 0; i < statusString.Length; i++)
-        {
-            if (statusString[i].Equals(','))
-            {
-                liste.Add(returnString);
-                returnString = "";
-            }
-            else if (statusString[i].Equals('0'))
-                returnString += "0"; // "Defekt"
-            else if (statusString[i].Equals('1'))
-                returnString += "1"; //"Skal endres"
-            else if (statusString[i].Equals('2'))
-                returnString += "2"; //"OK
-            else returnString += "unexpected input";
-        }
-        return liste;
-    }
-
-    var elementID = -1; //La stå!
+    SjekklisteRadioButtonValues radiobuttons = new SjekklisteRadioButtonValues();
+    var elementID = 0;
 }
 
 
@@ -68,12 +20,12 @@
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
     <label asp-for="UpsertModel.SjekklisteID" hidden></label>
-    <input asp-for="UpsertModel.SjekklisteID" type="number" value="@Model.SjekklisteOversikt[getID()].SjekklisteID" hidden/>
+    <input asp-for="UpsertModel.SjekklisteID" type="number" value="@Sjekkliste.SjekklisteID" hidden />
     <label asp-for="UpsertModel.OrdreNummer" Text="Serienummer"></label>
-    <input asp-for="UpsertModel.OrdreNummer" type="number" value="@Model.SjekklisteOversikt[getID()].OrdreNummer" required />
+    <input asp-for="UpsertModel.OrdreNummer" type="number" value="@Sjekkliste.OrdreNummer" required />
 
     <label asp-for="UpsertModel.SerieNummer" Text="Serienummer"></label>
-    <input asp-for="UpsertModel.SerieNummer" type="string name="Serienummer" value="@Model.SjekklisteOversikt[getID()].SerieNummer" />
+    <input asp-for="UpsertModel.SerieNummer" type="string name="Serienummer" value="@Sjekkliste.SerieNummer" />
 
     <div class="checklistenavn">
         <h4>OK</h4>
@@ -278,22 +230,22 @@
 
     <h3>Kommentarer</h3>
     <div class="MekanikerKommentar">
-        <input asp-for="UpsertModel.MekanikerKommentar" class="form-control-md" style="width: 100%; height: 100px;" value="@Model.SjekklisteOversikt[getID()].MekanikerKommentar"> </input>
+        <input asp-for="UpsertModel.MekanikerKommentar" class="form-control-md" style="width: 100%; height: 100px;" value="@Sjekkliste.MekanikerKommentar"> </input>
     </div>
 
     <div class="MekanikerNavn">
         <label asp-for="UpsertModel.MekanikerNavn"></label>
-        <input asp-for="UpsertModel.MekanikerNavn" type="text" value="@Model.SjekklisteOversikt[getID()].MekanikerNavn" /><br />
+        <input asp-for="UpsertModel.MekanikerNavn" type="text" value="@Sjekkliste.MekanikerNavn" /><br />
     </div>
 
     <div class="AntallTimer">
         <label asp-for="UpsertModel.AntallTimer"></label>
-        <input asp-for="UpsertModel.AntallTimer" type="number" value="@Model.SjekklisteOversikt[getID()].AntallTimer" />
+        <input asp-for="UpsertModel.AntallTimer" type="number" value="@Sjekkliste.AntallTimer" />
     </div>
 
     <div class="Dato">
-        <label asp-for="UpsertModel.Dato"></label>
-        <input asp-for="UpsertModel.Dato" type="date" value="@formatDate(Model.SjekklisteOversikt[getID()].Dato.ToString())" />
+        <label asp-for="UpsertModel.Dato">Dato utført</label>
+        <input asp-for="UpsertModel.Dato" type="date" value="@date.formatDateForInputField(Sjekkliste.Dato)" />
     </div>
 
     <div class="SubmitKnapp">
@@ -307,15 +259,24 @@
 
 </form>
 
-<!-- Funksjon som sjekker av radioboksene basert på data i databasen -->
-    @foreach (var value in toText(Model.SjekklisteOversikt[getID()].StatusString))
+<!--
+    /// <summary>
+    /// Go through the list of radio button values from the statusString from the Sjekkliste model.
+    /// Assign the values to their respective HTML input type="radio" element.
+    /// </summary>
+-->
+    @foreach (var value in radiobuttons.sortStatusString(Sjekkliste.StatusString))
     {
-        elementID++;
         <script type="text/javascript">
-            var element = document.getElementsByClassName("checklist-grid")[0].getElementsByTagName("li")[@elementID]
-            var radioButton = element.getElementsByTagName("input");
-            radioButton[@value].checked = true;
+            @* Get the current <li> element from the "checklist-grid" based on which radio button is being read *@
+            var segment = document.getElementsByClassName("checklist-grid")[0].getElementsByTagName("li")[@elementID]
+            @* Get a list of the radio buttons in that element *@
+            var radioButtons = segment.getElementsByTagName("input");
+            @* Check the radio button who's index matches with the value from statusString *@
+            radioButtons[@value].checked = true;
         </script>
+        // Increase elementID for each radio button value in statusString
+        elementID++;
     }
 
 <br />

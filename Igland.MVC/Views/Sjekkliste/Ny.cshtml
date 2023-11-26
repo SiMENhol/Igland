@@ -3,28 +3,6 @@
 @model SjekklisteFullViewModel
 @{
     ViewData["Title"] = "Sjekkliste";
-
-    List<string> toText(String statusString)
-    {
-        string returnString = "";
-        List<string> liste = new List<string>();
-        for (int i = 0; i < statusString.Length; i++)
-        {
-            if (statusString[i].Equals(','))
-            {
-                liste.Add(returnString);
-                returnString = "";
-            }
-            else if (statusString[i].Equals('0'))
-                returnString += "Defekt";
-            else if (statusString[i].Equals('1'))
-                returnString += "Skal endres";
-            else if (statusString[i].Equals('2'))
-                returnString += "OK";
-            else returnString += "unexpected input";
-        }
-        return liste;
-    }
 }
 
 

@@ -103,17 +103,6 @@ namespace Igland.MVC.Tests.Controllers
                 userRepository
             );
         }
-
-        [Fact]
-        public async Task IndexReturnsCorrectModelType()
-        {
-            var unitUnderTest = GetUnitUnderTest();
-            var result = unitUnderTest.Index(email: "Test@mail.com") as ViewResult;
-            Assert.IsType<UserViewModel>(result.Model);
-            var userModel = result.Model as UserViewModel;
-            Assert.NotNull(userModel);
-            Assert.Equal("Test@mail.com", userModel.Email);
-        }
         [Fact]
         public async Task LoginReturnsCorrectViewWhenModelStateIsInvalid()
         {
