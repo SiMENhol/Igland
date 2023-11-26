@@ -21,6 +21,11 @@ namespace Igland.MVC.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Creates a UserViewModel object with a list of all users and the specified user's information if provided.
+        /// </summary>
+        /// <param name="email">The email address of the user to retrieve information for.</param>
+        /// <returns>A UserViewModel object containing the list of users and the specified user's information.</returns>
         private UserViewModel CreateUserViewModel(string? email)
         {
             var model = new UserViewModel { Users = userRepository.GetUsers() };
@@ -40,6 +45,9 @@ namespace Igland.MVC.Controllers
             return model;
         }
 
+        /// <summary>
+        /// Displays the administrator's homepage.
+        /// </summary>
         [HttpGet]
         public IActionResult Index(string? email)
         {
@@ -48,6 +56,9 @@ namespace Igland.MVC.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Displays an overview of all users in the system.
+        /// </summary>
         [HttpGet]
         public IActionResult Oversikt(string? email)
         {
@@ -56,6 +67,9 @@ namespace Igland.MVC.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Displays the registration page for new users.
+        /// </summary>
         [HttpGet]
         public IActionResult Register(string returnUrl = null)
         {
@@ -63,6 +77,9 @@ namespace Igland.MVC.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Handles the registration process for a new user. Validates user input, creates a new user account, and redirects to the overview page upon successful registration. Otherwise, re-displays the registration page with error messages.
+        /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
@@ -82,7 +99,10 @@ namespace Igland.MVC.Controllers
             }
             return View(model);
         }
-        
+
+        /// <summary>
+        /// Removes a user from the database based on the provided email address. Logs the action and redirects to the overview page upon successful deletion.
+        /// </summary>
         [HttpPost]
         public IActionResult Delete(string email)
         {
@@ -91,6 +111,9 @@ namespace Igland.MVC.Controllers
             return RedirectToAction("Oversikt");
         }
 
+        /// <summary>
+        /// Promotes a user to the Administrator role by adding them to the corresponding role in the identity system.
+        /// </summary>
         public async Task<IActionResult> MakeUserAdministrator(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
