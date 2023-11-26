@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Igland.MVC.Models.Kunder;
 using Igland.MVC.Repositories.IRepo;
-using Igland.MVC.Repositories.EF;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Igland.MVC.Controllers
 {

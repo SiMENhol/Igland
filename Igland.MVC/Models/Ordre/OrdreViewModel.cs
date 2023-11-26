@@ -1,9 +1,7 @@
 using Igland.MVC.Models.ArbDok;
-using Igland.MVC.Models.Kunder;
 using Igland.MVC.Models.ServiceDokument;
 using Igland.MVC.Models.Sjekkliste;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Igland.MVC.Models.Ordre
 

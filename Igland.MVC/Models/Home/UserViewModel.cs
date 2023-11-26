@@ -1,5 +1,4 @@
-﻿using Igland.MVC.Entities;
-using Igland.MVC.Models.Account;
+﻿using Igland.MVC.Models.Account;
 using Igland.MVC.Models.ArbDok;
 using Igland.MVC.Models.Kunder;
 using Igland.MVC.Models.Ordre;

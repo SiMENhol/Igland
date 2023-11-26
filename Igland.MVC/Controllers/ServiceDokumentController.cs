@@ -1,6 +1,5 @@
 ﻿using Igland.MVC.Entities;
 using Igland.MVC.Models.ServiceDokument;
-using Igland.MVC.Repositories.EF;
 using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

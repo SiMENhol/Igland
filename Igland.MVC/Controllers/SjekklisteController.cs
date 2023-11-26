@@ -1,5 +1,4 @@
 ﻿using Igland.MVC.Entities;
-using Igland.MVC.Models.ServiceDokument;
 using Igland.MVC.Models.Sjekkliste;
 using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Mvc;

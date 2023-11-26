@@ -1,7 +1,5 @@
-﻿using Igland.MVC.Entities;
-using MySqlConnector;
+﻿using MySqlConnector;
 using System.Data;
-using System.Data.Common;
 
 namespace Igland.MVC.DataAccess
 {

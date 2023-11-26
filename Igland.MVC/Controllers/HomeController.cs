@@ -2,7 +2,6 @@
 using Igland.MVC.Models.Home;
 using Igland.MVC.Models.Kunder;
 using Igland.MVC.Models.Ordre;
-using Igland.MVC.Repositories.EF;
 using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Mvc;
 
