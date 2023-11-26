@@ -5,13 +5,14 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Igland.MVC.Repositories.EF;
 using Igland.MVC.Repositories.IRepo;
 using Microsoft.AspNetCore.Authorization;
+using Igland.MVC;
+using Microsoft.AspNetCore;
 
 public class Program
 {
     static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        builder.WebHost.ConfigureKestrel(x => x.AddServerHeader = false);
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
@@ -47,6 +48,10 @@ public class Program
         app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
         app.MapControllers();
 
+        WebHost.CreateDefaultBuilder(args)
+        .ConfigureKestrel(c => c.AddServerHeader = false)
+        .UseStartup<Startup>()
+        .Build();
 
         app.Run();
 
