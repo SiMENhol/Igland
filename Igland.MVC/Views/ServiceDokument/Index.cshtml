@@ -46,13 +46,14 @@
                         <input type="submit"  class="button-link" value="Slett" />
                     </form>
                 </td>
-                <td>@service.OrdreNummer</td>
-                <td>@service.Aarsmodel</td>
-                <td>@service.Garanti</td>
-                <td>@service.Reparasjonsbeskrivelse</td>
-                <td>@service.MedgaatteDeler</td>
-                <td>@service.DeleRetur</td>
-                <td>@service.ForesendelsesMaate</td>
+                <td>@Html.DisplayFor(model => service.OrdreNummer)</td>
+                <td>@Html.DisplayFor(model => service.Aarsmodel)</td>
+                <td>@Html.DisplayFor(model => service.Garanti)</td>
+                <td>@Html.DisplayFor(model => service.Reparasjonsbeskrivelse)</td>
+                <td>@Html.DisplayFor(model => service.MedgaatteDeler)</td>
+                <td>@Html.DisplayFor(model => service.DeleRetur)</td>
+                <td>@Html.DisplayFor(model => service.ForesendelsesMaate)</td>
+
             </tr>
         }
     </tbody>
