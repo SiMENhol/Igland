@@ -1,7 +1,7 @@
 ﻿<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!--inkluderer jquery bibliotek-->
 @using Igland.MVC.Models.ArbDok; <!--modellen bruker ArbDok-->
 @using Igland.MVC.CommonMethods; <!--modellen bruker CommonMethods-->
-@model ArbDokFullViewModel <!--Definerer at views bruker modellen ArbDokViewModel-->
+@model ArbDokFullViewModel 
 @{
     ViewData["Title"] = "Arbeidsdokumenter"; // definerer viewen som Arbeidsdokumenter
     Date date = new Date();
@@ -77,7 +77,7 @@
         @* undergreier i tabellen *@
 
     <tbody>
-        @foreach (var ArbeidsDokuments in Model.ArbDokList.OrderByDescending(x => x.OrdreNummer)) <!--lager en foreach løkke som itererer lagrer en rad med ArbDokList for hvert OrdreNummer i tabellen.-->
+            @foreach (var ArbeidsDokuments in Model.ArbDokList.OrderByDescending(x => x.OrdreNummer)) @* <!--lager en foreach løkke som itererer lagrer en rad med ArbDokList for hvert OrdreNummer i tabellen.-->*@
         {
             var Ordre = Model.OrdreList.Find(x => x.OrdreNummer == ArbeidsDokuments.OrdreNummer);  <!--Henter elementet fra OrdreList der OrdreNummer matcher Arbeidsdokuments OrdreNummer og lagrer det som variabelen Ordre -->
             var Kunde = Model.KunderList.Find(x => x.KundeID == Ordre.KundeID);<!--Henter elementet fra KunderList der KundeID matcher Arbeidsdokuments KundeID og lagrer det som variabelen Kunde -->
