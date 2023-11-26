@@ -33,11 +33,24 @@ namespace Igland.MVC.Models.Ordre
     }
     public class OrdreViewModel
     {
-        [Range(10000000, 99999999, ErrorMessage = "Nummeret må være minst 8 siffre langt.")]
+        [Required]
+        [Range(9999999, 99999999, ErrorMessage = "Nummeret må være minst 8 siffre langt.")]
         public int OrdreNummer { get; set; }
+        [Required]
+        [Range(99, 999, ErrorMessage = "Verdien må være mellom 1 og 100.")]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
         public int KundeID { get; set; }
+        [Required]
+        [StringLength(20, ErrorMessage = "Kan ikke være lengre enn 20 tegn.")]
+        [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string SerieNummer { get; set; }
+        [Required]
+        [StringLength(20, ErrorMessage = "Kan ikke være lengre enn 20 tegn.")]
+        [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string VareNavn { get; set; }
+        [Required]
+        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
+        [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string Status { get; set; }
     }
 }

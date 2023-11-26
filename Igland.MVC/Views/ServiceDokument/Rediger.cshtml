@@ -31,10 +31,10 @@
                 <input asp-for="UpsertModel.OrdreNummer" type="number" required value="@Model.ServiceDokumentOversikt[index].OrdreNummer" /><br />
 
                 <label asp-for="UpsertModel.Aarsmodel">Årsmodel</label> <br />
-                <input asp-for="UpsertModel.Aarsmodel" type="text" required value="@Model.ServiceDokumentOversikt[index].Aarsmodel" /><br />
+    <input asp-for="UpsertModel.Aarsmodel" type="text" required maxlength="4" value="@Model.ServiceDokumentOversikt[index].Aarsmodel" /><br />
 
                 <label asp-for="UpsertModel.Garanti"></label> <br />
-                <input asp-for="UpsertModel.Garanti" type="text" required value="@Model.ServiceDokumentOversikt[index].Garanti" /><br />
+    <input asp-for="UpsertModel.Garanti" type="text" maxlength="50" required value="@Model.ServiceDokumentOversikt[index].Garanti" /><br />
 
                 <label asp-for="UpsertModel.Reparasjonsbeskrivelse"></label> <br />
                 <input asp-for="UpsertModel.Reparasjonsbeskrivelse" type="text" value="@Model.ServiceDokumentOversikt[index].Reparasjonsbeskrivelse" /><br />
