@@ -19,16 +19,16 @@
 
 
 
-            <form asp-action="Post" asp-controller="Kunder" method="post">
-            @Html.ValidationSummary()
-            @Html.AntiForgeryToken()
+ <form asp-action="Post" asp-controller="Kunder" method="post">
+     @Html.ValidationSummary()
+     @Html.AntiForgeryToken()
 
                 
-                <input asp-for="UpsertModel.KundeID" type="hidden" required value="@Model.KunderOversikt[index].KundeID" />
+      <input asp-for="UpsertModel.KundeID" type="hidden" required value="@Model.KunderOversikt[index].KundeID" />
 
-                <label asp-for="UpsertModel.KundeNavn">Kundenavn</label> <br />
-                <input asp-for="UpsertModel.KundeNavn" type="text" required value="@Model.KunderOversikt[index].KundeNavn" /><br />
+      <label asp-for="UpsertModel.KundeNavn">Kundenavn</label> <br />
+      <input asp-for="UpsertModel.KundeNavn" type="text" required value="@Model.KunderOversikt[index].KundeNavn" /><br />
 
-                <br />
-                <input type="submit" />
-            </form>
+     <br />
+      <input type="submit" />
+  </form>

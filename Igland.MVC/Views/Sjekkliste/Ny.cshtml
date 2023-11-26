@@ -216,27 +216,7 @@
         </ul>
     </div>
 
-        @*@if (Model.UpsertModel.JobGroups != null)
-        {
-            foreach (var jobGroup in Model.UpsertModel.JobGroups)
-            {
-                <h3>@jobGroup.Name</h3>
-                <ul>
-                    @foreach (var jobs in jobGroup.Jobs)
-                    {
-                        <li>
-                            <div class="checklist-item">
-                                <label>@jobs.Name</label>
-                                <input asp-for="@jobs.Value" type="radio" value="0">
-                                <input asp-for="@jobs.Value" type="radio" value="1">
-                                <input asp-for="@jobs.Value" type="radio" value="2">
-                            </div>
-                        </li>
-
-                    }
-                </ul>
-            }
-        }*@
+        
     </div>
     
     

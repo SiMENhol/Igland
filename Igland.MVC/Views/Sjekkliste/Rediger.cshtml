@@ -21,7 +21,7 @@
     @Html.AntiForgeryToken()
     <label asp-for="UpsertModel.SjekklisteID" hidden></label>
     <input asp-for="UpsertModel.SjekklisteID" type="number" value="@Sjekkliste.SjekklisteID" hidden />
-    <label asp-for="UpsertModel.OrdreNummer" Text="Serienummer"></label>
+    <label asp-for="UpsertModel.OrdreNummer" Text="OrdreNummer"></label>
     <input asp-for="UpsertModel.OrdreNummer" type="number" value="@Sjekkliste.OrdreNummer" required />
 
     <label asp-for="UpsertModel.SerieNummer" Text="Serienummer"></label>
