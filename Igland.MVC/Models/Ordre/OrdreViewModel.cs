@@ -41,11 +41,11 @@ namespace Igland.MVC.Models.Ordre
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
         public int KundeID { get; set; }
         [Required]
-        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
+        [StringLength(20, ErrorMessage = "Kan ikke være lengre enn 20 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string SerieNummer { get; set; }
         [Required]
-        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
+        [StringLength(20, ErrorMessage = "Kan ikke være lengre enn 20 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string VareNavn { get; set; }
         [Required]

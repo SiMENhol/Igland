@@ -27,10 +27,10 @@
                 <input asp-for="UpsertModel.KundeID" type="hidden" required value="@Model.OrdreOversikt[index].KundeID" />
 
                 <label asp-for="UpsertModel.SerieNummer"></label> <br />
-                <input asp-for="UpsertModel.SerieNummer" type="number" required value="@Model.OrdreOversikt[index].SerieNummer" /><br />
+    <input asp-for="UpsertModel.SerieNummer" type="text" maxlength="20" required value="@Model.OrdreOversikt[index].SerieNummer" /><br />
 
                 <label asp-for="UpsertModel.VareNavn">VareNavn</label> <br />
-                <input asp-for="UpsertModel.VareNavn" type="text" required value="@Model.OrdreOversikt[index].VareNavn" /><br />
+    <input asp-for="UpsertModel.VareNavn" type="text" maxlength="20" required value="@Model.OrdreOversikt[index].VareNavn" /><br />
 
                 <label asp-for="UpsertModel.Status"></label> <br />
                 <select asp-for="UpsertModel.Status" required>

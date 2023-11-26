@@ -49,10 +49,10 @@ namespace Igland.MVC.Models.ArbDok
         [Range(0, 100, ErrorMessage = "Verdien må være mellom 1 og 100.")]
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
         public int AntallTimer { get; set; }
-        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
+        [StringLength(255, ErrorMessage = "Kan ikke være lengre enn 255 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string? BestillingFraKunde { get; set; }
-        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
+        [StringLength(255, ErrorMessage = "Kan ikke være lengre enn 255 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string? NotatFraMekaniker { get; set; }
 

@@ -1,5 +1,4 @@
-﻿using Igland.MVC.Models.ServiceDokument;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Igland.MVC.Models.Sjekkliste
@@ -16,7 +15,7 @@ namespace Igland.MVC.Models.Sjekkliste
     }
     public class SjekklisteViewModel
     {
-        [StringLength(100, ErrorMessage = "Kan ikke være lengre enn 100 tegn.")]
+        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9\s]*$", ErrorMessage = "Kun alfanumeriske tegn er tillatt.")]
         public string? MekanikerNavn { get; set; }
 
@@ -34,7 +33,7 @@ namespace Igland.MVC.Models.Sjekkliste
 
 
 
-        [StringLength(300, ErrorMessage = "Kan ikke være lengre enn 300 tegn.")]
+        [StringLength(255, ErrorMessage = "Kan ikke være lengre enn 255 tegn.")]
         [RegularExpression(@"^[a-åA-Å0-9\s]*$", ErrorMessage = "Kun alfanumeriske tegn er tillatt.")]
         public string? MekanikerKommentar { get; set; }
 
