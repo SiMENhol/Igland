@@ -1,5 +1,6 @@
 ﻿using Igland.MVC.Models.Kunder;
 using Igland.MVC.Models.Ordre;
+using System.ComponentModel.DataAnnotations;
 
 namespace Igland.MVC.Models.ArbDok
 {
@@ -27,7 +28,9 @@ namespace Igland.MVC.Models.ArbDok
     {
         public int ArbDokID {  get; set; }
         public int OrdreNummer {  get; set; }
+        [StringLength(50)]
         public string? Kunde {  get; set; }
+        [StringLength(50)]
         public string? Vinsj {  get; set; }
         public DateOnly HenvendelseMotatt {  get; set; }
         public DateOnly AvtaltLevering { get; set; }
@@ -36,8 +39,11 @@ namespace Igland.MVC.Models.ArbDok
         public DateOnly AvtaltFerdig {  get; set; }
         public DateOnly ServiceFerdig { get; set; }
         public int AntallTimer { get; set; }
+        [StringLength(50)]
         public string? BestillingFraKunde { get; set; }
+        [StringLength(100)]
         public string? NotatFraMekaniker { get; set; }
+        [StringLength(50)]
         public string? Status {  get; set; }
     }
 }

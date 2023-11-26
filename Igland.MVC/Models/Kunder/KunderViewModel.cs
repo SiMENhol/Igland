@@ -19,6 +19,8 @@ namespace Igland.MVC.Models.Kunder
     {
         [Range(10000000,99999999, ErrorMessage = "Nummeret må være minst 8 siffre langt.")]
         public int KundeID { get; set; }
+        [Required(ErrorMessage = "Kundenavn is required")]
+        [MaxLength(100)]
         public string KundeNavn { get; set; }
     }
 }
