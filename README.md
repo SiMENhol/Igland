@@ -28,13 +28,15 @@ For at klientens utviklere får kjøre applikasjonen på en riktig måte
 
 2. Klon applikasjonens kode fra Github til systemet der den skal kjøres. 
 
-3. Finn hvor prosjekt mappen er plassert og kjør Startdb.cmd (startdb.sh for mac) fra prosjekt mappen. 
+3. Finn hvor prosjekt mappen er plassert og kjør Startdb.cmd (startdb.sh for mac) fra prosjekt mappen.
 
-4. Bygg applikasjonen med Visual Studio. 
+4. Hvis startDb mislykkes, må en manuelt legge inn Startdb.sql og Dummydata.sql inn i mariadb containeren.
 
-5. Kjør applikasjonen fra Visual Studio med Docker.
+5. Bygg applikasjonen med Visual Studio. 
 
-6. Hvis en ikke får kobling til databasen, sjekk IP på mariadb container og oppdater appsetting til korrekt IP. 
+6. Kjør applikasjonen fra Visual Studio med Docker.
+
+7. Hvis en ikke får kobling til databasen, sjekk IP på mariadb container og oppdater appsetting til korrekt IP. 
 
  
 
