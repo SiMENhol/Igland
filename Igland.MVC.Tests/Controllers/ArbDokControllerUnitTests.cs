@@ -18,7 +18,7 @@ namespace Igland.MVC.Tests.Controllers
         private void InitializeFakes()
         {
             arbDokRepository = Substitute.For<IArbDokRepository>();
-            arbDokRepository.GetAll().Returns(new List<ArbDok> { new ArbDok { ArbDokID = 10, OrdreNummer = 12345678, Kunde = "Kunde 1", Vinsj = "Vinsj 1", HenvendelseMotatt = new DateOnly(2023, 11, 24), AvtaltLevering = new DateOnly(2023, 11, 24), ProduktMotatt = new DateOnly(2023, 11, 24), SjekkUtfort = new DateOnly(2023, 11, 24), AvtaltFerdig = new DateOnly(2023, 11, 24), ServiceFerdig = new DateOnly(2023, 11, 24), AntallTimer = 5, BestillingFraKunde = "Bestilling fra kunde", NotatFraMekaniker = "Notat fra mekaniker", Status = "Status 1" }, });
+            arbDokRepository.GetAll().Returns(new List<ArbDok> { new ArbDok { ArbDokID = 10, OrdreNummer = 12345678, Uke = "50", HenvendelseMotatt = new DateOnly(2023, 11, 24), AvtaltLevering = new DateOnly(2023, 11, 24), ProduktMotatt = new DateOnly(2023, 11, 24), SjekkUtfort = new DateOnly(2023, 11, 24), AvtaltFerdig = new DateOnly(2023, 11, 24), ServiceFerdig = new DateOnly(2023, 11, 24), AntallTimer = 5, BestillingFraKunde = "Bestilling fra kunde", NotatFraMekaniker = "Notat fra mekaniker" }, });
 
             kunderRepository = Substitute.For<IKunderRepository>();
             kunderRepository.GetAll().Returns(new List<KunderEntity> { new KunderEntity { KundeID = 1, KundeNavn = "Pumba" } });
@@ -159,8 +159,7 @@ namespace Igland.MVC.Tests.Controllers
                 {
                     ArbDokID = 40,
                     OrdreNummer = 87654321,
-                    Kunde = "Kunde 2",
-                    Vinsj = "Vinsj 2",
+                    Uke = "49",
                     HenvendelseMotatt = new DateOnly(2023, 12, 24),
                     AvtaltLevering = new DateOnly(2023, 12, 24),
                     ProduktMotatt = new DateOnly(2023, 12, 24),
@@ -169,7 +168,6 @@ namespace Igland.MVC.Tests.Controllers
                     ServiceFerdig = new DateOnly(2023, 12, 24),
                     AntallTimer = 5, BestillingFraKunde = "Kunde bestilling",
                     NotatFraMekaniker = "Mekaniker notat",
-                    Status = "Status 2"
                 } 
             });
             arbDokRepository.Received().Upsert(Arg.Any<ArbDok>());
