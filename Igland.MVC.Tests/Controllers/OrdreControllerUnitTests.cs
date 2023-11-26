@@ -30,7 +30,7 @@ namespace Igland.MVC.Tests.Controllers
         private void InitializeFakes()
         {
             arbDokRepository = Substitute.For<IArbDokRepository>();
-            arbDokRepository.GetAll().Returns(new List<ArbDok> { new ArbDok { ArbDokID = 10, OrdreNummer = 12345678, Kunde = "Kunde 1", Vinsj = "Vinsj 1", HenvendelseMotatt = new DateOnly(2023, 11, 24), AvtaltLevering = new DateOnly(2023, 11, 24), ProduktMotatt = new DateOnly(2023, 11, 24), SjekkUtfort = new DateOnly(2023, 11, 24), AvtaltFerdig = new DateOnly(2023, 11, 24), ServiceFerdig = new DateOnly(2023, 11, 24), AntallTimer = 5, BestillingFraKunde = "Bestilling fra kunde", NotatFraMekaniker = "Notat fra mekaniker", Status = "Status 1" }, });
+            arbDokRepository.GetAll().Returns(new List<ArbDok> { new ArbDok { ArbDokID = 10, Uke = "50", OrdreNummer = 12345678, HenvendelseMotatt = new DateOnly(2023, 11, 24), AvtaltLevering = new DateOnly(2023, 11, 24), ProduktMotatt = new DateOnly(2023, 11, 24), SjekkUtfort = new DateOnly(2023, 11, 24), AvtaltFerdig = new DateOnly(2023, 11, 24), ServiceFerdig = new DateOnly(2023, 11, 24), AntallTimer = 5, BestillingFraKunde = "Bestilling fra kunde", NotatFraMekaniker = "Notat fra mekaniker" }, });
 
 
             ordreRepository = Substitute.For<IOrdreRepository>();

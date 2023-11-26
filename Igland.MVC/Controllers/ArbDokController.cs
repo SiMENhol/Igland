@@ -73,8 +73,7 @@ namespace Igland.MVC.Controllers
             {
                 ArbDokID = arbdok.UpsertArbDok.ArbDokID,
                 OrdreNummer = arbdok.UpsertArbDok.OrdreNummer,
-                Kunde = arbdok.UpsertArbDok.Kunde,
-                Vinsj = arbdok.UpsertArbDok.Vinsj,
+                Uke = arbdok.UpsertArbDok.Uke,
                 HenvendelseMotatt = arbdok.UpsertArbDok.HenvendelseMotatt,
                 AvtaltLevering = arbdok.UpsertArbDok.AvtaltLevering,
                 ProduktMotatt = arbdok.UpsertArbDok.ProduktMotatt,
@@ -84,7 +83,6 @@ namespace Igland.MVC.Controllers
                 AntallTimer = arbdok.UpsertArbDok.AntallTimer,
                 BestillingFraKunde = arbdok.UpsertArbDok.BestillingFraKunde,
                 NotatFraMekaniker = arbdok.UpsertArbDok.NotatFraMekaniker,
-                Status = arbdok.UpsertArbDok.Status,
             };
             _arbdokRepository.Upsert(arbdokEntity);
 
@@ -136,8 +134,7 @@ namespace Igland.MVC.Controllers
                 { 
                     ArbDokID = x.ArbDokID, 
                     OrdreNummer = x.OrdreNummer, 
-                    Kunde = x.Kunde, 
-                    Vinsj = x.Vinsj, 
+                    Uke = x.Uke,
                     HenvendelseMotatt = x.HenvendelseMotatt, 
                     AvtaltLevering = x.AvtaltLevering, 
                     ProduktMotatt = x.ProduktMotatt, 
@@ -146,8 +143,7 @@ namespace Igland.MVC.Controllers
                     ServiceFerdig = x.ServiceFerdig, 
                     AntallTimer = x.AntallTimer, 
                     BestillingFraKunde = x.BestillingFraKunde, 
-                    NotatFraMekaniker = x.NotatFraMekaniker, 
-                    Status = x.Status 
+                    NotatFraMekaniker = x.NotatFraMekaniker
                 }).ToList(),
                 OrdreList = _ordreRepository.GetAll().Select(x => new OrdreViewModel 
                 { 

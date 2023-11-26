@@ -1,8 +1,12 @@
 ﻿﻿@using Igland.MVC.Models.Sjekkliste;
+@using Igland.MVC.CommonMethods;
 
 @model SjekklisteFullViewModel
 @{
     ViewData["Title"] = "Sjekkliste";
+
+    Date date = new Date();
+    DateOnly today = DateOnly.FromDateTime(DateTime.Now);
 }
 
 
@@ -238,7 +242,7 @@
 
     <div class="Dato">
         <label asp-for="UpsertModel.Dato"></label>
-        <input asp-for="UpsertModel.Dato" type="date" />
+        <input asp-for="UpsertModel.Dato" type="date" value="@date.formatDateForInputField(today)" />
     </div>
 
     <div class="SubmitKnapp">

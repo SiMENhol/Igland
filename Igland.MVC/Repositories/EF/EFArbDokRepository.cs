@@ -45,8 +45,7 @@ namespace Igland.MVC.Repositories.EF
             if (existing != null)
             {
                 existing.OrdreNummer = arbdok.OrdreNummer;
-                existing.Kunde = arbdok.Kunde;
-                existing.Vinsj = arbdok.Vinsj;
+                existing.Uke = arbdok.Uke;
                 existing.HenvendelseMotatt = arbdok.HenvendelseMotatt;
                 existing.AvtaltLevering = arbdok.AvtaltLevering;
                 existing.ProduktMotatt = arbdok.ProduktMotatt;
@@ -56,7 +55,6 @@ namespace Igland.MVC.Repositories.EF
                 existing.AntallTimer = arbdok.AntallTimer;
                 existing.BestillingFraKunde = arbdok.BestillingFraKunde;
                 existing.NotatFraMekaniker = arbdok.NotatFraMekaniker;
-                existing.Status = arbdok.Status;
                 dataContext.SaveChanges();
                 return;
             }

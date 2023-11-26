@@ -83,7 +83,7 @@
             var Kunde = Model.KunderList.Find(x => x.KundeID == Ordre.KundeID);<!--Henter elementet fra KunderList der KundeID matcher Arbeidsdokuments KundeID og lagrer det som variabelen Kunde -->
 
             <tr class="row-clickable row-data" data-url="@Url.Action("Rediger", "ArbDok", new { id = ArbeidsDokuments.ArbDokID })"> <!--url til "Rediger" og "Ny" views i ArbDok-->
-                <td>49</td>
+                <td>@ArbeidsDokuments.Uke</td> <!--legger inn en verdi for Uke hentet fra ArbeidsDokuments variabelen-->
                 <td>@date.formatDateForViewing(ArbeidsDokuments.HenvendelseMotatt)</td> <!--skifter kolonne og legger inn en verdi for HenvendelseMottat hentet fra ArbeidsDokuments variabelen-->
                 <td>@Ordre.Status</td> <!--skifter kolonne og legger inn en verdi for Status hentet fra Ordre variabelen-->
                 <td>@Ordre.VareNavn @Ordre.SerieNummer</td> <!--skifter kolonne og legger inn en verdi for SerieNummer hentet fra Ordre Variabelen-->

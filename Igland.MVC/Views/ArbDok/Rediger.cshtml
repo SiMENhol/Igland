@@ -25,9 +25,17 @@
         <label asp-for="UpsertArbDok.ArbDokID" hidden></label>
         <input asp-for="UpsertArbDok.ArbDokID" type="number" value="@ArbDok.ArbDokID" hidden />
 
-        <label asp-for="UpsertArbDok.OrdreNummer" hidden></label><br />
-        <input asp-for="UpsertArbDok.OrdreNummer" type="number" required value="@Ordre.OrdreNummer" hidden /><br />
+        <label asp-for="UpsertArbDok.OrdreNummer" hidden></label>
+        <input asp-for="UpsertArbDok.OrdreNummer" type="number" required value="@Ordre.OrdreNummer" hidden />
 
+        <h4>OrdreNummer: @Ordre.OrdreNummer</h4>
+        <h5>Kunde: @Kunde.KundeNavn</h5>
+        <h5>Produkt: @Ordre.VareNavn #@Ordre.SerieNummer</h5>
+
+        <label asp-for="UpsertArbDok.Uke">Booket service til uke</label><br />
+        <input asp-for="UpsertArbDok.Uke" type="text" value="@ArbDok.Uke" /><br />
+
+        @*
         <label asp-for="UpsertArbDok.Kunde"></label><br />
         <input asp-for="UpsertArbDok.Kunde" type="text" required value="@Kunde.KundeID"/>
         <label>@Kunde.KundeNavn</label><br />
@@ -35,6 +43,7 @@
         <label asp-for="UpsertArbDok.Vinsj"></label><br />
         <input asp-for="UpsertArbDok.Vinsj" type="text" required value="@ArbDok.Vinsj" />
         <label>@Ordre.VareNavn @Ordre.SerieNummer</label><br />
+        *@
 
         <label asp-for="UpsertArbDok.HenvendelseMotatt"></label><br />
         <input asp-for="UpsertArbDok.HenvendelseMotatt" type="date" value="@date.formatDateForInputField(ArbDok.HenvendelseMotatt)" /><br />
@@ -63,10 +72,13 @@
 
         <label asp-for="UpsertArbDok.NotatFraMekaniker"></label><br />
         <!-- <textarea asp-for="UpsertModel.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
-        <input asp-for="UpsertArbDok.NotatFraMekaniker" type="text" placeholder="Maks grense 50 tegn" value="@ArbDok.NotatFraMekaniker" /><br />
 
+        <input asp-for="UpsertArbDok.NotatFraMekaniker" type="text" placeholder="Maks grense 50 tegn" value="@ArbDok.NotatFraMekaniker" /><br />
+        <br />
+        @*
         <label asp-for="UpsertArbDok.Status"></label><br />
         <input asp-for="UpsertArbDok.Status" type="text" value="@Ordre.Status" /><br />
+        *@
 
         <input type="submit" />
     </form>

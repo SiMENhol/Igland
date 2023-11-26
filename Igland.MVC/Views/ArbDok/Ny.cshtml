@@ -1,5 +1,11 @@
 ﻿@using Igland.MVC.Models.ArbDok;
+@using Igland.MVC.CommonMethods;
 @model ArbDokFullViewModel
+
+@{
+    Date date = new Date();
+    DateOnly today = DateOnly.FromDateTime(DateTime.Now);
+}
 
 <h1>Arbeidsdokument</h1>
 <a style="text-decoration:none" asp-controller="ArbDok" asp-action="Index">
@@ -17,14 +23,19 @@
         <label asp-for="UpsertArbDok.OrdreNummer"></label><br />
         <input asp-for="UpsertArbDok.OrdreNummer" type="number" required/><br />
 
+        <label asp-for="UpsertArbDok.Uke">Booket service til uke</label><br />
+        <input asp-for="UpsertArbDok.Uke" type="text" /><br />
+
+        <!--
         <label asp-for="UpsertArbDok.Kunde"></label><br />
         <input asp-for="UpsertArbDok.Kunde" type="text" required/><br />
 
         <label asp-for="UpsertArbDok.Vinsj"></label><br />
         <input asp-for="UpsertArbDok.Vinsj" type="text" required/><br />
+        -->
 
         <label asp-for="UpsertArbDok.HenvendelseMotatt"></label><br />
-        <input asp-for="UpsertArbDok.HenvendelseMotatt" type="date" required/><br />
+        <input asp-for="UpsertArbDok.HenvendelseMotatt" type="date" value="@date.formatDateForInputField(today)" required /><br />
 
         <label asp-for="UpsertArbDok.AvtaltLevering"></label><br />
         <input asp-for="UpsertArbDok.AvtaltLevering" type="date" /><br />
@@ -51,9 +62,11 @@
         <label asp-for="UpsertArbDok.NotatFraMekaniker"></label><br />
         <!-- <textarea asp-for="UpsertModel.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn"></textarea> -->
         <input asp-for="UpsertArbDok.NotatFraMekaniker" type="text" placeholder="Maks grense 255 tegn" /><br />
-
+        <br />
+        <!--
         <label asp-for="UpsertArbDok.Status"></label><br />
         <input asp-for="UpsertArbDok.Status" type="text" /><br />
+        -->
 
         <input type="submit"/>
     </form>
