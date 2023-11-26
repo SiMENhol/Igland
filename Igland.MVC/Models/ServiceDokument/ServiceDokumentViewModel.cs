@@ -28,7 +28,7 @@ namespace Igland.MVC.Models.ServiceDokument
         public int OrdreNummer { get; set; }
 
         [Required(ErrorMessage = "Kan ikke være tom.")]
-        [Range(1, 100, ErrorMessage = "Verdien må være mellom 1 og 100.")]
+        [Range(1, 9999, ErrorMessage = "Verdien må være mellom 1 og 9999.")]
         [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
         public int Aarsmodel { get; set; }
 
