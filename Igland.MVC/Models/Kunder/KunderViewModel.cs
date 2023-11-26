@@ -17,10 +17,13 @@ namespace Igland.MVC.Models.Kunder
     }
     public class KunderViewModel
     {
-        [Range(10000000,99999999, ErrorMessage = "Nummeret må være minst 8 siffre langt.")]
+        [Required]
+        [Range(99, 999, ErrorMessage = "Verdien må være mellom 1 og 100.")]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
         public int KundeID { get; set; }
-        [Required(ErrorMessage = "Kundenavn is required")]
-        [MaxLength(100)]
+        [Required]
+        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
+        [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string KundeNavn { get; set; }
     }
 }

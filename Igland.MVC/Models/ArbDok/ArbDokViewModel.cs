@@ -26,11 +26,19 @@ namespace Igland.MVC.Models.ArbDok
     }
     public class ArbDokViewModel
     {
+        [Required]
+        [Range(1, 100, ErrorMessage = "Verdien må være mellom 1 og 100.")]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
         public int ArbDokID {  get; set; }
+        [Required]
+        [Range(9999999, 99999999, ErrorMessage = "Verdien må være mellom 1 og 100.")]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
         public int OrdreNummer {  get; set; }
-        [StringLength(50)]
+        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
+        [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string? Kunde {  get; set; }
-        [StringLength(50)]
+        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
+        [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string? Vinsj {  get; set; }
         public DateOnly HenvendelseMotatt {  get; set; }
         public DateOnly AvtaltLevering { get; set; }
@@ -38,12 +46,18 @@ namespace Igland.MVC.Models.ArbDok
         public DateOnly SjekkUtfort { get; set; }
         public DateOnly AvtaltFerdig {  get; set; }
         public DateOnly ServiceFerdig { get; set; }
+        [Range(0, 100, ErrorMessage = "Verdien må være mellom 1 og 100.")]
+        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Kun tall er tillatt.")]
         public int AntallTimer { get; set; }
-        [StringLength(50)]
+        [StringLength(255, ErrorMessage = "Kan ikke være lengre enn 255 tegn.")]
+        [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string? BestillingFraKunde { get; set; }
-        [StringLength(100)]
+        [StringLength(255, ErrorMessage = "Kan ikke være lengre enn 255 tegn.")]
+        [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string? NotatFraMekaniker { get; set; }
-        [StringLength(50)]
+
+        [StringLength(50, ErrorMessage = "Kan ikke være lengre enn 50 tegn.")]
+        [RegularExpression(@"^[a-åA-Å0-9_]*$", ErrorMessage = "Kun alfanumeriske tegn og understrek er tillatt.")]
         public string? Status {  get; set; }
     }
 }

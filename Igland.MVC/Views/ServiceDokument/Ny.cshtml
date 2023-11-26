@@ -18,10 +18,10 @@
             <input asp-for="UpsertModel.OrdreNummer" type="number"  /><br />
 
             <label asp-for="UpsertModel.Aarsmodel">Årsmodel</label><br />
-            <input asp-for="UpsertModel.Aarsmodel" type="number" /><br />
+    <input asp-for="UpsertModel.Aarsmodel" type="number" maxlength="4" /><br />
 
             <label asp-for="UpsertModel.Garanti"></label><br />
-            <input asp-for="UpsertModel.Garanti" type="text" /><br />
+    <input asp-for="UpsertModel.Garanti" type="text" maxlength="50" /><br />
 
             <label asp-for="UpsertModel.Reparasjonsbeskrivelse"></label><br />
             <textarea asp-for="UpsertModel.Reparasjonsbeskrivelse" type="text" rows="5" autofocus></textarea><br />

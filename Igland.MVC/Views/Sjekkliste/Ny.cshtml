@@ -15,7 +15,7 @@
     <input asp-for="UpsertModel.OrdreNummer" type="number" required/>
 
     <label asp-for="UpsertModel.SerieNummer" Text="Serienummer"></label>
-    <input asp-for="UpsertModel.SerieNummer" type="string name="Serienummer" />
+    <input asp-for="UpsertModel.SerieNummer" maxlenght="50" type="string name="Serienummer" />
 
 <div class="checklistenavn">
     <h4>OK</h4>
@@ -233,7 +233,7 @@
 
     <div class="AntallTimer">
         <label asp-for="UpsertModel.AntallTimer"></label>
-        <input asp-for="UpsertModel.AntallTimer" type="number" />
+        <input asp-for="UpsertModel.AntallTimer" min="0" max="999" type="number" />
     </div>
 
     <div class="Dato">
