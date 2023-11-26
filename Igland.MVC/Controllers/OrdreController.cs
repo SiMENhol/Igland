@@ -91,8 +91,7 @@ namespace Igland.MVC.Controllers
             {
                 ArbDokID = arbdok.UpsertArbDok.ArbDokID,
                 OrdreNummer = arbdok.UpsertArbDok.OrdreNummer,
-                Kunde = arbdok.UpsertArbDok.Kunde,
-                Vinsj = arbdok.UpsertArbDok.Vinsj,
+                Uke = arbdok.UpsertArbDok.Uke,
                 HenvendelseMotatt = arbdok.UpsertArbDok.HenvendelseMotatt,
                 AvtaltLevering = arbdok.UpsertArbDok.AvtaltLevering,
                 ProduktMotatt = arbdok.UpsertArbDok.ProduktMotatt,
@@ -102,7 +101,6 @@ namespace Igland.MVC.Controllers
                 AntallTimer = arbdok.UpsertArbDok.AntallTimer,
                 BestillingFraKunde = arbdok.UpsertArbDok.BestillingFraKunde,
                 NotatFraMekaniker = arbdok.UpsertArbDok.NotatFraMekaniker,
-                Status = arbdok.UpsertArbDok.Status,
             };
             _arbdokRepository.Upsert(arbdokEntity);
 

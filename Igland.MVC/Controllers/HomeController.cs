@@ -59,8 +59,7 @@ namespace Igland.MVC.Controllers
                 {
                     ArbDokID = x.ArbDokID,
                     OrdreNummer = x.OrdreNummer,
-                    Kunde = x.Kunde,
-                    Vinsj = x.Vinsj,
+                    Uke = x.Uke,
                     HenvendelseMotatt = x.HenvendelseMotatt,
                     AvtaltLevering = x.AvtaltLevering,
                     ProduktMotatt = x.ProduktMotatt,
@@ -70,7 +69,6 @@ namespace Igland.MVC.Controllers
                     AntallTimer = x.AntallTimer,
                     BestillingFraKunde = x.BestillingFraKunde,
                     NotatFraMekaniker = x.NotatFraMekaniker,
-                    Status = x.Status
                 }).ToList(),
                 OrdreOversikt = _ordreRepository.GetAll().Select(x => new OrdreViewModel
                 {

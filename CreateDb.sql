@@ -117,8 +117,7 @@ create table if not EXISTS AspNetRoleClaims
 (
     ArbDokID int PRIMARY KEY auto_increment,
     OrdreNummer int,
-    Kunde varchar(255),
-    Vinsj varchar(255),
+    Uke varchar(2),
     HenvendelseMotatt DATE,
     AvtaltLevering DATE,
     ProduktMotatt DATE,
@@ -128,7 +127,6 @@ create table if not EXISTS AspNetRoleClaims
     AntallTimer int,
     BestillingFraKunde varchar(255),
     NotatFraMekaniker varchar(255),
-    Status varchar(255),
     foreign key(OrdreNummer)
         references Ordre(OrdreNummer)
 );

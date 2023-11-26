@@ -36,18 +36,18 @@ VALUES
 ('10000007', '2014', 'Ja', 'Vinsjens hastighet er ujevn', 'Motor', 'Ingen', 'Sendes via Post'),
 ('10000008', '2011', 'Ja', 'Vinsjens fjernkontroll fungerer ikke', 'Fjernkontroll', 'Ja', 'Sendes via Post'),
 ('10000009', '2016', 'Nei', 'Vinsjen reagerer ikke på kommando', 'Elektronikk', 'Ingen', 'Hentes av kunde');
-INSERT INTO ArbDok (OrdreNummer, Kunde, Vinsj, HenvendelseMotatt, AvtaltLevering, ProduktMotatt, SjekkUtfort, AvtaltFerdig, ServiceFerdig, AntallTimer, BestillingFraKunde, NotatFraMekaniker, Status) 
+INSERT INTO ArbDok (OrdreNummer, Uke, HenvendelseMotatt, AvtaltLevering, ProduktMotatt, SjekkUtfort, AvtaltFerdig, ServiceFerdig, AntallTimer, BestillingFraKunde, NotatFraMekaniker) 
 VALUES 
-('10000000', '100', 'Vinsj 1', '2023-10-15', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '4', 'Ja', 'Byttet ut defekt wire og utført generell service', 'Case ferdig'),
-('10000001', '101', 'Vinsj 2', '2023-10-15', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '3', 'Nei', 'Bestilt reservedel, venter på levering', 'Case ferdig'),
-('10000002', '102', 'Vinsj 3', '2023-10-15', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '5', 'Ja', 'Byttet ut defekt kontrollenhet, testet OK', 'Service ferdig'),
-('10000003', '103', 'Vinsj 4', '2023-10-15', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '6', 'Ja', 'Utført grundig inspeksjon, ingen feil funnet', 'Service ferdig'),
-('10000004', '104', 'Vinsj 5', '2023-10-15', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '4', 'Ja', 'Smurt opp bremsesystemet, nå fungerer det som det skal', 'Sjekk utført'),
-('10000005', '105', 'Vinsj 6', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '2023-10-21', '3', 'Nei', 'Diagnose pågår, rapport følger', 'Sjekk utført'),
-('10000006', '106', 'Vinsj 7', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '2023-10-21', '5', 'Ja', 'Byttet ut defekt motor, utført grundig test', 'Produkt mottatt'),
-('10000007', '107', 'Vinsj 8', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '2023-10-21', '6', 'Ja', 'Byttet ut elektronikk, testet OK', 'Produkt mottatt'),
-('10000008', '108', 'Vinsj 9', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '2023-10-21', '2', 'Ja', 'Raskt serviceoppdrag, ingen feil funnet', 'Ordre opprettet'),
-('10000009', '109', 'Vinsj 10', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '2023-10-21', '4', 'Nei', 'Utført forebyggende vedlikehold, anbefalt bytte av slitedeler', 'Ordre opprettet');
+('10000000', '47', '2023-10-15', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '4', 'Ja', 'Byttet ut defekt wire og utført generell service'),
+('10000001', '47', '2023-10-15', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '3', 'Nei', 'Bestilt reservedel, venter på levering'),
+('10000002', '47', '2023-10-15', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '5', 'Ja', 'Byttet ut defekt kontrollenhet, testet OK'),
+('10000003', '47', '2023-10-15', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '6', 'Ja', 'Utført grundig inspeksjon, ingen feil funnet'),
+('10000004', '48', '2023-10-15', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '4', 'Ja', 'Smurt opp bremsesystemet, nå fungerer det som det skal'),
+('10000005', '48', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '2023-10-21', '3', 'Nei', 'Diagnose pågår, rapport følger'),
+('10000006', '48', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '2023-10-21', '5', 'Ja', 'Byttet ut defekt motor, utført grundig test'),
+('10000007', '49', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '2023-10-21', '6', 'Ja', 'Byttet ut elektronikk, testet OK'),
+('10000008', '49', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '2023-10-21', '2', 'Ja', 'Raskt serviceoppdrag, ingen feil funnet'),
+('10000009', '50', '2023-10-16', '2023-10-17', '2023-10-18', '2023-10-19', '2023-10-20', '2023-10-21', '4', 'Nei', 'Utført forebyggende vedlikehold, anbefalt bytte av slitedeler');
 INSERT INTO Sjekkliste (OrdreNummer, MekanikerKommentar, MekanikerNavn, Dato, SerieNummer, AntallTimer, StatusString)
 VALUES
 ('10000000', 'Utført generell sjekk. Ingen problemer funnet.', 'Ole Hansen', '2023-11-22', 'Serie1', 5, '1,0,1,2,2,1,0,0,1,2,2,1,0,2,1,0,2,1,0,2,1,0,2'),
