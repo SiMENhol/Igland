@@ -182,6 +182,8 @@
         <img src="~/lib/iglandbilde.webp">
     </div>
     <div class="title">Velkommen</div>
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
 <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" role="form">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="input-container ic1">

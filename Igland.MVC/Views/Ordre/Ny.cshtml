@@ -30,10 +30,10 @@
         <input asp-for="UpsertModel.KundeID" type="number" placeholder="100" /><br />
 
         <label asp-for="UpsertModel.SerieNummer"></label> <br />
-        <input asp-for="UpsertModel.SerieNummer" type="text" /><br />
+        <input asp-for="UpsertModel.SerieNummer" type="text" maxlength="20" /><br />
 
         <label asp-for="UpsertModel.VareNavn"></label> <br />
-        <input asp-for="UpsertModel.VareNavn" type="text" /><br />
+        <input asp-for="UpsertModel.VareNavn" type="text" maxlength="20" /><br />
 
         <label asp-for="UpsertModel.Status"></label> <br />
         <select asp-for="UpsertModel.Status" required>
